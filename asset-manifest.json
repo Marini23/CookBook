@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/CookBook/static/css/main.e6c13ad2.css",
-    "main.js": "/CookBook/static/js/main.1eca06a5.js",
+    "main.css": "/CookBook/static/css/main.cd2e038f.css",
+    "main.js": "/CookBook/static/js/main.c44f31c1.js",
+    "static/media/Heebo-Bold.ttf": "/CookBook/static/media/Heebo-Bold.234058e06b34bc0c4656.ttf",
+    "static/media/Heebo-SemiBold.ttf": "/CookBook/static/media/Heebo-SemiBold.9ca18585899fafc9186a.ttf",
+    "static/media/Heebo-Medium.ttf": "/CookBook/static/media/Heebo-Medium.cb7e0b72e34fb7c3bff3.ttf",
+    "static/media/Heebo-Regular.ttf": "/CookBook/static/media/Heebo-Regular.2f340fb1f89682582e66.ttf",
     "index.html": "/CookBook/index.html",
-    "main.e6c13ad2.css.map": "/CookBook/static/css/main.e6c13ad2.css.map",
-    "main.1eca06a5.js.map": "/CookBook/static/js/main.1eca06a5.js.map"
+    "main.cd2e038f.css.map": "/CookBook/static/css/main.cd2e038f.css.map",
+    "main.c44f31c1.js.map": "/CookBook/static/js/main.c44f31c1.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.1eca06a5.js"
+    "static/css/main.cd2e038f.css",
+    "static/js/main.c44f31c1.js"
   ]
 }
