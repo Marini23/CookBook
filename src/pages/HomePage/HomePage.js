@@ -1,3 +1,9 @@
+import { DescriptionInfo } from 'components/DescriptionInfo/DescriptionInfo';
+
 export const HomePage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <DescriptionInfo />
+    </div>
+  );
 };
