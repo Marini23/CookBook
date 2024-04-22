@@ -5,9 +5,9 @@ import img2_desktop from '../../images/img2_home_desktop.jpg';
 import img3_mobile from '../../images/img3_home_mobile.jpg';
 import img3_desktop from '../../images/img3_home_desktop.jpg';
 import {
-  Button,
   InfoBlock,
   InfoContainer,
+  Link,
   Picture,
   SectionContainer,
   SpanText,
@@ -37,7 +37,7 @@ export const DescriptionInfo = () => {
             updating of the recipe database allows you to please even the most
             gourmets. Get access to all recipes after registration.
           </TextBlock>
-          <Button type="button">Get Started</Button>
+          <Link href="/register">Get Started</Link>
         </InfoContainer>
       </InfoBlock>
       <InfoBlock>
@@ -48,7 +48,7 @@ export const DescriptionInfo = () => {
             create a personalized shopping list. Adjust the list yourself:
             adjusting the quantity, availability, etc.
           </TextBlock>
-          <Button type="button">Get Started</Button>
+          <Link href="/register">Get Started</Link>
         </InfoContainer>
         <Picture>
           <source srcSet={img2_mobile} media="(max-width: 767px)" />
@@ -69,7 +69,7 @@ export const DescriptionInfo = () => {
             Each recipe includes photos, ingredient lists, and step-by-step
             instructions, making cooking a breeze.
           </TextBlock>
-          <Button type="button">Get Started</Button>
+          <Link href="/register">Get Started</Link>
         </InfoContainer>
       </InfoBlock>
     </SectionContainer>

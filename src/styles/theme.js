@@ -8,6 +8,7 @@ export const theme = {
     yellowText: '#ECC747',
     footerText: '#F5F5F5',
     grey: '#A2A8BC',
+    bgGrey: 'rgba(217, 217, 217, 0.15);',
     white: '#FFFFFF',
   },
 };
