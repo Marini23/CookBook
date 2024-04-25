@@ -11,5 +11,6 @@ export const theme = {
     bgGrey: 'rgba(217, 217, 217, 0.15);',
     white: '#FFFFFF',
     bgFooter: 'rgba(25, 25, 25, 0.5)',
+    bgFooterBlack: 'rgba(25, 25, 25, 1)',
   },
 };
