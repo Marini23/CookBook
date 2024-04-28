@@ -1,8 +1,11 @@
 import img1_mobile from '../../images/img1_home_mobile.jpg';
+import img1_tablet from '../../images/img1_home_tablet.jpg';
 import img1_desktop from '../../images/img1_home_desktop.jpg';
 import img2_mobile from '../../images/img2_home_mobile.jpg';
+import img2_tablet from '../../images/img2_home_tablet.jpg';
 import img2_desktop from '../../images/img2_home_desktop.jpg';
 import img3_mobile from '../../images/img3_home_mobile.jpg';
+import img3_tablet from '../../images/img3_home_tablet.jpg';
 import img3_desktop from '../../images/img3_home_desktop.jpg';
 import {
   InfoBlock,
@@ -27,6 +30,7 @@ export const DescriptionInfo = () => {
       <InfoBlock>
         <Picture>
           <source srcSet={img1_mobile} media="(max-width: 767px)" />
+          <source srcSet={img1_tablet} media="(min-width: 768px)" />
           <source srcSet={img1_desktop} media="(min-width: 1440px)" />
           <img src={img1_mobile} alt="illustration" />
         </Picture>
@@ -52,6 +56,7 @@ export const DescriptionInfo = () => {
         </InfoContainer>
         <Picture>
           <source srcSet={img2_mobile} media="(max-width: 767px)" />
+          <source srcSet={img2_tablet} media="(min-width: 768px)" />
           <source srcSet={img2_desktop} media="(min-width: 1440px)" />
           <img src={img2_mobile} alt="illustration" />
         </Picture>
@@ -59,6 +64,8 @@ export const DescriptionInfo = () => {
       <InfoBlock>
         <Picture>
           <source srcSet={img3_mobile} media="(max-width: 767px)" />
+
+          <source srcSet={img3_tablet} media="(min-width: 768px)" />
           <source srcSet={img3_desktop} media="(min-width: 1440px)" />
           <img src={img3_mobile} alt="illustration" />
         </Picture>

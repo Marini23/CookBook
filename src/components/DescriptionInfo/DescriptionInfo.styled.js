@@ -19,6 +19,11 @@ export const Text = styled.p`
   font-size: 12px;
   line-height: 20.56px;
   margin-bottom: 40px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding: 56px 40px;
+    line-height: 29.38px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 20px;
     padding: 72px;
@@ -29,6 +34,12 @@ export const Text = styled.p`
 export const SpanText = styled.span`
   font-size: 14px;
   line-height: 20.56px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.white};
+    line-height: 29.38px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 20px;
     line-height: 29.38px;
@@ -112,5 +123,3 @@ export const Link = styled.a`
     margin-bottom: 40px;
   }
 `;
-
-

@@ -11,6 +11,11 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 8px 0;
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    gap: 20px;
+    padding: 24px 0;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     gap: 32px;
@@ -21,6 +26,10 @@ export const Container = styled.div`
 export const Img = styled.img`
   width: 48px;
   height: 32px;
+  @media screen and (min-width: 768px) {
+    width: 92px;
+    height: 60px;
+  }
   @media screen and (min-width: 1440px) {
     width: 166px;
     height: 112px;
@@ -35,6 +44,10 @@ export const FooterText = styled.p`
   font-size: 10px;
   font-weight: 14.96px;
   color: ${({ theme }) => theme.colors.footerText};
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    font-weight: 20.56px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 16px;
     font-weight: 23.5px;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import bg_mobile from '../../images/bg_home_mobile.jpg';
+import bg_tablet from '../../images/bg_home-tablet.jpg';
 import bg_decktop from '../../images/bg_home_desktop.jpg';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
@@ -7,6 +8,9 @@ export const Container = styled.section`
   width: 100%;
   max-width: 390px;
   margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
   }
@@ -21,8 +25,15 @@ export const MainInfo = styled.div`
   background-position: center;
   background-size: cover;
   position: relative;
+  @media screen and (min-width: 768px) {
+    background-image: url(${bg_tablet});
+    max-width: 768px;
+    background-size: contain;
+    height: 536px;
+  }
   @media screen and (min-width: 1440px) {
     background-image: url(${bg_decktop});
+    background-size: cover;
     max-width: 1440px;
     height: 1024px;
   }
@@ -32,6 +43,18 @@ export const Logo = styled.img`
   position: absolute;
   top: 44px;
   left: 16px;
+  @media screen and (min-width: 768px) {
+    width: 92px;
+    height: 60px;
+    top: 16px;
+    left: 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 125px;
+    height: 83px;
+    top: 24px;
+    left: 72px;
+  }
 `;
 
 export const StyledHamburgerMenu = styled(GiHamburgerMenu)`
@@ -51,12 +74,19 @@ export const WrapContent = styled.div`
   height: 126px;
   background-color: rgba(107, 107, 107, 0.5);
   padding: 16px;
+  @media screen and (min-width: 768px) {
+    width: 496px;
+    height: 220px;
+    top: 178px;
+    left: 40px;
+    padding: 32px 20px;
+  }
   @media screen and (min-width: 1440px) {
     width: 942px;
     height: 399px;
     top: 259px;
     left: 72px;
-    padding: 86px 100px;
+    padding: 100px 80px;
   }
 `;
 
@@ -65,11 +95,33 @@ export const Text = styled.p`
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 16px;
-  /* @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
     font-size: 20px;
-    padding: 72px;
-    line-height: 29.38px;
-  } */
+    line-height: 26px;
+    margin-bottom: 28px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 32px;
+  }
+`;
+
+export const SecondaryText = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 28px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 18px;
+    line-height: 26.44px;
+    margin-bottom: 32px;
+  }
 `;
 
 export const Link = styled.a`
@@ -108,5 +160,46 @@ export const Link = styled.a`
     font-size: 20px;
     line-height: 29.38px;
     margin-bottom: 40px;
+  }
+`;
+
+export const NavMenu = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 40px;
+  display: flex;
+  gap: 16px;
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    top: 62px;
+    right: 72px;
+    display: flex;
+    gap: 24px;
+  }
+`;
+export const Button = styled.button`
+  height: 45px;
+  display: flex;
+  border: none;
+  background-color: transparent;
+  padding: 8px 16px;
+  justify-self: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 29.38px;
+  color: ${({ theme }) => theme.colors.whiteText};
+  &:hover {
+    border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:focus {
+    border: none;
+    border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 8px 24px;
   }
 `;
