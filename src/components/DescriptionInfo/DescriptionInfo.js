@@ -18,7 +18,20 @@ import {
   TextBlock,
   TitleBlock,
 } from './DescriptionInfo.styled';
+import { useState } from 'react';
+import { ModalWindow } from 'components/Modal/Modal';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 export const DescriptionInfo = () => {
+  const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
+
+  const openModalRegister = () => {
+    setModalIsOpenRegister(true);
+  };
+
+  const closeModalRegister = () => {
+    setModalIsOpenRegister(false);
+  };
+
   return (
     <SectionContainer>
       <Text>
@@ -41,7 +54,10 @@ export const DescriptionInfo = () => {
             updating of the recipe database allows you to please even the most
             gourmets. Get access to all recipes after registration.
           </TextBlock>
-          <Link href="/register">Get Started</Link>
+          <Link type="button" onClick={openModalRegister}>
+            Get Started
+          </Link>
+          {/* <Link href="/register">Get Started</Link> */}
         </InfoContainer>
       </InfoBlock>
       <InfoBlock>
@@ -52,7 +68,10 @@ export const DescriptionInfo = () => {
             create a personalized shopping list. Adjust the list yourself:
             adjusting the quantity, availability, etc.
           </TextBlock>
-          <Link href="/register">Get Started</Link>
+          <Link type="button" onClick={openModalRegister}>
+            Get Started
+          </Link>
+          {/* <Link href="/register">Get Started</Link> */}
         </InfoContainer>
         <Picture>
           <source srcSet={img2_mobile} media="(max-width: 767px)" />
@@ -76,9 +95,15 @@ export const DescriptionInfo = () => {
             Each recipe includes photos, ingredient lists, and step-by-step
             instructions, making cooking a breeze.
           </TextBlock>
-          <Link href="/register">Get Started</Link>
+          <Link type="button" onClick={openModalRegister}>
+            Get Started
+          </Link>
+          {/* <Link href="/register">Get Started</Link> */}
         </InfoContainer>
       </InfoBlock>
+      <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
+        <RegisterForm isClose={closeModalRegister} />
+      </ModalWindow>
     </SectionContainer>
   );
 };

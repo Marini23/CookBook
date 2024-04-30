@@ -87,7 +87,43 @@ export const TextBlock = styled.p`
   }
 `;
 
-export const Link = styled.a`
+// export const Link = styled.a`
+//   text-decoration: none;
+//   cursor: pointer;
+//   max-width: 200px;
+//   padding: 8px 44px;
+//   height: 34px;
+//   border-radius: 4px;
+//   border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+//   background-color: transparent;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: 12px;
+//   line-height: 17.36px;
+//   color: ${({ theme }) => theme.colors.primaryOrange};
+//   &:hover {
+//     border: none;
+//     background-color: ${({ theme }) => theme.colors.primaryOrange};
+//     color: ${({ theme }) => theme.colors.primaryBlackText};
+//   }
+//   &:focus {
+//     border: none;
+//     background-color: ${({ theme }) => theme.colors.primaryOrange};
+//     color: ${({ theme }) => theme.colors.primaryBlackText};
+//   }
+//   @media screen and (min-width: 1440px) {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     width: 305px;
+//     max-width: 305px;
+//     height: 45px;
+//     font-size: 20px;
+//     line-height: 29.38px;
+//     margin-bottom: 40px;
+//   }
+// `;
+export const Link = styled.button`
   text-decoration: none;
   cursor: pointer;
   max-width: 200px;
