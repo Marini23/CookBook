@@ -6,6 +6,9 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 16px;
   margin-top: 58px;
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 export const Title = styled.h4`
@@ -15,6 +18,10 @@ export const Title = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 35.25px;
+  }
 `;
 
 export const PasswordContainer = styled.div`
@@ -35,6 +42,10 @@ export const Input = styled.input`
   &:hover,
   &:focus {
     outline: none;
+    border: 1px solid ${({ theme }) => theme.colors.primaryBlackText};
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
   }
 `;
 export const Button = styled.button`
@@ -56,6 +67,10 @@ export const Button = styled.button`
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 26.44px;
   }
 `;
 
@@ -81,6 +96,10 @@ export const Line = styled.p`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.grey};
   }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 26.44px;
+  }
 `;
 
 export const NetworkBtnSubmit = styled.button`
@@ -103,6 +122,10 @@ export const NetworkBtnSubmit = styled.button`
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
   }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 23.5px;
+  }
 `;
 
 export const LinkText = styled.p`
@@ -113,6 +136,10 @@ export const LinkText = styled.p`
   justify-content: center;
   align-items: center;
   gap: 4px;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 29.38px;
+  }
 `;
 
 export const Link = styled.a`
@@ -130,8 +157,8 @@ export const Link = styled.a`
   &:focus {
     text-decoration: underline;
   }
-  /* @media screen and (min-width: 1440px) {
-    font-size: 16px;
-    font-weight: 23.5px;
-  } */
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 29.38px;
+  }
 `;

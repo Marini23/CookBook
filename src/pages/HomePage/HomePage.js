@@ -14,10 +14,12 @@ import {
 import { Footer } from 'components/Footer/Footer';
 import logo from '../../images/logo_mobile.svg';
 import { useEffect, useState } from 'react';
+import { ModalWindow } from 'components/Modal/Modal';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
 export const HomePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -29,6 +31,14 @@ export const HomePage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const openModalRegister = () => {
+    setModalIsOpenRegister(true);
+  };
+
+  const closeModalRegister = () => {
+    setModalIsOpenRegister(false);
+  };
   return (
     <>
       <Container>
@@ -49,12 +59,17 @@ export const HomePage = () => {
                 detailed cooking instructions and a good mood!
               </SecondaryText>
             )}
-            <Link href="/register">Get Started</Link>
+            <Link type="button" onClick={openModalRegister}>
+              Get Started
+            </Link>
           </WrapContent>
         </MainInfo>
         <DescriptionInfo />
       </Container>
       <Footer />
+      <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
+        <RegisterForm isClose={closeModalRegister} />
+      </ModalWindow>
     </>
   );
 };

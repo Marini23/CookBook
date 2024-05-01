@@ -31,9 +31,11 @@ const formSchema = Yup.object().shape({
       message: `Name may contain only letters, apostrophe, dash and spaces.`,
     })
     .required('Name is required'),
-  email: Yup.string().matches(emailRegex, {
-    message: `Invalid email.Please enter a valid email in the format: example@example.com.`,
-  }),
+  email: Yup.string()
+    .matches(emailRegex, {
+      message: `Invalid email.Please enter a valid email in the format: example@example.com.`,
+    })
+    .required('Email is required'),
   password: Yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters'),

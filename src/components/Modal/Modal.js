@@ -24,11 +24,7 @@ export const ModalWindow = ({ isOpen, isClose, children }) => {
       className={'modal-content'}
     >
       <IoCloseOutline
-        style={{
-          position: 'absolute',
-          top: '0',
-          right: '16px',
-        }}
+        className={'closeIcon'}
         size="24px"
         color="black"
         onClick={isClose}
