@@ -26,7 +26,7 @@ export const ModalWindow = ({ isOpen, isClose, children }) => {
       <IoCloseOutline
         style={{
           position: 'absolute',
-          top: '16px',
+          top: '0',
           right: '16px',
         }}
         size="24px"

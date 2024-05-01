@@ -6,6 +6,10 @@ import {
   ErrorMessage,
   Form,
   Input,
+  Line,
+  Link,
+  LinkText,
+  NetworkBtnSubmit,
   PasswordContainer,
   Title,
 } from './RegisterForm.styled';
@@ -14,6 +18,9 @@ import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 // import { register } from '../../redux/authSlice/authOperations';
+import google_icon from '../../images/google.svg';
+import facebook_icon from '../../images/facebook.svg';
+import apple_icon from '../../images/apple.svg';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -122,7 +129,7 @@ export const RegisterForm = ({ isClose }) => {
                 right: '16px',
               }}
               size="20px"
-              color="black"
+              color="#A2A8BC"
               onClick={togglePasswordVisibility}
             />
           ) : (
@@ -134,7 +141,7 @@ export const RegisterForm = ({ isClose }) => {
                 right: '16px',
               }}
               size="20px"
-              color="black"
+              color="#A2A8BC"
               onClick={togglePasswordVisibility}
             />
           )}
@@ -162,7 +169,7 @@ export const RegisterForm = ({ isClose }) => {
                 right: '16px',
               }}
               size="20px"
-              color="black"
+              color="#A2A8BC"
               onClick={toggleConfirmPasswordVisibility}
             />
           ) : (
@@ -174,7 +181,7 @@ export const RegisterForm = ({ isClose }) => {
                 right: '16px',
               }}
               size="20px"
-              color="black"
+              color="#A2A8BC"
               onClick={toggleConfirmPasswordVisibility}
             />
           )}
@@ -183,6 +190,25 @@ export const RegisterForm = ({ isClose }) => {
           <ErrorMessage>{formik.errors.confirmPassword}</ErrorMessage>
         ) : null}
         <Button type="submit">Register</Button>
+        <Line>or</Line>
+        <NetworkBtnSubmit type="button">
+          {' '}
+          <img src={google_icon} alt="Google icon" />
+          Sing up with Google
+        </NetworkBtnSubmit>
+        <NetworkBtnSubmit type="button">
+          {' '}
+          <img src={facebook_icon} alt="Facebook icon" />
+          Sing up with Facebook
+        </NetworkBtnSubmit>
+        <NetworkBtnSubmit type="button">
+          {' '}
+          <img src={apple_icon} alt="Apple icon" />
+          Sing up with Apple
+        </NetworkBtnSubmit>
+        <LinkText>
+          Already have an account ? <Link href="/signin">Log in</Link>
+        </LinkText>
       </Form>
     </>
   );

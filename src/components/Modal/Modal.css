@@ -10,7 +10,7 @@
 
 .modal-content {
   position: fixed;
-  top: 50%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%; /* 566 divided by 1440 */
@@ -46,11 +46,11 @@
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
   } */
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
     min-width: 320px;
     padding: 1.75rem;
   }
   @media screen and (min-width: 1440px) {
     padding: 3.75rem;
-  }
+  } */
 }
