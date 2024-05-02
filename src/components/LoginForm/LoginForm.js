@@ -11,8 +11,9 @@ import {
   LinkText,
   NetworkBtnSubmit,
   PasswordContainer,
+  Text,
   Title,
-} from './RegisterForm.styled';
+} from './LoginForm.styled.js';
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
@@ -22,15 +23,9 @@ import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
 
-const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const formSchema = Yup.object().shape({
-  name: Yup.string()
-    .matches(nameRegex, {
-      message: `Name may contain only letters, apostrophe, dash and spaces.`,
-    })
-    .required('Name is required'),
   email: Yup.string()
     .matches(emailRegex, {
       message: `Invalid email.Please enter a valid email in the format: example@example.com.`,
@@ -39,21 +34,15 @@ const formSchema = Yup.object().shape({
   password: Yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Required'),
 });
 
-export const RegisterForm = ({ isClose, isOpenLogin }) => {
+export const LoginForm = ({ isClose, isOpenRegister }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   //   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
     validationSchema: formSchema,
     onSubmit: values => {
@@ -78,31 +67,15 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     setShowPassword(prevState => !prevState);
   };
 
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(prevState => !prevState);
-  };
-
   const toggleModal = () => {
     isClose();
-    isOpenLogin();
+    isOpenRegister();
   };
+
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
-        <Title>Register</Title>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.name}
-          placeholder="Name"
-          autoComplete="off"
-        />
-        {formik.touched.name && formik.errors.name ? (
-          <ErrorMessage>{formik.errors.name}</ErrorMessage>
-        ) : null}
+        <Title>Log in</Title>
         <Input
           id="email"
           name="email"
@@ -156,47 +129,8 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
         {formik.touched.password && formik.errors.password ? (
           <ErrorMessage>{formik.errors.password}</ErrorMessage>
         ) : null}
-        <PasswordContainer>
-          <Input
-            id="confirmPassword"
-            name="confirmPassword"
-            type={showPassword ? 'text' : 'password'}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmPassword}
-            placeholder="Confirm password"
-            autoComplete="off"
-          />
-          {showConfirmPassword ? (
-            <FiEye
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '8px',
-                right: '16px',
-              }}
-              size="20px"
-              color="#A2A8BC"
-              onClick={toggleConfirmPasswordVisibility}
-            />
-          ) : (
-            <FiEyeOff
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '8px',
-                right: '16px',
-              }}
-              size="20px"
-              color="#A2A8BC"
-              onClick={toggleConfirmPasswordVisibility}
-            />
-          )}
-        </PasswordContainer>
-        {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-          <ErrorMessage>{formik.errors.confirmPassword}</ErrorMessage>
-        ) : null}
-        <Button type="submit">Register</Button>
+        <Button type="submit">Log in</Button>
+        <Text>Forgot your password?</Text>
         <Line>or</Line>
         <NetworkBtnSubmit type="button">
           {' '}
@@ -214,7 +148,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           Sing up with Apple
         </NetworkBtnSubmit>
         <LinkText>
-          Already have an account ? <Link onClick={toggleModal}>Log in </Link>
+          New user? ? <Link onClick={toggleModal}>Create an account </Link>
         </LinkText>
       </Form>
     </>

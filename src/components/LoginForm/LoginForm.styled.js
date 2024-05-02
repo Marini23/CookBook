@@ -161,7 +161,6 @@ export const LinkText = styled.p`
 //     font-size: 20px;
 //     line-height: 29.38px;
 //   }
-
 // `;
 
 export const Link = styled.span`
@@ -183,4 +182,10 @@ export const Link = styled.span`
     font-size: 20px;
     line-height: 29.38px;
   }
+`;
+
+export const Text = styled.p`
+  font-size: 12px;
+  font-weight: 17.63px;
+  color: ${({ theme }) => theme.colors.primaryBlackText};
 `;

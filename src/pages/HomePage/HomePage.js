@@ -16,10 +16,12 @@ import logo from '../../images/logo_mobile.svg';
 import { useEffect, useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { LoginForm } from 'components/LoginForm/LoginForm';
 
 export const HomePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
+  const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -39,6 +41,15 @@ export const HomePage = () => {
   const closeModalRegister = () => {
     setModalIsOpenRegister(false);
   };
+
+  const openModalLogin = () => {
+    setModalIsOpenLogin(true);
+  };
+
+  const closeModalLogin = () => {
+    setModalIsOpenLogin(false);
+  };
+
   return (
     <>
       <Container>
@@ -47,8 +58,12 @@ export const HomePage = () => {
           {windowWidth < 768 && <StyledHamburgerMenu />}
           {windowWidth >= 768 && (
             <NavMenu>
-              <Button type="button">Log in</Button>
-              <Button type="button">Register</Button>
+              <Button type="button" onClick={openModalLogin}>
+                Log in
+              </Button>
+              <Button type="button" onClick={openModalRegister}>
+                Register
+              </Button>
             </NavMenu>
           )}
           <WrapContent>
@@ -68,7 +83,16 @@ export const HomePage = () => {
       </Container>
       <Footer />
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
-        <RegisterForm isClose={closeModalRegister} />
+        <RegisterForm
+          isClose={closeModalRegister}
+          isOpenLogin={openModalLogin}
+        />
+      </ModalWindow>
+      <ModalWindow isClose={closeModalLogin} isOpen={modalIsOpenLogin}>
+        <LoginForm
+          isClose={closeModalLogin}
+          isOpenRegister={openModalRegister}
+        />
       </ModalWindow>
     </>
   );
