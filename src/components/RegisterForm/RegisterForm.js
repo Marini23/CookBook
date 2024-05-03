@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import {
   Button,
   ErrorMessage,
@@ -16,8 +16,8 @@ import {
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { register } from '../../redux/authSlice/authOperations';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
@@ -47,7 +47,7 @@ const formSchema = Yup.object().shape({
 export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -57,20 +57,20 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     },
     validationSchema: formSchema,
     onSubmit: values => {
-      //   if (formik.isValid) {
-      //     dispatch(register(values))
-      //       .unwrap()
-      //       .catch(error => {
-      //         if (error.code === 'auth/email-already-in-use') {
-      //           toast.error(
-      //             'Email is already in use. Please use a different email.'
-      //           );
-      //         } else {
-      //           toast.error('Something went wrong. Try again later');
-      //         }
-      //       });
-      isClose();
-      //   }
+      if (formik.isValid) {
+        dispatch(register(values))
+          .unwrap()
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              toast.error(
+                'Email is already in use. Please use a different email.'
+              );
+            } else {
+              toast.error('Something went wrong. Try again later');
+            }
+          });
+        isClose();
+      }
     },
   });
 
