@@ -17,7 +17,10 @@ import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/authSlice/authOperations';
+import {
+  register,
+  registerWithGoogle,
+} from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
@@ -58,7 +61,13 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     validationSchema: formSchema,
     onSubmit: values => {
       if (formik.isValid) {
-        dispatch(register(values))
+        dispatch(
+          register({
+            name: values.name,
+            email: values.email,
+            password: values.password,
+          })
+        )
           .unwrap()
           .catch(error => {
             if (error.code === 'auth/email-already-in-use') {
@@ -198,7 +207,10 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
         ) : null}
         <Button type="submit">Register</Button>
         <Line>or</Line>
-        <NetworkBtnSubmit type="button">
+        <NetworkBtnSubmit
+          type="button"
+          onClick={() => dispatch(registerWithGoogle())}
+        >
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google

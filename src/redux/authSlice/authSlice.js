@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCurrentUser, logIn, logOut, register } from './authOperations';
+import {
+  fetchCurrentUser,
+  logIn,
+  logOut,
+  register,
+  registerWithGoogle,
+} from './authOperations';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -50,6 +56,9 @@ const authSlice = createSlice({
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+      })
+      .addCase(registerWithGoogle.fulfilled, (state, action) => {
+        console.log(state);
       }),
 });
 
