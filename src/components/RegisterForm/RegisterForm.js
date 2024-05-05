@@ -19,7 +19,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   register,
-  registerWithGoogle,
+  signInWithFacebook,
+  signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
@@ -209,13 +210,16 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
         <Line>or</Line>
         <NetworkBtnSubmit
           type="button"
-          onClick={() => dispatch(registerWithGoogle())}
+          onClick={() => dispatch(signInWithGoogle())}
         >
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button">
+        <NetworkBtnSubmit
+          type="button"
+          onClick={() => dispatch(signInWithFacebook())}
+        >
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook

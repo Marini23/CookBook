@@ -18,7 +18,11 @@ import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/authSlice/authOperations';
+import {
+  logIn,
+  signInWithFacebook,
+  signInWithGoogle,
+} from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
@@ -132,12 +136,18 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
         <Button type="submit">Log in</Button>
         <Text>Forgot your password?</Text>
         <Line>or</Line>
-        <NetworkBtnSubmit type="button">
+        <NetworkBtnSubmit
+          type="button"
+          onClick={() => dispatch(signInWithGoogle())}
+        >
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button">
+        <NetworkBtnSubmit
+          type="button"
+          onClick={() => dispatch(signInWithFacebook())}
+        >
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook

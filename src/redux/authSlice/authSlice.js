@@ -4,7 +4,8 @@ import {
   logIn,
   logOut,
   register,
-  registerWithGoogle,
+  signInWithFacebook,
+  signInWithGoogle,
 } from './authOperations';
 
 const handleRejected = (state, action) => {
@@ -57,9 +58,12 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(registerWithGoogle.fulfilled, (state, action) => {
-        console.log(state);
-      }),
+      .addCase(signInWithGoogle.fulfilled, (state, action) => {})
+      .addCase(signInWithGoogle.rejected, handleRejected)
+      .addCase(signInWithFacebook.fulfilled, (state, action) => {
+        console.log(action.payload);
+      })
+      .addCase(signInWithFacebook.rejected, handleRejected),
 });
 
 export const authReducer = authSlice.reducer;
