@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithRedirect,
   getRedirectResult,
+  linkWithRedirect,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -144,6 +145,33 @@ export const signInWithGoogle = createAsyncThunk(
   }
 );
 
+export const linkWithGoogle = createAsyncThunk(
+  'auth/linkWithGoogle',
+  async (_, thunkAPI) => {
+    try {
+      await linkWithRedirect(auth, googleProvider);
+      const result = await getRedirectResult(auth);
+      const { user } = result;
+
+      const serializedUser = {
+        name: user.displayName,
+        email: user.email,
+        accessToken: user.stsTokenManager.accessToken,
+      };
+
+      return serializedUser;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+        email: error.customData.email,
+        credential: GoogleAuthProvider.credentialFromError(error),
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
 // Facebook auth
 
 export const signInWithFacebook = createAsyncThunk(
@@ -172,5 +200,3 @@ export const signInWithFacebook = createAsyncThunk(
     }
   }
 );
-
-
