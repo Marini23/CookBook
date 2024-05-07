@@ -8,7 +8,10 @@ import {
   GoogleAuthProvider,
   signInWithRedirect,
   getRedirectResult,
-  linkWithRedirect,
+  signInWithCredential,
+  OAuthProvider,
+  linkWithCredential,
+  EmailAuthProvider,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -145,33 +148,6 @@ export const signInWithGoogle = createAsyncThunk(
   }
 );
 
-export const linkWithGoogle = createAsyncThunk(
-  'auth/linkWithGoogle',
-  async (_, thunkAPI) => {
-    try {
-      await linkWithRedirect(auth, googleProvider);
-      const result = await getRedirectResult(auth);
-      const { user } = result;
-
-      const serializedUser = {
-        name: user.displayName,
-        email: user.email,
-        accessToken: user.stsTokenManager.accessToken,
-      };
-
-      return serializedUser;
-    } catch (error) {
-      const serializedError = {
-        code: error.code,
-        message: error.message,
-        email: error.customData.email,
-        credential: GoogleAuthProvider.credentialFromError(error),
-      };
-      return thunkAPI.rejectWithValue(serializedError);
-    }
-  }
-);
-
 // Facebook auth
 
 export const signInWithFacebook = createAsyncThunk(
@@ -195,6 +171,65 @@ export const signInWithFacebook = createAsyncThunk(
         message: error.message,
         email: error.customData.email,
         credential: GoogleAuthProvider.credentialFromError(error),
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+// Link Multiple Auth Providers to an Account
+
+export const linkMultipleAuth = createAsyncThunk(
+  'auth/linkMultipleAuth',
+  async (newCredential, thunkAPI) => {
+    const credential = EmailAuthProvider.credential(email, password);
+    try {
+      const { name, email, password } = newCredential;
+
+      // The implementation of how you store your user data depends on your application
+      const repo = new MyUserDataRepo();
+
+      // Get reference to the currently signed-in user
+      const prevUser = auth.currentUser;
+
+      // Get the data which you will want to merge. This should be done now
+      // while the app is still signed in as this user.
+      const prevUserData = repo.get(prevUser);
+
+      // Delete the user's data now, we will restore it if the merge fails
+      repo.delete(prevUser);
+      // Sign in user with the account you want to link to
+      signInWithCredential(auth, newCredential).then(result => {
+        console.log('Sign In Success', result);
+        const currentUser = result.user;
+        const currentUserData = repo.get(currentUser);
+
+        // Merge prevUser and currentUser data stored in Firebase.
+        // Note: How you handle this is specific to your application
+        const mergedData = repo.merge(prevUserData, currentUserData);
+
+        const credential = OAuthProvider.credentialFromResult(result);
+        return linkWithCredential(prevUser, credential)
+          .then(linkResult => {
+            // Sign in with the newly linked credential
+            const linkCredential =
+              OAuthProvider.credentialFromResult(linkResult);
+            return signInWithCredential(auth, linkCredential);
+          })
+          .then(signInResult => {
+            // Save the merged data to the new user
+            repo.set(signInResult.user, mergedData);
+          })
+          .catch(error => {
+            // If there are errors we want to undo the data merge/deletion
+            console.log('Sign In Error', error);
+            repo.set(prevUser, prevUserData);
+          });
+      });
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
       };
       return thunkAPI.rejectWithValue(serializedError);
     }
