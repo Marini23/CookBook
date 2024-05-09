@@ -58,6 +58,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
       email: '',
       password: '',
       confirmPassword: '',
+      id: 1,
     },
     validationSchema: formSchema,
     onSubmit: values => {
@@ -67,6 +68,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             name: values.name,
             email: values.email,
             password: values.password,
+            id: values.id,
           })
         )
           .unwrap()
@@ -79,6 +81,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
               toast.error('Something went wrong. Try again later');
             }
           });
+
         isClose();
       }
     },

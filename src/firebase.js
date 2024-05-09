@@ -13,6 +13,8 @@ import { GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 const firebaseConfig = {
   apiKey: 'AIzaSyBHiINcdWh8Ltp-_FJVOnbg2M0EOxsyHzo',
   authDomain: 'cookbook-1d9f3.firebaseapp.com',
+  databaseURL:
+    'https://cookbook-1d9f3-default-rtdb.europe-west1.firebasedatabase.app',
   projectId: 'cookbook-1d9f3',
   storageBucket: 'cookbook-1d9f3.appspot.com',
   messagingSenderId: '776747179345',

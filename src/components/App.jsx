@@ -2,13 +2,17 @@ import { HomePage } from 'pages/HomePage/HomePage';
 import { Route, Routes } from 'react-router-dom';
 import { Layuot } from './Layout/Layout';
 import { useEffect } from 'react';
-import { fetchCurrentUser } from '../redux/authSlice/authOperations';
+import {
+  fetchCurrentUser,
+  // writeUserData,
+} from '../redux/authSlice/authOperations';
 import { useDispatch } from 'react-redux';
 
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCurrentUser());
+    // writeUserData();
   }, [dispatch]);
   return (
     <div>

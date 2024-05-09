@@ -1,4 +1,5 @@
 import { auth, facebookProvider, googleProvider } from '../../firebase';
+import { db } from '../../firebase';
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -11,9 +12,12 @@ import {
   signInWithCredential,
   OAuthProvider,
   linkWithCredential,
-  EmailAuthProvider,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import MyUserDatabase from './MyUserDataBase';
+import { ref, set } from 'firebase/database';
+
+// Email and password
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -128,6 +132,8 @@ export const signInWithGoogle = createAsyncThunk(
       await signInWithRedirect(auth, googleProvider);
       const result = await getRedirectResult(auth);
       const { user } = result;
+      const repo = new MyUserDatabase();
+      repo.setNewUser(user);
 
       const serializedUser = {
         name: user.displayName,
@@ -182,15 +188,13 @@ export const signInWithFacebook = createAsyncThunk(
 export const linkMultipleAuth = createAsyncThunk(
   'auth/linkMultipleAuth',
   async (newCredential, thunkAPI) => {
-    const credential = EmailAuthProvider.credential(email, password);
     try {
-      const { name, email, password } = newCredential;
-
       // The implementation of how you store your user data depends on your application
-      const repo = new MyUserDataRepo();
+      const repo = new MyUserDatabase();
 
       // Get reference to the currently signed-in user
       const prevUser = auth.currentUser;
+      console.log(prevUser);
 
       // Get the data which you will want to merge. This should be done now
       // while the app is still signed in as this user.
@@ -198,34 +202,36 @@ export const linkMultipleAuth = createAsyncThunk(
 
       // Delete the user's data now, we will restore it if the merge fails
       repo.delete(prevUser);
+
       // Sign in user with the account you want to link to
-      signInWithCredential(auth, newCredential).then(result => {
-        console.log('Sign In Success', result);
-        const currentUser = result.user;
-        const currentUserData = repo.get(currentUser);
+      signInWithCredential(auth, newCredential)
+        .then(result => {
+          console.log('Sign In Success', result);
+          const currentUser = result.user;
+          const currentUserData = repo.get(currentUser);
 
-        // Merge prevUser and currentUser data stored in Firebase.
-        // Note: How you handle this is specific to your application
-        const mergedData = repo.merge(prevUserData, currentUserData);
+          // Merge prevUser and currentUser data stored in Firebase.
+          // Note: How you handle this is specific to your application
+          const mergedData = repo.merge(prevUserData, currentUserData);
 
-        const credential = OAuthProvider.credentialFromResult(result);
-        return linkWithCredential(prevUser, credential)
-          .then(linkResult => {
-            // Sign in with the newly linked credential
-            const linkCredential =
-              OAuthProvider.credentialFromResult(linkResult);
-            return signInWithCredential(auth, linkCredential);
-          })
-          .then(signInResult => {
-            // Save the merged data to the new user
-            repo.set(signInResult.user, mergedData);
-          })
-          .catch(error => {
-            // If there are errors we want to undo the data merge/deletion
-            console.log('Sign In Error', error);
-            repo.set(prevUser, prevUserData);
-          });
-      });
+          const credential = OAuthProvider.credentialFromResult(result);
+          return linkWithCredential(prevUser, credential)
+            .then(linkResult => {
+              // Sign in with the newly linked credential
+              const linkCredential =
+                OAuthProvider.credentialFromResult(linkResult);
+              return signInWithCredential(auth, linkCredential);
+            })
+            .then(signInResult => {
+              // Save the merged data to the new user
+              repo.set(signInResult.user, mergedData);
+            });
+        })
+        .catch(error => {
+          // If there are errors we want to undo the data merge/deletion
+          console.log('Sign In Error', error);
+          repo.set(prevUser, prevUserData);
+        });
     } catch (error) {
       const serializedError = {
         code: error.code,
@@ -235,3 +241,49 @@ export const linkMultipleAuth = createAsyncThunk(
     }
   }
 );
+
+// import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+
+// const auth = getAuth();
+// sendPasswordResetEmail(auth, email)
+//   .then(() => {
+//     // Password reset email sent!
+//     // ..
+//   })
+//   .catch(error => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // ..
+//   });
+
+export const writeUserData = itemData => {
+  console.log('start');
+  // const itemData = {
+  //   id: '3',
+  //   username: 'Oki',
+  //   email: 'oki@gmail.com',
+  // };
+  set(ref(db, 'items/' + itemData.id), itemData)
+    .then(() => {
+      console.log('Data written successfully.');
+    })
+    .catch(error => {
+      console.error('Error writing data:', error);
+    });
+};
+
+// export const writeUserData = () => {
+//   console.log('start');
+//   const itemData = {
+//     id: '3',
+//     username: 'Oki',
+//     email: 'oki@gmail.com',
+//   };
+//   set(ref(db, 'items/' + itemData.id), itemData)
+//     .then(() => {
+//       console.log('Data written successfully.');
+//     })
+//     .catch(error => {
+//       console.error('Error writing data:', error);
+//     });
+// };

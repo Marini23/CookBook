@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchCurrentUser,
+  linkMultipleAuth,
   logIn,
   logOut,
   register,
   signInWithFacebook,
   signInWithGoogle,
 } from './authOperations';
+import { db } from '../../firebase';
+import { ref, set } from 'firebase/database';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -58,12 +61,23 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(signInWithGoogle.fulfilled, (state, action) => {})
+      .addCase(signInWithGoogle.fulfilled, (state, action) => {
+        console.log(action.payload);
+        set(ref(db, 'users/' + action.payload.id), {
+          name: action.payload.name,
+          email: action.payload.email,
+          id: action.payload.id,
+          // Add any other user data you want to store in the database
+        });
+      })
       .addCase(signInWithGoogle.rejected, handleRejected)
       .addCase(signInWithFacebook.fulfilled, (state, action) => {
         console.log(action.payload);
       })
-      .addCase(signInWithFacebook.rejected, handleRejected),
+      .addCase(signInWithFacebook.rejected, handleRejected)
+      .addCase(linkMultipleAuth.fulfilled, (state, action) => {
+        console.log(action.payload);
+      }),
 });
 
 export const authReducer = authSlice.reducer;
