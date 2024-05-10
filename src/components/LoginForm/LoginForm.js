@@ -19,8 +19,7 @@ import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  linkMultipleAuth,
-  // logIn,
+  logIn,
   signInWithFacebook,
   signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
@@ -52,8 +51,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
     validationSchema: formSchema,
     onSubmit: values => {
       if (formik.isValid) {
-        // dispatch(logIn(values));
-        dispatch(linkMultipleAuth(values))
+        dispatch(logIn(values))
           .unwrap()
           .catch(error => {
             if (error.code === 'auth/invalid-credential') {

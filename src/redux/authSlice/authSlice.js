@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchCurrentUser,
-  linkMultipleAuth,
   logIn,
   logOut,
   register,
@@ -10,6 +9,10 @@ import {
 } from './authOperations';
 import { db } from '../../firebase';
 import { ref, set } from 'firebase/database';
+import {
+  linkMultipleAuth,
+  linkMultipleAuthTest,
+} from './authOperationsFirebase';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -76,6 +79,9 @@ const authSlice = createSlice({
       })
       .addCase(signInWithFacebook.rejected, handleRejected)
       .addCase(linkMultipleAuth.fulfilled, (state, action) => {
+        console.log(action.payload);
+      })
+      .addCase(linkMultipleAuthTest.fulfilled, (state, action) => {
         console.log(action.payload);
       }),
 });
