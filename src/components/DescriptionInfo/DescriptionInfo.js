@@ -62,7 +62,7 @@ export const DescriptionInfo = () => {
       </InfoBlock>
       <InfoBlock>
         <InfoContainer>
-          <TitleBlock>Make your shopping list</TitleBlock>
+          <TitleBlock>MAKE YOUR SHOPPING LIST</TitleBlock>
           <TextBlock>
             Our service simplifies your grocery shopping by allowing you to
             create a personalized shopping list. Adjust the list yourself:
@@ -89,7 +89,7 @@ export const DescriptionInfo = () => {
           <img src={img3_mobile} alt="illustration" />
         </Picture>
         <InfoContainer>
-          <TitleBlock>Recipes for every taste</TitleBlock>
+          <TitleBlock>RECIPES FOR EVERY TASTE</TitleBlock>
           <TextBlock>
             Explore a variety of recipes organized by diet and calorie count.
             Each recipe includes photos, ingredient lists, and step-by-step

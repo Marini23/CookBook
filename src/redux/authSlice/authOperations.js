@@ -8,9 +8,10 @@ import {
   GoogleAuthProvider,
   signInWithRedirect,
   getRedirectResult,
+  FacebookAuthProvider,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import MyUserDatabase from './MyUserDataBase';
+import { writeUserData } from './authOperationsFirebase';
 
 // Email and password
 
@@ -18,6 +19,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
+      console.log(credentials);
       const { name, email, password } = credentials;
 
       const userCredential = await createUserWithEmailAndPassword(
@@ -27,9 +29,8 @@ export const register = createAsyncThunk(
       );
 
       await updateProfile(userCredential.user, { displayName: name });
-
       const user = auth.currentUser;
-      console.log(user);
+      writeUserData(user);
 
       const serializedUser = {
         name: user.displayName,
@@ -98,7 +99,9 @@ export const fetchCurrentUser = createAsyncThunk(
         onAuthStateChanged(auth, user => {
           if (user === null) {
             reject('Unable to fetch user');
+            console.log('Unable to fetch user');
           } else {
+            console.log(user);
             const serializedUser = {
               name: user.displayName,
               email: user.email,
@@ -125,11 +128,10 @@ export const signInWithGoogle = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await signInWithRedirect(auth, googleProvider);
+      console.log('before');
       const result = await getRedirectResult(auth);
+      console.log(result);
       const { user } = result;
-      const repo = new MyUserDatabase();
-      repo.setNewUser(user);
-
       const serializedUser = {
         name: user.displayName,
         email: user.email,
@@ -171,7 +173,7 @@ export const signInWithFacebook = createAsyncThunk(
         code: error.code,
         message: error.message,
         email: error.customData.email,
-        credential: GoogleAuthProvider.credentialFromError(error),
+        credential: FacebookAuthProvider.credentialFromError(error),
       };
       return thunkAPI.rejectWithValue(serializedError);
     }

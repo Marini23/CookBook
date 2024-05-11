@@ -12,7 +12,7 @@ import { ref, set } from 'firebase/database';
 import {
   linkMultipleAuth,
   linkMultipleAuthTest,
-} from './authOperationsFirebase';
+} from './authOperationsFirebase.js';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;

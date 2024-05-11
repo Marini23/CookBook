@@ -58,7 +58,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
       email: '',
       password: '',
       confirmPassword: '',
-      id: 1,
     },
     validationSchema: formSchema,
     onSubmit: values => {
