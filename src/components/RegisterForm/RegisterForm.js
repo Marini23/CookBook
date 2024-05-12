@@ -67,7 +67,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             name: values.name,
             email: values.email,
             password: values.password,
-            id: values.id,
           })
         )
           .unwrap()
@@ -80,7 +79,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
               toast.error('Something went wrong. Try again later');
             }
           });
-
         isClose();
       }
     },

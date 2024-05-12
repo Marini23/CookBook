@@ -21,11 +21,17 @@ import { useDispatch } from 'react-redux';
 import {
   logIn,
   signInWithFacebook,
-  signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
+import {
+  linkWithEmailPassword,
+  linkWithFacebook,
+  linkWithGoogle,
+  loginWithEmailPassword,
+  signInWithGoogle,
+} from '../../redux/authSlice/authOperationsFirebase.js';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,17 +57,18 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
     validationSchema: formSchema,
     onSubmit: values => {
       if (formik.isValid) {
-        dispatch(logIn(values))
-          .unwrap()
-          .catch(error => {
-            if (error.code === 'auth/invalid-credential') {
-              toast.error(
-                'Invalid credentials provided. Please double-check your email and password.'
-              );
-            } else {
-              toast.error('Something went wrong. Try again later');
-            }
-          });
+        loginWithEmailPassword(values);
+        // dispatch(logIn(values))
+        //   .unwrap()
+        //   .catch(error => {
+        //     if (error.code === 'auth/invalid-credential') {
+        //       toast.error(
+        //         'Invalid credentials provided. Please double-check your email and password.'
+        //       );
+        //     } else {
+        //       toast.error('Something went wrong. Try again later');
+        //     }
+        //   });
         isClose();
       }
     },
@@ -88,7 +95,6 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
           placeholder="Email"
-          autoComplete="off"
         />
         {formik.touched.email && formik.errors.email && (
           <ErrorMessage>{formik.errors.email}</ErrorMessage>
@@ -102,7 +108,6 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             placeholder="Password"
-            autoComplete="off"
           />
           {showPassword ? (
             <FiEye
@@ -136,18 +141,12 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
         <Button type="submit">Log in</Button>
         <Text>Forgot your password?</Text>
         <Line>or</Line>
-        <NetworkBtnSubmit
-          type="button"
-          onClick={() => dispatch(signInWithGoogle())}
-        >
+        <NetworkBtnSubmit type="button" onClick={() => signInWithGoogle()}>
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit
-          type="button"
-          onClick={() => dispatch(signInWithFacebook())}
-        >
+        <NetworkBtnSubmit type="button" onClick={() => linkWithFacebook()}>
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook

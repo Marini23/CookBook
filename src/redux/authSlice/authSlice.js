@@ -77,13 +77,7 @@ const authSlice = createSlice({
       .addCase(signInWithFacebook.fulfilled, (state, action) => {
         console.log(action.payload);
       })
-      .addCase(signInWithFacebook.rejected, handleRejected)
-      .addCase(linkMultipleAuth.fulfilled, (state, action) => {
-        console.log(action.payload);
-      })
-      .addCase(linkMultipleAuthTest.fulfilled, (state, action) => {
-        console.log(action.payload);
-      }),
+      .addCase(signInWithFacebook.rejected, handleRejected),
 });
 
 export const authReducer = authSlice.reducer;

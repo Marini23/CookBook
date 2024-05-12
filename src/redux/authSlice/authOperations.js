@@ -27,11 +27,11 @@ export const register = createAsyncThunk(
         email,
         password
       );
-
       await updateProfile(userCredential.user, { displayName: name });
       const user = auth.currentUser;
+      console.log(user);
       writeUserData(user);
-
+      console.log('3');
       const serializedUser = {
         name: user.displayName,
         email: user.email,
