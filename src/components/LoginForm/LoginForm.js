@@ -21,6 +21,7 @@ import { useDispatch } from 'react-redux';
 import {
   logIn,
   signInWithFacebook,
+  signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
@@ -30,7 +31,6 @@ import {
   linkWithFacebook,
   linkWithGoogle,
   loginWithEmailPassword,
-  signInWithGoogle,
 } from '../../redux/authSlice/authOperationsFirebase.js';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -141,7 +141,10 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
         <Button type="submit">Log in</Button>
         <Text>Forgot your password?</Text>
         <Line>or</Line>
-        <NetworkBtnSubmit type="button" onClick={() => signInWithGoogle()}>
+        <NetworkBtnSubmit
+          type="button"
+          onClick={() => dispatch(signInWithGoogle())}
+        >
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google

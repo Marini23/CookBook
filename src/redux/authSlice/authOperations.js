@@ -6,14 +6,20 @@ import {
   signOut,
   updateProfile,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
   FacebookAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { writeUserData } from './authOperationsFirebase';
+import {
+  checkIfLinked,
+  getUserData,
+  linkWithGoogleA,
+  signInWithGoogleA,
+  writeUserData,
+} from './authOperationsFirebase';
 
-// Email and password
+
+// Register with Email and password
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -29,15 +35,13 @@ export const register = createAsyncThunk(
       );
       await updateProfile(userCredential.user, { displayName: name });
       const user = auth.currentUser;
-      console.log(user);
       writeUserData(user);
-      console.log('3');
       const serializedUser = {
         name: user.displayName,
         email: user.email,
+        providerData: user.providerData,
         accessToken: user.stsTokenManager.accessToken,
       };
-
       return serializedUser;
     } catch (error) {
       const serializedError = {
@@ -101,10 +105,10 @@ export const fetchCurrentUser = createAsyncThunk(
             reject('Unable to fetch user');
             console.log('Unable to fetch user');
           } else {
-            console.log(user);
             const serializedUser = {
               name: user.displayName,
               email: user.email,
+              providerData: user.providerData,
               accessToken: user.accessToken,
             };
             resolve(serializedUser);
@@ -121,20 +125,24 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-// Google auth
+// Register with Google
 
-export const signInWithGoogle = createAsyncThunk(
-  'auth/signInWithGoogle',
+export const registerWithGoogle = createAsyncThunk(
+  'auth/registerWithGoogle',
   async (_, thunkAPI) => {
     try {
-      await signInWithRedirect(auth, googleProvider);
-      console.log('before');
-      const result = await getRedirectResult(auth);
-      console.log(result);
-      const { user } = result;
+      const result = await signInWithPopup(auth, googleProvider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const user = result.user;
+
+      // Write user data
+      writeUserData(user);
+
+      // Serialize user data
       const serializedUser = {
         name: user.displayName,
         email: user.email,
+        providerData: user.providerData,
         accessToken: user.stsTokenManager.accessToken,
       };
 
@@ -151,19 +159,24 @@ export const signInWithGoogle = createAsyncThunk(
   }
 );
 
-// Facebook auth
+// Register with Facebook
 
-export const signInWithFacebook = createAsyncThunk(
-  'auth/signInWithFacebook',
+export const registerWithFacebook = createAsyncThunk(
+  'auth/registerWithFacebook',
   async (_, thunkAPI) => {
     try {
-      await signInWithRedirect(auth, facebookProvider);
-      const result = await getRedirectResult(auth);
-      const { user } = result;
+      const result = await signInWithPopup(auth, facebookProvider);
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const user = result.user;
 
+      // Write user data
+      writeUserData(user);
+
+      // Serialize user data
       const serializedUser = {
         name: user.displayName,
         email: user.email,
+        providerData: user.providerData,
         accessToken: user.stsTokenManager.accessToken,
       };
 
@@ -174,6 +187,37 @@ export const signInWithFacebook = createAsyncThunk(
         message: error.message,
         email: error.customData.email,
         credential: FacebookAuthProvider.credentialFromError(error),
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+// login with Google
+
+export const signInWithGoogle = createAsyncThunk(
+  'auth/signInWithGoogle',
+  async (_, thunkAPI) => {
+    try {
+      // Get reference to the currently signed-in user
+      const user = auth.currentUser;
+      if (user) {
+        console.log(user);
+        const providerIndex = checkIfLinked(user, 'google.com');
+        console.log(providerIndex);
+        if (providerIndex !== -1) {
+          signInWithGoogleA();
+        } else {
+          linkWithGoogleA();
+        }
+      }
+      else {signInWithGoogleA();}
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+        email: error.customData.email,
+        credential: GoogleAuthProvider.credentialFromError(error),
       };
       return thunkAPI.rejectWithValue(serializedError);
     }

@@ -19,12 +19,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   register,
+  registerWithFacebook,
+  registerWithGoogle,
   signInWithFacebook,
-  signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
+import { signInWithGoogle } from '../../redux/authSlice/authOperationsFirebase';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,6 +98,31 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     isClose();
     isOpenLogin();
   };
+
+  const handleRegisterWithGoogle = () => {
+    try {
+      dispatch(registerWithGoogle());
+      // If signInWithGoogle succeeds, you can proceed with the next steps
+      isClose();
+    } catch (error) {
+      // Handle error if signing with Google fails
+      console.error('Failed to sign in with Google:', error);
+      // Optionally, you can show an error message or perform other actions
+    }
+  };
+
+  const handleRegisterWithFacebook = () => {
+    try {
+      dispatch(registerWithFacebook());
+      // If signInWithGoogle succeeds, you can proceed with the next steps
+      isClose();
+    } catch (error) {
+      // Handle error if signing with Google fails
+      console.error('Failed to sign in with Google:', error);
+      // Optionally, you can show an error message or perform other actions
+    }
+  };
+
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
@@ -208,18 +235,12 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
         ) : null}
         <Button type="submit">Register</Button>
         <Line>or</Line>
-        <NetworkBtnSubmit
-          type="button"
-          onClick={() => dispatch(signInWithGoogle())}
-        >
+        <NetworkBtnSubmit type="button" onClick={handleRegisterWithGoogle}>
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit
-          type="button"
-          onClick={() => dispatch(signInWithFacebook())}
-        >
+        <NetworkBtnSubmit type="button" onClick={handleRegisterWithFacebook}>
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook

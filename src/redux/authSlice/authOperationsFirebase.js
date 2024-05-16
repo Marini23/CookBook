@@ -15,14 +15,14 @@ import {
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import MyUserDatabase from './MyUserDataBase';
-import { ref, set } from 'firebase/database';
+import { child, get, ref, set } from 'firebase/database';
 
 export const writeUserData = user => {
-  console.log('start');
   console.log(user);
   set(ref(db, 'users/' + user.uid), {
     username: user.displayName,
     email: user.email,
+    providerData: user.providerData,
   })
     .then(() => {
       console.log('Data written successfully.');
@@ -32,7 +32,24 @@ export const writeUserData = user => {
     });
 };
 
-export const linkWithGoogle = () => {
+export const getUserData = user => {
+  const userId = user.uid;
+  const dbRef = ref(db);
+  get(child(dbRef, `users/${userId}`))
+    .then(snapshot => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        return snapshot.val();
+      } else {
+        console.log('No data available');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
+
+export const linkWithGoogleA = () => {
   linkWithPopup(auth.currentUser, googleProvider)
     .then(result => {
       // Accounts successfully linked.
@@ -46,7 +63,7 @@ export const linkWithGoogle = () => {
     });
 };
 
-export const signInWithGoogle = () => {
+export const signInWithGoogleA = () => {
   signInWithPopup(auth, googleProvider)
     .then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -56,6 +73,7 @@ export const signInWithGoogle = () => {
       const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
       // ...
+      writeUserData(user);
     })
     .catch(error => {
       // Handle Errors here.
@@ -91,6 +109,7 @@ export const signInWithFacebook = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      writeUserData(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
@@ -135,20 +154,16 @@ export const loginWithEmailPassword = values => {
     });
 };
 
+export const checkIfLinked = (user, providerId) => {
+  const providerIndex = user.providerData.findIndex(
+    provider => provider.providerId === providerId
+  );
+  // -1 if the provider doesn't exist
+  return providerIndex;
+};
+
 // export const cred = () => {
 //   const cred = firebase.auth.EmailAuthProvider.credential(email, password);
-// };
-
-// const checkIfLinked = (user, providerId) => {
-//   //provider Data is an array that contains the providers linked to their account
-//   // "google.com", "twitter.com", etc..
-//   const userProviders = user.providerData;
-//   let providerIndex = -1;
-//   for (let i = 0; i < userProviders.length; i++) {
-//     if (userProviders[i].providerId === providerId) providerIndex = i;
-//   }
-//   //-1 if the provider doesn't exist
-//   return providerIndex;
 // };
 
 // const merge = (previousUser, provider) => {

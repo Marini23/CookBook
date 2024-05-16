@@ -4,7 +4,8 @@ import {
   logIn,
   logOut,
   register,
-  signInWithFacebook,
+  registerWithFacebook,
+  registerWithGoogle,
   signInWithGoogle,
 } from './authOperations';
 import { db } from '../../firebase';
@@ -22,7 +23,7 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: `auth`,
   initialState: {
-    user: { name: null, email: null },
+    user: { name: null, email: null, providerData: null },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -40,6 +41,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
@@ -52,7 +54,7 @@ const authSlice = createSlice({
       })
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, providerData: null };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -60,24 +62,34 @@ const authSlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
+      .addCase(registerWithGoogle.fulfilled, (state, action) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
+        state.token = action.payload.accessToken;
+        state.isLoggedIn = true;
+      })
+      .addCase(registerWithGoogle.rejected, handleRejected)
+      .addCase(registerWithFacebook.fulfilled, (state, action) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
+        state.token = action.payload.accessToken;
+        state.isLoggedIn = true;
+      })
+      .addCase(registerWithFacebook.rejected, handleRejected)
       .addCase(signInWithGoogle.fulfilled, (state, action) => {
-        console.log(action.payload);
-        set(ref(db, 'users/' + action.payload.id), {
-          name: action.payload.name,
-          email: action.payload.email,
-          id: action.payload.id,
-          // Add any other user data you want to store in the database
-        });
-      })
-      .addCase(signInWithGoogle.rejected, handleRejected)
-      .addCase(signInWithFacebook.fulfilled, (state, action) => {
-        console.log(action.payload);
-      })
-      .addCase(signInWithFacebook.rejected, handleRejected),
+        // state.user.name = action.payload.name;
+        // state.user.email = action.payload.email;
+        // state.user.providerData = action.payload.providerData;
+        // state.token = action.payload.accessToken;
+        // state.isLoggedIn = true;
+      }),
 });
 
 export const authReducer = authSlice.reducer;
