@@ -9,16 +9,13 @@ import {
   signInWithFacebook,
   signInWithGoogle,
 } from './authOperations';
-import { db } from '../../firebase';
-import { ref, set } from 'firebase/database';
-import {
-  linkMultipleAuth,
-  linkMultipleAuthTest,
-} from './authOperationsFirebase.js';
 
 const handleRejected = (state, action) => {
+  const errorPayload = action.payload;
+  console.log(errorPayload);
+
   state.isLoading = false;
-  state.error = action.payload;
+  // state.error = serializedError;
 };
 
 const authSlice = createSlice({
@@ -50,6 +47,7 @@ const authSlice = createSlice({
       .addCase(logIn.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
@@ -85,7 +83,6 @@ const authSlice = createSlice({
       })
       .addCase(registerWithFacebook.rejected, handleRejected)
       .addCase(signInWithGoogle.fulfilled, (state, action) => {
-        console.log('sign in with Google ok!');
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.providerData = action.payload.providerData;
@@ -94,7 +91,6 @@ const authSlice = createSlice({
       })
       .addCase(signInWithGoogle.rejected, handleRejected)
       .addCase(signInWithFacebook.fulfilled, (state, action) => {
-        console.log('sign in with Google ok!');
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.providerData = action.payload.providerData;

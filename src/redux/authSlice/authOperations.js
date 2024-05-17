@@ -9,9 +9,12 @@ import {
   FacebookAuthProvider,
   signInWithPopup,
   linkWithPopup,
+  EmailAuthProvider,
+  linkWithCredential,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
+  HandleErrorExistWithDifCred,
   checkIfLinked,
   getUserData,
   updateUser,
@@ -52,30 +55,68 @@ export const register = createAsyncThunk(
   }
 );
 
+// Sign in with Email and password
+
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
+      const currentUser = auth.currentUser;
       const { email, password } = credentials;
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      if (currentUser) {
+        const providerIndex = checkIfLinked(currentUser, 'password');
+        if (providerIndex !== -1) {
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
 
-      const user = userCredential.user;
+          const user = userCredential.user;
 
-      const serializedUser = {
-        name: user.displayName,
-        email: user.email,
-        accessToken: user.stsTokenManager.accessToken,
-      };
-      return serializedUser;
+          const serializedUser = {
+            name: user.displayName,
+            email: user.email,
+            accessToken: user.stsTokenManager.accessToken,
+          };
+          return serializedUser;
+        } else {
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          const user = userCredential.user;
+
+          const serializedUser = {
+            name: user.displayName,
+            email: user.email,
+            accessToken: user.stsTokenManager.accessToken,
+          };
+          return serializedUser;
+        }
+      } else {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        const user = userCredential.user;
+
+        const serializedUser = {
+          name: user.displayName,
+          email: user.email,
+          accessToken: user.stsTokenManager.accessToken,
+        };
+        return serializedUser;
+      }
     } catch (error) {
       console.log(error);
       const serializedError = {
         code: error.code,
         message: error.message,
+        credential: EmailAuthProvider.credentialFromError(error),
       };
       return thunkAPI.rejectWithValue(serializedError);
     }
@@ -201,17 +242,15 @@ export const signInWithGoogle = createAsyncThunk(
       // Get reference to the currently signed-in user
       const user = auth.currentUser;
       if (user) {
-        console.log(user);
         const providerIndex = checkIfLinked(user, 'google.com');
-        console.log(providerIndex);
+
         if (providerIndex !== -1) {
+          // User is already linked with Google, so just sign in
           const result = await signInWithPopup(auth, googleProvider);
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          console.log(result);
+          // const credential = GoogleAuthProvider.credentialFromResult(result);
           const user = result.user;
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
-          console.log(user.displayName);
           await updateUser(user);
           const serializedUser = {
             name: user.displayName,
@@ -219,9 +258,9 @@ export const signInWithGoogle = createAsyncThunk(
             providerData: user.providerData,
             accessToken: user.stsTokenManager.accessToken,
           };
-
           return serializedUser;
         } else {
+          // Link the user with Google
           const result = await linkWithPopup(auth.currentUser, googleProvider);
           const credential = GoogleAuthProvider.credentialFromResult(result);
           console.log(credential);
@@ -240,10 +279,24 @@ export const signInWithGoogle = createAsyncThunk(
           return serializedUser;
         }
       } else {
+        // User is not signed in, so sign in with Google
         const result = await signInWithPopup(auth, googleProvider);
+        const user = result.user;
+        const pendingCredString = localStorage.getItem('pendingCredential');
+        const pendingCred = JSON.parse(pendingCredString);
+        console.log(pendingCred);
+        if (pendingCred) {
+          console.log('aaa');
+          // As you have access to the pending credential, you can directly call the
+          // link method.
+          await linkWithCredential(user, pendingCred);
+          console.log('bbb');
+          // Clear the pending credential from localStorage after use
+          localStorage.removeItem('pendingCredential');
+        }
         const credential = GoogleAuthProvider.credentialFromResult(result);
         console.log(credential);
-        const user = result.user;
+
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
@@ -253,7 +306,7 @@ export const signInWithGoogle = createAsyncThunk(
           console.log('no exist');
           writeUserData(user);
         }
-        // signInWithGoogleA();
+
         const serializedUser = {
           name: user.displayName,
           email: user.email,
@@ -284,13 +337,12 @@ export const signInWithFacebook = createAsyncThunk(
       // Get reference to the currently signed-in user
       const user = auth.currentUser;
       if (user) {
-        console.log(user);
         const providerIndex = checkIfLinked(user, 'facebook.com');
         console.log(providerIndex);
         if (providerIndex !== -1) {
           const result = await signInWithPopup(auth, facebookProvider);
           const credential = FacebookAuthProvider.credentialFromResult(result);
-          console.log(result);
+          console.log(credential);
           const user = result.user;
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
@@ -326,7 +378,7 @@ export const signInWithFacebook = createAsyncThunk(
           return serializedUser;
         }
       } else {
-        const result = await signInWithPopup(auth, googleProvider);
+        const result = await signInWithPopup(auth, facebookProvider);
         const credential = facebookProvider.credentialFromResult(result);
         console.log(credential);
         const user = result.user;
@@ -350,12 +402,31 @@ export const signInWithFacebook = createAsyncThunk(
         return serializedUser;
       }
     } catch (error) {
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        console.log('auth/account-exists-with-different-credential');
+        // The pending Facebook credential.
+
+        let pendingCred = FacebookAuthProvider.credentialFromError(error);
+        console.log(pendingCred);
+        // Step 3: Save the pending credential in temporary storage,
+        localStorage.setItem('pendingCredential', JSON.stringify(pendingCred));
+        // Step 4: Let the user know that they already have an account
+        // but with a different provider, and let them choose another
+        // sign-in method.
+      }
       const serializedError = {
         code: error.code,
         message: error.message,
         email: error.customData.email,
-        credential: FacebookAuthProvider.credentialFromError(error),
+        credential: error.credential
+          ? {
+              providerId: error.credential.providerId,
+              signInMethod: error.credential.signInMethod,
+              accessToken: error.credential.accessToken,
+            }
+          : null,
       };
+      console.log(serializedError);
       return thunkAPI.rejectWithValue(serializedError);
     }
   }

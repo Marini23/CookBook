@@ -133,7 +133,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           onBlur={formik.handleBlur}
           value={formik.values.name}
           placeholder="Name"
-          autoComplete="off"
+          autoComplete="name"
         />
         {formik.touched.name && formik.errors.name ? (
           <ErrorMessage>{formik.errors.name}</ErrorMessage>
@@ -146,7 +146,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
           placeholder="Email"
-          autoComplete="off"
+          autoComplete="email"
         />
         {formik.touched.email && formik.errors.email && (
           <ErrorMessage>{formik.errors.email}</ErrorMessage>

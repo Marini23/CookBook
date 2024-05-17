@@ -26,12 +26,6 @@ import {
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
-import {
-  linkWithEmailPassword,
-  linkWithFacebook,
-  linkWithGoogle,
-  loginWithEmailPassword,
-} from '../../redux/authSlice/authOperationsFirebase.js';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -57,7 +51,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
     validationSchema: formSchema,
     onSubmit: values => {
       if (formik.isValid) {
-        loginWithEmailPassword(values);
+        dispatch(logIn(values));
         // dispatch(logIn(values))
         //   .unwrap()
         //   .catch(error => {
@@ -119,6 +113,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
           placeholder="Email"
+          autoComplete="email"
         />
         {formik.touched.email && formik.errors.email && (
           <ErrorMessage>{formik.errors.email}</ErrorMessage>
@@ -132,6 +127,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             placeholder="Password"
+            autoComplete="current-password"
           />
           {showPassword ? (
             <FiEye
