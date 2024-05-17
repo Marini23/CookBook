@@ -8,16 +8,15 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup,
+  linkWithPopup,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   checkIfLinked,
   getUserData,
-  linkWithGoogleA,
-  signInWithGoogleA,
+  updateUser,
   writeUserData,
 } from './authOperationsFirebase';
-
 
 // Register with Email and password
 
@@ -193,7 +192,7 @@ export const registerWithFacebook = createAsyncThunk(
   }
 );
 
-// login with Google
+// sign in  with Google
 
 export const signInWithGoogle = createAsyncThunk(
   'auth/signInWithGoogle',
@@ -206,18 +205,156 @@ export const signInWithGoogle = createAsyncThunk(
         const providerIndex = checkIfLinked(user, 'google.com');
         console.log(providerIndex);
         if (providerIndex !== -1) {
-          signInWithGoogleA();
+          const result = await signInWithPopup(auth, googleProvider);
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          console.log(result);
+          const user = result.user;
+          await updateProfile(user, { displayName: user.displayName });
+          // Update user data
+          console.log(user.displayName);
+          await updateUser(user);
+          const serializedUser = {
+            name: user.displayName,
+            email: user.email,
+            providerData: user.providerData,
+            accessToken: user.stsTokenManager.accessToken,
+          };
+
+          return serializedUser;
         } else {
-          linkWithGoogleA();
+          const result = await linkWithPopup(auth.currentUser, googleProvider);
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          console.log(credential);
+          const user = result.user;
+          await updateProfile(user, { displayName: user.displayName });
+          // Update user data
+          console.log(user.displayName);
+          await updateUser(user);
+          const serializedUser = {
+            name: user.displayName,
+            email: user.email,
+            providerData: user.providerData,
+            accessToken: user.stsTokenManager.accessToken,
+          };
+
+          return serializedUser;
         }
+      } else {
+        const result = await signInWithPopup(auth, googleProvider);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(credential);
+        const user = result.user;
+        // Get user data
+        const userIsExist = getUserData(user);
+        if (userIsExist) {
+          console.log('exist');
+          await updateUser(user);
+        } else {
+          console.log('no exist');
+          writeUserData(user);
+        }
+        // signInWithGoogleA();
+        const serializedUser = {
+          name: user.displayName,
+          email: user.email,
+          providerData: user.providerData,
+          accessToken: user.stsTokenManager.accessToken,
+        };
+
+        return serializedUser;
       }
-      else {signInWithGoogleA();}
     } catch (error) {
       const serializedError = {
         code: error.code,
         message: error.message,
         email: error.customData.email,
         credential: GoogleAuthProvider.credentialFromError(error),
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+// sign in  with Facebook
+
+export const signInWithFacebook = createAsyncThunk(
+  'auth/signInWithFacebook',
+  async (_, thunkAPI) => {
+    try {
+      // Get reference to the currently signed-in user
+      const user = auth.currentUser;
+      if (user) {
+        console.log(user);
+        const providerIndex = checkIfLinked(user, 'facebook.com');
+        console.log(providerIndex);
+        if (providerIndex !== -1) {
+          const result = await signInWithPopup(auth, facebookProvider);
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          console.log(result);
+          const user = result.user;
+          await updateProfile(user, { displayName: user.displayName });
+          // Update user data
+          console.log(user.displayName);
+          await updateUser(user);
+          const serializedUser = {
+            name: user.displayName,
+            email: user.email,
+            providerData: user.providerData,
+            accessToken: user.stsTokenManager.accessToken,
+          };
+
+          return serializedUser;
+        } else {
+          const result = await linkWithPopup(
+            auth.currentUser,
+            facebookProvider
+          );
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          console.log(credential);
+          const user = result.user;
+          await updateProfile(user, { displayName: user.displayName });
+          // Update user data
+          console.log(user.displayName);
+          await updateUser(user);
+          const serializedUser = {
+            name: user.displayName,
+            email: user.email,
+            providerData: user.providerData,
+            accessToken: user.stsTokenManager.accessToken,
+          };
+
+          return serializedUser;
+        }
+      } else {
+        const result = await signInWithPopup(auth, googleProvider);
+        const credential = facebookProvider.credentialFromResult(result);
+        console.log(credential);
+        const user = result.user;
+        // Get user data
+        const userIsExist = getUserData(user);
+        if (userIsExist) {
+          console.log('exist');
+          await updateUser(user);
+        } else {
+          console.log('no exist');
+          writeUserData(user);
+        }
+
+        const serializedUser = {
+          name: user.displayName,
+          email: user.email,
+          providerData: user.providerData,
+          accessToken: user.stsTokenManager.accessToken,
+        };
+
+        return serializedUser;
+      }
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+        email: error.customData.email,
+        credential: FacebookAuthProvider.credentialFromError(error),
       };
       return thunkAPI.rejectWithValue(serializedError);
     }

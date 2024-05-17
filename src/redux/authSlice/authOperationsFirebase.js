@@ -3,23 +3,17 @@ import { db } from '../../firebase';
 import { EmailAuthProvider, signInWithEmailAndPassword } from 'firebase/auth';
 import {
   GoogleAuthProvider,
-  signInWithCredential,
-  OAuthProvider,
   linkWithCredential,
   FacebookAuthProvider,
-  getRedirectResult,
-  linkWithRedirect,
-  signInWithRedirect,
   signInWithPopup,
   linkWithPopup,
 } from 'firebase/auth';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import MyUserDatabase from './MyUserDataBase';
-import { child, get, ref, set } from 'firebase/database';
+import { child, get, ref, set, update } from 'firebase/database';
 
 export const writeUserData = user => {
-  console.log(user);
-  set(ref(db, 'users/' + user.uid), {
+  const userId = user.uid;
+  console.log(user.providerData);
+  set(ref(db, 'users/' + userId), {
     username: user.displayName,
     email: user.email,
     providerData: user.providerData,
@@ -47,6 +41,26 @@ export const getUserData = user => {
     .catch(error => {
       console.error(error);
     });
+};
+
+export const updateUser = user => {
+  console.log(user);
+  const userId = user.uid;
+  const updates = {};
+
+  // Create the update data for the user
+  const userData = {
+    username: user.displayName,
+    providerData: user.providerData,
+  };
+
+  // Set the path and data to be updated
+  updates['users/' + userId] = userData;
+
+  console.log(updates);
+
+  // Perform the update
+  return update(ref(db), updates);
 };
 
 export const linkWithGoogleA = () => {

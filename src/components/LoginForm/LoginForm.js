@@ -83,6 +83,30 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
     isOpenRegister();
   };
 
+  const handleSignInWithGoogle = () => {
+    try {
+      dispatch(signInWithGoogle());
+      // If signInWithGoogle succeeds, you can proceed with the next steps
+      isClose();
+    } catch (error) {
+      // Handle error if signing with Google fails
+      console.error('Failed to sign in with Google:', error);
+      // Optionally, you can show an error message or perform other actions
+    }
+  };
+
+  const handleSignInWithFacebook = () => {
+    try {
+      dispatch(signInWithFacebook());
+      // If signInWithGoogle succeeds, you can proceed with the next steps
+      isClose();
+    } catch (error) {
+      // Handle error if signing with Google fails
+      console.error('Failed to sign in with Google:', error);
+      // Optionally, you can show an error message or perform other actions
+    }
+  };
+
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
@@ -141,15 +165,12 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
         <Button type="submit">Log in</Button>
         <Text>Forgot your password?</Text>
         <Line>or</Line>
-        <NetworkBtnSubmit
-          type="button"
-          onClick={() => dispatch(signInWithGoogle())}
-        >
+        <NetworkBtnSubmit type="button" onClick={handleSignInWithGoogle}>
           {' '}
           <img src={google_icon} alt="Google icon" />
           Sing up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button" onClick={() => linkWithFacebook()}>
+        <NetworkBtnSubmit type="button" onClick={handleSignInWithFacebook}>
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook

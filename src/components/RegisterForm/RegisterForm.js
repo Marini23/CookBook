@@ -19,14 +19,12 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   register,
-  registerWithFacebook,
-  registerWithGoogle,
   signInWithFacebook,
+  signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
-import { signInWithGoogle } from '../../redux/authSlice/authOperationsFirebase';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -101,7 +99,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
 
   const handleRegisterWithGoogle = () => {
     try {
-      dispatch(registerWithGoogle());
+      dispatch(signInWithGoogle());
       // If signInWithGoogle succeeds, you can proceed with the next steps
       isClose();
     } catch (error) {
@@ -113,7 +111,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
 
   const handleRegisterWithFacebook = () => {
     try {
-      dispatch(registerWithFacebook());
+      dispatch(signInWithFacebook());
       // If signInWithGoogle succeeds, you can proceed with the next steps
       isClose();
     } catch (error) {

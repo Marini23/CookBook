@@ -6,6 +6,7 @@ import {
   register,
   registerWithFacebook,
   registerWithGoogle,
+  signInWithFacebook,
   signInWithGoogle,
 } from './authOperations';
 import { db } from '../../firebase';
@@ -84,12 +85,23 @@ const authSlice = createSlice({
       })
       .addCase(registerWithFacebook.rejected, handleRejected)
       .addCase(signInWithGoogle.fulfilled, (state, action) => {
-        // state.user.name = action.payload.name;
-        // state.user.email = action.payload.email;
-        // state.user.providerData = action.payload.providerData;
-        // state.token = action.payload.accessToken;
-        // state.isLoggedIn = true;
-      }),
+        console.log('sign in with Google ok!');
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
+        state.token = action.payload.accessToken;
+        state.isLoggedIn = true;
+      })
+      .addCase(signInWithGoogle.rejected, handleRejected)
+      .addCase(signInWithFacebook.fulfilled, (state, action) => {
+        console.log('sign in with Google ok!');
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.providerData = action.payload.providerData;
+        state.token = action.payload.accessToken;
+        state.isLoggedIn = true;
+      })
+      .addCase(signInWithFacebook.rejected, handleRejected),
 });
 
 export const authReducer = authSlice.reducer;
