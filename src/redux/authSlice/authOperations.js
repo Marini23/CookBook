@@ -9,12 +9,9 @@ import {
   FacebookAuthProvider,
   signInWithPopup,
   linkWithPopup,
-  EmailAuthProvider,
-  linkWithCredential,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  HandleErrorExistWithDifCred,
   checkIfLinked,
   getUserData,
   updateUser,
@@ -27,7 +24,6 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials);
       const { name, email, password } = credentials;
 
       const userCredential = await createUserWithEmailAndPassword(
@@ -112,11 +108,9 @@ export const logIn = createAsyncThunk(
         return serializedUser;
       }
     } catch (error) {
-      console.log(error);
       const serializedError = {
         code: error.code,
         message: error.message,
-        credential: EmailAuthProvider.credentialFromError(error),
       };
       return thunkAPI.rejectWithValue(serializedError);
     }
@@ -172,7 +166,6 @@ export const registerWithGoogle = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
 
       // Write user data
@@ -206,7 +199,7 @@ export const registerWithFacebook = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await signInWithPopup(auth, facebookProvider);
-      const credential = FacebookAuthProvider.credentialFromResult(result);
+
       const user = result.user;
 
       // Write user data
@@ -280,23 +273,9 @@ export const signInWithGoogle = createAsyncThunk(
         }
       } else {
         // User is not signed in, so sign in with Google
-        const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
-        const pendingCredString = localStorage.getItem('pendingCredential');
-        const pendingCred = JSON.parse(pendingCredString);
-        console.log(pendingCred);
-        if (pendingCred) {
-          console.log('aaa');
-          // As you have access to the pending credential, you can directly call the
-          // link method.
-          await linkWithCredential(user, pendingCred);
-          console.log('bbb');
-          // Clear the pending credential from localStorage after use
-          localStorage.removeItem('pendingCredential');
-        }
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        console.log(credential);
+        let result = await signInWithPopup(auth, googleProvider);
 
+        const user = result.user;
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
@@ -341,8 +320,6 @@ export const signInWithFacebook = createAsyncThunk(
         console.log(providerIndex);
         if (providerIndex !== -1) {
           const result = await signInWithPopup(auth, facebookProvider);
-          const credential = FacebookAuthProvider.credentialFromResult(result);
-          console.log(credential);
           const user = result.user;
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
@@ -379,8 +356,6 @@ export const signInWithFacebook = createAsyncThunk(
         }
       } else {
         const result = await signInWithPopup(auth, facebookProvider);
-        const credential = facebookProvider.credentialFromResult(result);
-        console.log(credential);
         const user = result.user;
         // Get user data
         const userIsExist = getUserData(user);
@@ -402,31 +377,12 @@ export const signInWithFacebook = createAsyncThunk(
         return serializedUser;
       }
     } catch (error) {
-      if (error.code === 'auth/account-exists-with-different-credential') {
-        console.log('auth/account-exists-with-different-credential');
-        // The pending Facebook credential.
-
-        let pendingCred = FacebookAuthProvider.credentialFromError(error);
-        console.log(pendingCred);
-        // Step 3: Save the pending credential in temporary storage,
-        localStorage.setItem('pendingCredential', JSON.stringify(pendingCred));
-        // Step 4: Let the user know that they already have an account
-        // but with a different provider, and let them choose another
-        // sign-in method.
-      }
       const serializedError = {
         code: error.code,
         message: error.message,
         email: error.customData.email,
-        credential: error.credential
-          ? {
-              providerId: error.credential.providerId,
-              signInMethod: error.credential.signInMethod,
-              accessToken: error.credential.accessToken,
-            }
-          : null,
       };
-      console.log(serializedError);
+      console.log(serializedError.message);
       return thunkAPI.rejectWithValue(serializedError);
     }
   }

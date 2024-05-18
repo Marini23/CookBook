@@ -11,11 +11,8 @@ import {
 } from './authOperations';
 
 const handleRejected = (state, action) => {
-  const errorPayload = action.payload;
-  console.log(errorPayload);
-
   state.isLoading = false;
-  // state.error = serializedError;
+  state.error = action.payload;
 };
 
 const authSlice = createSlice({

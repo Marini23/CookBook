@@ -1,10 +1,8 @@
-import { signInWithPopup } from 'firebase/auth';
-import { auth, db } from '../../firebase';
+import { db } from '../../firebase';
 import { child, get, ref, set, update } from 'firebase/database';
 
 export const writeUserData = user => {
   const userId = user.uid;
-  console.log(user.providerData);
   set(ref(db, 'users/' + userId), {
     username: user.displayName,
     email: user.email,
@@ -57,43 +55,4 @@ export const checkIfLinked = (user, providerId) => {
   );
   // -1 if the provider doesn't exist
   return providerIndex;
-};
-
-export const HandleErrorExistWithDifCred = async error => {
-  // Step 2: User's email already exists.
-  console.log(error);
-  if (error.code === 'auth/account-exists-with-different-credential') {
-    // The pending Facebook credential
-    console.log('error code');
-    let pendingCred = error.credential;
-    console.log(pendingCred);
-
-    // Step 3: Save the pending credential in temporary storage
-    localStorage.setItem('pendingCredential', JSON.stringify(pendingCred));
-
-    // Step 4: Let the user know that they already have an account
-    // but with a different provider, and let them choose another
-    // sign-in method.
-  }
-
-  // ...
-
-  // try {
-  //   // Step 5: Sign the user in using their chosen method.
-  //   let result = await signInWithPopup(auth, userSelectedProvider);
-
-  //   // Step 6: Link to the Facebook credential.
-  //   // TODO: implement `retrievePendingCred` for your app.
-  //   let pendingCred = retrievePendingCred();
-
-  //   if (pendingCred !== null) {
-  //     // As you have access to the pending credential, you can directly call the
-  //     // link method.
-  //     let user = await linkWithCredential(result.user, pendingCred);
-  //   }
-
-  //   // Step 7: Continue to app.
-  // } catch (error) {
-  //   // ...
-  // }
 };

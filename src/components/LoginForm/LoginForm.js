@@ -17,7 +17,7 @@ import {
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   logIn,
   signInWithFacebook,
@@ -26,6 +26,7 @@ import {
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
+import { selectErrorAuth } from '../../redux/selectors.js';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -43,6 +44,7 @@ const formSchema = Yup.object().shape({
 export const LoginForm = ({ isClose, isOpenRegister }) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const errorMessage = useSelector(selectErrorAuth);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -51,18 +53,17 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
     validationSchema: formSchema,
     onSubmit: values => {
       if (formik.isValid) {
-        dispatch(logIn(values));
-        // dispatch(logIn(values))
-        //   .unwrap()
-        //   .catch(error => {
-        //     if (error.code === 'auth/invalid-credential') {
-        //       toast.error(
-        //         'Invalid credentials provided. Please double-check your email and password.'
-        //       );
-        //     } else {
-        //       toast.error('Something went wrong. Try again later');
-        //     }
-        //   });
+        dispatch(logIn(values))
+          .unwrap()
+          .catch(error => {
+            if (error.code === 'auth/invalid-credential') {
+              toast.error(
+                'Invalid credentials provided. Please double-check your email and password.'
+              );
+            } else {
+              toast.error(errorMessage);
+            }
+          });
         isClose();
       }
     },
@@ -83,9 +84,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
       // If signInWithGoogle succeeds, you can proceed with the next steps
       isClose();
     } catch (error) {
-      // Handle error if signing with Google fails
-      console.error('Failed to sign in with Google:', error);
-      // Optionally, you can show an error message or perform other actions
+      toast.error(errorMessage);
     }
   };
 
@@ -95,9 +94,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
       // If signInWithGoogle succeeds, you can proceed with the next steps
       isClose();
     } catch (error) {
-      // Handle error if signing with Google fails
-      console.error('Failed to sign in with Google:', error);
-      // Optionally, you can show an error message or perform other actions
+      toast.error(errorMessage);
     }
   };
 
