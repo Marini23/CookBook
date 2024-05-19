@@ -1,6 +1,7 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth, db } from '../../firebase';
 import { child, get, ref, set, update } from 'firebase/database';
+import toast from 'react-hot-toast';
 
 export const writeUserData = user => {
   const userId = user.uid;
@@ -58,15 +59,13 @@ export const checkIfLinked = (user, providerId) => {
   return providerIndex;
 };
 
-export const forgotpassword = email => {
+export const forgotPassword = email => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      // Password reset email sent!
-      // ..
+      toast.success('Password reset email sent!');
     })
     .catch(error => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
+      toast.error(errorMessage);
     });
 };

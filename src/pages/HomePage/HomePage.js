@@ -110,10 +110,7 @@ export const HomePage = () => {
         isClose={closeModalResetPassword}
         isOpen={modalIsResetPassword}
       >
-        <ForgotPasswordForm
-          isClose={closeModalResetPassword}
-          isOpenResetPassword={openModalResetPassword}
-        />
+        <ForgotPasswordForm isClose={closeModalResetPassword} />
       </ModalWindow>
     </>
   );

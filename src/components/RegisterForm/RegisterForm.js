@@ -25,6 +25,7 @@ import {
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
+import { useNavigate } from 'react-router-dom';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,6 +53,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -70,6 +72,10 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           })
         )
           .unwrap()
+          .then(() => {
+            navigate('/recipes'); // Redirect to the Recipes page after successful registration
+            isClose();
+          })
           .catch(error => {
             if (error.code === 'auth/email-already-in-use') {
               toast.error(
@@ -79,7 +85,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
               toast.error('Something went wrong. Try again later');
             }
           });
-        isClose();
+        // isClose();
       }
     },
   });

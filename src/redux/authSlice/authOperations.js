@@ -9,6 +9,8 @@ import {
   FacebookAuthProvider,
   signInWithPopup,
   linkWithPopup,
+  EmailAuthProvider,
+  linkWithCredential,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
@@ -69,7 +71,7 @@ export const logIn = createAsyncThunk(
           );
 
           const user = userCredential.user;
-
+          await updateUser(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
@@ -77,12 +79,15 @@ export const logIn = createAsyncThunk(
           };
           return serializedUser;
         } else {
-          const userCredential = await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
+          const credential = EmailAuthProvider.credential(email, password);
+          const userCredential = await linkWithCredential(
+            auth.currentUser,
+            credential
           );
+
           const user = userCredential.user;
+
+          await updateUser(user);
 
           const serializedUser = {
             name: user.displayName,
@@ -99,6 +104,15 @@ export const logIn = createAsyncThunk(
         );
 
         const user = userCredential.user;
+        // Get user data
+        const userIsExist = getUserData(user);
+        if (userIsExist) {
+          console.log('exist');
+          await updateUser(user);
+        } else {
+          console.log('no exist');
+          writeUserData(user);
+        }
 
         const serializedUser = {
           name: user.displayName,

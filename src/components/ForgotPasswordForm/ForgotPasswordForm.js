@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import toast from 'react-hot-toast';
 import {
   Button,
   ErrorMessage,
@@ -9,6 +8,7 @@ import {
   Text,
   Title,
 } from './ForgotPasswordForm.styled';
+import { forgotPassword } from '../../redux/authSlice/authOperationsFirebase';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -20,7 +20,7 @@ const formSchema = Yup.object().shape({
     .required('Email is required'),
 });
 
-export const ForgotPasswordForm = (isClose, isOpenResetPassword) => {
+export const ForgotPasswordForm = ({ isClose }) => {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -28,8 +28,9 @@ export const ForgotPasswordForm = (isClose, isOpenResetPassword) => {
     validationSchema: formSchema,
     onSubmit: values => {
       if (formik.isValid) {
-        isClose();
+        forgotPassword(values.email);
       }
+      isClose();
     },
   });
   return (

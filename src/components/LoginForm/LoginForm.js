@@ -27,6 +27,7 @@ import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
 import { selectErrorAuth } from '../../redux/selectors.js';
+import { useNavigate } from 'react-router-dom';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -43,8 +44,8 @@ const formSchema = Yup.object().shape({
 
 export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const errorMessage = useSelector(selectErrorAuth);
   const formik = useFormik({
     initialValues: {
@@ -56,6 +57,10 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
       if (formik.isValid) {
         dispatch(logIn(values))
           .unwrap()
+          .then(() => {
+            navigate('/recipes'); // Redirect to the Recipes page after successful registration
+            isClose();
+          })
           .catch(error => {
             if (error.code === 'auth/invalid-credential') {
               toast.error(
