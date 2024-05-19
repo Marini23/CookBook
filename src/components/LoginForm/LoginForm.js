@@ -41,8 +41,9 @@ const formSchema = Yup.object().shape({
     .min(8, 'Password must be at least 8 characters'),
 });
 
-export const LoginForm = ({ isClose, isOpenRegister }) => {
+export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
   const errorMessage = useSelector(selectErrorAuth);
   const formik = useFormik({
@@ -76,6 +77,11 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
   const toggleModal = () => {
     isClose();
     isOpenRegister();
+  };
+
+  const toggleModalResetPassword = () => {
+    isClose();
+    isOpenResetPassword();
   };
 
   const handleSignInWithGoogle = () => {
@@ -156,7 +162,7 @@ export const LoginForm = ({ isClose, isOpenRegister }) => {
           <ErrorMessage>{formik.errors.password}</ErrorMessage>
         ) : null}
         <Button type="submit">Log in</Button>
-        <Text>Forgot your password?</Text>
+        <Text onClick={toggleModalResetPassword}>Forgot your password?</Text>
         <Line>or</Line>
         <NetworkBtnSubmit type="button" onClick={handleSignInWithGoogle}>
           {' '}

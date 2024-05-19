@@ -17,11 +17,14 @@ import { useEffect, useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
 
 export const HomePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
+  const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -48,6 +51,14 @@ export const HomePage = () => {
 
   const closeModalLogin = () => {
     setModalIsOpenLogin(false);
+  };
+
+  const openModalResetPassword = () => {
+    setModalIsResetPassword(true);
+  };
+
+  const closeModalResetPassword = () => {
+    setModalIsResetPassword(false);
   };
 
   return (
@@ -92,6 +103,16 @@ export const HomePage = () => {
         <LoginForm
           isClose={closeModalLogin}
           isOpenRegister={openModalRegister}
+          isOpenResetPassword={openModalResetPassword}
+        />
+      </ModalWindow>
+      <ModalWindow
+        isClose={closeModalResetPassword}
+        isOpen={modalIsResetPassword}
+      >
+        <ForgotPasswordForm
+          isClose={closeModalResetPassword}
+          isOpenResetPassword={openModalResetPassword}
         />
       </ModalWindow>
     </>

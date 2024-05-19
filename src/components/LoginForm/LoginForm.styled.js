@@ -142,26 +142,6 @@ export const LinkText = styled.p`
   }
 `;
 
-// export const Link = styled.a`
-//   text-decoration: none;
-//   cursor: pointer;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 14px;
-//   font-weight: 20.56px;
-//   color: ${({ theme }) => theme.colors.primaryOrange};
-//   &:hover {
-//     text-decoration: underline;
-//   }
-//   &:focus {
-//     text-decoration: underline;
-//   }
-//   @media screen and (min-width: 768px) {
-//     font-size: 20px;
-//     line-height: 29.38px;
-//   }
-// `;
 
 export const Link = styled.span`
   text-decoration: none;

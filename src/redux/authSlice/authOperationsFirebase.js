@@ -1,4 +1,5 @@
-import { db } from '../../firebase';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth, db } from '../../firebase';
 import { child, get, ref, set, update } from 'firebase/database';
 
 export const writeUserData = user => {
@@ -55,4 +56,17 @@ export const checkIfLinked = (user, providerId) => {
   );
   // -1 if the provider doesn't exist
   return providerIndex;
+};
+
+export const forgotpassword = email => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
 };
