@@ -18,6 +18,7 @@ import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
+import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 
 export const HomePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -66,7 +67,7 @@ export const HomePage = () => {
       <Container>
         <MainInfo>
           <Logo src={logo} alt="logo" />
-          {windowWidth < 768 && <StyledHamburgerMenu />}
+          {windowWidth < 768 && <BurgerMenu windowWidth={windowWidth} />}
           {windowWidth >= 768 && (
             <NavMenu>
               <Button type="button" onClick={openModalLogin}>
