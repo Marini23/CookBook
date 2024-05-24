@@ -8,7 +8,8 @@ import basket from '../../images/basket.svg';
 import heart from '../../images/heart.svg';
 import dinner from '../../images/dinner.svg';
 import exit from '../../images/exit-to-app.svg';
-import { Img, Link, ListItem } from './BurgerMenu.styled';
+import { Img, Link, List, ListItem, Title } from './BurgerMenu.styled';
+import { LogOutBtn } from 'components/LogOut/LogOut';
 
 export const BurgerMenu = ({ windowWidth }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -93,19 +94,17 @@ export const BurgerMenu = ({ windowWidth }) => {
     },
     bmMenu: {
       background: '#252525',
-      // fontSize: '40px',
     },
     bmItemList: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      gap: '48px',
     },
-    bmitem: {
+    bmItem: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '20px',
+      gap: '48px',
     },
   };
   return (
@@ -119,7 +118,7 @@ export const BurgerMenu = ({ windowWidth }) => {
         customCrossIcon={<CloseIcon />}
         noOverlay
       >
-        <h3>MENU</h3>
+        <Title>MENU</Title>
         {!isLoggedIn && (
           <a onClick={() => handleCloseMenu()} className="menu-item" href="/">
             <img src={house} alt="house icon" />
@@ -129,7 +128,7 @@ export const BurgerMenu = ({ windowWidth }) => {
         {!isLoggedIn && <button>REGISTER</button>}
         {!isLoggedIn && <button>LOG IN</button>}
         {isLoggedIn && (
-          <list>
+          <List>
             <ListItem>
               <Img src={dinner} alt="plate icon" />
               <Link
@@ -160,11 +159,11 @@ export const BurgerMenu = ({ windowWidth }) => {
                 SHOPPING LIST
               </Link>
             </ListItem>
-            <li>
-              <img src={exit} alt="exit icon" />
-              <button>LOG OUT</button>
-            </li>
-          </list>
+            <ListItem>
+              <Img src={exit} alt="exit icon" />
+              <LogOutBtn />
+            </ListItem>
+          </List>
         )}
       </Menu>
     </>

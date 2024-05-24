@@ -1,5 +1,24 @@
 import styled from 'styled-components';
 
+export const Title = styled.h3`
+  color: ${({ theme }) => theme.colors.whiteText};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 54px;
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+`;
+
+export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
