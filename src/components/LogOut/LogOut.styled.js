@@ -8,6 +8,16 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 35.25px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:focus {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 36px;
+    line-height: 36px;
+  }
 `;

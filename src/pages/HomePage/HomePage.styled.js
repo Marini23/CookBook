@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import bg_mobile from '../../images/bg_home_mobile.jpg';
 import bg_tablet from '../../images/bg_home-tablet.jpg';
 import bg_decktop from '../../images/bg_home_desktop.jpg';
-import { GiHamburgerMenu } from 'react-icons/gi';
+// import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const Container = styled.section`
   width: 100%;
@@ -57,14 +57,14 @@ export const Logo = styled.img`
   }
 `;
 
-export const StyledHamburgerMenu = styled(GiHamburgerMenu)`
-  position: absolute;
-  top: 44px;
-  right: 16px;
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 24px;
-  height: 24px;
-`;
+// export const StyledHamburgerMenu = styled(GiHamburgerMenu)`
+//   position: absolute;
+//   top: 44px;
+//   right: 16px;
+//   color: ${({ theme }) => theme.colors.primaryOrange};
+//   width: 24px;
+//   height: 24px;
+// `;
 
 export const WrapContent = styled.div`
   position: absolute;

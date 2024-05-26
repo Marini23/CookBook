@@ -8,11 +8,28 @@ import basket from '../../images/basket.svg';
 import heart from '../../images/heart.svg';
 import dinner from '../../images/dinner.svg';
 import exit from '../../images/exit-to-app.svg';
-import { Img, Link, List, ListItem, Title } from './BurgerMenu.styled';
+import {
+  Button,
+  Home,
+  Img,
+  Link,
+  List,
+  ListItem,
+  Title,
+} from './BurgerMenu.styled';
 import { LogOutBtn } from 'components/LogOut/LogOut';
+import bg_menu_mobile from '../../images/bg_burgerMenu_mobile.jpg';
+import bg_menu_desktop from '../../images/bg_burgerMenu_ desktop.jpg';
+import { ModalWindow } from 'components/Modal/Modal';
+import { LoginForm } from 'components/LoginForm/LoginForm';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
 
 export const BurgerMenu = ({ windowWidth }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
+  const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
+  const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [burgerButtonSize, setBurgerButtonSize] = useState({
     width: '40px',
@@ -21,7 +38,12 @@ export const BurgerMenu = ({ windowWidth }) => {
   const [closeButtonSize, setCloseButtonSize] = useState({
     width: '40px',
     height: '40px',
+    top: '70px',
+    right: '54px',
   });
+  const [bgImage, setBgImage] = useState(
+    `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
+  );
   useEffect(() => {
     const handleButtonSize = () => {
       if (windowWidth <= 767) {
@@ -32,7 +54,12 @@ export const BurgerMenu = ({ windowWidth }) => {
         setCloseButtonSize({
           width: `24px`,
           height: `24px`,
+          top: '48px',
+          right: '16px',
         });
+        setBgImage(
+          `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_mobile})`
+        );
       } else if (windowWidth <= 1439) {
         setBurgerButtonSize({
           width: `36px`,
@@ -41,7 +68,12 @@ export const BurgerMenu = ({ windowWidth }) => {
         setCloseButtonSize({
           width: `36px`,
           height: `36px`,
+          top: '70px',
+          right: '54px',
         });
+        setBgImage(
+          `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
+        );
       } else {
         setBurgerButtonSize({
           width: '40px',
@@ -50,7 +82,12 @@ export const BurgerMenu = ({ windowWidth }) => {
         setCloseButtonSize({
           width: `40px`,
           height: `40px`,
+          top: '70px',
+          right: '54px',
         });
+        setBgImage(
+          `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
+        );
       }
     };
     handleButtonSize();
@@ -62,6 +99,41 @@ export const BurgerMenu = ({ windowWidth }) => {
   const handleStateChange = state => {
     setIsMenuOpen(state.isOpen);
   };
+
+  const openModalRegister = () => {
+    setModalIsOpenRegister(true);
+  };
+
+  const closeModalRegister = () => {
+    setModalIsOpenRegister(false);
+  };
+
+  const openModalLogin = () => {
+    setModalIsOpenLogin(true);
+  };
+
+  const closeModalLogin = () => {
+    setModalIsOpenLogin(false);
+  };
+
+  const openModalResetPassword = () => {
+    setModalIsResetPassword(true);
+  };
+
+  const closeModalResetPassword = () => {
+    setModalIsResetPassword(false);
+  };
+
+  const handleRegisterMenu = () => {
+    setIsMenuOpen(false);
+    openModalRegister();
+  };
+
+  const handleLoginMenu = () => {
+    setIsMenuOpen(false);
+    openModalLogin();
+  };
+
   const styles = {
     bmBurgerButton: {
       position: 'absolute',
@@ -81,8 +153,8 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmCrossButton: {
       height: closeButtonSize.height,
       width: closeButtonSize.width,
-      top: '70px',
-      right: '54px',
+      top: closeButtonSize.top,
+      right: closeButtonSize.right,
     },
 
     bmMenuWrap: {
@@ -93,7 +165,11 @@ export const BurgerMenu = ({ windowWidth }) => {
       right: 0,
     },
     bmMenu: {
-      background: '#252525',
+      backgroundColor: 'rgba(22, 22, 22, 0.8)',
+      backgroundImage: bgImage,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
     },
     bmItemList: {
       display: 'flex',
@@ -120,13 +196,25 @@ export const BurgerMenu = ({ windowWidth }) => {
       >
         <Title>MENU</Title>
         {!isLoggedIn && (
-          <a onClick={() => handleCloseMenu()} className="menu-item" href="/">
-            <img src={house} alt="house icon" />
-            HOME
-          </a>
+          <List>
+            <ListItem>
+              <Img src={house} alt="house icon" />
+              <Home onClick={() => handleCloseMenu()} className="menu-item">
+                HOME
+              </Home>
+            </ListItem>
+            <ListItem>
+              <Button type="button" onClick={handleRegisterMenu}>
+                REGISTER
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button type="button" onClick={handleLoginMenu}>
+                LOG IN
+              </Button>
+            </ListItem>
+          </List>
         )}
-        {!isLoggedIn && <button>REGISTER</button>}
-        {!isLoggedIn && <button>LOG IN</button>}
         {isLoggedIn && (
           <List>
             <ListItem>
@@ -166,6 +254,25 @@ export const BurgerMenu = ({ windowWidth }) => {
           </List>
         )}
       </Menu>
+      <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
+        <RegisterForm
+          isClose={closeModalRegister}
+          isOpenLogin={openModalLogin}
+        />
+      </ModalWindow>
+      <ModalWindow isClose={closeModalLogin} isOpen={modalIsOpenLogin}>
+        <LoginForm
+          isClose={closeModalLogin}
+          isOpenRegister={openModalRegister}
+          isOpenResetPassword={openModalResetPassword}
+        />
+      </ModalWindow>
+      <ModalWindow
+        isClose={closeModalResetPassword}
+        isOpen={modalIsResetPassword}
+      >
+        <ForgotPasswordForm isClose={closeModalResetPassword} />
+      </ModalWindow>
     </>
   );
 };

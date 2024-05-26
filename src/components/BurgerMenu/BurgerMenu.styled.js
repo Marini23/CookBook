@@ -6,9 +6,13 @@ export const Title = styled.h3`
   align-items: center;
   justify-content: center;
   margin-bottom: 54px;
-  font-size: 64px;
-  line-height: 64px;
+  font-size: 36px;
+  line-height: 36px;
   font-weight: 400;
+  @media screen and (min-width: 1440px) {
+    font-size: 64px;
+    line-height: 64px;
+  }
 `;
 
 export const List = styled.ul`
@@ -39,8 +43,8 @@ export const Link = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 35.25px;
   &:hover {
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
@@ -48,5 +52,48 @@ export const Link = styled.a`
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
   @media screen and (min-width: 1440px) {
+    font-size: 36px;
+    line-height: 36px;
+  }
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.whiteText};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 35.25px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:focus {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 36px;
+    line-height: 36px;
+  }
+`;
+
+export const Home = styled.p`
+  color: ${({ theme }) => theme.colors.whiteText};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 35.25px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:focus {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 36px;
+    line-height: 36px;
   }
 `;

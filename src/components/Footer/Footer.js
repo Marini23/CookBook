@@ -1,4 +1,3 @@
-import { LogOutBtn } from 'components/LogOut/LogOut';
 import logo from '../../images/logo_mob_footer.svg';
 import { Container, FooterText, Img, Link } from './Footer.styled';
 export const Footer = () => {
@@ -16,7 +15,6 @@ export const Footer = () => {
         </Link>
         .
       </FooterText>
-      <LogOutBtn />
     </Container>
   );
 };

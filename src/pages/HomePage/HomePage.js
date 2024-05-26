@@ -7,7 +7,6 @@ import {
   MainInfo,
   NavMenu,
   SecondaryText,
-  StyledHamburgerMenu,
   Text,
   WrapContent,
 } from './HomePage.styled';

@@ -13,11 +13,24 @@ export const Picture = styled.picture`
   font-size: 0;
 `;
 
+export const SpanText = styled.span`
+  font-size: 14px;
+  line-height: 29.38px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 29.38px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 20px;
+    line-height: 40px;
+  }
+`;
+
 export const Text = styled.p`
   padding: 20px 16px;
   background-color: ${({ theme }) => theme.colors.secondaryOrange};
   font-size: 12px;
-  line-height: 20.56px;
+  line-height: 17.63px;
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -28,23 +41,6 @@ export const Text = styled.p`
     font-size: 20px;
     padding: 72px;
     line-height: 29.38px;
-  }
-`;
-
-export const SpanText = styled.span`
-  font-size: 14px;
-  line-height: 20.56px;
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.white};
-    line-height: 29.38px;
-  }
-  @media screen and (min-width: 1440px) {
-    font-size: 20px;
-    line-height: 29.38px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
