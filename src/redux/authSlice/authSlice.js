@@ -18,7 +18,7 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: `auth`,
   initialState: {
-    user: { name: null, email: null, providerData: null },
+    user: { name: null, email: null, providerData: null, photo: null },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -42,9 +42,11 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.providerData = action.payload.providerData;
+        state.user.photo = action.payload.providerData.photoURL;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })

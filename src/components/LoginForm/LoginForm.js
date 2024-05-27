@@ -93,6 +93,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
     try {
       dispatch(signInWithGoogle());
       // If signInWithGoogle succeeds, you can proceed with the next steps
+      navigate('/recipes');
       isClose();
     } catch (error) {
       toast.error(errorMessage);
@@ -103,6 +104,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
     try {
       dispatch(signInWithFacebook());
       // If signInWithGoogle succeeds, you can proceed with the next steps
+      navigate('/recipes');
       isClose();
     } catch (error) {
       toast.error(errorMessage);

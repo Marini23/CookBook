@@ -4,6 +4,7 @@ import { child, get, ref, set, update } from 'firebase/database';
 import toast from 'react-hot-toast';
 
 export const writeUserData = user => {
+  console.log(user);
   const userId = user.uid;
   set(ref(db, 'users/' + userId), {
     username: user.displayName,

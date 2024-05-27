@@ -138,7 +138,7 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmBurgerButton: {
       position: 'absolute',
       cursor: 'pointer',
-      top: '44px',
+      top: '48px',
       right: '16px',
       width: burgerButtonSize.width,
       height: burgerButtonSize.height,

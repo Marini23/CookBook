@@ -41,7 +41,9 @@ export const MainInfo = styled.div`
 
 export const Logo = styled.img`
   position: absolute;
-  top: 44px;
+  width: 51px;
+  height: 34px;
+  top: 48px;
   left: 16px;
   @media screen and (min-width: 768px) {
     width: 92px;
@@ -50,8 +52,8 @@ export const Logo = styled.img`
     left: 40px;
   }
   @media screen and (min-width: 1440px) {
-    width: 125px;
-    height: 83px;
+    width: 93px;
+    height: 63px;
     top: 24px;
     left: 72px;
   }

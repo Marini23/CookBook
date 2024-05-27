@@ -107,6 +107,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     try {
       dispatch(signInWithGoogle());
       // If signInWithGoogle succeeds, you can proceed with the next steps
+      navigate('/recipes');
       isClose();
     } catch (error) {
       // Handle error if signing with Google fails
@@ -119,6 +120,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     try {
       dispatch(signInWithFacebook());
       // If signInWithGoogle succeeds, you can proceed with the next steps
+      navigate('/recipes');
       isClose();
     } catch (error) {
       // Handle error if signing with Google fails
