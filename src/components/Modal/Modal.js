@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import './Modal.css';
-import { IoCloseOutline } from 'react-icons/io5';
+import closeIcon from '../../images/icon_close.svg';
 import { useEffect } from 'react';
 Modal.setAppElement('#modal-root');
 
@@ -23,10 +23,10 @@ export const ModalWindow = ({ isOpen, isClose, children }) => {
       overlayClassName={'modal-overlay'}
       className={'modal-content'}
     >
-      <IoCloseOutline
-        className={'closeIcon'}
-        size="24px"
-        color="black"
+      <img
+        src={closeIcon}
+        alt="Close"
+        className="closeIcon"
         onClick={isClose}
       />
       {children}

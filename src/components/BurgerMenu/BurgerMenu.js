@@ -3,6 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/selectors';
 import { ReactComponent as CloseIcon } from '../../images/close_icon.svg';
+import { ReactComponent as BurgerIcon } from '../../images/burger_icon.svg';
 import house from '../../images/house.svg';
 import basket from '../../images/basket.svg';
 import heart from '../../images/heart.svg';
@@ -19,7 +20,7 @@ import {
 } from './BurgerMenu.styled';
 import { LogOutBtn } from 'components/LogOut/LogOut';
 import bg_menu_mobile from '../../images/bg_burgerMenu_mobile.jpg';
-import bg_menu_desktop from '../../images/bg_burgerMenu_ desktop.jpg';
+import bg_menu_desktop from '../../images/bg_burgerMenu_desktop.jpg';
 import { ModalWindow } from 'components/Modal/Modal';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
@@ -50,6 +51,8 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBurgerButtonSize({
           width: `24px`,
           height: `24px`,
+          top: '48px',
+          right: '16px',
         });
         setCloseButtonSize({
           width: `24px`,
@@ -64,6 +67,8 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBurgerButtonSize({
           width: `36px`,
           height: `36px`,
+          top: '48px',
+          right: '16px',
         });
         setCloseButtonSize({
           width: `36px`,
@@ -78,6 +83,8 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBurgerButtonSize({
           width: '40px',
           height: '40px',
+          top: '71px',
+          right: '72px',
         });
         setCloseButtonSize({
           width: `40px`,
@@ -138,8 +145,8 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmBurgerButton: {
       position: 'absolute',
       cursor: 'pointer',
-      top: '48px',
-      right: '16px',
+      top: burgerButtonSize.top,
+      right: burgerButtonSize.right,
       width: burgerButtonSize.width,
       height: burgerButtonSize.height,
     },
@@ -191,6 +198,7 @@ export const BurgerMenu = ({ windowWidth }) => {
         isOpen={isMenuOpen}
         onStateChange={handleStateChange}
         onClose={handleCloseMenu}
+        customBurgerIcon={<BurgerIcon />}
         customCrossIcon={<CloseIcon />}
         noOverlay
       >

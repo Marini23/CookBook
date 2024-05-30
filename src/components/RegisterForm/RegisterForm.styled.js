@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+
+
 export const Form = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 16px; */
   margin-top: 58px;
   @media screen and (min-width: 768px) {
     margin-top: 0;
@@ -18,6 +20,7 @@ export const Title = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 8px;
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 35.25px;
@@ -32,10 +35,16 @@ export const Input = styled.input`
   width: 100%;
   cursor: pointer;
   height: 40px;
+  margin-top: 16px;
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
-  padding-left: 14px;
-  line-height: 23.5px;
+  border: 1px solid
+    ${({ theme, iserror }) =>
+      iserror ? theme.colors.error : theme.colors.grey};
+  /* border: 1px solid ${({ theme }) => theme.colors.grey}; */
+  font-size: 12px;
+  padding: 14px 24px;
+  line-height: 17.63px;
+  color: ${({ theme }) => theme.colors.primaryBlackText};
   ::placeholder {
     color: ${({ theme }) => theme.colors.grey};
   }
@@ -44,6 +53,7 @@ export const Input = styled.input`
     outline: none;
     border: 1px solid ${({ theme }) => theme.colors.primaryBlackText};
   }
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
@@ -51,6 +61,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   cursor: pointer;
   height: 40px;
+  margin-top: 16px;
   border-radius: 4px;
   border: none;
   /* margin-top: 32px; */
@@ -75,8 +86,19 @@ export const Button = styled.button`
 `;
 
 export const ErrorMessage = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
   color: #dc2f2f;
-  font-size: 12px;
+  font-size: 10px;
+  line-height: 14.69px;
+  margin-top: 4px;
+  color: ${({ theme }) => theme.colors.error};
+`;
+
+export const Img = styled.img`
+  width: 16px;
+  height: 16px;
 `;
 
 export const Line = styled.p`
@@ -86,8 +108,8 @@ export const Line = styled.p`
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 
   &::before,
   &::after {
@@ -108,6 +130,7 @@ export const NetworkBtnSubmit = styled.button`
   height: 40px;
   display: flex;
   gap: 16px;
+  margin-bottom: 16px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
@@ -136,6 +159,7 @@ export const LinkText = styled.p`
   justify-content: center;
   align-items: center;
   gap: 4px;
+  margin-top: 8px;
   @media screen and (min-width: 768px) {
     font-size: 20px;
     line-height: 29.38px;

@@ -4,7 +4,7 @@ export const Form = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 16px; */
   margin-top: 58px;
   @media screen and (min-width: 768px) {
     margin-top: 0;
@@ -18,6 +18,7 @@ export const Title = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 24px;
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 35.25px;
@@ -32,6 +33,7 @@ export const Input = styled.input`
   width: 100%;
   cursor: pointer;
   height: 40px;
+  margin-bottom: 16px;
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.colors.grey};
   padding-left: 14px;
@@ -53,7 +55,6 @@ export const Button = styled.button`
   height: 40px;
   border-radius: 4px;
   border: none;
-  /* margin-top: 32px; */
   background-color: ${({ theme }) => theme.colors.primaryOrange};
   color: ${({ theme }) => theme.colors.primaryBlackText};
   font-size: 14px;
@@ -86,8 +87,8 @@ export const Line = styled.p`
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 
   &::before,
   &::after {
@@ -108,6 +109,7 @@ export const NetworkBtnSubmit = styled.button`
   height: 40px;
   display: flex;
   gap: 16px;
+  margin-bottom: 16px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
@@ -135,13 +137,13 @@ export const LinkText = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8px;
   gap: 4px;
   @media screen and (min-width: 768px) {
     font-size: 20px;
     line-height: 29.38px;
   }
 `;
-
 
 export const Link = styled.span`
   text-decoration: none;
@@ -168,4 +170,5 @@ export const Text = styled.p`
   font-size: 12px;
   font-weight: 17.63px;
   color: ${({ theme }) => theme.colors.primaryBlackText};
+  margin-top: 16px;
 `;

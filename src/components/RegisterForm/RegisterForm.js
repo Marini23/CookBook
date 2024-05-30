@@ -5,6 +5,7 @@ import {
   Button,
   ErrorMessage,
   Form,
+  Img,
   Input,
   Line,
   Link,
@@ -26,6 +27,7 @@ import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
 import { useNavigate } from 'react-router-dom';
+import errorIcon from '../../images/error_icon.svg';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -142,9 +144,13 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           value={formik.values.name}
           placeholder="Name"
           autoComplete="name"
+          $iserror={formik.touched.name && formik.errors.name}
         />
         {formik.touched.name && formik.errors.name ? (
-          <ErrorMessage>{formik.errors.name}</ErrorMessage>
+          <ErrorMessage>
+            <Img src={errorIcon} alt="error" />
+            {formik.errors.name}
+          </ErrorMessage>
         ) : null}
         <Input
           id="email"
@@ -155,9 +161,13 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           value={formik.values.email}
           placeholder="Email"
           autoComplete="email"
+          $iserror={formik.touched.name && formik.errors.name}
         />
         {formik.touched.email && formik.errors.email && (
-          <ErrorMessage>{formik.errors.email}</ErrorMessage>
+          <ErrorMessage>
+            <Img src={errorIcon} alt="error" />
+            {formik.errors.email}
+          </ErrorMessage>
         )}
         <PasswordContainer>
           <Input
@@ -169,17 +179,18 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             value={formik.values.password}
             placeholder="Password"
             autoComplete="off"
+            $iserror={formik.touched.name && formik.errors.name}
           />
           {showPassword ? (
             <FiEye
               style={{
                 cursor: 'pointer',
                 position: 'absolute',
-                top: '8px',
-                right: '16px',
+                top: '24px',
+                right: '24px',
               }}
               size="20px"
-              color="#A2A8BC"
+              color="#B1B0B2"
               onClick={togglePasswordVisibility}
             />
           ) : (
@@ -187,17 +198,20 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
               style={{
                 cursor: 'pointer',
                 position: 'absolute',
-                top: '8px',
-                right: '16px',
+                top: '24px',
+                right: '24px',
               }}
               size="20px"
-              color="#A2A8BC"
+              color="#B1B0B2"
               onClick={togglePasswordVisibility}
             />
           )}
         </PasswordContainer>
         {formik.touched.password && formik.errors.password ? (
-          <ErrorMessage>{formik.errors.password}</ErrorMessage>
+          <ErrorMessage>
+            <Img src={errorIcon} alt="error" />
+            {formik.errors.password}
+          </ErrorMessage>
         ) : null}
         <PasswordContainer>
           <Input
@@ -209,17 +223,18 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             value={formik.values.confirmPassword}
             placeholder="Confirm password"
             autoComplete="off"
+            $iserror={formik.touched.name && formik.errors.name}
           />
           {showConfirmPassword ? (
             <FiEye
               style={{
                 cursor: 'pointer',
                 position: 'absolute',
-                top: '8px',
-                right: '16px',
+                top: '26px',
+                right: '24px',
               }}
               size="20px"
-              color="#A2A8BC"
+              color="#B1B0B2"
               onClick={toggleConfirmPasswordVisibility}
             />
           ) : (
@@ -227,17 +242,20 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
               style={{
                 cursor: 'pointer',
                 position: 'absolute',
-                top: '8px',
-                right: '16px',
+                top: '26px',
+                right: '24px',
               }}
               size="20px"
-              color="#A2A8BC"
+              color="#B1B0B2"
               onClick={toggleConfirmPasswordVisibility}
             />
           )}
         </PasswordContainer>
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-          <ErrorMessage>{formik.errors.confirmPassword}</ErrorMessage>
+          <ErrorMessage>
+            <Img src={errorIcon} alt="error" />
+            {formik.errors.confirmPassword}
+          </ErrorMessage>
         ) : null}
         <Button type="submit">Register</Button>
         <Line>or</Line>

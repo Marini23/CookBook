@@ -13,9 +13,9 @@
 
 .modal-content {
   position: fixed;
-  top: 46%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 48px; /* Top position set to 48px */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust horizontal centering */
   width: 100%;
   padding: 0 16px;
   max-width: 390px;
@@ -30,7 +30,7 @@
   @media screen and (min-width: 1440px) {
     max-width: 853px;
     padding: 48px 168px;
-    top: 50%;
+    top: 140px;
   }
   /* &::-webkit-scrollbar {
     width: 7px;
