@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import bg_mobile from '../../images/bg_home_mobile.jpg';
 import bg_tablet from '../../images/bg_home-tablet.jpg';
 import bg_decktop from '../../images/bg_home_desktop.jpg';
-// import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const Container = styled.section`
   width: 100%;
@@ -58,15 +57,6 @@ export const Logo = styled.img`
     left: 72px;
   }
 `;
-
-// export const StyledHamburgerMenu = styled(GiHamburgerMenu)`
-//   position: absolute;
-//   top: 44px;
-//   right: 16px;
-//   color: ${({ theme }) => theme.colors.primaryOrange};
-//   width: 24px;
-//   height: 24px;
-// `;
 
 export const WrapContent = styled.div`
   position: absolute;
@@ -179,10 +169,37 @@ export const NavMenu = styled.div`
     gap: 24px;
   }
 `;
-export const Button = styled.button`
+export const RegisterButton = styled.button`
   height: 45px;
   display: flex;
-  border: none;
+  padding: 8px 16px;
+  justify-self: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 29.38px;
+  border-radius: 4px;
+  border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.primaryOrange};
+  &:hover {
+    border: 2px solid transparent;
+    color: ${({ theme }) => theme.colors.whiteText};
+  }
+  &:active {
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.whiteText};
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 8px 24px;
+  }
+`;
+
+export const LoginButton = styled.button`
+  height: 45px;
+  display: flex;
+  border: 2px solid transparent;
   background-color: transparent;
   padding: 8px 16px;
   justify-self: center;
@@ -195,13 +212,29 @@ export const Button = styled.button`
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  &:focus {
-    border: none;
+  &:active {
     border-radius: 4px;
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    color: ${({ theme }) => theme.colors.primaryOrange};
+    border: 2px solid transparent;
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.whiteText};
   }
   @media screen and (min-width: 1440px) {
     padding: 8px 24px;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 16px;
+
+  &:hover ${RegisterButton} {
+    border: 2px solid transparent;
+    color: ${({ theme }) => theme.colors.whiteText};
+  }
+
+  &:hover ${LoginButton} {
+    border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
 `;

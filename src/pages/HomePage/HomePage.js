@@ -1,11 +1,13 @@
 import { DescriptionInfo } from 'components/DescriptionInfo/DescriptionInfo';
 import {
-  Button,
+  ButtonContainer,
   Container,
   Link,
+  LoginButton,
   Logo,
   MainInfo,
   NavMenu,
+  RegisterButton,
   SecondaryText,
   Text,
   WrapContent,
@@ -69,12 +71,14 @@ export const HomePage = () => {
           {windowWidth < 768 && <BurgerMenu windowWidth={windowWidth} />}
           {windowWidth >= 768 && (
             <NavMenu>
-              <Button type="button" onClick={openModalLogin}>
-                Log in
-              </Button>
-              <Button type="button" onClick={openModalRegister}>
-                Register
-              </Button>
+              <ButtonContainer>
+                <LoginButton type="button" onClick={openModalLogin}>
+                  Log in
+                </LoginButton>
+                <RegisterButton type="button" onClick={openModalRegister}>
+                  Register
+                </RegisterButton>
+              </ButtonContainer>
             </NavMenu>
           )}
           <WrapContent>

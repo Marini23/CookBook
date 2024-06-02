@@ -5,6 +5,7 @@ import {
   Button,
   ErrorMessage,
   Form,
+  Img,
   Input,
   Line,
   Link,
@@ -28,6 +29,7 @@ import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
 import { selectErrorAuth } from '../../redux/selectors.js';
 import { useNavigate } from 'react-router-dom';
+import errorIcon from '../../images/error_icon.svg';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -126,7 +128,10 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
           autoComplete="email"
         />
         {formik.touched.email && formik.errors.email && (
-          <ErrorMessage>{formik.errors.email}</ErrorMessage>
+          <ErrorMessage>
+            <Img src={errorIcon} alt="error" />
+            {formik.errors.email}
+          </ErrorMessage>
         )}
         <PasswordContainer>
           <Input
@@ -144,8 +149,8 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
               style={{
                 cursor: 'pointer',
                 position: 'absolute',
-                top: '8px',
-                right: '16px',
+                top: '24px',
+                right: '24px',
               }}
               size="20px"
               color="#A2A8BC"
@@ -156,8 +161,8 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
               style={{
                 cursor: 'pointer',
                 position: 'absolute',
-                top: '8px',
-                right: '16px',
+                top: '24px',
+                right: '24px',
               }}
               size="20px"
               color="#A2A8BC"
@@ -166,7 +171,10 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
           )}
         </PasswordContainer>
         {formik.touched.password && formik.errors.password ? (
-          <ErrorMessage>{formik.errors.password}</ErrorMessage>
+          <ErrorMessage>
+            <Img src={errorIcon} alt="error" />
+            {formik.errors.password}
+          </ErrorMessage>
         ) : null}
         <Button type="submit">Log in</Button>
         <Text onClick={toggleModalResetPassword}>Forgot your password?</Text>

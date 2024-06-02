@@ -4,10 +4,12 @@ export const Form = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
   margin-top: 58px;
   @media screen and (min-width: 768px) {
     margin-top: 0;
+  }
+  @media screen and (min-width: 1440px) {
+   
   }
 `;
 
@@ -18,7 +20,7 @@ export const Title = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 35.25px;
@@ -33,11 +35,12 @@ export const Input = styled.input`
   width: 100%;
   cursor: pointer;
   height: 40px;
-  margin-bottom: 16px;
+  margin-top: 16px;
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.colors.grey};
-  padding-left: 14px;
-  line-height: 23.5px;
+  padding: 14px 24px;
+  font-size: 12px;
+  line-height: 17.63px;
   ::placeholder {
     color: ${({ theme }) => theme.colors.grey};
   }
@@ -59,6 +62,7 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.primaryBlackText};
   font-size: 14px;
   line-height: 20.56px;
+  margin-top: 16px;
   &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
@@ -76,8 +80,14 @@ export const Button = styled.button`
 `;
 
 export const ErrorMessage = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
   color: #dc2f2f;
-  font-size: 12px;
+  font-size: 10px;
+  line-height: 14.69px;
+  margin-top: 4px;
+  color: ${({ theme }) => theme.colors.error};
 `;
 
 export const Line = styled.p`
@@ -171,4 +181,9 @@ export const Text = styled.p`
   font-weight: 17.63px;
   color: ${({ theme }) => theme.colors.primaryBlackText};
   margin-top: 16px;
+`;
+
+export const Img = styled.img`
+  width: 16px;
+  height: 16px;
 `;

@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-
-
 export const Form = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
   margin-top: 58px;
   @media screen and (min-width: 768px) {
     margin-top: 0;
+  }
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -64,7 +63,6 @@ export const Button = styled.button`
   margin-top: 16px;
   border-radius: 4px;
   border: none;
-  /* margin-top: 32px; */
   background-color: ${({ theme }) => theme.colors.primaryOrange};
   color: ${({ theme }) => theme.colors.primaryBlackText};
   font-size: 14px;
