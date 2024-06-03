@@ -27,8 +27,8 @@ export const Container = styled.footer`
   }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
-    gap: 32px;
-    padding: 36px 0;
+    gap: 0;
+    padding: 83px 0 64px 0;
   }
 `;
 
@@ -67,8 +67,9 @@ export const FooterText = styled.p`
     font-weight: 20.56px;
   }
   @media screen and (min-width: 1440px) {
-    font-size: 16px;
-    line-height: 23.5px;
+    font-size: 14px;
+    line-height: 20.56px;
+    margin-top: 56px;
   }
 `;
 
@@ -87,7 +88,51 @@ export const Link = styled.a`
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
   @media screen and (min-width: 1440px) {
-    font-size: 16px;
-    font-weight: 23.5px;
+    font-size: 14px;
+    font-weight: 20.56px;
+  }
+`;
+
+export const List = styled.ul`
+  display: none;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    margin-top: 64px;
+    gap: 64px;
+  }
+`;
+
+export const LinkItem = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.whiteText};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 35.25px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:focus {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.whiteText};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 35.25px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:focus {
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
 `;

@@ -230,7 +230,7 @@ export const BurgerMenu = ({ windowWidth }) => {
               <Link
                 onClick={() => handleCloseMenu()}
                 className="menu-item"
-                href="/resipes"
+                href="/recipes"
               >
                 RECIPES
               </Link>

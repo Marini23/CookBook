@@ -96,7 +96,7 @@ export const HomePage = () => {
         </MainInfo>
         <DescriptionInfo />
       </Container>
-      <Footer />
+      <Footer windowWidth={windowWidth } />
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
         <RegisterForm
           isClose={closeModalRegister}

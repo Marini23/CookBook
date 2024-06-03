@@ -7,6 +7,7 @@ export const Container = styled.section`
   width: 100%;
   max-width: 390px;
   margin: 0 auto;
+  background-color: ${({ theme }) => theme.colors.white};
   @media screen and (min-width: 768px) {
     max-width: 768px;
   }
@@ -136,7 +137,7 @@ export const Link = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  &:focus {
+  &:active {
     border: none;
     border-radius: 4px;
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};

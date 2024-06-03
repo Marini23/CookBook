@@ -1,21 +1,38 @@
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import logo from '../../images/logo_mob_footer.svg';
 import {
+  Button,
   Container,
   FooterText,
   Img,
   Link,
+  LinkItem,
+  List,
   TextContainer,
-} from './Footer.styled';
-import { selectIsLoggedIn } from '../../redux/selectors';
-import { FooterForUser } from './FooterForUser';
-export const Footer = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  return isLoggedIn ? (
-    <FooterForUser />
-  ) : (
+} from './FooterForUser.styled';
+import { logOut } from '../../redux/authSlice/authOperations';
+
+export const FooterForUser = () => {
+  const dispatch = useDispatch();
+  return (
     <Container>
       <Img src={logo} alt="logo" />
+      <List>
+        <li>
+          <LinkItem href="/recipes">RECIPES</LinkItem>
+        </li>
+        <li>
+          <LinkItem href="/favorites">FAVORITES</LinkItem>
+        </li>
+        <li>
+          <LinkItem href="/shoppinglist">SHOPPING LIST</LinkItem>
+        </li>
+        <li>
+          <Button type="sutton" onClick={() => dispatch(logOut())}>
+            LOG OUT
+          </Button>
+        </li>
+      </List>
       <TextContainer>
         <FooterText>
           Copyright © 2024 Created by

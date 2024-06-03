@@ -4,7 +4,7 @@ export const SectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  background-color: ${({ theme }) => theme.colors.bgGrey};
+  /* background-color: ${({ theme }) => theme.colors.bgGrey}; */
   @media screen and (min-width: 1440px) {
   }
 `;
@@ -55,6 +55,7 @@ export const InfoBlock = styled.div`
 
 export const InfoContainer = styled.div`
   padding: 8px 16px;
+  background-color: rgba(217, 217, 217, 0.15);
 `;
 
 export const TitleBlock = styled.h4`
@@ -139,7 +140,7 @@ export const Link = styled.button`
     background-color: ${({ theme }) => theme.colors.primaryOrange};
     color: ${({ theme }) => theme.colors.primaryBlackText};
   }
-  &:focus {
+  &:active {
     border: none;
     background-color: ${({ theme }) => theme.colors.primaryOrange};
     color: ${({ theme }) => theme.colors.primaryBlackText};
