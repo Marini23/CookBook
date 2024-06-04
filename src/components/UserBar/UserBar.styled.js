@@ -25,11 +25,8 @@ export const Header = styled.header`
 `;
 
 export const Logo = styled.img`
-  /* position: absolute; */
   width: 51px;
   height: 34px;
-  /* top: 37px;
-  left: 16px; */
   @media screen and (min-width: 768px) {
     width: 92px;
     height: 60px;
@@ -41,8 +38,6 @@ export const Logo = styled.img`
     width: 93px;
     height: 63px;
     margin-right: 312px;
-    /* top: 48px;
-    left: 72px; */
   }
 `;
 
@@ -52,9 +47,6 @@ export const UserInfo = styled.div`
   gap: 8px;
   margin-right: 72px;
   margin-left: auto;
-  /* position: absolute;
-  top: 37px;
-  left: 100px; */
   @media screen and (min-width: 1440px) {
     gap: 15px;
   }
