@@ -11,6 +11,8 @@ export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
+export const selectResipes = state => state.recipes.recipesList;
+
 export const selectUserFirstName = createSelector([selectUser], user =>
   getFirstName(user.name)
 );

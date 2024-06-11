@@ -1,0 +1,12 @@
+/* .bm-burger-button:hover .bm-icon {
+  fill: #ff6347;
+} */
+
+.bm-icon {
+  fill: #f4c343;
+  transition: fill 0.3s;
+}
+
+.bm-icon:hover {
+  fill: #ffffff; /* Change this to the desired hover color */
+}

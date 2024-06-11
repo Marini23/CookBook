@@ -3,7 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/selectors';
 import { ReactComponent as CloseIcon } from '../../images/close_icon.svg';
-import { ReactComponent as BurgerIcon } from '../../images/burger_icon.svg';
+import { ReactComponent as BurgerIcon } from '../../images/burger_normal.svg';
 import house from '../../images/house.svg';
 import basket from '../../images/basket.svg';
 import heart from '../../images/heart.svg';
@@ -25,6 +25,7 @@ import { ModalWindow } from 'components/Modal/Modal';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
+import './BurgerMenu.css';
 
 export const BurgerMenu = ({ windowWidth }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +52,7 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBurgerButtonSize({
           width: `24px`,
           height: `24px`,
-          top: '48px',
+          top: '40px',
           right: '16px',
         });
         setCloseButtonSize({
@@ -153,10 +154,16 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmBurgerBars: {
       background: '#F4C343',
     },
-    // bmBurgerBarsHover: {
-    //   background: theme.colors.active,
-    // },
-
+    bmBurgerBarsHover: {
+      background: '#ffffff',
+    },
+    bmIcon: {
+      // background: '#F4C343',
+    },
+    bmIconHover: {
+      fill: '#F4C343',
+      background: '#ffffff',
+    },
     bmCrossButton: {
       height: closeButtonSize.height,
       width: closeButtonSize.width,
@@ -198,7 +205,8 @@ export const BurgerMenu = ({ windowWidth }) => {
         isOpen={isMenuOpen}
         onStateChange={handleStateChange}
         onClose={handleCloseMenu}
-        customBurgerIcon={<BurgerIcon />}
+        // customBurgerIcon={<BurgerIcon />}
+        customBurgerIcon={<BurgerIcon className="bm-icon" />}
         customCrossIcon={<CloseIcon />}
         noOverlay
       >

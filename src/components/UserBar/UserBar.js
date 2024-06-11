@@ -1,6 +1,6 @@
-import { AvatarIcon, Header, Logo, Name, UserInfo } from './UserBar.styled';
-import logo from '../../images/logo_header.svg';
-import avatar from '../../images/avatar_user_default.svg';
+import { Header, Img, Logo, Name, UserInfo } from './UserBar.styled';
+import logo from '../../images/logo_recipes.svg';
+import avatar from '../../images/avatar_icon.svg';
 import { selectUserFirstName } from '../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
@@ -27,10 +27,8 @@ export const UserBar = () => {
       <Logo src={logo} alt="logo" />
       {windowWidth > 1439 && <SearchBar />}
       <UserInfo>
-        <AvatarIcon>
-          <img src={avatar} alt="avatar" width={20} height={20} />
-        </AvatarIcon>
-        <Name>{name}</Name>
+        <Img src={avatar} alt="avatar" width={24} height={24} />
+        {windowWidth > 1439 && <Name>{name}</Name>}
         <BurgerMenu windowWidth={windowWidth} />
       </UserInfo>
     </Header>

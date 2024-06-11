@@ -3,11 +3,15 @@ import bg from '../../images/bg_header.jpg';
 
 export const Header = styled.header`
   position: fixed;
-  width: 100%;
-  height: 95px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: end;
   flex-direction: row;
+  width: 100%;
+  min-width: 320px;
+  max-width: 390px;
+  height: 95px;
   background-image: linear-gradient(
       rgba(25, 25, 25, 0.5),
       rgba(25, 25, 25, 0.5)
@@ -16,6 +20,7 @@ export const Header = styled.header`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  padding: 30px 16px;
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     height: 159px;
@@ -45,7 +50,7 @@ export const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-right: 72px;
+  margin-right: 16px;
   margin-left: auto;
   @media screen and (min-width: 1440px) {
     gap: 15px;
@@ -63,16 +68,27 @@ export const Name = styled.p`
   }
 `;
 
-export const AvatarIcon = styled.div`
+// export const AvatarIcon = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 24px;
+//   height: 24px;
+//   background-color: #ffffff;
+//   border-radius: 40px;
+//   @media screen and (min-width: 1440px) {
+//     width: 40px;
+//     height: 40px;
+//   }
+// `;
+
+export const Img = styled.img`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  background-color: ${({ theme }) => theme.colors.grey};
-  border-radius: 50%;
-  @media screen and (min-width: 1440px) {
-    width: 40px;
-    height: 40px;
-  }
+  width: 24px;
+  height: 24px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  margin-right: 16px;
 `;
