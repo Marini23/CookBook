@@ -173,7 +173,7 @@ export const BurgerMenu = ({ windowWidth }) => {
 
     bmMenuWrap: {
       position: 'fixed',
-      height: '100%',
+      height: '100vh',
       width: '100%',
       top: 0,
       right: 0,

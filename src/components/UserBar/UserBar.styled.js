@@ -20,7 +20,7 @@ export const Header = styled.header`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  /* padding: 30px 16px; */
+  padding: 30px 16px 16px 16px;
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     height: 159px;
@@ -30,6 +30,9 @@ export const Header = styled.header`
 `;
 
 export const Logo = styled.img`
+  /* position: absolute;
+  top: 30px;
+  left: 16px; */
   width: 51px;
   height: 34px;
   @media screen and (min-width: 768px) {

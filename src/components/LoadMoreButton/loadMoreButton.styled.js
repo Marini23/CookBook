@@ -20,6 +20,7 @@ export const Button = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
+
   &:active {
     background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }

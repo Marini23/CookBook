@@ -35,6 +35,7 @@ export const Container = styled.footer`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 4px;
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 4px;
@@ -62,6 +63,7 @@ export const FooterText = styled.p`
   font-size: 10px;
   font-weight: 14.96px;
   color: ${({ theme }) => theme.colors.footerText};
+  margin-top: 10px;
   @media screen and (min-width: 768px) {
     font-size: 14px;
     font-weight: 20.56px;
