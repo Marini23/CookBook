@@ -41,7 +41,7 @@ export const UserBar = () => {
           <BurgerMenu windowWidth={windowWidth} />
         </UserInfo>
       </WrapperInfo>
-      <SearchBarMobile />
+      {windowWidth < 743 && <SearchBarMobile />}
     </Header>
   );
 };

@@ -19,7 +19,7 @@ import {
   Title,
 } from './BurgerMenu.styled';
 import { LogOutBtn } from 'components/LogOut/LogOut';
-import bg_menu_mobile from '../../images/bg_burgerMenu_mobile.jpg';
+import bg_menu_mobile from '../../images/burger_menu_mobile.jpg';
 import bg_menu_desktop from '../../images/bg_burgerMenu_desktop.jpg';
 import { ModalWindow } from 'components/Modal/Modal';
 import { LoginForm } from 'components/LoginForm/LoginForm';
@@ -48,7 +48,7 @@ export const BurgerMenu = ({ windowWidth }) => {
   );
   useEffect(() => {
     const handleButtonSize = () => {
-      if (windowWidth <= 767) {
+      if (windowWidth <= 743) {
         setBurgerButtonSize({
           width: `24px`,
           height: `24px`,
@@ -188,8 +188,9 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmItemList: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
+      marginTop: '128px',
+      // justifyContent: 'center',
+      // alignItems: 'center',
     },
     bmItem: {
       display: 'flex',

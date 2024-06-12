@@ -8,28 +8,9 @@ export const Header = styled.header`
   width: 100%;
   min-width: 320px;
   max-width: 390px;
-  /* display: flex;
-  align-items: end;
-  flex-direction: column;
-  width: 100%;
-  min-width: 320px;
-  max-width: 390px;
-  height: 80px;
-  background-image: linear-gradient(
-      rgba(25, 25, 25, 0.5),
-      rgba(25, 25, 25, 0.5)
-    ),
-    url(${bg});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  padding: 30px 16px 16px 16px;
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
-    height: 159px;
-    padding: 48px 72px;
-    gap: 40px;
-  } */
+  }
 `;
 
 export const WrapperInfo = styled.div`
@@ -49,18 +30,16 @@ export const WrapperInfo = styled.div`
   background-position: center;
   background-size: cover;
   padding: 30px 16px 16px 16px;
+  align-items: end; /* Center items vertically */
+  justify-content: space-between; /* Space between items */
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     height: 159px;
-    padding: 48px 72px;
-    gap: 40px;
+    padding: 48px 144px 48px 72px;
   }
 `;
 
 export const Logo = styled.img`
-  /* position: absolute;
-  top: 30px;
-  left: 16px; */
   width: 51px;
   height: 34px;
   @media screen and (min-width: 768px) {
@@ -84,7 +63,8 @@ export const UserInfo = styled.div`
   margin-right: 16px;
   margin-left: auto;
   @media screen and (min-width: 1440px) {
-    gap: 15px;
+    gap: 8px;
+    margin-right: 0;
   }
 `;
 
@@ -99,20 +79,6 @@ export const Name = styled.p`
   }
 `;
 
-// export const AvatarIcon = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 24px;
-//   height: 24px;
-//   background-color: #ffffff;
-//   border-radius: 40px;
-//   @media screen and (min-width: 1440px) {
-//     width: 40px;
-//     height: 40px;
-//   }
-// `;
-
 export const Img = styled.img`
   display: flex;
   align-items: center;
@@ -122,4 +88,9 @@ export const Img = styled.img`
   background-color: #ffffff;
   border-radius: 40px;
   margin-right: 16px;
+  @media screen and (min-width: 1440px) {
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+  }
 `;

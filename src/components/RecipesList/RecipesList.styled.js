@@ -25,5 +25,5 @@ export const List = styled.ul`
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 32px;
 `;

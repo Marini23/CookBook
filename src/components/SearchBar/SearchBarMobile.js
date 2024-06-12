@@ -1,5 +1,5 @@
 import searchIcon from '../../images/icon_search_mobile.svg';
-import filterIcon from '../../images/vector.svg';
+import filterIcon from '../../images/mage_filter-square-fill.svg';
 import {
   ButtonMobile,
   FilterIcon,
