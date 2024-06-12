@@ -11,7 +11,7 @@ export const Header = styled.header`
   width: 100%;
   min-width: 320px;
   max-width: 390px;
-  height: 95px;
+  height: 80px;
   background-image: linear-gradient(
       rgba(25, 25, 25, 0.5),
       rgba(25, 25, 25, 0.5)
@@ -20,7 +20,7 @@ export const Header = styled.header`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 30px 16px;
+  /* padding: 30px 16px; */
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     height: 159px;
