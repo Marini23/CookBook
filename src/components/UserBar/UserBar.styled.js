@@ -5,6 +5,34 @@ export const Header = styled.header`
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
+  min-width: 320px;
+  max-width: 390px;
+  /* display: flex;
+  align-items: end;
+  flex-direction: column;
+  width: 100%;
+  min-width: 320px;
+  max-width: 390px;
+  height: 80px;
+  background-image: linear-gradient(
+      rgba(25, 25, 25, 0.5),
+      rgba(25, 25, 25, 0.5)
+    ),
+    url(${bg});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 30px 16px 16px 16px;
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    height: 159px;
+    padding: 48px 72px;
+    gap: 40px;
+  } */
+`;
+
+export const WrapperInfo = styled.div`
   display: flex;
   align-items: end;
   flex-direction: row;
