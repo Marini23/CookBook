@@ -30,18 +30,21 @@ export const UserBar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   return (
-    <Header>
-      <WrapperInfo>
-        <Logo src={logo} alt="logo" />
-        {windowWidth > 1439 && <SearchBar />}
-        <UserInfo>
-          <Img src={avatar} alt="avatar" width={24} height={24} />
-          {windowWidth > 1439 && <Name>{name}</Name>}
-          <BurgerMenu windowWidth={windowWidth} />
-        </UserInfo>
-      </WrapperInfo>
-      {windowWidth < 743 && <SearchBarMobile />}
-    </Header>
+    <>
+      <Header>
+        <WrapperInfo>
+          <Logo src={logo} alt="logo" />
+          {windowWidth > 1439 && <SearchBar />}
+          <UserInfo>
+            <Img src={avatar} alt="avatar" width={24} height={24} />
+            {windowWidth > 1439 && <Name>{name}</Name>}
+            <BurgerMenu windowWidth={windowWidth} />
+          </UserInfo>
+        </WrapperInfo>
+        {windowWidth < 743 && <SearchBarMobile />}
+      </Header>
+    </>
   );
 };
