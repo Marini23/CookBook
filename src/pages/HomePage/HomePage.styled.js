@@ -118,7 +118,6 @@ export const SecondaryText = styled.p`
 `;
 
 export const Link = styled.button`
-  /* text-decoration: none; */
   cursor: pointer;
   max-width: 200px;
   padding: 8px 44px;

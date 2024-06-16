@@ -23,6 +23,8 @@
   padding-bottom: 106px;
   max-width: 390px;
   min-width: 320px;
+  max-height: calc(100vh - 109px);
+  overflow-y: auto;
   border-radius: 4px;
   background-color: #d9d9d9;
   outline: none;
