@@ -1,4 +1,5 @@
 import {
+  ButtonContainer,
   ClearButton,
   ClearIcon,
   Container,
@@ -9,6 +10,7 @@ import {
   Label,
   LabelCheckbox,
   Span,
+  SubmitButton,
   WrapCheckbox,
   WrapFilter,
   WrapItem,
@@ -133,6 +135,9 @@ export const FilterMobileForm = () => {
         <ClearIcon src={clearIcon} alt="Clear Filters Icon" />
         CLEAR FILTERS
       </ClearButton>
+      <ButtonContainer>
+        <SubmitButton type="submit">DONE</SubmitButton>
+      </ButtonContainer>
     </FormFilter>
   );
 };

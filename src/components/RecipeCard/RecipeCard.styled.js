@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+// import { FaHeart } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa6';
 
 export const ListItem = styled.li`
+  position: relative;
   width: 100%;
   min-width: 320px;
   max-width: 390px;
@@ -33,4 +36,17 @@ export const Label = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+`;
+
+export const HeartIcon = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+`;
+
+export const StyledHeartIcon = styled(FaRegHeart)`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.primaryOrange};
+  width: 20px;
+  height: 20px;
 `;

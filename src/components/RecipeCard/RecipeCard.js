@@ -1,7 +1,12 @@
-import { Img, Label, ListItem } from './RecipeCard.styled';
+import {
+  HeartIcon,
+  Img,
+  Label,
+  ListItem,
+  StyledHeartIcon,
+} from './RecipeCard.styled';
 
 export const RecipeCard = recipe => {
-  //   console.log(recipe.recipe._links.self.href);
   return (
     <>
       <ListItem>
@@ -12,6 +17,9 @@ export const RecipeCard = recipe => {
           height={220}
         />
         <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
+        <HeartIcon>
+          <StyledHeartIcon />
+        </HeartIcon>
       </ListItem>
     </>
   );

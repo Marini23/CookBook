@@ -8,6 +8,7 @@ export const Header = styled.header`
   width: 100%;
   min-width: 320px;
   max-width: 390px;
+  z-index: 1000;
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
   }

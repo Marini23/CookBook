@@ -128,14 +128,44 @@ export const ClearButton = styled.button`
   font-size: 12px;
   line-height: 17.36px;
   &:hover {
+    /* border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange}; */
+  }
+  &:active {
+    /* border: none;
     border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange}; */
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const SubmitButton = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 124px;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.primaryOrange};
+  color: #3e3e3e;
+  font-size: 20px;
+  line-height: 29.38px;
+  &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  &:active {
-    border: none;
-    border-radius: 4px;
+  &:focus {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};

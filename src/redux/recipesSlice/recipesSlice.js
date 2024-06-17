@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getRecipesList } from './recipesOperations';
+import { getRecipesList, loadMoreRecipes } from './recipesOperations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -15,6 +15,7 @@ const recipesSlice = createSlice({
   initialState: {
     recipesList: [],
     currentPage: 1,
+    nextPageLink: null,
     totalHits: null,
     isLoading: false,
     error: null,
@@ -35,6 +36,15 @@ const recipesSlice = createSlice({
         state.error = null;
         state.recipesList = action.payload.hits;
         state.totalHits = action.payload.count;
+        state.nextPageLink = action.payload._links.next.href;
+      })
+      .addCase(loadMoreRecipes.pending, handlePending)
+      .addCase(loadMoreRecipes.rejected, handleRejected)
+      .addCase(loadMoreRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.recipesList = [...state.recipesList, ...action.payload.hits];
+        state.nextPageLink = action.payload._links.next.href;
       }),
 });
 export const { changePage } = recipesSlice.actions;

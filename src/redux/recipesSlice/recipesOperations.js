@@ -22,3 +22,17 @@ export const getRecipesList = createAsyncThunk(
     }
   }
 );
+
+export const loadMoreRecipes = createAsyncThunk(
+  'recipes/loadMoreRecipes',
+  async (href, thunkAPI) => {
+    try {
+      const { data } = await axios.get(href);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
