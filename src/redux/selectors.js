@@ -17,6 +17,10 @@ export const selectNextPageLink = state => state.recipes.nextPageLink;
 
 export const selectTotalHits = state => state.recipes.totalHits;
 
+export const selectQuery = state => state.recipes.query;
+
+export const selectFilters = state => state.filter;
+
 export const selectUserFirstName = createSelector([selectUser], user =>
   getFirstName(user.name)
 );

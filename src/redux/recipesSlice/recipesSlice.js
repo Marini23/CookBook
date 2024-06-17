@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getRecipesList, loadMoreRecipes } from './recipesOperations';
+import {
+  getRecipesList,
+  getRecipesListByQuery,
+  loadMoreRecipes,
+} from './recipesOperations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -14,7 +18,6 @@ const recipesSlice = createSlice({
   name: 'recipes',
   initialState: {
     recipesList: [],
-    currentPage: 1,
     nextPageLink: null,
     totalHits: null,
     isLoading: false,
@@ -22,8 +25,8 @@ const recipesSlice = createSlice({
     query: 'popular',
   },
   reducers: {
-    changePage(state) {
-      state.currentPage += 1;
+    changeQuery(state, action) {
+      state.query = action.payload;
     },
   },
 
@@ -36,7 +39,16 @@ const recipesSlice = createSlice({
         state.error = null;
         state.recipesList = action.payload.hits;
         state.totalHits = action.payload.count;
-        state.nextPageLink = action.payload._links.next.href;
+        state.nextPageLink = action.payload._links.next?.href || null;
+      })
+      .addCase(getRecipesListByQuery.pending, handlePending)
+      .addCase(getRecipesListByQuery.rejected, handleRejected)
+      .addCase(getRecipesListByQuery.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.recipesList = action.payload.hits;
+        state.totalHits = action.payload.count;
+        state.nextPageLink = action.payload._links.next?.href || null;
       })
       .addCase(loadMoreRecipes.pending, handlePending)
       .addCase(loadMoreRecipes.rejected, handleRejected)
@@ -47,6 +59,6 @@ const recipesSlice = createSlice({
         state.nextPageLink = action.payload._links.next.href;
       }),
 });
-export const { changePage } = recipesSlice.actions;
+export const { changeQuery } = recipesSlice.actions;
 
 export const recipesReducer = recipesSlice.reducer;
