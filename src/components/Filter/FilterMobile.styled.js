@@ -159,6 +159,7 @@ export const SubmitButton = styled.button`
   background-color: ${({ theme }) => theme.colors.primaryOrange};
   color: #3e3e3e;
   font-size: 20px;
+  font-weight: 400;
   line-height: 29.38px;
   &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};

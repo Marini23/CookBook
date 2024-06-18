@@ -8,7 +8,6 @@ export const LoadMoreBtn = () => {
   const nextPageLink = useSelector(selectNextPageLink);
 
   const handleLoadMore = () => {
-    console.log('next page');
     dispatch(loadMoreRecipes(nextPageLink));
   };
   return (

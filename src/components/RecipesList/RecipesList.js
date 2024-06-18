@@ -1,16 +1,17 @@
 import { useSelector } from 'react-redux';
 import {
+  selectFilteredRecipes,
   selectQuery,
-  selectResipes,
   selectTotalHits,
 } from '../../redux/selectors';
 import { RecipeCard } from 'components/RecipeCard/RecipeCard';
 import { Container, List, Title } from './RecipesList.styled';
 
 export const RecipesList = () => {
-  const recipes = useSelector(selectResipes);
+  // const recipes = useSelector(selectResipes);
   const totalHits = useSelector(selectTotalHits);
   const query = useSelector(selectQuery);
+  const filteredRecipes = useSelector(selectFilteredRecipes);
 
   const isPopular = query === `popular`;
 
@@ -25,7 +26,7 @@ export const RecipesList = () => {
         </Title>
       )}
       <List>
-        {recipes.map(recipe => {
+        {filteredRecipes.map(recipe => {
           return <RecipeCard recipe={recipe} key={recipe._links.self.href} />;
         })}
       </List>

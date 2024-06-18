@@ -19,7 +19,7 @@ const filterSlice = createSlice({
         caloriesFrom: null,
         caloriesTo: null,
         ingredients: null,
-        diet: null,
+        diet: [],
         allergies: null,
       });
     },

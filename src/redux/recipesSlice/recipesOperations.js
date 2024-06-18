@@ -31,7 +31,6 @@ export const getRecipesListByQuery = createAsyncThunk(
         `/recipes/v2?type=public&q=${query}&app_id=895983dd&app_key=
 19385ac259149cf92f727b8a356d63ae`
       );
-      console.log(data);
       return data;
     } catch (error) {
       console.error('Error fetching recipes:', error);
@@ -45,7 +44,6 @@ export const loadMoreRecipes = createAsyncThunk(
   async (href, thunkAPI) => {
     try {
       const { data } = await axios.get(href);
-      console.log(data);
       return data;
     } catch (error) {
       console.error('Error fetching recipes:', error);

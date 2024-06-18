@@ -20,7 +20,7 @@ import clearIcon from '../../images/clear_filter_icon.svg';
 import { connect, useDispatch } from 'react-redux';
 import { changeFilter, resetFilter } from '../../redux/filterSlice';
 
-export const FilterMobileForm = () => {
+export const FilterMobileForm = ({ isClose }) => {
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       caloriesFrom: '',
@@ -35,6 +35,7 @@ export const FilterMobileForm = () => {
 
   const onSubmit = data => {
     dispatch(changeFilter(data));
+    isClose();
   };
 
   const clearFilters = () => {
@@ -179,7 +180,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Gluten"
+              value="Gluten-Free"
             />
             Gluten
           </LabelCheckbox>
@@ -187,7 +188,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Wheat"
+              value="Wheat-Free"
             />
             Wheat
           </LabelCheckbox>
@@ -195,7 +196,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Eggs"
+              value="Egg-Free"
             />
             Eggs
           </LabelCheckbox>
@@ -203,7 +204,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Fish"
+              value="Fish-Free"
             />
             Fish
           </LabelCheckbox>
@@ -211,7 +212,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Soy"
+              value="Soy-Free"
             />
             Soy
           </LabelCheckbox>
@@ -219,7 +220,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="ShellFish"
+              value="ShellFish-Free"
             />
             ShellFish
           </LabelCheckbox>
@@ -227,7 +228,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Peanuts"
+              value="Peanut-Free"
             />
             Peanuts
           </LabelCheckbox>
@@ -235,7 +236,7 @@ export const FilterMobileForm = () => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Tree nuts"
+              value="Tree-Nut-Free"
             />
             Tree nuts
           </LabelCheckbox>

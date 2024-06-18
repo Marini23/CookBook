@@ -24,3 +24,39 @@ export const selectFilters = state => state.filter;
 export const selectUserFirstName = createSelector([selectUser], user =>
   getFirstName(user.name)
 );
+
+export const selectFilteredRecipes = createSelector(
+  [selectResipes, selectFilters],
+  (recipes, filters) => {
+    return recipes
+      .filter(recipe =>
+        filters.caloriesFrom
+          ? recipe.recipe.calories > filters.caloriesFrom
+          : true
+      )
+      .filter(recipe =>
+        filters.caloriesTo ? recipe.recipe.calories < filters.caloriesTo : true
+      )
+      .filter(recipe =>
+        filters.ingredientsTo
+          ? recipe.recipe.ingredients.length >= filters.ingredientsTo
+          : true
+      )
+      .filter(recipe => {
+        if (filters.diet && filters.diet.length > 0) {
+          return filters.diet.every(item =>
+            recipe.recipe.dietLabels.includes(item)
+          );
+        }
+        return true;
+      })
+      .filter(recipe => {
+        if (filters.allergies && filters.allergies.length > 0) {
+          return filters.allergies.every(item =>
+            recipe.recipe.healthLabels.includes(item)
+          );
+        }
+        return true;
+      });
+  }
+);

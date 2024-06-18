@@ -18,10 +18,17 @@ export const Label = styled.label`
   /* position: relative; */
   background-color: ${({ theme }) => theme.colors.whiteText};
   gap: 16px;
-  border: 1px solid #b1b0b2;
+  /* border: 1px solid #b1b0b2; */
+  border: none;
   border-radius: 4px;
   padding-left: 12px;
   padding-right: 2.74px;
+  &:hover {
+    border: 0.2px solid #b1b0b2;
+  }
+  &:active {
+    border: 0.2px solid #b1b0b2;
+  }
 `;
 
 export const InputMobile = styled.input`
