@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/CookBook/static/css/main.63ce3fee.css",
+    "main.css": "/CookBook/static/css/main.af78b1ea.css",
     "main.js": "/CookBook/static/js/main.cdf444c0.js",
     "static/media/bg_home_desktop.jpg": "/CookBook/static/media/bg_home_desktop.1d4dfb254ac8589604f0.jpg",
     "static/media/bg_burgerMenu_desktop.jpg": "/CookBook/static/media/bg_burgerMenu_desktop.170ed96e62f094f21ba2.jpg",
@@ -44,11 +44,11 @@
     "static/media/icon_close.svg": "/CookBook/static/media/icon_close.2a45a7d56c6a43b729efa5058dee4834.svg",
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/close_icon.svg": "/CookBook/static/media/close_icon.d24ce83e3fa41b1bf2cb89a5d9e9abb2.svg",
-    "main.63ce3fee.css.map": "/CookBook/static/css/main.63ce3fee.css.map",
+    "main.af78b1ea.css.map": "/CookBook/static/css/main.af78b1ea.css.map",
     "main.cdf444c0.js.map": "/CookBook/static/js/main.cdf444c0.js.map"
   },
   "entrypoints": [
-    "static/css/main.63ce3fee.css",
+    "static/css/main.af78b1ea.css",
     "static/js/main.cdf444c0.js"
   ]
 }
