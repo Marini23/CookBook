@@ -6,7 +6,7 @@ import {
   UserInfo,
   WrapperInfo,
 } from './UserBar.styled';
-import logo from '../../images/logo_recipes.svg';
+import logo from '../../images/new-logo.svg';
 import avatar from '../../images/avatar_icon.svg';
 import { selectUserFirstName } from '../../redux/selectors';
 import { useSelector } from 'react-redux';

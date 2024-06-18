@@ -79,14 +79,6 @@ export const FilterMobileForm = ({ isClose }) => {
             <InputCheckbox
               type="checkbox"
               {...register('diet')}
-              value="Vegetarian"
-            />
-            Vegetarian
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('diet')}
               value="Low-Carb"
             />
             Low-Carb
@@ -95,25 +87,9 @@ export const FilterMobileForm = ({ isClose }) => {
             <InputCheckbox
               type="checkbox"
               {...register('diet')}
-              value="Vegan"
-            />
-            Vegan
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('diet')}
               value="Low-Fat"
             />
             Low-Fat
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('diet')}
-              value="Paleo"
-            />
-            Paleo
           </LabelCheckbox>
           <LabelCheckbox>
             <InputCheckbox
@@ -135,33 +111,9 @@ export const FilterMobileForm = ({ isClose }) => {
             <InputCheckbox
               type="checkbox"
               {...register('diet')}
-              value="Low-Sugar"
-            />
-            Low-Sugar
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('diet')}
               value="Balanced"
             />
             Balanced
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('diet')}
-              value="Alcohol-Free"
-            />
-            Alcohol-Free
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('diet')}
-              value="Immunity"
-            />
-            Immunity
           </LabelCheckbox>
           <LabelCheckbox>
             <InputCheckbox
@@ -212,6 +164,14 @@ export const FilterMobileForm = ({ isClose }) => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
+              value="Mollusk-Free"
+            />
+            Mollusk
+          </LabelCheckbox>
+          <LabelCheckbox>
+            <InputCheckbox
+              type="checkbox"
+              {...register('allergies')}
               value="Soy-Free"
             />
             Soy
@@ -240,6 +200,46 @@ export const FilterMobileForm = ({ isClose }) => {
             />
             Tree nuts
           </LabelCheckbox>
+          <LabelCheckbox>
+            <InputCheckbox
+              type="checkbox"
+              {...register('allergies')}
+              value="Alcohol-Free"
+            />
+            Alcohol
+          </LabelCheckbox>
+          <LabelCheckbox>
+            <InputCheckbox
+              type="checkbox"
+              {...register('allergies')}
+              value="Red-Meat-Free"
+            />
+            Red meat
+          </LabelCheckbox>
+          <LabelCheckbox>
+            <InputCheckbox
+              type="checkbox"
+              {...register('allergies')}
+              value="No-Oil-Added"
+            />
+            Oil
+          </LabelCheckbox>
+          <LabelCheckbox>
+            <InputCheckbox
+              type="checkbox"
+              {...register('allergies')}
+              value="Dairy-Free"
+            />
+            Dairy
+          </LabelCheckbox>
+          <LabelCheckbox>
+            <InputCheckbox
+              type="checkbox"
+              {...register('allergies')}
+              value="Mustard-Free"
+            />
+            Mustard
+          </LabelCheckbox>
         </WrapCheckbox>
       </ContainerCheckbox>
       <ClearButton type="button" onClick={clearFilters}>
@@ -248,7 +248,7 @@ export const FilterMobileForm = ({ isClose }) => {
         CLEAR FILTERS
       </ClearButton>
       <ButtonContainer>
-        <SubmitButton type="submit">DONE</SubmitButton>
+        <SubmitButton type="submit">Done</SubmitButton>
       </ButtonContainer>
     </FormFilter>
   );
