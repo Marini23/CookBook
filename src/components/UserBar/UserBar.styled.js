@@ -43,6 +43,8 @@ export const WrapperInfo = styled.div`
 export const Logo = styled.img`
   width: 51px;
   height: 34px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
   @media screen and (min-width: 768px) {
     width: 92px;
     height: 60px;

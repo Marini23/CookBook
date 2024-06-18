@@ -7,6 +7,7 @@ import {
   WrapperInfo,
 } from './UserBar.styled';
 import logo from '../../images/new-logo.svg';
+import logo2x from '../../images/logo_2x.png';
 import avatar from '../../images/avatar_icon.svg';
 import { selectUserFirstName } from '../../redux/selectors';
 import { useSelector } from 'react-redux';
@@ -35,7 +36,7 @@ export const UserBar = () => {
     <>
       <Header>
         <WrapperInfo>
-          <Logo src={logo} alt="logo" />
+          <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
           {windowWidth > 1439 && <SearchBar />}
           <UserInfo>
             <Img src={avatar} alt="avatar" width={24} height={24} />
