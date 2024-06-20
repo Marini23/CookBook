@@ -1,5 +1,5 @@
 import { Footer } from 'components/Footer/Footer';
-import { Container } from './RecipesPage.styled';
+import { Banner, Container } from './RecipesPage.styled';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipesListByQuery } from '../../redux/recipesSlice/recipesOperations';
@@ -10,6 +10,8 @@ import {
   selectResipes,
   selectTotalHits,
 } from '../../redux/selectors';
+import bannerDesktop from '../../images/filter_banner_desktop.jpg';
+import bannerDesktop_2x from '../../images/filter_banner_desktop2x.jpg';
 
 export const RecipesPage = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,10 @@ export const RecipesPage = () => {
   const isLoadMore = recipes.length < totalHits;
   return (
     <Container>
+      <Banner>
+        <source srcSet={`${bannerDesktop_2x} 2x`} media="(min-width: 1440px)" />
+        <img src={bannerDesktop} alt="banner" />
+      </Banner>
       <RecipesList />
       {isLoadMore ? <LoadMoreBtn /> : null}
       <Footer />

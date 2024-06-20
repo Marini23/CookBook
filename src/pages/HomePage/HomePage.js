@@ -13,7 +13,8 @@ import {
   WrapContent,
 } from './HomePage.styled';
 import { Footer } from 'components/Footer/Footer';
-import logo from '../../images/logo_mobile.svg';
+import logo from '../../images/new-logo.svg';
+import logo2x from '../../images/logo_2x.png';
 import { useEffect, useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
@@ -67,7 +68,7 @@ export const HomePage = () => {
     <>
       <Container>
         <MainInfo>
-          <Logo src={logo} alt="logo" />
+          <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
           {windowWidth < 768 && <BurgerMenu windowWidth={windowWidth} />}
           {windowWidth >= 768 && (
             <NavMenu>
@@ -96,7 +97,7 @@ export const HomePage = () => {
         </MainInfo>
         <DescriptionInfo />
       </Container>
-      <Footer windowWidth={windowWidth } />
+      <Footer windowWidth={windowWidth} />
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
         <RegisterForm
           isClose={closeModalRegister}

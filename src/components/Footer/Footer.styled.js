@@ -45,6 +45,8 @@ export const TextContainer = styled.div`
 export const Img = styled.img`
   width: 48px;
   height: 32px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
   @media screen and (min-width: 768px) {
     width: 92px;
     height: 60px;

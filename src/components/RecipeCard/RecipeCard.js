@@ -13,8 +13,8 @@ export const RecipeCard = recipe => {
         <Img
           src={recipe.recipe.recipe.image}
           alt={recipe.recipe.recipe.label}
-          width={366}
-          height={220}
+          // width={366}
+          // height={220}
         />
         <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
         <HeartIcon>

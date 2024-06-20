@@ -45,6 +45,8 @@ export const Logo = styled.img`
   height: 34px;
   top: 48px;
   left: 16px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
   @media screen and (min-width: 768px) {
     width: 92px;
     height: 60px;

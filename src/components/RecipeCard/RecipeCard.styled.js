@@ -11,6 +11,9 @@ export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  @media screen and (min-width: 1440px) {
+    max-width: 416px;
+  }
 `;
 
 export const Img = styled.img`
@@ -19,6 +22,10 @@ export const Img = styled.img`
   height: 220px;
   object-fit: cover;
   border-radius: 4px;
+  @media screen and (min-width: 1440px) {
+    max-width: 416px;
+    height: 235px;
+  }
 `;
 
 export const Label = styled.p`
@@ -36,6 +43,13 @@ export const Label = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+  @media screen and (min-width: 1440px) {
+    max-width: 416px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23.5px;
+  }
 `;
 
 export const HeartIcon = styled.div`

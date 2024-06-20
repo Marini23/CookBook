@@ -40,7 +40,7 @@ export const App = () => {
           <Route path="/recipes" element={<RecipesPage />} />
           <Route path="/favorites" element={<div>Favorites</div>} />
           <Route path="/shoppinglist" element={<div>Shopping List</div>} />
-          <Route path="*" element={<div>Homepage</div>} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
     </div>

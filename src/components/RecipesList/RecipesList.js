@@ -5,7 +5,7 @@ import {
   selectTotalHits,
 } from '../../redux/selectors';
 import { RecipeCard } from 'components/RecipeCard/RecipeCard';
-import { Container, List, Title } from './RecipesList.styled';
+import { Container, List, Title, TitleAfterSearch } from './RecipesList.styled';
 
 export const RecipesList = () => {
   // const recipes = useSelector(selectResipes);
@@ -21,10 +21,10 @@ export const RecipesList = () => {
       {isPopular ? (
         <Title>POPULAR RECIPES</Title>
       ) : (
-        <Title>
+        <TitleAfterSearch>
           {' '}
           {totalHits} RESULTS FOR {query.toUpperCase()}{' '}
-        </Title>
+        </TitleAfterSearch>
       )}
       <List>
         {filteredRecipes.map(recipe => {

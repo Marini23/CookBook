@@ -77,7 +77,7 @@ export const Button = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
     font-size: 18px;
     line-height: 26.44px;
   }
