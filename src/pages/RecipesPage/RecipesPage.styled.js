@@ -33,3 +33,30 @@ export const Banner = styled.picture`
     height: 443px;
   }
 `;
+
+export const ButtonFilter = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.primaryOrange};
+  color: ${({ theme }) => theme.colors.black};
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 29.38px;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+  &:active {
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+`;
+
+export const ArrowIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+`;

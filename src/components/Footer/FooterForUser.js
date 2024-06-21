@@ -19,13 +19,13 @@ export const FooterForUser = () => {
       <Img src={logo} alt="logo" />
       <List>
         <li>
-          <LinkItem href="/recipes">RECIPES</LinkItem>
+          <LinkItem href="/CookBook/recipes">RECIPES</LinkItem>
         </li>
         <li>
-          <LinkItem href="/favorites">FAVORITES</LinkItem>
+          <LinkItem href="/CookBook/favorites">FAVORITES</LinkItem>
         </li>
         <li>
-          <LinkItem href="/shoppinglist">SHOPPING LIST</LinkItem>
+          <LinkItem href="/CookBook/shoppinglist">SHOPPING LIST</LinkItem>
         </li>
         <li>
           <Button type="sutton" onClick={() => dispatch(logOut())}>

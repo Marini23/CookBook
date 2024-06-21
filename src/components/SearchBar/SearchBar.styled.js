@@ -37,6 +37,11 @@ export const Button = styled.button`
   &:hover {
     background-color: #b1b0b2;
   }
+  &:focus {
+    outline: none;
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    border: 1px solid ${({ theme }) => theme.colors.whiteText};
+  }
 `;
 
 export const Img = styled.img`

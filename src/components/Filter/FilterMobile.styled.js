@@ -128,17 +128,10 @@ export const ClearButton = styled.button`
   font-size: 12px;
   line-height: 17.36px;
   &:hover {
-    /* border-radius: 4px;
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange}; */
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
   &:active {
-    /* border: none;
-    border-radius: 4px;
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange}; */
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
 `;
 

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect, useDispatch } from 'react-redux';
-// import updateAction from './actions';
 import searchIcon from '../../images/icon_search_mobile.svg';
 import filterIcon from '../../images/mage_filter-square-fill.svg';
 import {
