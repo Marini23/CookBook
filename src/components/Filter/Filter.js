@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { changeFilter, resetFilter } from '../../redux/filterSlice';
+
+import clearIcon from '../../images/clear_filter_icon.svg';
 import {
   ButtonContainer,
   ClearButton,
@@ -20,7 +22,6 @@ import {
   WrapFilter,
   WrapItem,
 } from './Filter.styled';
-import clearIcon from '../../images/clear_filter_icon.svg';
 
 export const Filter = () => {
   const { register, handleSubmit, reset } = useForm({
