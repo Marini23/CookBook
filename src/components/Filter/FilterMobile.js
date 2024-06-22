@@ -164,14 +164,6 @@ export const FilterMobileForm = ({ isClose }) => {
             <InputCheckbox
               type="checkbox"
               {...register('allergies')}
-              value="Mollusk-Free"
-            />
-            Mollusk
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('allergies')}
               value="Soy-Free"
             />
             Soy
@@ -231,14 +223,6 @@ export const FilterMobileForm = ({ isClose }) => {
               value="Dairy-Free"
             />
             Dairy
-          </LabelCheckbox>
-          <LabelCheckbox>
-            <InputCheckbox
-              type="checkbox"
-              {...register('allergies')}
-              value="Mustard-Free"
-            />
-            Mustard
           </LabelCheckbox>
         </WrapCheckbox>
       </ContainerCheckbox>

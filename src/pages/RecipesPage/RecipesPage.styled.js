@@ -34,6 +34,15 @@ export const Banner = styled.picture`
   }
 `;
 
+export const FilterDesktop = styled.div`
+  display: none;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+`;
+
 export const ButtonFilter = styled.button`
   cursor: pointer;
   display: flex;
@@ -59,4 +68,13 @@ export const ArrowIcon = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 16px;
+`;
+
+export const FilterContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+  max-height: ${({ $isvisible }) => ($isvisible ? '443px' : '0')};
+  transition: max-height 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
 `;

@@ -4,6 +4,8 @@ import {
   Banner,
   ButtonFilter,
   Container,
+  FilterContainer,
+  FilterDesktop,
 } from './RecipesPage.styled';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +21,7 @@ import bannerDesktop from '../../images/filter_banner_desktop.jpg';
 import bannerDesktop_2x from '../../images/filter_banner_desktop2x.jpg';
 import arrowUp from '../../images/arrow_up_icon.svg';
 import arrowDown from '../../images/arrow_down-icon.svg';
+import { Filter } from 'components/Filter/Filter';
 
 export const RecipesPage = () => {
   const dispatch = useDispatch();
@@ -30,6 +33,7 @@ export const RecipesPage = () => {
   useEffect(() => {
     // dispatch(getRecipesList());
     dispatch(getRecipesListByQuery(query));
+    // setIsFilterVisible(true);
   }, [dispatch, query]);
 
   const isLoadMore = recipes.length < totalHits;
@@ -40,7 +44,7 @@ export const RecipesPage = () => {
 
   return (
     <Container>
-      <div>
+      <FilterDesktop>
         {query !== 'popular' && (
           <ButtonFilter type="button" onClick={toggleFilterVisibility}>
             <ArrowIcon
@@ -50,7 +54,7 @@ export const RecipesPage = () => {
             {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
           </ButtonFilter>
         )}
-        <div>
+        {query === 'popular' && (
           <Banner>
             <source
               srcSet={`${bannerDesktop_2x} 2x`}
@@ -58,8 +62,11 @@ export const RecipesPage = () => {
             />
             <img src={bannerDesktop} alt="banner" />
           </Banner>
-        </div>
-      </div>
+        )}
+        <FilterContainer $isvisible={isFilterVisible}>
+          <Filter />
+        </FilterContainer>
+      </FilterDesktop>
       <RecipesList />
       {isLoadMore ? <LoadMoreBtn /> : null}
       <Footer />
