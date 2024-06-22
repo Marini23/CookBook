@@ -9,17 +9,12 @@ export const FormFilter = styled.form`
 `;
 
 export const FilterColums = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr); */
-  /* column-gap: 160px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* column-gap: 160px; */
 `;
 
 export const Container = styled.div`
-  /* width: 86px; */
   display: flex;
   flex-direction: column;
   align-items: start;
