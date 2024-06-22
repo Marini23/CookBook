@@ -21,7 +21,7 @@ import bannerDesktop from '../../images/filter_banner_desktop.jpg';
 import bannerDesktop_2x from '../../images/filter_banner_desktop2x.jpg';
 import arrowUp from '../../images/arrow_up_icon.svg';
 import arrowDown from '../../images/arrow_down-icon.svg';
-import { Filter } from 'components/Filter/Filter';
+import { Filter } from 'components/Filter/FilterDesktop';
 
 export const RecipesPage = () => {
   const dispatch = useDispatch();
