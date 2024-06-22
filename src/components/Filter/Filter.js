@@ -19,7 +19,7 @@ import {
   WrapCheckboxDiet,
   WrapFilter,
   WrapItem,
-} from './Filter.styled';
+} from './Filter.styled.js';
 import clearIcon from '../../images/clear_filter_icon.svg';
 
 export const Filter = () => {
