@@ -31,9 +31,10 @@ export const RecipesPage = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
 
   useEffect(() => {
-    // dispatch(getRecipesList());
     dispatch(getRecipesListByQuery(query));
-    // setIsFilterVisible(true);
+    if (query !== 'popular') {
+      setIsFilterVisible(true);
+    }
   }, [dispatch, query]);
 
   const isLoadMore = recipes.length < totalHits;
