@@ -21,6 +21,8 @@ export const selectQuery = state => state.recipes.query;
 
 export const selectFilters = state => state.filter;
 
+export const selectFavoritesRecipes = state => state.favorites.favoritesList;
+
 export const selectUserFirstName = createSelector([selectUser], user =>
   getFirstName(user.name)
 );
