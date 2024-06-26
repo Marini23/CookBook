@@ -18,7 +18,13 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: `auth`,
   initialState: {
-    user: { name: null, email: null, providerData: null, photo: null },
+    user: {
+      name: null,
+      email: null,
+      providerData: null,
+      photo: null,
+      id: null,
+    },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -61,6 +67,7 @@ const authSlice = createSlice({
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.providerData = action.payload.providerData;
+        state.user.id = action.payload.id;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;

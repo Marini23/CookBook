@@ -3,6 +3,8 @@ import { getFirstName } from 'utils';
 
 export const selectUser = state => state.auth.user;
 
+export const selectUserId = state => state.auth.user.id;
+
 export const selectUserName = state => state.auth.user.name;
 
 export const selectErrorAuth = state => state.auth.error;

@@ -156,6 +156,7 @@ export const fetchCurrentUser = createAsyncThunk(
             const serializedUser = {
               name: user.displayName,
               email: user.email,
+              id: user.uid,
               providerData: user.providerData,
               accessToken: user.accessToken,
             };

@@ -1,59 +1,52 @@
-import { db } from '../../firebase';
-import { ref, remove, set } from 'firebase/database';
+import { auth, db } from '../../firebase';
+import { child, get, onValue, push, ref, remove, set } from 'firebase/database';
 // import toast from 'react-hot-toast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const writeFavoriteRecipe = selectedRecipe => {
-  console.log(selectedRecipe);
-  const recipeId = selectedRecipe.recipe._links.href;
-  set(ref(db, 'favoritesRecipes/' + recipeId), {
-    // username: user.displayName,
-    // email: user.email,
-    // providerData: user.providerData,
+export const addFavorite = (userId, favoriteData) => {
+  console.log('add favorite');
+  // Create a reference to the "favorites" node for a specific user
+  const favoritesRef = ref(db, 'favorites/' + userId);
+
+  // Push a new favorite, which generates a unique ID
+  const newFavoriteRef = push(favoritesRef);
+  console.log(favoriteData);
+
+  // Set the data at the new reference
+  set(newFavoriteRef, {
+    label: favoriteData.recipe.label,
+    image: favoriteData.recipe.image,
+    calories: favoriteData.recipe.calories,
+    ingredientLines: favoriteData.recipe.ingredientLines,
+    ingredients: favoriteData.recipe.ingredients,
+    totalTime: favoriteData.recipe.totalTime,
+    url: favoriteData.recipe.url,
+    yield: favoriteData.recipe.yield,
+    href: favoriteData._links.self.href,
   })
     .then(() => {
-      console.log('Data written successfully.');
+      console.log('Favorite added successfully with ID:', newFavoriteRef.key);
     })
     .catch(error => {
-      console.error('Error writing data:', error);
+      console.error('Error adding favorite:', error);
     });
 };
 
-export const removeFavoriteRecipe = selectedRecipe => {
-  console.log(selectedRecipe);
-  const recipeId = selectedRecipe.recipe._links.href;
-  remove(ref(db, 'favoritesRecipes/' + recipeId), {
-    // username: user.displayName,
-    // email: user.email,
-    // providerData: user.providerData,
-  })
-    .then(() => {
-      console.log('Data deleted successfully.');
-    })
-    .catch(error => {
-      console.error('Error writing data:', error);
-    });
-};
-
-export const addFavorite = createAsyncThunk(
-  'auth/register',
-  async (selectedRecipe, thunkAPI) => {
-    try {
-      writeFavoriteRecipe(selectedRecipe);
-      console.log(selectedRecipe);
-      //   const serializedRecipe = {
-      //     name: user.displayName,
-      //     email: user.email,
-      //     providerData: user.providerData,
-      //     accessToken: user.stsTokenManager.accessToken,
-      //   };
-      //   return serializedRecipe;
-    } catch (error) {
-      const serializedError = {
-        code: error.code,
-        message: error.message,
-      };
-      return thunkAPI.rejectWithValue(serializedError);
+const getFavorites = userId => {
+  const favoritesRef = ref(db, `favorites/${userId}`);
+  onValue(
+    favoritesRef,
+    snapshot => {
+      if (snapshot.exists()) {
+        const favorites = snapshot.val();
+        console.log(favorites);
+        // Do something with the favorites, such as updating the UI
+      } else {
+        console.log('No data available');
+      }
+    },
+    {
+      onlyOnce: false, // Set to true if you only want to fetch the data once
     }
-  }
-);
+  );
+};

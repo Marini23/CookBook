@@ -5,59 +5,75 @@ import {
   Label,
   ListItem,
   StyledHeartIcon,
+  StyledHeartIconFavorite,
 } from './RecipeCard.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFavoritesRecipes,
   selectFilteredRecipes,
+  selectUserId,
 } from '../../redux/selectors';
-import { addFavorite } from '../../redux/favoritesSlice/favoritesOperations';
+import {
+  addFavoriteRecipe,
+  deleteFavorites,
+} from '../../redux/favoritesSlice/favoretesSlice';
+import {
+  addFavorite,
+  addFavoriteRecipeLast,
+  addFavoriteTest,
+  addTest,
+  writeFavoriteItem,
+} from '../../redux/favoritesSlice/favoritesOperations';
 
 export const RecipeCard = recipe => {
   const filteredRecipes = useSelector(selectFilteredRecipes);
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
+  const userId = useSelector(selectUserId);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const dispatch = useDispatch();
-
-  // const handleFavoriteRecipe = id => {
-  //   const selectRecipe = filteredRecipes.find(
-  //     item => item.recipe._links.href === recipe.recipe._links.href
-  //   );
-  //   setSelectedRecipe(selectRecipe);
-  // };
-
+  const isFavorite = favoritesRecipes.some(
+    favItem => favItem._links.self.href === recipe.recipe._links.self.href
+  );
   // const toggleFavorite = () => {
+  //   const selectRecipe = filteredRecipes.find(item => {
+  //     return item._links.self.href === recipe.recipe._links.self.href;
+  //   });
+  //   setSelectedRecipe(selectRecipe);
+  //   console.log(isFavorite);
+  //   console.log(selectRecipe);
   //   if (isFavorite) {
-  //     dispatch(deleteFavorites(recipe));
+  //     console.log('favorite - yes');
+  //     // delete from favoritesRecipes
+  //     dispatch(deleteFavorites(selectRecipe));
   //   } else {
-  //     dispatch(addFavorites(recipe));
+  //     console.log('favorite - no');
+  //     console.log(selectRecipe);
+  //     // dispatch(addFavoriteRecipe(selectRecipe));
+  //     dispatch(addFavorite(userId, selectedRecipe));
+  //     const clickedItem = filteredRecipes.find(
+  //       item => item._links.href === recipe.recipe._links.self.href
+  //     );
+  //     setSelectedRecipe(clickedItem);
+  //     if (clickedItem) {
+  //       console.log('favorite - yes-yes');
+  //       // add in favoritesRecipes
+  //       console.log(clickedItem);
+  //       // dispatch(addFavoriteRecipe(selectedRecipe));
+  //       dispatch(addFavorite(selectedRecipe));
+  //     }
   //   }
   // };
 
   const toggleFavorite = () => {
-    const isFavorite = favoritesRecipes.some(
-      favItem => recipe._links.href === recipe.recipe._links.href
-    );
-    const selectRecipe = filteredRecipes.find(
-      item => item.recipe._links.href === recipe.recipe._links.href
-    );
+    const selectRecipe = filteredRecipes.find(item => {
+      return item._links.self.href === recipe.recipe._links.self.href;
+    });
     setSelectedRecipe(selectRecipe);
-    console.log(isFavorite);
     if (isFavorite) {
-      // setFavList(prevFavList =>
-      //   prevFavList.filter(item => item.recipe._links.href !== id)
-      // );
-      // delete from favoritesRecipes
+      // delete favorite
     } else {
-      const clickedItem = filteredRecipes.find(
-        item => item.recipe._links.href === recipe.recipe._links.href
-      );
-      setSelectedRecipe(selectRecipe);
-      if (clickedItem) {
-        // setFavList(prevFavList => [...prevFavList, clickedItem]);
-        // add in favoritesRecipes
-        dispatch(addFavorite(selectedRecipe));
-      }
+      //  add favorite
+      addFavorite(userId, selectRecipe);
     }
   };
   return (
@@ -68,8 +84,12 @@ export const RecipeCard = recipe => {
           alt={recipe.recipe.recipe.label}
         />
         <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
-        <HeartIcon onClick={toggleFavorite}>
-          <StyledHeartIcon />
+        <HeartIcon>
+          {isFavorite ? (
+            <StyledHeartIconFavorite onClick={toggleFavorite} />
+          ) : (
+            <StyledHeartIcon onClick={toggleFavorite} />
+          )}
         </HeartIcon>
       </ListItem>
     </>
