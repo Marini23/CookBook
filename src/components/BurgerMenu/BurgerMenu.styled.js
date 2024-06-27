@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.whiteText};
@@ -36,7 +37,7 @@ export const Img = styled.img`
   height: 32px;
 `;
 
-export const Link = styled.a`
+export const Link = styled(NavLink)`
   text-decoration: none;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.whiteText};

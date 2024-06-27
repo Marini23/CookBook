@@ -12,7 +12,6 @@ export const RecipesList = () => {
   const totalHits = useSelector(selectTotalHits);
   const query = useSelector(selectQuery);
   const filteredRecipes = useSelector(selectFilteredRecipes);
-  console.log(filteredRecipes);
 
   const isPopular = query === `popular`;
 

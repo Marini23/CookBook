@@ -249,7 +249,7 @@ export const BurgerMenu = ({ windowWidth }) => {
               <Link
                 onClick={() => handleCloseMenu()}
                 className="menu-item"
-                href="/favorites"
+                to="/favorites"
               >
                 FAVORITES
               </Link>

@@ -6,6 +6,7 @@ import { fetchCurrentUser } from '../redux/authSlice/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectIsRefreshing } from '../redux/selectors';
 import { RecipesPage } from 'pages/RecipesPage/ResipesPage';
+import { FavoritesPage } from 'pages/FavoritesPage/FavoritesPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const App = () => {
         navigate('/');
       }
     }
-  }, [isLoggedIn, isRefreshing, navigate, isUserStatusChecked]);
+  }, [isUserStatusChecked, isRefreshing, isLoggedIn, navigate]);
 
   if (isRefreshing || !isUserStatusChecked) {
     return <b>Refreshing user...</b>;
@@ -38,7 +39,7 @@ export const App = () => {
         <Route path="/" element={<Layuot />}>
           <Route index element={<HomePage />} />
           <Route path="/recipes" element={<RecipesPage />} />
-          <Route path="/favorites" element={<div>Favorites</div>} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/shoppinglist" element={<div>Shopping List</div>} />
           <Route path="*" element={<HomePage />} />
         </Route>
