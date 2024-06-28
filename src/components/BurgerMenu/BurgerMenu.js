@@ -239,7 +239,7 @@ export const BurgerMenu = ({ windowWidth }) => {
               <Link
                 onClick={() => handleCloseMenu()}
                 className="menu-item"
-                href="/CookBook/recipes"
+                to="/recipes"
               >
                 RECIPES
               </Link>
@@ -259,7 +259,7 @@ export const BurgerMenu = ({ windowWidth }) => {
               <Link
                 onClick={() => handleCloseMenu()}
                 className="menu-item"
-                href="/shoppinglist"
+                to="/shoppinglist"
               >
                 SHOPPING LIST
               </Link>

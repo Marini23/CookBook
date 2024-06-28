@@ -1,17 +1,17 @@
 import { HomePage } from 'pages/HomePage/HomePage';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Layuot } from './Layout/Layout';
 import { useEffect, useState } from 'react';
 import { fetchCurrentUser } from '../redux/authSlice/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn, selectIsRefreshing } from '../redux/selectors';
+import { selectIsRefreshing } from '../redux/selectors';
 import { RecipesPage } from 'pages/RecipesPage/ResipesPage';
 import { FavoritesPage } from 'pages/FavoritesPage/FavoritesPage';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const navigate = useNavigate();
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
   const [isUserStatusChecked, setIsUserStatusChecked] = useState(false);
 
@@ -19,15 +19,15 @@ export const App = () => {
     dispatch(fetchCurrentUser()).then(() => setIsUserStatusChecked(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isUserStatusChecked && !isRefreshing) {
-      if (isLoggedIn) {
-        navigate('/recipes');
-      } else {
-        navigate('/');
-      }
-    }
-  }, [isUserStatusChecked, isRefreshing, isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (isUserStatusChecked && !isRefreshing) {
+  //     if (isLoggedIn) {
+  //       navigate('/recipes');
+  //     } else {
+  //       navigate('/');
+  //     }
+  //   }
+  // }, [isUserStatusChecked, isRefreshing, isLoggedIn, navigate]);
 
   if (isRefreshing || !isUserStatusChecked) {
     return <b>Refreshing user...</b>;
