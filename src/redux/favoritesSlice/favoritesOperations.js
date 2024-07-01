@@ -11,30 +11,38 @@ const addFavorite = (userId, favoriteData) => {
     console.log(favoriteData);
 
     set(newFavoriteRef, {
-      id: newFavoriteRef.key,
-      label: favoriteData.recipe.label,
-      image: favoriteData.recipe.image,
-      calories: favoriteData.recipe.calories,
-      ingredientLines: favoriteData.recipe.ingredientLines,
-      ingredients: favoriteData.recipe.ingredients,
-      totalTime: favoriteData.recipe.totalTime,
-      url: favoriteData.recipe.url,
-      yield: favoriteData.recipe.yield,
-      href: favoriteData._links.self.href,
+      recipe: {
+        id: newFavoriteRef.key,
+        label: favoriteData.recipe.label,
+        image: favoriteData.recipe.image,
+        calories: favoriteData.recipe.calories,
+        ingredientLines: favoriteData.recipe.ingredientLines,
+        ingredients: favoriteData.recipe.ingredients,
+        totalTime: favoriteData.recipe.totalTime,
+        url: favoriteData.recipe.url,
+        yield: favoriteData.recipe.yield,
+      },
+      _links: {
+        self: { href: favoriteData._links.self.href },
+      },
     })
       .then(() => {
         console.log('Favorite added successfully with ID:', newFavoriteRef.key);
         resolve({
-          id: newFavoriteRef.key,
-          label: favoriteData.recipe.label,
-          image: favoriteData.recipe.image,
-          calories: favoriteData.recipe.calories,
-          ingredientLines: favoriteData.recipe.ingredientLines,
-          ingredients: favoriteData.recipe.ingredients,
-          totalTime: favoriteData.recipe.totalTime,
-          url: favoriteData.recipe.url,
-          yield: favoriteData.recipe.yield,
-          href: favoriteData._links.self.href,
+          recipe: {
+            id: newFavoriteRef.key,
+            label: favoriteData.recipe.label,
+            image: favoriteData.recipe.image,
+            calories: favoriteData.recipe.calories,
+            ingredientLines: favoriteData.recipe.ingredientLines,
+            ingredients: favoriteData.recipe.ingredients,
+            totalTime: favoriteData.recipe.totalTime,
+            url: favoriteData.recipe.url,
+            yield: favoriteData.recipe.yield,
+          },
+          _links: {
+            self: { href: favoriteData._links.self.href },
+          },
         });
       })
       .catch(error => {

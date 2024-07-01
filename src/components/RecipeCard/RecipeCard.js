@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   HeartIcon,
   Img,
@@ -24,24 +24,24 @@ export const RecipeCard = recipe => {
   const filteredRecipes = useSelector(selectFilteredRecipes);
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const userId = useSelector(selectUserId);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  // const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   useEffect(() => {}, [favoritesRecipes]);
 
   const isFavorite = favoritesRecipes.some(favItem => {
-    return favItem.href === recipe.recipe._links.self.href;
+    return favItem._links.self.href === recipe.recipe._links.self.href;
   });
 
   const toggleFavorite = () => {
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipe.recipe._links.self.href;
     });
-    setSelectedRecipe(selectRecipe);
+    // setSelectedRecipe(selectRecipe);
     if (isFavorite) {
-      console.log(selectRecipe);
       const recipeId = favoritesRecipes.find(item => {
-        return item.href === recipe.recipe._links.self.href;
-      }).id;
+        return item._links.self.href === recipe.recipe._links.self.href;
+      }).recipe.id;
+      console.log(recipeId);
       // delete favorite
       dispatch(deleteFavoriteItem({ userId, recipeId }));
     } else {

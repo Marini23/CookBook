@@ -60,7 +60,7 @@ const favoritesSlice = createSlice({
         state.error = null;
         console.log(action.payload);
         const index = state.favoritesList.findIndex(
-          item => item.id === action.payload.id
+          item => item.id === action.payload
         );
         state.favoritesList.splice(index, 1);
       }),

@@ -17,3 +17,12 @@ export const Container = styled.div`
     padding-top: 159px;
   }
 `;
+
+export const ImgAddRecipe = styled.img`
+  width: 366px;
+  height: 261px;
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-bottom: 32px;
+`;
