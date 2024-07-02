@@ -8,7 +8,6 @@ import { RecipeCard } from 'components/RecipeCard/RecipeCard';
 import { Container, List, Title, TitleAfterSearch } from './RecipesList.styled';
 
 export const RecipesList = () => {
-  // const recipes = useSelector(selectResipes);
   const totalHits = useSelector(selectTotalHits);
   const query = useSelector(selectQuery);
   const filteredRecipes = useSelector(selectFilteredRecipes);

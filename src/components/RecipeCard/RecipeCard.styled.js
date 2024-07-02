@@ -2,6 +2,7 @@ import styled from 'styled-components';
 // import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa6';
 import { FaHeart } from 'react-icons/fa6';
+import { NavLink } from 'react-router-dom';
 
 export const ListItem = styled.li`
   position: relative;
@@ -72,4 +73,13 @@ export const StyledHeartIconFavorite = styled(FaHeart)`
   color: ${({ theme }) => theme.colors.primaryOrange};
   width: 20px;
   height: 20px;
+`;
+
+export const StyledLinkList = styled(NavLink)`
+  cursor: pointer;
+  color: black;
+
+  &.active {
+    color: #ff8c00;
+  }
 `;

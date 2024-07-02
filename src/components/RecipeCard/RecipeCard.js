@@ -6,6 +6,7 @@ import {
   ListItem,
   StyledHeartIcon,
   StyledHeartIconFavorite,
+  StyledLinkList,
 } from './RecipeCard.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -18,9 +19,11 @@ import {
   addFavoriteItem,
   deleteFavoriteItem,
 } from '../../redux/favoritesSlice/favoritesOperations';
+import { useLocation } from 'react-router-dom';
 
 export const RecipeCard = recipe => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const filteredRecipes = useSelector(selectFilteredRecipes);
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const userId = useSelector(selectUserId);
@@ -31,6 +34,17 @@ export const RecipeCard = recipe => {
   const isFavorite = favoritesRecipes.some(favItem => {
     return favItem._links.self.href === recipe.recipe._links.self.href;
   });
+
+  const url = recipe.recipe._links.self.href;
+
+  const getRecipeIdFromUrl = url => {
+    const urlObj = new URL(url);
+    const pathSegments = urlObj.pathname.split('/');
+    const recipeId = pathSegments[pathSegments.length - 1];
+    return recipeId;
+  };
+
+  const recipeId = getRecipeIdFromUrl(url);
 
   const toggleFavorite = () => {
     const selectRecipe = filteredRecipes.find(item => {
@@ -52,18 +66,20 @@ export const RecipeCard = recipe => {
   return (
     <>
       <ListItem>
-        <Img
-          src={recipe.recipe.recipe.image}
-          alt={recipe.recipe.recipe.label}
-        />
-        <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
-        <HeartIcon>
-          {isFavorite ? (
-            <StyledHeartIconFavorite onClick={toggleFavorite} />
-          ) : (
-            <StyledHeartIcon onClick={toggleFavorite} />
-          )}
-        </HeartIcon>
+        <StyledLinkList to={`/recipes/${recipeId}`} state={{ from: location }}>
+          <Img
+            src={recipe.recipe.recipe.image}
+            alt={recipe.recipe.recipe.label}
+          />
+          <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
+          <HeartIcon>
+            {isFavorite ? (
+              <StyledHeartIconFavorite onClick={toggleFavorite} />
+            ) : (
+              <StyledHeartIcon onClick={toggleFavorite} />
+            )}
+          </HeartIcon>
+        </StyledLinkList>
       </ListItem>
     </>
   );

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../redux/selectors';
 import { RecipesPage } from 'pages/RecipesPage/ResipesPage';
 import { FavoritesPage } from 'pages/FavoritesPage/FavoritesPage';
+import { RecipeInfoPage } from 'pages/RecipeInfoPage/RecipeInfoPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route path="/recipes" element={<RecipesPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/recipes/:recipeId" element={<RecipeInfoPage />} />
           <Route path="/shoppinglist" element={<div>Shopping List</div>} />
           <Route path="*" element={<HomePage />} />
         </Route>
