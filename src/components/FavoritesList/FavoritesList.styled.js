@@ -37,10 +37,46 @@ export const List = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 32px;
+  margin-bottom: 32px;
   @media screen and (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
     row-gap: 48px;
+    margin-bottom: 88px;
+  }
+`;
+
+export const ItemAddRecipe = styled.li`
+  width: 366px;
+  height: 261px;
+  border-radius: 4px;
+  margin: 0 auto;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  padding-top: 87px;
+  padding-bottom: 34px;
+  color: ${({ theme }) => theme.colors.grey};
+  @media screen and (min-width: 1440px) {
+    width: 416px;
+    height: 444px;
+    padding-top: 140px;
+    padding-bottom: 131px;
+  }
+`;
+
+export const IconPlus = styled.img`
+  width: 88px;
+  height: 88px;
+  margin-bottom: 16px;
+  @media screen and (min-width: 1440px) {
+    width: 120px;
+    height: 120px;
   }
 `;

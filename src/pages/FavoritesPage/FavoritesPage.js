@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavoritesList } from '../../redux/favoritesSlice/favoritesOperations';
 import { selectUserId } from '../../redux/selectors';
-import { Container, ImgAddRecipe } from './FavoritesPage.styled';
+import { Container } from './FavoritesPage.styled';
 import { FavoritesList } from 'components/FavoritesList/FavoritesList';
 import { Footer } from 'components/Footer/Footer';
-import addRecipeImg from '../../images/diskover_recipes.jpg';
-
 export const FavoritesPage = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
 
@@ -15,11 +14,21 @@ export const FavoritesPage = () => {
     dispatch(getFavoritesList(userId));
   }, [dispatch, userId]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <>
       <Container>
-        <FavoritesList />
-        <ImgAddRecipe src={addRecipeImg} alt="recipe search" />
+        <FavoritesList windowWidth={windowWidth} />
       </Container>
       <Footer />
     </>
