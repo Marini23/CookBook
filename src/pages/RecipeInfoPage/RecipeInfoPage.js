@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Container } from './RecipeInfoPage.styled';
 import { useEffect, useState } from 'react';
 import { getRecipeInfo } from '../../redux/recipesSlice/recipesOperations';
+import { RecipeInfo } from 'components/RecipeInfo/RecipeInfo';
 
 export const RecipeInfoPage = () => {
   const { recipeId } = useParams();
@@ -17,6 +18,16 @@ export const RecipeInfoPage = () => {
         console.error('Error:', error);
       });
   }, [recipeId]);
+
+  useEffect(() => {
+    console.log('Updated recipeInfo:', recipeInfo);
+  }, [recipeInfo]);
+
   console.log(recipeInfo);
-  return <Container>Recipe info</Container>;
+  return (
+    <Container>
+      {' '}
+      {recipeInfo && <RecipeInfo recipeInfo={recipeInfo} />}
+    </Container>
+  );
 };
