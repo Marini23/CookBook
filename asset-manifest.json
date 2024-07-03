@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CookBook/static/css/main.af78b1ea.css",
-    "main.js": "/CookBook/static/js/main.3c699c47.js",
+    "main.js": "/CookBook/static/js/main.f2507111.js",
     "static/media/bg_home_desktop.jpg": "/CookBook/static/media/bg_home_desktop.1d4dfb254ac8589604f0.jpg",
     "static/media/bg_burgerMenu_desktop.jpg": "/CookBook/static/media/bg_burgerMenu_desktop.170ed96e62f094f21ba2.jpg",
     "static/media/filter_banner_desktop2x.jpg": "/CookBook/static/media/filter_banner_desktop2x.04a62a2100baa4395142.jpg",
@@ -42,17 +42,19 @@
     "static/media/basket.svg": "/CookBook/static/media/basket.2615a1c80a4803aaf792a39c01f8646d.svg",
     "static/media/house.svg": "/CookBook/static/media/house.8711476f4f64a82169cda5d2c3acf2fb.svg",
     "static/media/dinner.svg": "/CookBook/static/media/dinner.5b72d0b915dbbf31c4a10038a47b1136.svg",
+    "static/media/arrow_back.svg": "/CookBook/static/media/arrow_back.e3b5a955af1366ee4ab5b7d0be7f6b03.svg",
     "static/media/arrow_up_icon.svg": "/CookBook/static/media/arrow_up_icon.d1d493830a974aa1623ac02fec971e29.svg",
     "static/media/arrow_down-icon.svg": "/CookBook/static/media/arrow_down-icon.8d92f26114038aa219201f90bd8d8c64.svg",
+    "static/media/plus_icon.svg": "/CookBook/static/media/plus_icon.d33388ef485c67761f4aa254dff966d9.svg",
     "static/media/clear_filter_icon.svg": "/CookBook/static/media/clear_filter_icon.677ad2986990c1f47c4a387a04dc4d96.svg",
     "static/media/icon_close.svg": "/CookBook/static/media/icon_close.2a45a7d56c6a43b729efa5058dee4834.svg",
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/close_icon.svg": "/CookBook/static/media/close_icon.d24ce83e3fa41b1bf2cb89a5d9e9abb2.svg",
     "main.af78b1ea.css.map": "/CookBook/static/css/main.af78b1ea.css.map",
-    "main.3c699c47.js.map": "/CookBook/static/js/main.3c699c47.js.map"
+    "main.f2507111.js.map": "/CookBook/static/js/main.f2507111.js.map"
   },
   "entrypoints": [
     "static/css/main.af78b1ea.css",
-    "static/js/main.3c699c47.js"
+    "static/js/main.f2507111.js"
   ]
 }
