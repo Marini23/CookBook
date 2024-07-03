@@ -33,6 +33,7 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 4px;
   padding: 21px 16px 57px 16px;
   margin: 16px 15px 24px 17px;
 `;
@@ -77,4 +78,102 @@ export const Title = styled.h3`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const DetailsContainer = styled.div`
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 16px 16px 8px 16px;
+  gap: 16px;
+  margin-bottom: 27px;
+`;
+
+export const Item = styled.div`
+  width: 100%;
+  max-width: 76.67px;
+  height: 49px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const Line = styled.div`
+  width: 1px;
+  height: 49px;
+  background-color: #e1e2e3;
+`;
+
+export const TextDetail = styled.p`
+  font-size: 14px;
+  line-height: 20.56px;
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export const TextDiets = styled.p`
+  font-size: 14px;
+  line-height: 20.56px;
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: underline;
+  margin-bottom: 20px;
+`;
+
+export const TitleIngredients = styled.h4`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.56px;
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export const ListIngredients = styled.ul`
+  list-style-type: disc;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const TextIngredients = styled.li`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17.56px;
+  color: ${({ theme }) => theme.colors.black};
+  &::marker {
+    font-size: 8px;
+  }
+`;
+
+export const Link = styled.a`
+  width: 100%;
+  max-width: 358px;
+  margin: 0 auto;
+  height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 20.56px;
+  color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.primaryOrange};
+  border-radius: 4px;
+  margin-bottom: 36px;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: none;
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+  &:active {
+    text-decoration: none;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+
+  @media screen and (min-width: 744px) {
+  }
 `;
