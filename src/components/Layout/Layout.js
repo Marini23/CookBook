@@ -10,8 +10,8 @@ export const Layuot = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div>
-      <Navigation />
       {isLoggedIn && <UserBar />}
+      <Navigation />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

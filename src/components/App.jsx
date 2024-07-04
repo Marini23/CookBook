@@ -8,6 +8,7 @@ import { selectIsRefreshing } from '../redux/selectors';
 import { RecipesPage } from 'pages/RecipesPage/ResipesPage';
 import { FavoritesPage } from 'pages/FavoritesPage/FavoritesPage';
 import { RecipeInfoPage } from 'pages/RecipeInfoPage/RecipeInfoPage';
+import { PrivateRoute } from './PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,24 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layuot />}>
           <Route index element={<HomePage />} />
-          <Route path="/recipes" element={<RecipesPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/recipes/:recipeId" element={<RecipeInfoPage />} />
+          <Route
+            path="/recipes"
+            element={
+              <PrivateRoute redirectTo="/" component={<RecipesPage />} />
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <PrivateRoute redirectTo="/" component={<FavoritesPage />} />
+            }
+          />
+          <Route
+            path="/recipes/:recipeId"
+            element={
+              <PrivateRoute redirectTo="/" component={<RecipeInfoPage />} />
+            }
+          />
           <Route path="/shoppinglist" element={<div>Shopping List</div>} />
           <Route path="*" element={<HomePage />} />
         </Route>

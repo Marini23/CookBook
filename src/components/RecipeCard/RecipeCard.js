@@ -72,14 +72,14 @@ export const RecipeCard = recipe => {
             alt={recipe.recipe.recipe.label}
           />
           <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
-          <HeartIcon>
-            {isFavorite ? (
-              <StyledHeartIconFavorite onClick={toggleFavorite} />
-            ) : (
-              <StyledHeartIcon onClick={toggleFavorite} />
-            )}
-          </HeartIcon>
         </StyledLinkList>
+        <HeartIcon>
+          {isFavorite ? (
+            <StyledHeartIconFavorite onClick={toggleFavorite} />
+          ) : (
+            <StyledHeartIcon onClick={toggleFavorite} />
+          )}
+        </HeartIcon>
       </ListItem>
     </>
   );

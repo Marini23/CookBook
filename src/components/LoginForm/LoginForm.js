@@ -60,6 +60,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
         dispatch(logIn(values))
           .unwrap()
           .then(() => {
+            console.log('Navigating to /recipes');
             navigate('/recipes'); // Redirect to the Recipes page after successful registration
             isClose();
           })
@@ -94,6 +95,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   const handleSignInWithGoogle = () => {
     try {
       dispatch(signInWithGoogle());
+      console.log('Navigating to /recipes');
       // If signInWithGoogle succeeds, you can proceed with the next steps
       navigate('/recipes');
       isClose();
@@ -106,6 +108,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
     try {
       dispatch(signInWithFacebook());
       // If signInWithGoogle succeeds, you can proceed with the next steps
+      console.log('Navigating to /recipes');
       navigate('/recipes');
       isClose();
     } catch (error) {
