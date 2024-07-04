@@ -14,5 +14,6 @@ export const Container = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     padding-top: 159px;
+    background-color: #f8f8f8;
   }
 `;

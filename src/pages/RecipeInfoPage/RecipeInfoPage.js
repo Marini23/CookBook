@@ -3,6 +3,7 @@ import { Container } from './RecipeInfoPage.styled';
 import { useEffect, useState } from 'react';
 import { getRecipeInfo } from '../../redux/recipesSlice/recipesOperations';
 import { RecipeInfo } from 'components/RecipeInfo/RecipeInfo';
+import { Footer } from 'components/Footer/Footer';
 
 export const RecipeInfoPage = () => {
   const { recipeId } = useParams();
@@ -28,6 +29,7 @@ export const RecipeInfoPage = () => {
     <Container>
       {' '}
       {recipeInfo && <RecipeInfo recipeInfo={recipeInfo} />}
+      <Footer />
     </Container>
   );
 };
