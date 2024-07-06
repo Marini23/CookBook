@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal-overlay-default {
   position: fixed;
   z-index: 1200;
   top: 0;
@@ -11,7 +11,7 @@
   }
 }
 
-.modal-content {
+.modal-content-default {
   position: fixed;
   top: 48px; /* Top position set to 48px */
   left: 50%; /* Center horizontally */

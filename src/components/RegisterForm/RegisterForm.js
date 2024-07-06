@@ -26,7 +26,7 @@ import {
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -56,6 +56,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -87,7 +88,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
               toast.error('Something went wrong. Try again later');
             }
           });
-        // isClose();
       }
     },
   });
@@ -107,10 +107,12 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
 
   const handleRegisterWithGoogle = () => {
     try {
-      dispatch(signInWithGoogle());
-      // If signInWithGoogle succeeds, you can proceed with the next steps
-      navigate('/recipes');
-      isClose();
+      dispatch(signInWithGoogle())
+        .unwrap()
+        .then(() => {
+          navigate('/recipes');
+          isClose();
+        });
     } catch (error) {
       // Handle error if signing with Google fails
       console.error('Failed to sign in with Google:', error);
@@ -120,20 +122,26 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
 
   const handleRegisterWithFacebook = () => {
     try {
-      dispatch(signInWithFacebook());
-      // If signInWithGoogle succeeds, you can proceed with the next steps
-      navigate('/recipes');
-      isClose();
+      dispatch(signInWithFacebook())
+        .unwrap()
+        .then(() => {
+          navigate('/recipes');
+          isClose();
+        });
     } catch (error) {
-      // Handle error if signing with Google fails
       console.error('Failed to sign in with Google:', error);
-      // Optionally, you can show an error message or perform other actions
     }
   };
 
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
+        <Link
+          to={{
+            pathname: '/register',
+            state: { background: location },
+          }}
+        ></Link>
         <Title>Register</Title>
         <Input
           id="name"

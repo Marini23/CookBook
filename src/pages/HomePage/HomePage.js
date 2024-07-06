@@ -1,8 +1,8 @@
 import { DescriptionInfo } from 'components/DescriptionInfo/DescriptionInfo';
 import {
   ButtonContainer,
+  ButtonLink,
   Container,
-  Link,
   LoginButton,
   Logo,
   MainInfo,
@@ -21,8 +21,10 @@ import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
@@ -42,6 +44,7 @@ export const HomePage = () => {
 
   const openModalRegister = () => {
     setModalIsOpenRegister(true);
+    navigate('/register');
   };
 
   const closeModalRegister = () => {
@@ -50,6 +53,7 @@ export const HomePage = () => {
 
   const openModalLogin = () => {
     setModalIsOpenLogin(true);
+    navigate('/login');
   };
 
   const closeModalLogin = () => {
@@ -90,9 +94,9 @@ export const HomePage = () => {
                 detailed cooking instructions and a good mood!
               </SecondaryText>
             )}
-            <Link type="button" onClick={openModalRegister}>
+            <ButtonLink type="button" onClick={openModalRegister}>
               Get Started
-            </Link>
+            </ButtonLink>
           </WrapContent>
         </MainInfo>
         <DescriptionInfo />

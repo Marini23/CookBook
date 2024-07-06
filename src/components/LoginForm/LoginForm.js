@@ -8,15 +8,13 @@ import {
   Img,
   Input,
   Line,
-  Link,
   LinkText,
   NetworkBtnSubmit,
   PasswordContainer,
   Text,
   Title,
 } from './LoginForm.styled.js';
-import { FiEyeOff } from 'react-icons/fi';
-import { FiEye } from 'react-icons/fi';
+import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -28,7 +26,7 @@ import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
 import { selectErrorAuth } from '../../redux/selectors.js';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,7 +34,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const formSchema = Yup.object().shape({
   email: Yup.string()
     .matches(emailRegex, {
-      message: `Invalid email.Please enter a valid email in the format: example@example.com.`,
+      message: `Invalid email. Please enter a valid email in the format: example@example.com.`,
     })
     .required('Email is required'),
   password: Yup.string()
@@ -48,7 +46,9 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const errorMessage = useSelector(selectErrorAuth);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -61,7 +61,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
           .unwrap()
           .then(() => {
             console.log('Navigating to /recipes');
-            navigate('/recipes'); // Redirect to the Recipes page after successful registration
+            navigate('/recipes'); // Redirect to the Recipes page after successful login
             isClose();
           })
           .catch(error => {
@@ -73,7 +73,6 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
               toast.error(errorMessage);
             }
           });
-        isClose();
       }
     },
   });
@@ -94,11 +93,12 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
 
   const handleSignInWithGoogle = () => {
     try {
-      dispatch(signInWithGoogle());
-      console.log('Navigating to /recipes');
-      // If signInWithGoogle succeeds, you can proceed with the next steps
-      navigate('/recipes');
-      isClose();
+      dispatch(signInWithGoogle())
+        .unwrap()
+        .then(() => {
+          navigate('/recipes');
+          isClose();
+        });
     } catch (error) {
       toast.error(errorMessage);
     }
@@ -106,11 +106,12 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
 
   const handleSignInWithFacebook = () => {
     try {
-      dispatch(signInWithFacebook());
-      // If signInWithGoogle succeeds, you can proceed with the next steps
-      console.log('Navigating to /recipes');
-      navigate('/recipes');
-      isClose();
+      dispatch(signInWithFacebook())
+        .unwrap()
+        .then(() => {
+          navigate('/recipes');
+          isClose();
+        });
     } catch (error) {
       toast.error(errorMessage);
     }
@@ -119,6 +120,12 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
+        <Link
+          to={{
+            pathname: '/login',
+            state: { background: location },
+          }}
+        ></Link>
         <Title>Log in</Title>
         <Input
           id="email"
@@ -185,20 +192,20 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
         <NetworkBtnSubmit type="button" onClick={handleSignInWithGoogle}>
           {' '}
           <img src={google_icon} alt="Google icon" />
-          Sing up with Google
+          Sign up with Google
         </NetworkBtnSubmit>
         <NetworkBtnSubmit type="button" onClick={handleSignInWithFacebook}>
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
-          Sing up with Facebook
+          Sign up with Facebook
         </NetworkBtnSubmit>
         <NetworkBtnSubmit type="button">
           {' '}
           <img src={apple_icon} alt="Apple icon" />
-          Sing up with Apple
+          Sign up with Apple
         </NetworkBtnSubmit>
         <LinkText>
-          New user? ? <Link onClick={toggleModal}>Create an account </Link>
+          New user? <Link onClick={toggleModal}>Create an account</Link>
         </LinkText>
       </Form>
     </>

@@ -8,9 +8,9 @@
   height: calc(100% - 80px);
   background-color: #ffffff;
   overflow: hidden;
-  /* @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
     background-color: rgba(248, 248, 248, 0.75);
-  } */
+  }
 }
 
 .modal-content {

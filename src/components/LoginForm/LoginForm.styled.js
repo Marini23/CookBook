@@ -9,7 +9,6 @@ export const Form = styled.form`
     margin-top: 0;
   }
   @media screen and (min-width: 1440px) {
-   
   }
 `;
 
@@ -155,7 +154,7 @@ export const LinkText = styled.p`
   }
 `;
 
-export const Link = styled.span`
+export const StyledSpanLink = styled.span`
   text-decoration: none;
   cursor: pointer;
   display: flex;
