@@ -39,6 +39,7 @@ export const register = createAsyncThunk(
       const serializedUser = {
         name: user.displayName,
         email: user.email,
+        id: user.uid,
         providerData: user.providerData,
         accessToken: user.stsTokenManager.accessToken,
       };
@@ -72,9 +73,11 @@ export const logIn = createAsyncThunk(
 
           const user = userCredential.user;
           await updateUser(user);
+          console.log(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
+            id: user.uid,
             accessToken: user.stsTokenManager.accessToken,
           };
           return serializedUser;
@@ -88,10 +91,11 @@ export const logIn = createAsyncThunk(
           const user = userCredential.user;
 
           await updateUser(user);
-
+          console.log(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
+            id: user.uid,
             accessToken: user.stsTokenManager.accessToken,
           };
           return serializedUser;
@@ -102,14 +106,15 @@ export const logIn = createAsyncThunk(
           email,
           password
         );
-
         const user = userCredential.user;
+        console.log(user);
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
           console.log('exist');
           await updateUser(user);
         } else {
+          console.log(user);
           console.log('no exist');
           writeUserData(user);
         }
@@ -117,6 +122,7 @@ export const logIn = createAsyncThunk(
         const serializedUser = {
           name: user.displayName,
           email: user.email,
+          id: user.uid,
           accessToken: user.stsTokenManager.accessToken,
         };
         return serializedUser;
@@ -182,7 +188,7 @@ export const registerWithGoogle = createAsyncThunk(
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-
+      console.log(user);
       // Write user data
       writeUserData(user);
 
@@ -190,6 +196,7 @@ export const registerWithGoogle = createAsyncThunk(
       const serializedUser = {
         name: user.displayName,
         email: user.email,
+        id: user.uid,
         providerData: user.providerData,
         accessToken: user.stsTokenManager.accessToken,
       };
@@ -224,6 +231,7 @@ export const registerWithFacebook = createAsyncThunk(
       const serializedUser = {
         name: user.displayName,
         email: user.email,
+        id: user.uid,
         providerData: user.providerData,
         accessToken: user.stsTokenManager.accessToken,
       };
@@ -248,9 +256,10 @@ export const signInWithGoogle = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       // Get reference to the currently signed-in user
-      const user = auth.currentUser;
-      if (user) {
-        const providerIndex = checkIfLinked(user, 'google.com');
+      const currentUser = auth.currentUser;
+
+      if (currentUser) {
+        const providerIndex = checkIfLinked(currentUser, 'google.com');
 
         if (providerIndex !== -1) {
           // User is already linked with Google, so just sign in
@@ -260,9 +269,11 @@ export const signInWithGoogle = createAsyncThunk(
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
           await updateUser(user);
+          console.log(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
+            id: user.uid,
             providerData: user.providerData,
             accessToken: user.stsTokenManager.accessToken,
           };
@@ -273,9 +284,10 @@ export const signInWithGoogle = createAsyncThunk(
           const credential = GoogleAuthProvider.credentialFromResult(result);
           console.log(credential);
           const user = result.user;
+          console.log(user);
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
-          console.log(user.displayName);
+          console.log(user);
           await updateUser(user);
           const serializedUser = {
             name: user.displayName,
@@ -291,6 +303,7 @@ export const signInWithGoogle = createAsyncThunk(
         let result = await signInWithPopup(auth, googleProvider);
 
         const user = result.user;
+        console.log(user);
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
@@ -298,12 +311,14 @@ export const signInWithGoogle = createAsyncThunk(
           await updateUser(user);
         } else {
           console.log('no exist');
+          console.log(user);
           writeUserData(user);
         }
 
         const serializedUser = {
           name: user.displayName,
           email: user.email,
+          id: user.uid,
           providerData: user.providerData,
           accessToken: user.stsTokenManager.accessToken,
         };
@@ -329,9 +344,9 @@ export const signInWithFacebook = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       // Get reference to the currently signed-in user
-      const user = auth.currentUser;
-      if (user) {
-        const providerIndex = checkIfLinked(user, 'facebook.com');
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const providerIndex = checkIfLinked(currentUser, 'facebook.com');
         console.log(providerIndex);
         if (providerIndex !== -1) {
           const result = await signInWithPopup(auth, facebookProvider);
@@ -343,6 +358,7 @@ export const signInWithFacebook = createAsyncThunk(
           const serializedUser = {
             name: user.displayName,
             email: user.email,
+            id: user.uid,
             providerData: user.providerData,
             accessToken: user.stsTokenManager.accessToken,
           };
@@ -363,6 +379,7 @@ export const signInWithFacebook = createAsyncThunk(
           const serializedUser = {
             name: user.displayName,
             email: user.email,
+            id: user.uid,
             providerData: user.providerData,
             accessToken: user.stsTokenManager.accessToken,
           };
@@ -385,6 +402,7 @@ export const signInWithFacebook = createAsyncThunk(
         const serializedUser = {
           name: user.displayName,
           email: user.email,
+          id: user.uid,
           providerData: user.providerData,
           accessToken: user.stsTokenManager.accessToken,
         };

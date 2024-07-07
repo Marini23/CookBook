@@ -26,7 +26,7 @@ import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
 import { selectErrorAuth } from '../../redux/selectors.js';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,7 +46,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const errorMessage = useSelector(selectErrorAuth);
 
   const formik = useFormik({
@@ -55,24 +55,21 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
       password: '',
     },
     validationSchema: formSchema,
-    onSubmit: values => {
-      if (formik.isValid) {
-        dispatch(logIn(values))
-          .unwrap()
-          .then(() => {
-            console.log('Navigating to /recipes');
-            navigate('/recipes'); // Redirect to the Recipes page after successful login
-            isClose();
-          })
-          .catch(error => {
-            if (error.code === 'auth/invalid-credential') {
-              toast.error(
-                'Invalid credentials provided. Please double-check your email and password.'
-              );
-            } else {
-              toast.error(errorMessage);
-            }
-          });
+    onSubmit: async values => {
+      try {
+        await dispatch(logIn(values)).unwrap();
+        console.log('Login successful, navigating to /recipes');
+        isClose();
+        navigate('/recipes'); // Redirect to the Recipes page after successful login
+      } catch (error) {
+        console.error('Login failed:', error);
+        if (error.code === 'auth/invalid-credential') {
+          toast.error(
+            'Invalid credentials provided. Please double-check your email and password.'
+          );
+        } else {
+          toast.error(errorMessage);
+        }
       }
     },
   });
@@ -91,28 +88,26 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
     isOpenResetPassword();
   };
 
-  const handleSignInWithGoogle = () => {
+  const handleSignInWithGoogle = async () => {
     try {
-      dispatch(signInWithGoogle())
-        .unwrap()
-        .then(() => {
-          navigate('/recipes');
-          isClose();
-        });
+      await dispatch(signInWithGoogle()).unwrap();
+      console.log('Google sign-in successful, navigating to /recipes');
+      navigate('/recipes');
+      isClose();
     } catch (error) {
+      console.error('Google sign-in failed:', error);
       toast.error(errorMessage);
     }
   };
 
-  const handleSignInWithFacebook = () => {
+  const handleSignInWithFacebook = async () => {
     try {
-      dispatch(signInWithFacebook())
-        .unwrap()
-        .then(() => {
-          navigate('/recipes');
-          isClose();
-        });
+      await dispatch(signInWithFacebook()).unwrap();
+      console.log('Facebook sign-in successful, navigating to /recipes');
+      navigate('/recipes');
+      isClose();
     } catch (error) {
+      console.error('Facebook sign-in failed:', error);
       toast.error(errorMessage);
     }
   };
@@ -120,12 +115,12 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
-        <Link
+        {/* <Link
           to={{
             pathname: '/login',
             state: { background: location },
           }}
-        ></Link>
+        ></Link> */}
         <Title>Log in</Title>
         <Input
           id="email"

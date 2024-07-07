@@ -26,7 +26,7 @@ import {
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
 import apple_icon from '../../images/apple.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -56,7 +56,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -136,12 +136,12 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
-        <Link
+        {/* <Link
           to={{
             pathname: '/register',
             state: { background: location },
           }}
-        ></Link>
+        ></Link> */}
         <Title>Register</Title>
         <Input
           id="name"

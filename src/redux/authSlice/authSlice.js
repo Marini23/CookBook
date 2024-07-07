@@ -42,6 +42,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
         state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
@@ -49,10 +50,11 @@ const authSlice = createSlice({
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
         console.log(action.payload);
+        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
         state.user.providerData = action.payload.providerData;
-        state.user.photo = action.payload.providerData.photoURL;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
@@ -75,6 +77,7 @@ const authSlice = createSlice({
       .addCase(registerWithGoogle.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
         state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
@@ -83,14 +86,17 @@ const authSlice = createSlice({
       .addCase(registerWithFacebook.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
         state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(registerWithFacebook.rejected, handleRejected)
       .addCase(signInWithGoogle.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
         state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
@@ -99,6 +105,7 @@ const authSlice = createSlice({
       .addCase(signInWithFacebook.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.id = action.payload.id;
         state.user.providerData = action.payload.providerData;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;

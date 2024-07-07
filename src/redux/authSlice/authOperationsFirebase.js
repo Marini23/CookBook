@@ -9,6 +9,7 @@ export const writeUserData = user => {
   set(ref(db, 'users/' + userId), {
     username: user.displayName,
     email: user.email,
+    userId: user.uid,
     providerData: user.providerData,
   })
     .then(() => {
