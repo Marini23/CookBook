@@ -6,17 +6,29 @@ import { FavoritesPage } from 'pages/FavoritesPage/FavoritesPage';
 import { RecipeInfoPage } from 'pages/RecipeInfoPage/RecipeInfoPage';
 import { PrivateRoute } from './PrivateRoute';
 import { ModalWindow } from './Modal/Modal';
-import { RestrictedRoute } from './RestrictedRoute';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCurrentUser } from '../redux/authSlice/authOperations';
+import { selectIsLoggedIn } from '../redux/selectors';
 
 export const App = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const background = location.state && location.state.background;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+  console.log(isLoggedIn);
+
+
 
   return (
     <div>
       <Routes location={background || location}>
         <Route path="/" element={<Layuot />}>
-          <Route index element={<HomePage />} />
+          <Route index element={isLoggedIn ? <RecipesPage /> : <HomePage />} />
           <Route
             path="/recipes"
             element={
@@ -47,15 +59,7 @@ export const App = () => {
       )}
       {background && (
         <Routes>
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/recipes"
-                component={<ModalWindow />}
-              />
-            }
-          />
+          <Route path="/register" element={<ModalWindow />} />
         </Routes>
       )}
     </div>
