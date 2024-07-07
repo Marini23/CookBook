@@ -184,7 +184,10 @@ export const BurgerMenu = ({ windowWidth }) => {
       overflow: 'hidden',
     },
     bmMenu: {
-      height: '100vh', //add
+      display: 'flex', // Flex display for the menu container
+      flexDirection: 'column', // Column direction
+      height: '100vh', // Full viewport height
+      overflow: 'hidden',
       backgroundColor: 'rgba(22, 22, 22, 0.8)',
       backgroundImage: bgImage,
       backgroundSize: 'cover',
@@ -195,12 +198,13 @@ export const BurgerMenu = ({ windowWidth }) => {
       display: 'flex',
       flexDirection: 'column',
       marginTop: '128px',
-      height: '100vh', //add
+      flexGrow: 1,
     },
     bmItem: {
       display: 'flex',
       flexDirection: 'column',
       gap: '48px',
+      flexGrow: 1,
     },
   };
   return (
