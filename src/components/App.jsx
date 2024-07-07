@@ -20,9 +20,6 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-  console.log(isLoggedIn);
-
-
 
   return (
     <div>

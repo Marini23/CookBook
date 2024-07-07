@@ -75,9 +75,15 @@ export const RecipeCard = recipe => {
         </StyledLinkList>
         <HeartIcon>
           {isFavorite ? (
-            <StyledHeartIconFavorite onClick={toggleFavorite} />
+            <StyledHeartIconFavorite
+              onClick={toggleFavorite}
+              onTouchStart={toggleFavorite}
+            />
           ) : (
-            <StyledHeartIcon onClick={toggleFavorite} />
+            <StyledHeartIcon
+              onClick={toggleFavorite}
+              onTouchStart={toggleFavorite}
+            />
           )}
         </HeartIcon>
       </ListItem>

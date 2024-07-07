@@ -26,8 +26,10 @@ import { LoginForm } from 'components/LoginForm/LoginForm';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
 import './BurgerMenu.css';
+import { useNavigate } from 'react-router-dom';
 
 export const BurgerMenu = ({ windowWidth }) => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
@@ -110,6 +112,7 @@ export const BurgerMenu = ({ windowWidth }) => {
 
   const openModalRegister = () => {
     setModalIsOpenRegister(true);
+    navigate('/register');
   };
 
   const closeModalRegister = () => {
@@ -118,6 +121,7 @@ export const BurgerMenu = ({ windowWidth }) => {
 
   const openModalLogin = () => {
     setModalIsOpenLogin(true);
+    navigate('/login');
   };
 
   const closeModalLogin = () => {
@@ -179,6 +183,8 @@ export const BurgerMenu = ({ windowWidth }) => {
       right: 0,
     },
     bmMenu: {
+      height: '100%', //add
+      overflowY: 'auto', //add
       backgroundColor: 'rgba(22, 22, 22, 0.8)',
       backgroundImage: bgImage,
       backgroundSize: 'cover',
@@ -189,8 +195,7 @@ export const BurgerMenu = ({ windowWidth }) => {
       display: 'flex',
       flexDirection: 'column',
       marginTop: '128px',
-      // justifyContent: 'center',
-      // alignItems: 'center',
+      height: '100vh', //add
     },
     bmItem: {
       display: 'flex',

@@ -32,8 +32,6 @@ export const UserBar = () => {
     };
   }, []);
 
-  console.log(name);
-
   return (
     <>
       <Header>
