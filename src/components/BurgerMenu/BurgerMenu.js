@@ -181,10 +181,10 @@ export const BurgerMenu = ({ windowWidth }) => {
       width: '100%',
       top: 0,
       right: 0,
+      overflow: 'hidden',
     },
     bmMenu: {
-      height: '100%', //add
-      overflowY: 'auto', //add
+      height: '100vh', //add
       backgroundColor: 'rgba(22, 22, 22, 0.8)',
       backgroundImage: bgImage,
       backgroundSize: 'cover',

@@ -90,12 +90,12 @@ export const RecipeInfo = ({ recipeInfo }) => {
           {isFavorite ? (
             <StyledHeartIconFavorite
               onClick={toggleFavorite}
-              onTouchStart={toggleFavorite}
+              // onTouchStart={toggleFavorite}
             />
           ) : (
             <StyledHeartIcon
               onClick={toggleFavorite}
-              onTouchStart={toggleFavorite}
+              // onTouchStart={toggleFavorite}
             />
           )}
         </StyledHeart>

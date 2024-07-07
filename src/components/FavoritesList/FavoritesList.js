@@ -11,8 +11,9 @@ import {
 import { RecipeCardFavorite } from 'components/RecipeCardFavorite/RecipeCardFavorite';
 import diskoverPlus from '../../images/diskover_plus.svg';
 
-export const FavoritesList = ({ windowWidth }) => {
+export const FavoritesList = () => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
+
   console.log(favoritesRecipes);
 
   return (

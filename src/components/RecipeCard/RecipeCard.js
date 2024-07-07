@@ -77,12 +77,12 @@ export const RecipeCard = recipe => {
           {isFavorite ? (
             <StyledHeartIconFavorite
               onClick={toggleFavorite}
-              onTouchStart={toggleFavorite}
+              // onTouchStart={toggleFavorite}
             />
           ) : (
             <StyledHeartIcon
               onClick={toggleFavorite}
-              onTouchStart={toggleFavorite}
+              // onTouchStart={toggleFavorite}
             />
           )}
         </HeartIcon>
