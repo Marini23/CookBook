@@ -5,11 +5,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const addFavorite = (userId, favoriteData) => {
   return new Promise((resolve, reject) => {
-    console.log('add favorite');
-    console.log('userId:', userId); // Add this line
     const favoritesRef = ref(db, 'favorites/' + userId);
     const newFavoriteRef = push(favoritesRef);
-    console.log(favoriteData);
 
     set(newFavoriteRef, {
       recipe: {
@@ -28,7 +25,6 @@ const addFavorite = (userId, favoriteData) => {
       },
     })
       .then(() => {
-        console.log('Favorite added successfully with ID:', newFavoriteRef.key);
         resolve({
           recipe: {
             id: newFavoriteRef.key,

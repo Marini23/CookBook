@@ -6,7 +6,7 @@ export const Title = styled.h3`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 54px;
+  margin-bottom: 56px;
   font-size: 36px;
   line-height: 36px;
   font-weight: 400;

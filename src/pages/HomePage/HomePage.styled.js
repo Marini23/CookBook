@@ -3,7 +3,7 @@ import bg_mobile from '../../images/bg_home_mobile.jpg';
 import bg_tablet from '../../images/bg_home-tablet.jpg';
 import bg_decktop from '../../images/bg_home_desktop.jpg';
 
-export const Container = styled.section`
+export const Container = styled.main`
   width: 100%;
   max-width: 390px;
   margin: 0 auto;
@@ -16,10 +16,10 @@ export const Container = styled.section`
   }
 `;
 
-export const MainInfo = styled.div`
+export const MainInfo = styled.section`
   width: 100%;
   max-width: 390px;
-  height: 354px;
+  height: 346px;
   background-image: url(${bg_mobile});
   background-repeat: no-repeat;
   background-position: center;
@@ -43,7 +43,7 @@ export const Logo = styled.img`
   position: absolute;
   width: 51px;
   height: 34px;
-  top: 48px;
+  top: 30px;
   left: 16px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
@@ -63,9 +63,9 @@ export const Logo = styled.img`
 
 export const WrapContent = styled.div`
   position: absolute;
-  top: 134px;
+  top: 128px;
   left: 16px;
-  width: 309px;
+  width: 358px;
   height: 126px;
   background-color: rgba(107, 107, 107, 0.5);
   padding: 16px;
@@ -121,7 +121,7 @@ export const SecondaryText = styled.p`
 
 export const ButtonLink = styled.button`
   cursor: pointer;
-  max-width: 200px;
+  width: 200px;
   padding: 8px 44px;
   height: 34px;
   border: none;

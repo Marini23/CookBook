@@ -38,7 +38,7 @@ export const DescriptionInfo = () => {
         <SpanText>COOKING WITH LOVE</SpanText> - is more than a recipe hub. It's
         your culinary companion, making cooking easy and enjoyable. Discover a
         world of flavors, nutrition, and convenience with - where every dish is
-        an adventure.
+        an adventure...
       </Text>
       <InfoBlock>
         <Picture>

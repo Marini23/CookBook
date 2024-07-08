@@ -162,7 +162,7 @@ export const BurgerMenu = ({ windowWidth }) => {
       background: '#ffffff',
     },
     bmIcon: {
-      // background: '#F4C343',
+      fill: '#ffffff',
     },
     bmIconHover: {
       fill: '#F4C343',
@@ -198,13 +198,13 @@ export const BurgerMenu = ({ windowWidth }) => {
       display: 'flex',
       flexDirection: 'column',
       marginTop: '128px',
-      flexGrow: 1,
+      // flexGrow: 1,
     },
     bmItem: {
       display: 'flex',
       flexDirection: 'column',
       gap: '48px',
-      flexGrow: 1,
+      // flexGrow: 1,
     },
   };
   return (

@@ -56,7 +56,6 @@ min-width: 320px;
 max-width: 1440px;
 height: 100vh;
 margin: 0 auto;
-font-size: 100%;
 font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 
     sans-serif;
 -webkit-font-smoothing: antialiased;
