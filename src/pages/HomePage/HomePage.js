@@ -99,7 +99,7 @@ export const HomePage = () => {
             </ButtonLink>
           </WrapContent>
         </MainInfo>
-        <DescriptionInfo />
+        <DescriptionInfo windowWidth={windowWidth} />
       </Container>
       <Footer windowWidth={windowWidth} />
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>

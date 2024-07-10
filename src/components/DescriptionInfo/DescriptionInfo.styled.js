@@ -31,7 +31,6 @@ export const Text = styled.p`
   background-color: ${({ theme }) => theme.colors.secondaryOrange};
   font-size: 12px;
   line-height: 20.56px;
-  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     font-size: 18px;
     padding: 56px 40px;
@@ -48,14 +47,16 @@ export const InfoBlock = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-bottom: 40px;
+  margin-top: 40px;
   @media screen and (min-width: 1440px) {
   }
 `;
 
 export const InfoContainer = styled.div`
-  padding: 8px 16px;
+  height: 195px;
+  padding: 16px 16px 46px 16px;
   background-color: rgba(217, 217, 217, 0.15);
+  /* background-color: #ececec; */
 `;
 
 export const TitleBlock = styled.h4`
@@ -118,5 +119,35 @@ export const Link = styled.button`
     font-size: 20px;
     line-height: 29.38px;
     margin-bottom: 40px;
+  }
+`;
+
+export const MobileLink = styled.button`
+  cursor: pointer;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 358px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  height: 37px;
+  border: none;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.primaryOrange};
+  color: ${({ theme }) => theme.colors.primaryBlackText};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 20.56px;
+  &:hover {
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:active {
+    border: none;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
 `;

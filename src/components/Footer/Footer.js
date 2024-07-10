@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
-// import logo from '../../images/logo_mob_footer.svg';
-import logo from '../../images/new-logo.svg';
-import logo2x from '../../images/logo_2x.png';
+import logo from '../../images/logo_footer.svg';
+import logo2x from '../../images/logo_footer_2x.png';
 import {
   Container,
   FooterText,
