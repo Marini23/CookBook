@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 import bg_mobile from '../../images/bg_home_mobile.jpg';
-import bg_tablet from '../../images/bg_home-tablet.jpg';
+import bg_mobile_2x from '../../images/bg_home_mobile_2x.jpg';
+import bg_mobile_3x from '../../images/bg_home_mobile_3x.jpg';
+import bg_tablet from '../../images/bg_home_tablet.jpg';
+import bg_tablet_2x from '../../images/bg_home_tablet_2x.jpg';
+import bg_tablet_3x from '../../images/bg_home_tablet_3x.jpg';
 import bg_decktop from '../../images/bg_home_desktop.jpg';
+import bg_decktop_2x from '../../images/bg_home_desktop_2x.jpg';
+import bg_decktop_3x from '../../images/bg_home_desktop_3x.jpg';
 
 export const Container = styled.main`
   width: 100%;
   max-width: 390px;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.colors.white};
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
+  @media screen and (min-width: 744px) {
+    max-width: 744px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
@@ -25,17 +31,37 @@ export const MainInfo = styled.section`
   background-position: center;
   background-size: cover;
   position: relative;
-  @media screen and (min-width: 768px) {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(${bg_mobile_2x});
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+    background-image: url(${bg_mobile_3x});
+  }
+  @media screen and (min-width: 744px) {
     background-image: url(${bg_tablet});
-    max-width: 768px;
-    background-size: contain;
-    height: 536px;
+    max-width: 744px;
+    height: 535px;
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(${bg_tablet_2x});
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      background-image: url(${bg_tablet_3x});
+    }
   }
   @media screen and (min-width: 1440px) {
     background-image: url(${bg_decktop});
     background-size: cover;
     max-width: 1440px;
     height: 1024px;
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(${bg_decktop_2x});
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      background-image: url(${bg_decktop_3x});
+    }
   }
 `;
 
@@ -47,10 +73,10 @@ export const Logo = styled.img`
   left: 16px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
-  @media screen and (min-width: 768px) {
-    width: 92px;
-    height: 60px;
-    top: 16px;
+  @media screen and (min-width: 744px) {
+    width: 56px;
+    height: 37px;
+    top: 30px;
     left: 40px;
   }
   @media screen and (min-width: 1440px) {
@@ -69,12 +95,12 @@ export const WrapContent = styled.div`
   height: 126px;
   background-color: rgba(107, 107, 107, 0.5);
   padding: 16px;
-  @media screen and (min-width: 768px) {
-    width: 496px;
-    height: 220px;
-    top: 178px;
+  @media screen and (min-width: 744px) {
+    width: 664px;
+    height: 300px;
+    top: 155px;
     left: 40px;
-    padding: 32px 20px;
+    padding: 40px;
   }
   @media screen and (min-width: 1440px) {
     width: 942px;
@@ -90,10 +116,10 @@ export const Text = styled.p`
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 16px;
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-    line-height: 26px;
-    margin-bottom: 28px;
+  @media screen and (min-width: 744px) {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 18px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 36px;
@@ -103,18 +129,16 @@ export const Text = styled.p`
 `;
 
 export const SecondaryText = styled.p`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 16px;
-  line-height: 24px;
-  margin-bottom: 28px;
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 744px) {
+    height: 60px;
     color: ${({ theme }) => theme.colors.white};
     font-size: 18px;
     line-height: 26.44px;
+    margin-bottom: 30px;
+  }
+  @media screen and (min-width: 1440px) {
+    /* font-size: 18px;
+    line-height: 26.44px; */
     margin-bottom: 32px;
   }
 `;
@@ -145,6 +169,12 @@ export const ButtonLink = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
+  @media screen and (min-width: 744px) {
+    width: 305px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 23.5px;
+  }
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-wrap: nowrap;
@@ -163,6 +193,13 @@ export const NavMenu = styled.div`
   right: 40px;
   display: flex;
   gap: 16px;
+  @media screen and (min-width: 744px) {
+    position: absolute;
+    top: 35px;
+    right: 40px;
+    display: flex;
+    gap: 16px;
+  }
   @media screen and (min-width: 1440px) {
     position: absolute;
     top: 62px;
@@ -172,56 +209,80 @@ export const NavMenu = styled.div`
   }
 `;
 export const RegisterButton = styled.button`
-  height: 45px;
-  display: flex;
-  padding: 8px 16px;
-  justify-self: center;
-  align-items: center;
-  font-size: 20px;
-  line-height: 29.38px;
-  border-radius: 4px;
-  border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  &:hover {
-    border: 2px solid transparent;
-    color: ${({ theme }) => theme.colors.whiteText};
-  }
-  &:active {
+  @media screen and (min-width: 744px) {
+    height: 32px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
     border-radius: 4px;
-    border: 2px solid transparent;
-    background-color: ${({ theme }) => theme.colors.primaryOrange};
-    color: ${({ theme }) => theme.colors.whiteText};
+    border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
+    padding: 4px 8px;
+    font-size: 16px;
+    line-height: 23.5px;
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange};
+    &:hover {
+      border: 1.5px solid transparent;
+      color: ${({ theme }) => theme.colors.whiteText};
+    }
+    &:active {
+      border-radius: 4px;
+      border: 1.5px solid transparent;
+      background-color: ${({ theme }) => theme.colors.primaryOrange};
+      color: ${({ theme }) => theme.colors.whiteText};
+    }
   }
   @media screen and (min-width: 1440px) {
+    height: 45px;
     padding: 8px 24px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    font-size: 20px;
+    line-height: 29.38px;
+    &:hover {
+      border: 2px solid transparent;
+    }
+    &:active {
+      border: 2px solid transparent;
+    }
   }
 `;
 
 export const LoginButton = styled.button`
-  height: 45px;
-  display: flex;
-  border: 2px solid transparent;
-  background-color: transparent;
-  padding: 8px 16px;
-  justify-self: center;
-  align-items: center;
-  font-size: 20px;
-  line-height: 29.38px;
-  color: ${({ theme }) => theme.colors.whiteText};
-  &:hover {
-    border-radius: 4px;
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    color: ${({ theme }) => theme.colors.primaryOrange};
-  }
-  &:active {
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-color: ${({ theme }) => theme.colors.primaryOrange};
+  @media screen and (min-width: 744px) {
+    height: 32px;
+    display: flex;
+    border: 1.5px solid transparent;
+    background-color: transparent;
+    padding: 4px 8px;
+    justify-self: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 23.5px;
     color: ${({ theme }) => theme.colors.whiteText};
+    &:hover {
+      border-radius: 4px;
+      border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
+      color: ${({ theme }) => theme.colors.primaryOrange};
+    }
+    &:active {
+      border-radius: 4px;
+      border: 1.5px solid transparent;
+      background-color: ${({ theme }) => theme.colors.primaryOrange};
+      color: ${({ theme }) => theme.colors.whiteText};
+    }
   }
   @media screen and (min-width: 1440px) {
+    height: 45px;
+    border: 2px solid transparent;
     padding: 8px 24px;
+    font-size: 20px;
+    line-height: 29.38px;
+    &:hover {
+      border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    }
+    &:active {
+      border: 2px solid transparent;
+    }
   }
 `;
 

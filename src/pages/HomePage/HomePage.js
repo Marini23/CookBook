@@ -73,8 +73,8 @@ export const HomePage = () => {
       <Container>
         <MainInfo>
           <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
-          {windowWidth < 768 && <BurgerMenu windowWidth={windowWidth} />}
-          {windowWidth >= 768 && (
+          {windowWidth < 744 && <BurgerMenu windowWidth={windowWidth} />}
+          {windowWidth > 743 && (
             <NavMenu>
               <ButtonContainer>
                 <LoginButton type="button" onClick={openModalLogin}>
@@ -88,7 +88,7 @@ export const HomePage = () => {
           )}
           <WrapContent>
             <Text>COOKING WITH US IS EASY AND DELICIOUS!</Text>
-            {windowWidth >= 768 && (
+            {windowWidth > 743 && (
               <SecondaryText>
                 Choose recipes to your taste - get a convenient shopping list,
                 detailed cooking instructions and a good mood!
