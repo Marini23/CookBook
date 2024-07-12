@@ -4,25 +4,17 @@ export const SectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  /* background-color: ${({ theme }) => theme.colors.bgGrey}; */
   @media screen and (min-width: 1440px) {
   }
 `;
 
 export const Picture = styled.picture`
   font-size: 0;
-`;
-
-export const SpanText = styled.span`
-  font-size: 12px;
-  line-height: 20.56px;
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    line-height: 29.38px;
-  }
-  @media screen and (min-width: 1440px) {
-    font-size: 20px;
-    line-height: 40px;
+  width: 150px;
+  height: 195px;
+  @media screen and (min-width: 744px) {
+    width: 245px;
+    height: 283px;
   }
 `;
 
@@ -31,10 +23,10 @@ export const Text = styled.p`
   background-color: ${({ theme }) => theme.colors.secondaryOrange};
   font-size: 12px;
   line-height: 20.56px;
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    padding: 56px 40px;
-    line-height: 29.38px;
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+    padding: 32px 39px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 20px;
@@ -43,12 +35,28 @@ export const Text = styled.p`
   }
 `;
 
+export const SpanText = styled.span`
+  font-size: 12px;
+  line-height: 20.56px;
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 20px;
+    line-height: 40px;
+  }
+`;
+
 export const InfoBlock = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
   margin-top: 40px;
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 744px) {
+    gap: 24px;
+    margin-top: 48px;
+    margin-bottom: 48px;
   }
 `;
 
@@ -56,7 +64,11 @@ export const InfoContainer = styled.div`
   height: 195px;
   padding: 16px 16px 46px 16px;
   background-color: rgba(217, 217, 217, 0.15);
-  /* background-color: #ececec; */
+  @media screen and (min-width: 744px) {
+    height: 283px;
+    padding: 32px 40px;
+    /* background-color: #ececec; */
+  }
 `;
 
 export const TitleBlock = styled.h4`
@@ -65,6 +77,11 @@ export const TitleBlock = styled.h4`
   line-height: 18px;
   color: ${({ theme }) => theme.colors.yellowText};
   margin-bottom: 8px;
+  @media screen and (min-width: 744px) {
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 24px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 64px;
     line-height: 64px;
@@ -77,6 +94,11 @@ export const TextBlock = styled.p`
   line-height: 17.63px;
   color: ${({ theme }) => theme.colors.secondaryBlackText};
   margin-bottom: 12px;
+  @media screen and (min-width: 744px) {
+    font-size: 14px;
+    line-height: 20.56px;
+    margin-bottom: 24px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 20px;
     line-height: 29.38px;
@@ -109,6 +131,15 @@ export const Link = styled.button`
     border: none;
     background-color: ${({ theme }) => theme.colors.primaryOrange};
     color: ${({ theme }) => theme.colors.primaryBlackText};
+  }
+  @media screen and (min-width: 744px) {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 305px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 23.5px;
+    /* margin-bottom: 40px; */
   }
   @media screen and (min-width: 1440px) {
     display: flex;

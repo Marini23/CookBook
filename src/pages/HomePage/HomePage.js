@@ -14,7 +14,7 @@ import {
 } from './HomePage.styled';
 import { Footer } from 'components/Footer/Footer';
 import logo from '../../images/new-logo.svg';
-import logo2x from '../../images/logo_2x.png';
+// import logo2x from '../../images/logo_2x.png';
 import { useEffect, useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
@@ -72,7 +72,7 @@ export const HomePage = () => {
     <>
       <Container>
         <MainInfo>
-          <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
+          <Logo src={logo} srcSet={`${logo} 1x`} alt="logo" />
           {windowWidth < 744 && <BurgerMenu windowWidth={windowWidth} />}
           {windowWidth > 743 && (
             <NavMenu>

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 import bg from '../../images/bg_footer_desktop.jpg';
+import bg_desktop from '../../images/footer_home_desktop.jpg';
+import bg_desktop_2x from '../../images/footer_home_desktop_2x.jpg';
+import bg_desktop_3x from '../../images/footer_home_desktop_3x.jpg';
 
 export const Container = styled.footer`
   width: 100%;
@@ -20,25 +23,47 @@ export const Container = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 8px 0;
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    gap: 20px;
-    padding: 24px 0;
+  @media screen and (min-width: 744px) {
+    max-width: 744px;
+    height: 117px;
+    gap: 18px;
+    padding: 22px 0;
   }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
+    height: 240px;
     gap: 32px;
     padding: 36px 0;
+    background-image: linear-gradient(
+        rgba(25, 25, 25, 0.5),
+        rgba(25, 25, 25, 0.5)
+      ),
+      url(${bg_desktop});
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: linear-gradient(
+          rgba(25, 25, 25, 0.5),
+          rgba(25, 25, 25, 0.5)
+        ),
+        url(${bg_desktop_2x});
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      background-image: linear-gradient(
+          rgba(25, 25, 25, 0.5),
+          rgba(25, 25, 25, 0.5)
+        ),
+        url(${bg_desktop_3x});
+    }
   }
 `;
 
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  @media screen and (min-width: 1440px) {
+  gap: 10px;
+  @media screen and (min-width: 744px) {
     flex-direction: row;
-    gap: 4px;
+    gap: 0;
   }
 `;
 
@@ -47,9 +72,9 @@ export const Img = styled.img`
   height: 32px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
-  @media screen and (min-width: 768px) {
-    width: 92px;
-    height: 60px;
+  @media screen and (min-width: 744px) {
+    width: 56px;
+    height: 37px;
   }
   @media screen and (min-width: 1440px) {
     width: 166px;
@@ -65,10 +90,11 @@ export const FooterText = styled.p`
   font-size: 10px;
   font-weight: 14.96px;
   color: ${({ theme }) => theme.colors.footerText};
-  margin-top: 10px;
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    font-weight: 20.56px;
+  /* margin-top: 10px; */
+  @media screen and (min-width: 744px) {
+    font-size: 12px;
+    font-weight: 17.63px;
+    margin-top: 0;
   }
   @media screen and (min-width: 1440px) {
     font-size: 16px;
@@ -89,6 +115,11 @@ export const Link = styled.a`
   }
   &:focus {
     color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 744px) {
+    font-size: 12px;
+    font-weight: 17.63px;
+    margin-top: 0;
   }
   @media screen and (min-width: 1440px) {
     font-size: 16px;
