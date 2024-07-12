@@ -12,9 +12,15 @@ export const Picture = styled.picture`
   font-size: 0;
   width: 150px;
   height: 195px;
+
   @media screen and (min-width: 744px) {
     width: 245px;
     height: 283px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 598px;
+    height: 552px;
   }
 `;
 
@@ -31,7 +37,7 @@ export const Text = styled.p`
   @media screen and (min-width: 1440px) {
     font-size: 20px;
     padding: 72px;
-    line-height: 29.38px;
+    line-height: 40px;
   }
 `;
 
@@ -56,7 +62,7 @@ export const InfoBlock = styled.div`
   @media screen and (min-width: 744px) {
     gap: 24px;
     margin-top: 48px;
-    margin-bottom: 48px;
+    margin-bottom: 88px;
   }
 `;
 
@@ -67,6 +73,10 @@ export const InfoContainer = styled.div`
   @media screen and (min-width: 744px) {
     height: 283px;
     padding: 32px 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 552px;
+    padding: 120px 72px 120px 40px;
     /* background-color: #ececec; */
   }
 `;
@@ -142,10 +152,6 @@ export const Link = styled.button`
     /* margin-bottom: 40px; */
   }
   @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 305px;
-    max-width: 305px;
     height: 45px;
     font-size: 20px;
     line-height: 29.38px;

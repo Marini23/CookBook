@@ -4,21 +4,27 @@ import img1_mobile_3x from '../../images/img1_mobile_3x.jpg';
 import img1_tablet from '../../images/img1_tablet.jpg';
 import img1_tablet_2x from '../../images/img1_tablet_2x.jpg';
 import img1_tablet_3x from '../../images/img1_tablet_3x.jpg';
-import img1_desktop from '../../images/img1_home_desktop.jpg';
+import img1_desktop from '../../images/img1_desktop.jpg';
+import img1_desktop_2x from '../../images/img1_desktop_2x.jpg';
+import img1_desktop_3x from '../../images/img1_desktop_3x.jpg';
 import img2_mobile from '../../images/img2_home_mobile.jpg';
 import img2_mobile_2x from '../../images/img2_mobile_2x.jpg';
 import img2_mobile_3x from '../../images/img2_mobile_3x.jpg';
 import img2_tablet from '../../images/img2_tablet.jpg';
 import img2_tablet_2x from '../../images/img2_tabet_2x.jpg';
 import img2_tablet_3x from '../../images/img2_tablet_3x.jpg';
-import img2_desktop from '../../images/img2_home_desktop.jpg';
+import img2_desktop from '../../images/img2_desktop.jpg';
+import img2_desktop_2x from '../../images/img2_desktop_2x.jpg';
+import img2_desktop_3x from '../../images/img2_desktop_3x.jpg';
 import img3_mobile from '../../images/img3_home_mobile.jpg';
 import img3_mobile_2x from '../../images/img3_mobile_2x.jpg';
 import img3_mobile_3x from '../../images/img2_mobile_3x.jpg';
 import img3_tablet from '../../images/img3_tablet.jpg';
 import img3_tablet_2x from '../../images/img3_tablet_2x.jpg';
 import img3_tablet_3x from '../../images/img3_tablet_3x.jpg';
-import img3_desktop from '../../images/img3_home_desktop.jpg';
+import img3_desktop from '../../images/img3_desktop.jpg';
+import img3_desktop_2x from '../../images/img3_desktop_2x.jpg';
+import img3_desktop_3x from '../../images/img3_desktop_3x.jpg';
 import {
   InfoBlock,
   InfoContainer,
@@ -61,11 +67,15 @@ export const DescriptionInfo = ({ windowWidth }) => {
           />
           <source
             srcSet={`${img1_tablet}, ${img1_tablet_2x} 2x, ${img1_tablet_3x} 3x`}
-            media="(min-width: 744px)"
+            media="(min-width: 744px) and (max-width: 1439px)"
           />
-          <source srcSet={img1_desktop} media="(min-width: 1440px)" />
-          <img src={img1_mobile} alt="illustration" />
+          <source
+            media="(min-width: 1440px)"
+            srcSet={`${img1_desktop}, ${img1_desktop_2x} 2x, ${img1_desktop_3x} 3x`}
+          />
+          <img src={img1_desktop} alt="illustration" />
         </Picture>
+
         <InfoContainer>
           <TitleBlock>1000+ RECIPES</TitleBlock>
           <TextBlock>
@@ -101,9 +111,12 @@ export const DescriptionInfo = ({ windowWidth }) => {
           />
           <source
             srcSet={`${img2_tablet}, ${img2_tablet_2x} 2x, ${img2_tablet_3x} 3x`}
-            media="(min-width: 744px)"
+            media="(min-width: 744px) and (max-width: 1439px)"
           />
-          <source srcSet={img2_desktop} media="(min-width: 1440px)" />
+          <source
+            srcSet={`${img2_desktop}, ${img2_desktop_2x} 2x, ${img2_desktop_3x} 3x`}
+            media="(min-width: 1440px)"
+          />
           <img src={img2_mobile} alt="illustration" />
         </Picture>
       </InfoBlock>
@@ -115,9 +128,12 @@ export const DescriptionInfo = ({ windowWidth }) => {
           />
           <source
             srcSet={`${img3_tablet}, ${img3_tablet_2x} 2x, ${img3_tablet_3x} 3x`}
-            media="(min-width: 744px)"
+            media="(min-width: 744px) and (max-width: 1439px)"
           />
-          <source srcSet={img3_desktop} media="(min-width: 1440px)" />
+          <source
+            srcSet={`${img3_desktop}, ${img3_desktop_2x} 2x, ${img3_desktop_3x} 3x`}
+            media="(min-width: 1440px)"
+          />
           <img src={img3_mobile} alt="illustration" />
         </Picture>
         <InfoContainer>

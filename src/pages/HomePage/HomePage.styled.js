@@ -80,7 +80,7 @@ export const Logo = styled.img`
     left: 40px;
   }
   @media screen and (min-width: 1440px) {
-    width: 93px;
+    width: 96px;
     height: 63px;
     top: 24px;
     left: 72px;
@@ -107,7 +107,7 @@ export const WrapContent = styled.div`
     height: 399px;
     top: 259px;
     left: 72px;
-    padding: 100px 80px;
+    padding: 101px 86px;
   }
 `;
 
@@ -122,9 +122,9 @@ export const Text = styled.p`
     margin-bottom: 18px;
   }
   @media screen and (min-width: 1440px) {
-    font-size: 36px;
+    font-size: 35px;
     line-height: 36px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -137,8 +137,9 @@ export const SecondaryText = styled.p`
     margin-bottom: 30px;
   }
   @media screen and (min-width: 1440px) {
-    /* font-size: 18px;
-    line-height: 26.44px; */
+    width: 758px;
+    font-size: 18px;
+    line-height: 26.44px;
     margin-bottom: 32px;
   }
 `;
@@ -179,11 +180,9 @@ export const ButtonLink = styled.button`
     display: flex;
     flex-wrap: nowrap;
     width: 305px;
-    max-width: 305px;
     height: 45px;
     font-size: 20px;
     line-height: 29.38px;
-    margin-bottom: 40px;
   }
 `;
 
@@ -202,8 +201,8 @@ export const NavMenu = styled.div`
   }
   @media screen and (min-width: 1440px) {
     position: absolute;
-    top: 62px;
-    right: 72px;
+    top: 42px;
+    right: 80px;
     display: flex;
     gap: 24px;
   }
