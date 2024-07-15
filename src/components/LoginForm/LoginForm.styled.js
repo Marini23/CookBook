@@ -5,10 +5,12 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 58px;
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
+  @media screen and (min-width: 744px) {
+    margin-top: 0px;
+    padding: 120px 115px 176px 115px;
   }
   @media screen and (min-width: 1440px) {
+    padding: 48px 176px 48px 176px;
   }
 `;
 
@@ -20,9 +22,15 @@ export const Title = styled.h4`
   justify-content: center;
   align-items: center;
   margin-bottom: 8px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
+    font-size: 20px;
+    line-height: 29.38px;
+    margin-bottom: 2px;
+  }
+  @media screen and (min-width: 1440px) {
     font-size: 24px;
     line-height: 35.25px;
+    margin-bottom: 8px;
   }
 `;
 
@@ -48,8 +56,15 @@ export const Input = styled.input`
     outline: none;
     border: 1px solid ${({ theme }) => theme.colors.primaryBlackText};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
+    max-width: 434px;
+    font-size: 14px;
+    line-height: 20.56px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 520px;
     font-size: 16px;
+    line-height: 23.5px;
   }
 `;
 export const Button = styled.button`
@@ -72,7 +87,12 @@ export const Button = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 48px;
     font-size: 18px;
     line-height: 26.44px;
   }
@@ -106,9 +126,17 @@ export const Line = styled.p`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.grey};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+  @media screen and (min-width: 1440px) {
     font-size: 18px;
     line-height: 26.44px;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -133,9 +161,12 @@ export const NetworkBtnSubmit = styled.button`
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
     font-size: 16px;
     line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 48px;
   }
 `;
 
@@ -148,13 +179,37 @@ export const LinkText = styled.p`
   align-items: center;
   margin-top: 8px;
   gap: 4px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
     font-size: 20px;
     line-height: 29.38px;
   }
 `;
 
-export const StyledSpanLink = styled.span`
+export const Text = styled.p`
+  font-size: 12px;
+  font-weight: 17.63px;
+  color: ${({ theme }) => theme.colors.primaryBlackText};
+  margin-top: 16px;
+  @media screen and (min-width: 744px) {
+    margin-top: 4px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+    font-weight: 20.56;
+    margin-top: 16px;
+  }
+`;
+
+export const Img = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
+export const Link = styled.span`
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -169,20 +224,12 @@ export const StyledSpanLink = styled.span`
   &:focus {
     text-decoration: underline;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
     font-size: 20px;
     line-height: 29.38px;
   }
-`;
-
-export const Text = styled.p`
-  font-size: 12px;
-  font-weight: 17.63px;
-  color: ${({ theme }) => theme.colors.primaryBlackText};
-  margin-top: 16px;
-`;
-
-export const Img = styled.img`
-  width: 16px;
-  height: 16px;
 `;

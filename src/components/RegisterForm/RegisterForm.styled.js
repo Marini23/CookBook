@@ -7,8 +7,10 @@ export const Form = styled.form`
   margin-top: 58px;
   @media screen and (min-width: 744px) {
     margin-top: 0px;
+    padding: 120px 115px 176px 115px;
   }
   @media screen and (min-width: 1440px) {
+    padding: 48px 176px 48px 176px;
   }
 `;
 
@@ -26,6 +28,11 @@ export const Title = styled.h4`
     line-height: 29.38px;
     margin-bottom: 2px;
   }
+  @media screen and (min-width: 1440px) {
+    font-size: 24px;
+    line-height: 35.25px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const PasswordContainer = styled.div`
@@ -41,7 +48,6 @@ export const Input = styled.input`
   border: 1px solid
     ${({ theme, iserror }) =>
       iserror ? theme.colors.error : theme.colors.grey};
-  /* border: 1px solid ${({ theme }) => theme.colors.grey}; */
   font-size: 12px;
   padding: 14px 24px;
   line-height: 17.63px;
@@ -59,6 +65,12 @@ export const Input = styled.input`
     font-size: 14px;
     line-height: 20.56px;
     max-width: 434px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 48px;
+    font-size: 16px;
+    line-height: 23.5px;
+    max-width: 520px;
   }
 `;
 export const Button = styled.button`
@@ -84,6 +96,11 @@ export const Button = styled.button`
   @media screen and (min-width: 744px) {
     font-size: 16px;
     line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 48px;
+    font-size: 18px;
+    line-height: 26.44px;
   }
 `;
 
@@ -126,6 +143,12 @@ export const Line = styled.p`
     margin-top: 18px;
     margin-bottom: 18px;
   }
+  @media screen and (min-width: 1440px) {
+    font-size: 18px;
+    line-height: 26.44px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 `;
 
 export const NetworkBtnSubmit = styled.button`
@@ -153,6 +176,9 @@ export const NetworkBtnSubmit = styled.button`
     font-size: 16px;
     line-height: 23.5px;
   }
+  @media screen and (min-width: 1440px) {
+    height: 48px;
+  }
 `;
 
 export const LinkText = styled.p`
@@ -169,29 +195,12 @@ export const LinkText = styled.p`
     line-height: 23.5px;
     margin-top: 2px;
   }
+  @media screen and (min-width: 1440px) {
+    font-size: 20px;
+    line-height: 29.38px;
+    margin-top: 8px;
+  }
 `;
-
-// export const Link = styled.a`
-//   text-decoration: none;
-//   cursor: pointer;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 14px;
-//   font-weight: 20.56px;
-//   color: ${({ theme }) => theme.colors.primaryOrange};
-//   &:hover {
-//     text-decoration: underline;
-//   }
-//   &:focus {
-//     text-decoration: underline;
-//   }
-//   @media screen and (min-width: 768px) {
-//     font-size: 20px;
-//     line-height: 29.38px;
-//   }
-
-// `;
 
 export const Link = styled.span`
   text-decoration: none;
@@ -208,8 +217,12 @@ export const Link = styled.span`
   &:focus {
     text-decoration: underline;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
     font-size: 16px;
     line-height: 23.5px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 20px;
+    line-height: 29.38px;
   }
 `;

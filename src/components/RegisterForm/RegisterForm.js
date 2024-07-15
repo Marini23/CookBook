@@ -25,7 +25,7 @@ import {
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
-import apple_icon from '../../images/apple.svg';
+// import apple_icon from '../../images/apple.svg';
 import { useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
@@ -116,7 +116,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     } catch (error) {
       // Handle error if signing with Google fails
       console.error('Failed to sign in with Google:', error);
-      // Optionally, you can show an error message or perform other actions
     }
   };
 
@@ -271,11 +270,11 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button">
+        {/* <NetworkBtnSubmit type="button">
           {' '}
           <img src={apple_icon} alt="Apple icon" />
           Sing up with Apple
-        </NetworkBtnSubmit>
+        </NetworkBtnSubmit> */}
         <LinkText>
           Already have an account ? <Link onClick={toggleModal}>Log in </Link>
         </LinkText>

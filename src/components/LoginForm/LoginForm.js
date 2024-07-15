@@ -8,6 +8,7 @@ import {
   Img,
   Input,
   Line,
+  Link,
   LinkText,
   NetworkBtnSubmit,
   PasswordContainer,
@@ -24,9 +25,9 @@ import {
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
-import apple_icon from '../../images/apple.svg';
+// import apple_icon from '../../images/apple.svg';
 import { selectErrorAuth } from '../../redux/selectors.js';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -115,12 +116,6 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
-        {/* <Link
-          to={{
-            pathname: '/login',
-            state: { background: location },
-          }}
-        ></Link> */}
         <Title>Log in</Title>
         <Input
           id="email"
@@ -194,11 +189,11 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
           <img src={facebook_icon} alt="Facebook icon" />
           Sign up with Facebook
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button">
+        {/* <NetworkBtnSubmit type="button">
           {' '}
           <img src={apple_icon} alt="Apple icon" />
           Sign up with Apple
-        </NetworkBtnSubmit>
+        </NetworkBtnSubmit> */}
         <LinkText>
           New user? <Link onClick={toggleModal}>Create an account</Link>
         </LinkText>
