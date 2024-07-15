@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CookBook/static/css/main.59c3e7d3.css",
-    "main.js": "/CookBook/static/js/main.b154cba2.js",
+    "main.css": "/CookBook/static/css/main.b8c7dcc8.css",
+    "main.js": "/CookBook/static/js/main.f70d4601.js",
     "static/media/bg_home_desktop_3x.jpg": "/CookBook/static/media/bg_home_desktop_3x.7ff46e8e5efb42b724b8.jpg",
     "static/media/bg_home_desktop_2x.jpg": "/CookBook/static/media/bg_home_desktop_2x.81fcb45665199cbeaa74.jpg",
     "static/media/footer_home_desktop_3x.jpg": "/CookBook/static/media/footer_home_desktop_3x.c74ba4ebc8af211ab328.jpg",
@@ -60,7 +60,6 @@
     "static/media/search_icon.svg": "/CookBook/static/media/search_icon.e08d1ed2a5593fa456d5bc63c9f5774d.svg",
     "static/media/burger_normal.svg": "/CookBook/static/media/burger_normal.3b5ed7af6222ef33b69460d1999cd845.svg",
     "static/media/error_icon.svg": "/CookBook/static/media/error_icon.971c24b34ffb027c9cfa913ac2354ee6.svg",
-    "static/media/apple.svg": "/CookBook/static/media/apple.289d9c7e236b5615fecf3bcb3139f181.svg",
     "static/media/google.svg": "/CookBook/static/media/google.584dbc2b3beb5fbac40562c29a400960.svg",
     "index.html": "/CookBook/index.html",
     "static/media/clock.svg": "/CookBook/static/media/clock.03d85f7ff5b73a0b8546facbcf84671c.svg",
@@ -80,11 +79,11 @@
     "static/media/icon_close.svg": "/CookBook/static/media/icon_close.2a45a7d56c6a43b729efa5058dee4834.svg",
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/close_icon.svg": "/CookBook/static/media/close_icon.d24ce83e3fa41b1bf2cb89a5d9e9abb2.svg",
-    "main.59c3e7d3.css.map": "/CookBook/static/css/main.59c3e7d3.css.map",
-    "main.b154cba2.js.map": "/CookBook/static/js/main.b154cba2.js.map"
+    "main.b8c7dcc8.css.map": "/CookBook/static/css/main.b8c7dcc8.css.map",
+    "main.f70d4601.js.map": "/CookBook/static/js/main.f70d4601.js.map"
   },
   "entrypoints": [
-    "static/css/main.59c3e7d3.css",
-    "static/js/main.b154cba2.js"
+    "static/css/main.b8c7dcc8.css",
+    "static/js/main.f70d4601.js"
   ]
 }
