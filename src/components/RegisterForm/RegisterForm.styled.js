@@ -5,8 +5,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 58px;
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
+  @media screen and (min-width: 744px) {
+    margin-top: 0px;
   }
   @media screen and (min-width: 1440px) {
   }
@@ -20,9 +20,11 @@ export const Title = styled.h4`
   justify-content: center;
   align-items: center;
   margin-bottom: 8px;
-  @media screen and (min-width: 768px) {
-    font-size: 24px;
-    line-height: 35.25px;
+  color: #000000;
+  @media screen and (min-width: 744px) {
+    font-size: 20px;
+    line-height: 29.38px;
+    margin-bottom: 2px;
   }
 `;
 
@@ -53,8 +55,10 @@ export const Input = styled.input`
     border: 1px solid ${({ theme }) => theme.colors.primaryBlackText};
   }
 
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
+  @media screen and (min-width: 744px) {
+    font-size: 14px;
+    line-height: 20.56px;
+    max-width: 434px;
   }
 `;
 export const Button = styled.button`
@@ -78,8 +82,8 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
   @media screen and (min-width: 744px) {
-    font-size: 18px;
-    line-height: 26.44px;
+    font-size: 16px;
+    line-height: 23.5px;
   }
 `;
 
@@ -116,9 +120,11 @@ export const Line = styled.p`
     height: 1px;
     background-color: ${({ theme }) => theme.colors.grey};
   }
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    line-height: 26.44px;
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+    margin-top: 18px;
+    margin-bottom: 18px;
   }
 `;
 
@@ -143,7 +149,7 @@ export const NetworkBtnSubmit = styled.button`
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 744px) {
     font-size: 16px;
     line-height: 23.5px;
   }
@@ -158,9 +164,10 @@ export const LinkText = styled.p`
   align-items: center;
   gap: 4px;
   margin-top: 8px;
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-    line-height: 29.38px;
+  @media screen and (min-width: 744px) {
+    font-size: 16px;
+    line-height: 23.5px;
+    margin-top: 2px;
   }
 `;
 
@@ -202,7 +209,7 @@ export const Link = styled.span`
     text-decoration: underline;
   }
   @media screen and (min-width: 768px) {
-    font-size: 20px;
-    line-height: 29.38px;
+    font-size: 16px;
+    line-height: 23.5px;
   }
 `;

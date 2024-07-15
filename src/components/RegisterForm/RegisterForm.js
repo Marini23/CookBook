@@ -136,12 +136,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
-        {/* <Link
-          to={{
-            pathname: '/register',
-            state: { background: location },
-          }}
-        ></Link> */}
         <Title>Register</Title>
         <Input
           id="name"

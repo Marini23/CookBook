@@ -62,7 +62,9 @@ font-family: 'Heebo', -apple-system, BlinkMacSystemFont,
 -moz-osx-font-smoothing: grayscale;
 }
 
-
+body.modal-open {
+  overflow: hidden;
+}
 
 ul 
  {
