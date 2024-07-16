@@ -56,7 +56,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const location = useLocation();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -99,7 +98,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(prevState => !prevState);
   };
-
   const toggleModal = () => {
     isClose();
     isOpenLogin();
@@ -218,13 +216,13 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           <Input
             id="confirmPassword"
             name="confirmPassword"
-            type={showPassword ? 'text' : 'password'}
+            type={showConfirmPassword ? 'text' : 'password'}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
             placeholder="Confirm password"
             autoComplete="off"
-            $iserror={formik.touched.name && formik.errors.name}
+            $iserror={formik.touched.confirmPassword && formik.errors.name}
           />
           {showConfirmPassword ? (
             <FiEye

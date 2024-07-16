@@ -29,13 +29,11 @@
     max-width: 664px;
     max-height: calc(100% - 64px);
     top: 32px;
-    /* padding: 120px 115px 176px 115px; */
     padding: 0;
   }
   @media screen and (min-width: 1440px) {
     max-width: 872px;
-    max-height: calc(100% - 96px);
-    /* padding: 48px 168px; */
+    max-height: calc(100% - 280px);
     top: 140px;
   }
   &::-webkit-scrollbar {
@@ -71,6 +69,7 @@
   right: 16px;
   width: 24px;
   height: 24px;
+  z-index: 1000;
 }
 
 @media screen and (min-width: 744px) {

@@ -62,6 +62,7 @@ export const Input = styled.input`
     line-height: 20.56px;
   }
   @media screen and (min-width: 1440px) {
+    height: 48px;
     max-width: 520px;
     font-size: 16px;
     line-height: 23.5px;
