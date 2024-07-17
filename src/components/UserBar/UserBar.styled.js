@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import bg from '../../images/bg_header.jpg';
+import bg_tablet from '../../images/bg_header_tablet.jpg';
+import bg_tablet_2x from '../../images/bg_header_tablet_2x.jpg';
+import bg_tablet_3x from '../../images/bg_header_tablet_3x.jpg';
 
 export const Header = styled.header`
   position: fixed;
@@ -9,6 +12,9 @@ export const Header = styled.header`
   min-width: 320px;
   max-width: 390px;
   z-index: 1000;
+  @media screen and (min-width: 744px) {
+    max-width: 744px;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
   }
@@ -33,6 +39,31 @@ export const WrapperInfo = styled.div`
   padding: 30px 16px 16px 16px;
   align-items: end; /* Center items vertically */
   justify-content: space-between; /* Space between items */
+  @media screen and (min-width: 744px) {
+    max-width: 744px;
+    background-image: linear-gradient(
+        rgba(25, 25, 25, 0.5),
+        rgba(25, 25, 25, 0.5)
+      ),
+      url(${bg_tablet});
+    padding: 12px 40px;
+    height: 61px;
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: linear-gradient(
+          rgba(25, 25, 25, 0.5),
+          rgba(25, 25, 25, 0.5)
+        ),
+        url(${bg_tablet_2x});
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      background-image: linear-gradient(
+          rgba(25, 25, 25, 0.5),
+          rgba(25, 25, 25, 0.5)
+        ),
+        url(${bg_tablet_3x});
+    }
+  }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     height: 159px;
@@ -45,9 +76,9 @@ export const Logo = styled.img`
   height: 34px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
-  @media screen and (min-width: 768px) {
-    width: 92px;
-    height: 60px;
+  @media screen and (min-width: 744px) {
+    width: 56px;
+    height: 37px;
     top: 16px;
     left: 40px;
   }

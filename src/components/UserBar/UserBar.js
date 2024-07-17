@@ -37,7 +37,7 @@ export const UserBar = () => {
       <Header>
         <WrapperInfo>
           <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
-          {windowWidth > 1439 && <SearchBar />}
+          {windowWidth > 743 && <SearchBar />}
           <UserInfo>
             <Img src={avatar} alt="avatar" width={24} height={24} />
             {windowWidth > 1439 && <Name>{name}</Name>}
