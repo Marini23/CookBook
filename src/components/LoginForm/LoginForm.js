@@ -142,7 +142,7 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             placeholder="Password"
-            autoComplete="current-password"
+            autoComplete="off"
           />
           {showPassword ? (
             <FiEye

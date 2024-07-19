@@ -177,7 +177,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             placeholder="Password"
-            autoComplete="off"
+            autoComplete="new-password"
             $iserror={formik.touched.name && formik.errors.name}
           />
           {showPassword ? (
@@ -221,7 +221,7 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
             placeholder="Confirm password"
-            autoComplete="off"
+            autoComplete="new-password"
             $iserror={formik.touched.confirmPassword && formik.errors.name}
           />
           {showConfirmPassword ? (
