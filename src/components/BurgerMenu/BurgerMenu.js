@@ -66,12 +66,25 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_mobile})`
         );
-      } else if (windowWidth <= 1439) {
+      } else if (windowWidth > 743 && windowWidth < 1439) {
         setBurgerButtonSize({
+          width: `32px`,
+          height: `32px`,
+          top: '17px',
+          right: '40px',
+        });
+        setCloseButtonSize({
           width: `36px`,
           height: `36px`,
-          top: '48px',
-          right: '16px',
+          top: '70px',
+          right: '54px',
+        });
+      } else if (windowWidth > 1439) {
+        setBurgerButtonSize({
+          width: `40px`,
+          height: `40px`,
+          top: '71px',
+          right: '72px',
         });
         setCloseButtonSize({
           width: `36px`,

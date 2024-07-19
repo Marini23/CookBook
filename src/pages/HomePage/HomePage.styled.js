@@ -211,7 +211,7 @@ export const RegisterButton = styled.button`
   @media screen and (min-width: 744px) {
     height: 32px;
     display: flex;
-    justify-self: center;
+    justify-content: center;
     align-items: center;
     border-radius: 4px;
     border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
@@ -221,27 +221,30 @@ export const RegisterButton = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
     &:hover {
-      border: 1.5px solid transparent;
-      color: ${({ theme }) => theme.colors.whiteText};
+      border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
+      color: ${({ theme }) => theme.colors.primaryOrange};
     }
     &:active {
-      border-radius: 4px;
-      border: 1.5px solid transparent;
+      border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
       background-color: ${({ theme }) => theme.colors.primaryOrange};
       color: ${({ theme }) => theme.colors.whiteText};
     }
   }
+
   @media screen and (min-width: 1440px) {
     height: 45px;
     padding: 8px 24px;
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     font-size: 20px;
     line-height: 29.38px;
+
     &:hover {
-      border: 2px solid transparent;
+      border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     }
     &:active {
-      border: 2px solid transparent;
+      border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+      background-color: ${({ theme }) => theme.colors.primaryOrange};
+      color: ${({ theme }) => theme.colors.whiteText};
     }
   }
 `;
@@ -253,7 +256,7 @@ export const LoginButton = styled.button`
     border: 1.5px solid transparent;
     background-color: transparent;
     padding: 4px 8px;
-    justify-self: center;
+    justify-content: center;
     align-items: center;
     font-size: 16px;
     line-height: 23.5px;
@@ -270,12 +273,14 @@ export const LoginButton = styled.button`
       color: ${({ theme }) => theme.colors.whiteText};
     }
   }
+
   @media screen and (min-width: 1440px) {
     height: 45px;
     border: 2px solid transparent;
     padding: 8px 24px;
     font-size: 20px;
     line-height: 29.38px;
+
     &:hover {
       border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     }
@@ -288,15 +293,15 @@ export const LoginButton = styled.button`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 16px;
+  position: relative;
 
-  &:hover ${RegisterButton} {
+  ${RegisterButton}:hover ~ ${LoginButton} {
     border: 2px solid transparent;
     color: ${({ theme }) => theme.colors.whiteText};
   }
 
-  &:hover ${LoginButton} {
-    border-radius: 4px;
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    color: ${({ theme }) => theme.colors.primaryOrange};
+  ${LoginButton}:hover ~ ${RegisterButton} {
+    border: 2px solid transparent;
+    color: ${({ theme }) => theme.colors.whiteText};
   }
 `;

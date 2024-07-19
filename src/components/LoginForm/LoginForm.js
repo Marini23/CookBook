@@ -189,11 +189,6 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
           <img src={facebook_icon} alt="Facebook icon" />
           Sign up with Facebook
         </NetworkBtnSubmit>
-        {/* <NetworkBtnSubmit type="button">
-          {' '}
-          <img src={apple_icon} alt="Apple icon" />
-          Sign up with Apple
-        </NetworkBtnSubmit> */}
         <LinkText>
           New user? <Link onClick={toggleModal}>Create an account</Link>
         </LinkText>

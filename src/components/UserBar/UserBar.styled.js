@@ -1,8 +1,13 @@
 import styled from 'styled-components';
-import bg from '../../images/bg_header.jpg';
+import bg_mobile from '../../images/bg_header_mobile.jpg';
+import bg_mobile_2x from '../../images/bg_header_mobile_2x.jpg';
+import bg_mobile_3x from '../../images/bg_header_mobile_3x.jpg';
 import bg_tablet from '../../images/bg_header_tablet.jpg';
 import bg_tablet_2x from '../../images/bg_header_tablet_2x.jpg';
 import bg_tablet_3x from '../../images/bg_header_tablet_3x.jpg';
+import bg_desktop from '../../images/bg_header_desktop.jpg';
+import bg_desktop_2x from '../../images/bg_header_desktop_2x.jpg';
+import bg_desktop_3x from '../../images/bg_header_desktop_3x.jpg';
 
 export const Header = styled.header`
   position: fixed;
@@ -32,7 +37,22 @@ export const WrapperInfo = styled.div`
       rgba(25, 25, 25, 0.5),
       rgba(25, 25, 25, 0.5)
     ),
-    url(${bg});
+    url(${bg_mobile});
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: linear-gradient(
+        rgba(25, 25, 25, 0.5),
+        rgba(25, 25, 25, 0.5)
+      ),
+      url(${bg_mobile_2x});
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+    background-image: linear-gradient(
+        rgba(25, 25, 25, 0.5),
+        rgba(25, 25, 25, 0.5)
+      ),
+      url(${bg_mobile_3x});
+  }
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -67,7 +87,27 @@ export const WrapperInfo = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     height: 159px;
-    padding: 48px 144px 48px 72px;
+    padding: 48px 72px 48px 72px;
+    background-image: linear-gradient(
+        rgba(25, 25, 25, 0.5),
+        rgba(25, 25, 25, 0.5)
+      ),
+      url(${bg_desktop});
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: linear-gradient(
+          rgba(25, 25, 25, 0.5),
+          rgba(25, 25, 25, 0.5)
+        ),
+        url(${bg_desktop_2x});
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      background-image: linear-gradient(
+          rgba(25, 25, 25, 0.5),
+          rgba(25, 25, 25, 0.5)
+        ),
+        url(${bg_desktop_3x});
+    }
   }
 `;
 
@@ -81,6 +121,7 @@ export const Logo = styled.img`
     height: 37px;
     top: 16px;
     left: 40px;
+    margin-right: 113px;
   }
   @media screen and (min-width: 1440px) {
     /* position: absolute; */
@@ -96,9 +137,14 @@ export const UserInfo = styled.div`
   gap: 8px;
   margin-right: 16px;
   margin-left: auto;
+  @media screen and (min-width: 744px) {
+    margin-right: 36px;
+    height: 32px;
+  }
   @media screen and (min-width: 1440px) {
     gap: 8px;
-    margin-right: 0;
+    margin-right: 72px;
+    height: 40px;
   }
 `;
 
@@ -122,6 +168,11 @@ export const Img = styled.img`
   background-color: #ffffff;
   border-radius: 40px;
   margin-right: 16px;
+  @media screen and (min-width: 744px) {
+    /* width: 40px;
+    height: 40px; */
+    margin-right: 0;
+  }
   @media screen and (min-width: 1440px) {
     width: 40px;
     height: 40px;

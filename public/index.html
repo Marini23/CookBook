@@ -55,6 +55,26 @@
           );
         }
       })(window.location);
+
+      // Function to detect if the browser is Safari on a mobile device
+      function isSafariMobile() {
+        const ua = navigator.userAgent;
+        return (
+          /iP(hone|od|ad)/.test(ua) &&
+          /AppleWebKit/.test(ua) &&
+          !/CriOS/.test(ua) &&
+          !/FxiOS/.test(ua)
+        );
+      }
+
+      // If the browser is Safari on a mobile device, insert the special viewport meta tag
+      if (isSafariMobile()) {
+        const meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content =
+          'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+        document.head.appendChild(meta);
+      }
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
   </head>
