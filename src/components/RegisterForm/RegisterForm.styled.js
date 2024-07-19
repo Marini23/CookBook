@@ -61,6 +61,7 @@ export const Input = styled.input`
     border: 1px solid ${({ theme }) => theme.colors.primaryBlackText};
   }
 
+
   @media screen and (min-width: 744px) {
     font-size: 14px;
     line-height: 20.56px;
