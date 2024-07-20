@@ -16,7 +16,7 @@ import {
 } from './RegisterForm.styled';
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   register,
@@ -25,7 +25,6 @@ import {
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
 import facebook_icon from '../../images/facebook.svg';
-// import apple_icon from '../../images/apple.svg';
 import { useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
@@ -54,8 +53,17 @@ const formSchema = Yup.object().shape({
 export const RegisterForm = ({ isClose, isOpenLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsSafari(
+      userAgent.indexOf('safari') > -1 && userAgent.indexOf('chrome') === -1
+    );
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -177,34 +185,35 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             placeholder="Password"
-            autoComplete="new-password"
+            autoComplete="off"
             $iserror={formik.touched.name && formik.errors.name}
           />
-          {showPassword ? (
-            <FiEye
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-              }}
-              size="20px"
-              color="#B1B0B2"
-              onClick={togglePasswordVisibility}
-            />
-          ) : (
-            <FiEyeOff
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-              }}
-              size="20px"
-              color="#B1B0B2"
-              onClick={togglePasswordVisibility}
-            />
-          )}
+          {!isSafari &&
+            (showPassword ? (
+              <FiEye
+                style={{
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  top: '24px',
+                  right: '24px',
+                }}
+                size="20px"
+                color="#B1B0B2"
+                onClick={togglePasswordVisibility}
+              />
+            ) : (
+              <FiEyeOff
+                style={{
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  top: '24px',
+                  right: '24px',
+                }}
+                size="20px"
+                color="#B1B0B2"
+                onClick={togglePasswordVisibility}
+              />
+            ))}
         </PasswordContainer>
         {formik.touched.password && formik.errors.password ? (
           <ErrorMessage>
@@ -221,34 +230,35 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
             placeholder="Confirm password"
-            autoComplete="new-password"
+            autoComplete="off"
             $iserror={formik.touched.confirmPassword && formik.errors.name}
           />
-          {showConfirmPassword ? (
-            <FiEye
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '26px',
-                right: '24px',
-              }}
-              size="20px"
-              color="#B1B0B2"
-              onClick={toggleConfirmPasswordVisibility}
-            />
-          ) : (
-            <FiEyeOff
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '26px',
-                right: '24px',
-              }}
-              size="20px"
-              color="#B1B0B2"
-              onClick={toggleConfirmPasswordVisibility}
-            />
-          )}
+          {!isSafari &&
+            (showConfirmPassword ? (
+              <FiEye
+                style={{
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  top: '26px',
+                  right: '24px',
+                }}
+                size="20px"
+                color="#B1B0B2"
+                onClick={toggleConfirmPasswordVisibility}
+              />
+            ) : (
+              <FiEyeOff
+                style={{
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  top: '26px',
+                  right: '24px',
+                }}
+                size="20px"
+                color="#B1B0B2"
+                onClick={toggleConfirmPasswordVisibility}
+              />
+            ))}
         </PasswordContainer>
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
           <ErrorMessage>
@@ -268,11 +278,6 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook
         </NetworkBtnSubmit>
-        {/* <NetworkBtnSubmit type="button">
-          {' '}
-          <img src={apple_icon} alt="Apple icon" />
-          Sing up with Apple
-        </NetworkBtnSubmit> */}
         <LinkText>
           Already have an account ? <Link onClick={toggleModal}>Log in </Link>
         </LinkText>

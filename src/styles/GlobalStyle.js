@@ -75,9 +75,6 @@ button {
     cursor: pointer;
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
-    -webkit-text-fill-color: transparent !important;
-  }
+
 
 `;
