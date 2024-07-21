@@ -18,6 +18,9 @@ import {
   selectTotalHits,
   selectUserId,
 } from '../../redux/selectors';
+import bannerTablet from '../../images/banner_tablet.jpg';
+import bannerTablet_2x from '../../images/bg_filter_tablet_2x.jpg';
+import bannerTablet_3x from '../../images/bg_filter_tablet_3x.jpg';
 import bannerDesktop from '../../images/filter_banner_desktop.jpg';
 import bannerDesktop_2x from '../../images/filter_banner_desktop2x.jpg';
 import arrowUp from '../../images/arrow_up_icon.svg';
@@ -60,13 +63,20 @@ export const RecipesPage = () => {
           </ButtonFilter>
         )}
         {query === 'popular' && (
-          <Banner>
-            <source
-              srcSet={`${bannerDesktop_2x} 2x`}
-              media="(min-width: 1440px)"
-            />
-            <img src={bannerDesktop} alt="banner" />
-          </Banner>
+          <>
+            {console.log('Banner should render for popular query')}
+            <Banner>
+              <source
+                srcSet={`${bannerTablet}, ${bannerTablet_2x} 2x, ${bannerTablet_3x} 3x`}
+                media="(min-width: 744px) and (max-width: 1439px)"
+              />
+              <source
+                media="(min-width: 1440px)"
+                srcSet={`${bannerDesktop_2x} 2x`}
+              />
+              <img src={bannerDesktop} alt="banner" />
+            </Banner>
+          </>
         )}
         <FilterContainer $isvisible={isFilterVisible}>
           <Filter />

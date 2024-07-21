@@ -16,7 +16,7 @@ import {
   Title,
 } from './LoginForm.styled.js';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   logIn,
@@ -47,8 +47,15 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const location = useLocation();
+  const [isSafari, setIsSafari] = useState(false);
   const errorMessage = useSelector(selectErrorAuth);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsSafari(
+      userAgent.indexOf('safari') > -1 && userAgent.indexOf('chrome') === -1
+    );
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -144,31 +151,32 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
             placeholder="Password"
             autoComplete="off"
           />
-          {showPassword ? (
-            <FiEye
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-              }}
-              size="20px"
-              color="#A2A8BC"
-              onClick={togglePasswordVisibility}
-            />
-          ) : (
-            <FiEyeOff
-              style={{
-                cursor: 'pointer',
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-              }}
-              size="20px"
-              color="#A2A8BC"
-              onClick={togglePasswordVisibility}
-            />
-          )}
+          {!isSafari &&
+            (showPassword ? (
+              <FiEye
+                style={{
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  top: '24px',
+                  right: '24px',
+                }}
+                size="20px"
+                color="#A2A8BC"
+                onClick={togglePasswordVisibility}
+              />
+            ) : (
+              <FiEyeOff
+                style={{
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  top: '24px',
+                  right: '24px',
+                }}
+                size="20px"
+                color="#A2A8BC"
+                onClick={togglePasswordVisibility}
+              />
+            ))}
         </PasswordContainer>
         {formik.touched.password && formik.errors.password ? (
           <ErrorMessage>

@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   @media screen and (min-width: 744px) {
     max-width: 744px;
+    padding-top: 61px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
@@ -24,23 +25,27 @@ export const Banner = styled.picture`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 744px;
+    width: 744px;
     height: 291px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    width: 1440px;
     height: 443px;
   }
 `;
 
 export const FilterDesktop = styled.div`
   display: none;
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 744px) {
     display: flex;
     flex-direction: column;
     position: relative;
   }
+  /* @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  } */
 `;
 
 export const ButtonFilter = styled.button`

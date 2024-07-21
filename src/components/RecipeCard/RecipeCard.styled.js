@@ -12,7 +12,7 @@ export const ListItem = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  /* gap: 4px; */
   @media screen and (min-width: 1440px) {
     max-width: 416px;
   }
@@ -37,15 +37,16 @@ export const Label = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   background-color: #ededed;
   border-radius: 4px;
   font-size: 14px;
   line-height: 20.56px;
   color: ${({ theme }) => theme.colors.black};
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: clip;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  padding: 0 8px;
+  text-decoration: none;
   @media screen and (min-width: 1440px) {
     max-width: 416px;
     height: 40px;
@@ -59,6 +60,8 @@ export const HeartIcon = styled.div`
   position: absolute;
   top: 12px;
   right: 12px;
+  width: 20px;
+  height: 20px;
 `;
 
 export const StyledHeartIcon = styled(FaRegHeart)`
@@ -78,7 +81,7 @@ export const StyledHeartIconFavorite = styled(FaHeart)`
 export const StyledLinkList = styled(NavLink)`
   cursor: pointer;
   color: black;
-
+  text-decoration: none;
   &.active {
     color: #ff8c00;
   }

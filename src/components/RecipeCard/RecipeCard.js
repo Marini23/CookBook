@@ -63,6 +63,19 @@ export const RecipeCard = recipe => {
       dispatch(addFavoriteItem({ userId, favoriteData: selectRecipe }));
     }
   };
+
+  const truncateString = (str, maxLength) => {
+    if (str.length > maxLength) {
+      return str.slice(0, maxLength - 3) + '...';
+    }
+    return str;
+  };
+
+  const labelRecipe = truncateString(
+    recipe.recipe.recipe.label.toUpperCase(),
+    38
+  );
+
   return (
     <>
       <ListItem>
@@ -71,7 +84,7 @@ export const RecipeCard = recipe => {
             src={recipe.recipe.recipe.image}
             alt={recipe.recipe.recipe.label}
           />
-          <Label>{recipe.recipe.recipe.label.toUpperCase()}</Label>
+          <Label>{labelRecipe}</Label>
         </StyledLinkList>
         <HeartIcon>
           {isFavorite ? (

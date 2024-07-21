@@ -75,7 +75,6 @@ export const DescriptionInfo = ({ windowWidth }) => {
           />
           <img src={img1_desktop} alt="illustration" />
         </Picture>
-
         <InfoContainer>
           <TitleBlock>1000+ RECIPES</TitleBlock>
           <TextBlock>

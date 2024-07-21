@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Title = styled.h3`
   font-size: 24px;
   font-weight: 400;
-  line-height: 34px;
+  line-height: 36px;
   color: #3e3e3e;
   margin-bottom: 24px;
   margin-top: 32px;
@@ -32,7 +32,7 @@ export const Title = styled.h3`
 export const TitleAfterSearch = styled.h3`
   font-size: 24px;
   font-weight: 400;
-  line-height: 34px;
+  line-height: 36px;
   color: #3e3e3e;
   margin-bottom: 24px;
   margin-top: 32px;
@@ -51,7 +51,7 @@ export const List = styled.ul`
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
   @media screen and (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
