@@ -1,4 +1,3 @@
-import { Footer } from 'components/Footer/Footer';
 import {
   ArrowIcon,
   Banner,
@@ -27,6 +26,7 @@ import arrowUp from '../../images/arrow_up_icon.svg';
 import arrowDown from '../../images/arrow_down-icon.svg';
 import { Filter } from 'components/Filter/FilterDesktop';
 import { getFavoritesList } from '../../redux/favoritesSlice/favoritesOperations';
+import { FooterForUser } from 'components/Footer/FooterForUser';
 
 export const RecipesPage = () => {
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ export const RecipesPage = () => {
       </FilterDesktop>
       <RecipesList />
       {isLoadMore ? <LoadMoreBtn /> : null}
-      <Footer />
+      <FooterForUser />
     </Container>
   );
 };

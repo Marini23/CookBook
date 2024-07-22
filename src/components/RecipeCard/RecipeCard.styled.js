@@ -12,7 +12,9 @@ export const ListItem = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  /* gap: 4px; */
+  @media screen and (min-width: 744px) {
+    min-width: 205px;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 416px;
   }
@@ -24,6 +26,10 @@ export const Img = styled.img`
   height: 220px;
   object-fit: cover;
   border-radius: 4px;
+  @media screen and (min-width: 744px) {
+    max-width: 205px;
+    height: 116px;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 416px;
     height: 235px;
@@ -47,6 +53,13 @@ export const Label = styled.p`
   text-overflow: ellipsis; */
   padding: 0 8px;
   text-decoration: none;
+  @media screen and (min-width: 744px) {
+    max-width: 205px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 17.63px;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 416px;
     height: 40px;
@@ -62,6 +75,18 @@ export const HeartIcon = styled.div`
   right: 12px;
   width: 20px;
   height: 20px;
+  @media screen and (min-width: 744px) {
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const StyledHeartIcon = styled(FaRegHeart)`
@@ -69,6 +94,14 @@ export const StyledHeartIcon = styled(FaRegHeart)`
   color: ${({ theme }) => theme.colors.primaryOrange};
   width: 20px;
   height: 20px;
+  @media screen and (min-width: 744px) {
+    width: 16px;
+    height: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const StyledHeartIconFavorite = styled(FaHeart)`
@@ -76,6 +109,14 @@ export const StyledHeartIconFavorite = styled(FaHeart)`
   color: ${({ theme }) => theme.colors.primaryOrange};
   width: 20px;
   height: 20px;
+  @media screen and (min-width: 744px) {
+    width: 16px;
+    height: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const StyledLinkList = styled(NavLink)`

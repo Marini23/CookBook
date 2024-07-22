@@ -8,6 +8,10 @@ export const Container = styled.div`
   min-width: 320px;
   max-width: 390px;
   margin: 0 auto;
+  @media screen and (min-width: 744px) {
+    max-width: 744px;
+    padding: 0 40px;
+  }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     padding: 0 72px;
@@ -21,6 +25,11 @@ export const Title = styled.h3`
   color: #3e3e3e;
   margin-bottom: 24px;
   margin-top: 32px;
+  @media screen and (min-width: 744px) {
+    font-size: 36px;
+    margin-bottom: 32px;
+    margin-top: 40px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 64px;
     line-height: 64px;
@@ -52,6 +61,12 @@ export const List = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 24px;
+  @media screen and (min-width: 744px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    row-gap: 32px;
+  }
   @media screen and (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

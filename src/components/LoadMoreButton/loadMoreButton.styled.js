@@ -25,5 +25,19 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
   @media screen and (min-width: 744px) {
+    max-width: 434px;
+    height: 32px;
+    font-size: 16px;
+    line-height: 23.5px;
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 305px;
+    height: 45px;
+    font-size: 20px;
+    line-height: 29.38px;
+    margin-top: 56px;
+    margin-bottom: 96px;
   }
 `;

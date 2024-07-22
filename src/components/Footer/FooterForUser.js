@@ -16,7 +16,7 @@ export const FooterForUser = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Img src={logo} alt="logo" />
+      <Img src={logo} srcSet={`${logo} 1x`} alt="logo" />
       <List>
         <li>
           <LinkItem href="/CookBook/recipes">RECIPES</LinkItem>
