@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   HeartIcon,
   Img,
@@ -20,20 +20,40 @@ import {
   deleteFavoriteItem,
 } from '../../redux/favoritesSlice/favoritesOperations';
 import { useLocation } from 'react-router-dom';
+import { truncateString } from 'utils';
 
 export const RecipeCard = recipe => {
+  const [truncatedLabel, setTruncatedLabel] = useState(
+    recipe.recipe.recipe.label.toUpperCase()
+  );
   const dispatch = useDispatch();
   const location = useLocation();
   const filteredRecipes = useSelector(selectFilteredRecipes);
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const userId = useSelector(selectUserId);
-  // const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const labelRef = useRef();
 
   useEffect(() => {}, [favoritesRecipes]);
 
   const isFavorite = favoritesRecipes.some(favItem => {
     return favItem._links.self.href === recipe.recipe._links.self.href;
   });
+
+  useEffect(() => {
+    if (labelRef.current) {
+      const containerWidth = labelRef.current.clientWidth - 16; // 16 = padding left + right 8x2
+      const fontSize = window.getComputedStyle(labelRef.current).fontSize;
+      const fontFamily = window.getComputedStyle(labelRef.current).fontFamily;
+      const font = `${fontSize} ${fontFamily}`;
+
+      const truncatedText = truncateString(
+        recipe.recipe.recipe.label.toUpperCase(),
+        containerWidth,
+        font
+      );
+      setTruncatedLabel(truncatedText);
+    }
+  }, [recipe]);
 
   const url = recipe.recipe._links.self.href;
 
@@ -64,18 +84,6 @@ export const RecipeCard = recipe => {
     }
   };
 
-  const truncateString = (str, maxLength) => {
-    if (str.length > maxLength) {
-      return str.slice(0, maxLength - 3) + '...';
-    }
-    return str;
-  };
-
-  const labelRecipe = truncateString(
-    recipe.recipe.recipe.label.toUpperCase(),
-    38
-  );
-
   return (
     <>
       <ListItem>
@@ -84,7 +92,7 @@ export const RecipeCard = recipe => {
             src={recipe.recipe.recipe.image}
             alt={recipe.recipe.recipe.label}
           />
-          <Label>{labelRecipe}</Label>
+          <Label ref={labelRef}>{truncatedLabel}</Label>
         </StyledLinkList>
         <HeartIcon>
           {isFavorite ? (

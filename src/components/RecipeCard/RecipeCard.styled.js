@@ -49,8 +49,6 @@ export const Label = styled.p`
   line-height: 20.56px;
   color: ${({ theme }) => theme.colors.black};
   white-space: nowrap;
-  /* overflow: hidden;
-  text-overflow: ellipsis; */
   padding: 0 8px;
   text-decoration: none;
   @media screen and (min-width: 744px) {
