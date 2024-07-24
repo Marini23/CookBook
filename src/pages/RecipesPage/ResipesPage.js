@@ -1,10 +1,12 @@
 import {
+  ArrowContainer,
   ArrowIcon,
   Banner,
   ButtonFilter,
   Container,
   FilterContainer,
   FilterDesktop,
+  TextButtonFilter,
 } from './RecipesPage.styled';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +26,7 @@ import bannerDesktop from '../../images/filter_banner_desktop.jpg';
 import bannerDesktop_2x from '../../images/filter_banner_desktop2x.jpg';
 import arrowUp from '../../images/arrow_up_icon.svg';
 import arrowDown from '../../images/arrow_down-icon.svg';
-import { Filter } from 'components/Filter/FilterDesktop';
+import { Filter } from 'components/Filter/FilterTabletDesktop';
 import { getFavoritesList } from '../../redux/favoritesSlice/favoritesOperations';
 import { FooterForUser } from 'components/Footer/FooterForUser';
 
@@ -55,11 +57,15 @@ export const RecipesPage = () => {
       <FilterDesktop>
         {query !== 'popular' && (
           <ButtonFilter type="button" onClick={toggleFilterVisibility}>
-            <ArrowIcon
-              src={isFilterVisible ? arrowUp : arrowDown}
-              alt="Toggle Filters Icon"
-            />
-            {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
+            <ArrowContainer>
+              <ArrowIcon
+                src={isFilterVisible ? arrowUp : arrowDown}
+                alt="Toggle Filters Icon"
+              />
+            </ArrowContainer>
+            <TextButtonFilter>
+              {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
+            </TextButtonFilter>
           </ButtonFilter>
         )}
         {query === 'popular' && (

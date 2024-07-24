@@ -3,22 +3,25 @@ import styled from 'styled-components';
 export const FormFilter = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 32px;
   background-color: #ededed;
-  padding: 64px 144px;
+  padding: 32px 40px;
+
+  @media screen and (min-width: 1440px) {
+    gap: 32px;
+    padding: 64px 144px;
+  }
 `;
 
 export const FilterColums = styled.div`
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 `;
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  row-gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  row-gap: 40px;
 `;
 
 export const WrapFilter = styled.div`
@@ -34,11 +37,9 @@ export const Label = styled.h6`
 `;
 
 export const WrapItem = styled.div`
-  /* width: 86px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 13px; */
 `;
 
 export const Span = styled.span`
@@ -61,6 +62,10 @@ export const InputNumber = styled.input`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 24px;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const ClearIcon = styled.img`
@@ -72,8 +77,6 @@ export const ClearIcon = styled.img`
 export const ClearButton = styled.button`
   cursor: pointer;
   width: 130px;
-  /* padding: 8px 44px; */
-  /* height: 18px; */
   border: none;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.grey};
@@ -100,15 +103,23 @@ export const ContainerCheckbox = styled.div`
 export const WrapCheckboxDiet = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-  column-gap: 80px;
+  column-gap: 32px;
   row-gap: 16px;
+  @media screen and (min-width: 1440px) {
+    column-gap: 80px;
+  }
 `;
 
 export const WrapCheckbox = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 80px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 32px;
   row-gap: 16px;
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 80px;
+    row-gap: 16px;
+  }
 `;
 
 export const LabelCheckbox = styled.label`
@@ -159,6 +170,7 @@ export const SubmitButton = styled.button`
   justify-content: center;
   width: 124px;
   height: 40px;
+  margin-top: 32px;
   border-radius: 4px;
   border: none;
   background-color: ${({ theme }) => theme.colors.primaryOrange};
@@ -175,5 +187,8 @@ export const SubmitButton = styled.button`
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 0;
   }
 `;

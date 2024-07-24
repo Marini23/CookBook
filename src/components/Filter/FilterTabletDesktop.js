@@ -21,7 +21,7 @@ import {
   WrapCheckboxDiet,
   WrapFilter,
   WrapItem,
-} from './Filterdesktop.styled';
+} from './FilterTabletDesktop.styled';
 
 export const Filter = () => {
   const { register, handleSubmit, reset } = useForm({
