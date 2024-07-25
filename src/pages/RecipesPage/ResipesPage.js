@@ -1,5 +1,4 @@
 import {
-  ArrowContainer,
   ArrowIcon,
   Banner,
   ButtonFilter,
@@ -57,12 +56,10 @@ export const RecipesPage = () => {
       <FilterDesktop>
         {query !== 'popular' && (
           <ButtonFilter type="button" onClick={toggleFilterVisibility}>
-            <ArrowContainer>
-              <ArrowIcon
-                src={isFilterVisible ? arrowUp : arrowDown}
-                alt="Toggle Filters Icon"
-              />
-            </ArrowContainer>
+            <ArrowIcon
+              src={isFilterVisible ? arrowUp : arrowDown}
+              alt="Toggle Filters Icon"
+            />
             <TextButtonFilter>
               {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
             </TextButtonFilter>

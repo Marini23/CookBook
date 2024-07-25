@@ -79,19 +79,15 @@ export const TextButtonFilter = styled.span`
   display: flex;
   justify-content: start;
   align-items: center;
-`;
-
-export const ArrowContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  border-radius: 4px;
-  width: 20px;
-  height: 20px;
-  margin-right: 16px;
+  @media screen and (min-width: 1440px) {
+    width: 200px;
+  }
 `;
 
 export const ArrowIcon = styled.img`
   width: 20px;
   height: 20px;
+  margin-right: 16px;
 `;
 
 export const FilterContainer = styled.div`
@@ -101,4 +97,7 @@ export const FilterContainer = styled.div`
   transition: max-height 1s ease-in-out;
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 1440px) {
+    max-height: ${({ $isvisible }) => ($isvisible ? '493px' : '0')};
+  }
 `;

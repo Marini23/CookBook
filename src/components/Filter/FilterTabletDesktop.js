@@ -15,6 +15,7 @@ import {
   InputNumber,
   Label,
   LabelCheckbox,
+  LabelFirst,
   Span,
   SubmitButton,
   WrapCheckbox,
@@ -65,7 +66,7 @@ export const Filter = () => {
       <FilterColums>
         <Container>
           <WrapFilter>
-            <Label>Calories</Label>
+            <LabelFirst>Calories</LabelFirst>
             <WrapItem>
               <Span>From</Span>
               <InputNumber type="number" {...register('caloriesFrom')} />
@@ -76,7 +77,7 @@ export const Filter = () => {
             </WrapItem>
           </WrapFilter>
           <WrapFilter>
-            <Label>Ingredients</Label>
+            <LabelFirst>Ingredients</LabelFirst>
             <WrapItem>
               <Span>Up to</Span>
               <InputNumber type="number" {...register('ingredientsTo')} />

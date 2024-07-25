@@ -8,7 +8,7 @@ export const FormFilter = styled.form`
 
   @media screen and (min-width: 1440px) {
     gap: 32px;
-    padding: 64px 144px;
+    padding: 64px 144px 46px 144px;
   }
 `;
 
@@ -21,25 +21,45 @@ export const FilterColums = styled.div`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(1, auto);
-  row-gap: 40px;
+  row-gap: 24px;
+  @media screen and (min-width: 1440px) {
+    row-gap: 8px;
+  }
 `;
 
 export const WrapFilter = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 16px; */
+`;
+
+export const LabelFirst = styled.h6`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.5px;
+  margin-bottom: 12px;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const Label = styled.h6`
   font-size: 16px;
   font-weight: 500;
   line-height: 23.5px;
+  margin-bottom: 12px;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const WrapItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 16px;
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const Span = styled.span`
@@ -97,7 +117,7 @@ export const ClearButton = styled.button`
 export const ContainerCheckbox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 16px; */
 `;
 
 export const WrapCheckboxDiet = styled.div`
@@ -183,7 +203,7 @@ export const SubmitButton = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  &:focus {
+  &:active {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
