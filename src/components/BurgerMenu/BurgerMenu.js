@@ -120,6 +120,18 @@ export const BurgerMenu = ({ windowWidth }) => {
     handleButtonSize();
   }, [windowWidth]);
 
+  useEffect(() => {
+    const body = document.body;
+    if (isMenuOpen) {
+      body.classList.add('no-scroll');
+    } else {
+      body.classList.remove('no-scroll');
+    }
+    return () => {
+      body.classList.remove('no-scroll'); // Clean up on unmount
+    };
+  }, [isMenuOpen]);
+
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
