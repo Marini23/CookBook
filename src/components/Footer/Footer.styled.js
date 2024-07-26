@@ -44,7 +44,7 @@ export const Container = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 8px 0;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 744px;
     height: 117px;
     background-image: linear-gradient(
@@ -102,7 +102,7 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     flex-direction: row;
     gap: 0;
   }
@@ -113,7 +113,7 @@ export const Img = styled.img`
   height: 32px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 56px;
     height: 37px;
   }
@@ -131,7 +131,7 @@ export const FooterText = styled.p`
   font-size: 10px;
   font-weight: 14.96px;
   color: ${({ theme }) => theme.colors.footerText};
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 12px;
     font-weight: 17.63px;
     margin-top: 0;
@@ -156,7 +156,7 @@ export const Link = styled.a`
   &:focus {
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 12px;
     font-weight: 17.63px;
     margin-top: 0;

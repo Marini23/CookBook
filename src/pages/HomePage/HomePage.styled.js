@@ -14,7 +14,7 @@ export const Container = styled.main`
   max-width: 390px;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.colors.white};
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 744px;
   }
   @media screen and (min-width: 1440px) {
@@ -38,7 +38,7 @@ export const MainInfo = styled.section`
   @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
     background-image: url(${bg_mobile_3x});
   }
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     background-image: url(${bg_tablet});
     max-width: 744px;
     height: 535px;
@@ -73,7 +73,7 @@ export const Logo = styled.img`
   left: 16px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 56px;
     height: 37px;
     top: 30px;
@@ -95,7 +95,7 @@ export const WrapContent = styled.div`
   height: 126px;
   background-color: rgba(107, 107, 107, 0.5);
   padding: 16px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 664px;
     height: 300px;
     top: 155px;
@@ -116,7 +116,7 @@ export const Text = styled.p`
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 16px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 28px;
     line-height: 36px;
     margin-bottom: 18px;
@@ -129,7 +129,7 @@ export const Text = styled.p`
 `;
 
 export const SecondaryText = styled.p`
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 60px;
     color: ${({ theme }) => theme.colors.white};
     font-size: 18px;
@@ -170,7 +170,7 @@ export const ButtonLink = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 305px;
     height: 40px;
     font-size: 16px;
@@ -192,7 +192,7 @@ export const NavMenu = styled.div`
   right: 40px;
   display: flex;
   gap: 16px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     position: absolute;
     top: 35px;
     right: 40px;
@@ -208,7 +208,7 @@ export const NavMenu = styled.div`
   }
 `;
 export const RegisterButton = styled.button`
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 32px;
     display: flex;
     justify-content: center;
@@ -250,7 +250,7 @@ export const RegisterButton = styled.button`
 `;
 
 export const LoginButton = styled.button`
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 32px;
     display: flex;
     border: 1.5px solid transparent;
