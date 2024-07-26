@@ -1,12 +1,18 @@
-/* .bm-burger-button:hover .bm-icon {
-  fill: #ff6347;
-} */
-
 .bm-icon {
   fill: #f4c343;
   transition: fill 0.3s;
 }
 
 .bm-icon:hover {
-  fill: #ffffff; /* Change this to the desired hover color */
+  fill: #f4c343; /* Change this to the desired hover color */
+}
+
+@supports (height: 100dvh) {
+  .full-viewport-height {
+    height: 100dvh;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
 }
