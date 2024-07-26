@@ -194,7 +194,7 @@ export const BurgerMenu = ({ windowWidth }) => {
 
     bmMenuWrap: {
       position: 'fixed',
-      height: '100vh',
+      height: '100dvh',
       width: '100%',
       top: 0,
       right: 0,
@@ -203,7 +203,7 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmMenu: {
       display: 'flex',
       flexDirection: 'column',
-      height: '100vh',
+      height: '100%',
       overflow: 'hidden',
       backgroundColor: 'rgba(22, 22, 22, 0.8)',
       backgroundImage: bgImage,
@@ -214,7 +214,6 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmItemList: {
       display: 'flex',
       flexDirection: 'column',
-      // marginTop: '128px',
       alignItems: 'center',
       justifyContent: 'center',
     },
