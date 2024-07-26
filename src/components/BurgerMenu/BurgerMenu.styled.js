@@ -10,6 +10,11 @@ export const Title = styled.h3`
   font-size: 36px;
   line-height: 36px;
   font-weight: 400;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    font-size: 48px;
+    line-height: 36px;
+    margin-bottom: 48px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 64px;
     line-height: 64px;
@@ -22,6 +27,12 @@ export const List = styled.ul`
   gap: 48px;
   align-items: center;
   justify-content: center;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    gap: 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    gap: 48px;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -45,12 +56,17 @@ export const Link = styled(NavLink)`
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  font-weight: 400;
   line-height: 35.25px;
   &:hover {
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
   &:focus {
     color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    font-size: 36px;
+    line-height: 36px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 36px;

@@ -20,6 +20,7 @@ import {
 } from './BurgerMenu.styled';
 import { LogOutBtn } from 'components/LogOut/LogOut';
 import bg_menu_mobile from '../../images/burger_menu_mobile.jpg';
+import bg_menu_tablet from '../../images/bg_burger_tablet.jpg';
 import bg_menu_desktop from '../../images/bg_burgerMenu_desktop.jpg';
 import { ModalWindow } from 'components/Modal/Modal';
 import { LoginForm } from 'components/LoginForm/LoginForm';
@@ -74,11 +75,14 @@ export const BurgerMenu = ({ windowWidth }) => {
           right: '40px',
         });
         setCloseButtonSize({
-          width: `36px`,
-          height: `36px`,
-          top: '70px',
+          width: `40px`,
+          height: `40px`,
+          top: '37px',
           right: '54px',
         });
+        setBgImage(
+          `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_tablet})`
+        );
       } else if (windowWidth > 1439) {
         setBurgerButtonSize({
           width: `40px`,
@@ -197,9 +201,9 @@ export const BurgerMenu = ({ windowWidth }) => {
       overflow: 'hidden',
     },
     bmMenu: {
-      display: 'flex', // Flex display for the menu container
-      flexDirection: 'column', // Column direction
-      height: '100vh', // Full viewport height
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
       overflow: 'hidden',
       backgroundColor: 'rgba(22, 22, 22, 0.8)',
       backgroundImage: bgImage,
@@ -210,14 +214,13 @@ export const BurgerMenu = ({ windowWidth }) => {
     bmItemList: {
       display: 'flex',
       flexDirection: 'column',
-      marginTop: '128px',
-      // flexGrow: 1,
+      // marginTop: '128px',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     bmItem: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '48px',
-      // flexGrow: 1,
     },
   };
   return (

@@ -16,6 +16,10 @@ export const Button = styled.button`
   &:focus {
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    font-size: 36px;
+    line-height: 36px;
+  }
   @media screen and (min-width: 1440px) {
     font-size: 36px;
     line-height: 36px;
