@@ -70,7 +70,6 @@ export const RecipeCard = recipe => {
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipe.recipe._links.self.href;
     });
-    // setSelectedRecipe(selectRecipe);
     if (isFavorite) {
       const recipeId = favoritesRecipes.find(item => {
         return item._links.self.href === recipe.recipe._links.self.href;

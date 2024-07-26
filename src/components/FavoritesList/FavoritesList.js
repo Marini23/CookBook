@@ -4,6 +4,7 @@ import {
   Container,
   IconPlus,
   ItemAddRecipe,
+  LinkItem,
   List,
   Title,
 } from './FavoritesList.styled';
@@ -13,9 +14,7 @@ import diskoverPlus from '../../images/diskover_plus.svg';
 
 export const FavoritesList = () => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
-
   console.log(favoritesRecipes);
-
   return (
     <Container>
       <Title>FAVORITES RECIPES</Title>
@@ -23,11 +22,12 @@ export const FavoritesList = () => {
         {favoritesRecipes.map(recipe => {
           return <RecipeCardFavorite recipe={recipe} key={recipe.recipe.id} />;
         })}
-
-        <ItemAddRecipe>
-          <IconPlus src={diskoverPlus} alt="recipe search" />
-          DISKOVER RECIPES
-        </ItemAddRecipe>
+        <LinkItem href="/CookBook/recipes">
+          <ItemAddRecipe>
+            <IconPlus src={diskoverPlus} alt="recipe search" />
+            DISKOVER RECIPES
+          </ItemAddRecipe>
+        </LinkItem>
       </List>
     </Container>
   );

@@ -12,7 +12,7 @@ export const ListItem = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     min-width: 205px;
   }
   @media screen and (min-width: 1440px) {
@@ -26,7 +26,7 @@ export const Img = styled.img`
   height: 220px;
   object-fit: cover;
   border-radius: 4px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 205px;
     height: 116px;
   }
@@ -51,7 +51,7 @@ export const Label = styled.p`
   white-space: nowrap;
   padding: 0 8px;
   text-decoration: none;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 205px;
     height: 24px;
     font-size: 12px;
@@ -73,7 +73,7 @@ export const HeartIcon = styled.div`
   right: 12px;
   width: 20px;
   height: 20px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     top: 8px;
     right: 8px;
     width: 16px;
@@ -107,7 +107,7 @@ export const StyledHeartIconFavorite = styled(FaHeart)`
   color: ${({ theme }) => theme.colors.primaryOrange};
   width: 20px;
   height: 20px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 16px;
     height: 16px;
   }

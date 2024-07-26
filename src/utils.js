@@ -9,7 +9,6 @@ export const truncateString = (str, maxWidth, font) => {
   context.font = font;
 
   let width = context.measureText(str).width;
-  console.log(width);
   if (width <= maxWidth) {
     return str;
   }

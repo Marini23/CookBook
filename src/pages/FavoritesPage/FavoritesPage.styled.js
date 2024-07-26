@@ -9,8 +9,9 @@ export const Container = styled.div`
   max-width: 390px;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.colors.white};
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 744px;
+    padding-top: 61px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;

@@ -67,7 +67,6 @@ export const RecipesPage = () => {
         )}
         {query === 'popular' && (
           <>
-            {console.log('Banner should render for popular query')}
             <Banner>
               <source
                 srcSet={`${bannerTablet}, ${bannerTablet_2x} 2x, ${bannerTablet_3x} 3x`}
