@@ -31,6 +31,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const BurgerMenu = ({ windowWidth }) => {
   const navigate = useNavigate();
+  const [supportsDynamicViewportHeight, setSupportsDynamicViewportHeight] =
+    useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
@@ -132,6 +134,12 @@ export const BurgerMenu = ({ windowWidth }) => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (CSS.supports('height', '100dvh')) {
+      setSupportsDynamicViewportHeight(true);
+    }
+  }, []);
+
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
@@ -206,7 +214,7 @@ export const BurgerMenu = ({ windowWidth }) => {
 
     bmMenuWrap: {
       position: 'fixed',
-      height: '100dvh',
+      height: supportsDynamicViewportHeight ? '100dvh' : '100vh',
       width: '100%',
       top: 0,
       right: 0,
@@ -222,6 +230,7 @@ export const BurgerMenu = ({ windowWidth }) => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+      transition: 'background-image 0.3s ease-in-out',
     },
     bmItemList: {
       display: 'flex',

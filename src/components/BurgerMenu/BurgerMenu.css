@@ -17,3 +17,7 @@
   overflow: hidden;
   height: 100%;
 }
+
+.bmMenu {
+  transition: height 0.3s ease;
+}
