@@ -61,7 +61,6 @@ export const Input = styled.input`
     border: 1px solid ${({ theme }) => theme.colors.primaryBlackText};
   }
 
-
   @media screen and (min-width: 744px) {
     font-size: 14px;
     line-height: 20.56px;
@@ -85,9 +84,8 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: 20.56px;
   &:hover {
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
+    border: none;
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
   &:focus {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};

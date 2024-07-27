@@ -36,8 +36,8 @@
   }
   @media screen and (min-width: 1440px) {
     max-width: 872px;
-    max-height: calc(100% - 280px);
-    top: 140px;
+    max-height: calc(100% - 80px);
+    top: 50px;
     padding: 0;
   }
   &::-webkit-scrollbar {

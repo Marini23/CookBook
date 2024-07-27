@@ -79,9 +79,8 @@ export const Button = styled.button`
   line-height: 20.56px;
   margin-top: 16px;
   &:hover {
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
+    border: none;
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
   &:focus {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
