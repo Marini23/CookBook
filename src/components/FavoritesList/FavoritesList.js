@@ -14,7 +14,6 @@ import diskoverPlus from '../../images/diskover_plus.svg';
 
 export const FavoritesList = () => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
-  console.log(favoritesRecipes);
   return (
     <Container>
       <Title>FAVORITES RECIPES</Title>

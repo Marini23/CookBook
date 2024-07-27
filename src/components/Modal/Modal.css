@@ -9,6 +9,9 @@
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     background-color: rgba(248, 248, 248, 0.75);
   }
+  @media screen and (min-width: 1440px) {
+    background-color: rgba(248, 248, 248, 0.75);
+  }
 }
 
 .modal-content-default {
@@ -35,6 +38,7 @@
     max-width: 872px;
     max-height: calc(100% - 280px);
     top: 140px;
+    padding: 0;
   }
   &::-webkit-scrollbar {
     width: 7px;
@@ -79,12 +83,13 @@
     width: 32px;
     height: 32px;
   }
-  @media screen and (min-width: 1440px) {
-    .closeIcon {
-      top: 48px;
-      right: 80px;
-      width: 24px;
-      height: 24px;
-    }
+}
+
+@media screen and (min-width: 1440px) {
+  .closeIcon {
+    top: 48px;
+    right: 80px;
+    width: 24px;
+    height: 24px;
   }
 }

@@ -26,6 +26,7 @@ export const Img = styled.img`
   height: 220px;
   object-fit: cover;
   border-radius: 4px;
+  font-size: 0;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 205px;
     height: 116px;

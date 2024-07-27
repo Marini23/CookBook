@@ -23,15 +23,18 @@ export const ListItem = styled.li`
 export const Img = styled.img`
   width: 100%;
   max-width: 366px;
+  min-height: 220px;
   height: 220px;
   object-fit: cover;
   border-radius: 4px;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     max-width: 205px;
+    min-height: 116px;
     height: 116px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 416px;
+    min-height: 400px;
     height: 400px;
   }
 `;
@@ -120,6 +123,7 @@ export const StyledHeartIconFavorite = styled(FaHeart)`
 export const StyledLinkList = styled(NavLink)`
   cursor: pointer;
   color: black;
+  text-decoration: none;
 
   &.active {
     color: #ff8c00;

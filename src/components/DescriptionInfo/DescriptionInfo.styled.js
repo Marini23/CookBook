@@ -139,7 +139,7 @@ export const Link = styled.button`
   }
   &:active {
     border: none;
-    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
     color: ${({ theme }) => theme.colors.primaryBlackText};
   }
   @media screen and (min-width: 744px) {

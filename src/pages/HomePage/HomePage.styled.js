@@ -129,9 +129,9 @@ export const Text = styled.p`
 `;
 
 export const SecondaryText = styled.p`
+  color: ${({ theme }) => theme.colors.white};
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 60px;
-    color: ${({ theme }) => theme.colors.white};
     font-size: 18px;
     line-height: 26.44px;
     margin-bottom: 30px;
@@ -150,6 +150,7 @@ export const ButtonLink = styled.button`
   padding: 8px 44px;
   height: 34px;
   border: none;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.primaryOrange};
   color: ${({ theme }) => theme.colors.primaryBlackText};
   display: flex;
@@ -158,14 +159,11 @@ export const ButtonLink = styled.button`
   font-size: 12px;
   line-height: 17.36px;
   &:hover {
-    border-radius: 4px;
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
+    border: none;
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+    /* color: ${({ theme }) => theme.colors.primaryOrange}; */
   }
   &:active {
-    border: none;
-    border-radius: 4px;
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
@@ -208,26 +206,30 @@ export const NavMenu = styled.div`
   }
 `;
 export const RegisterButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.primaryOrange};
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:active {
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.whiteText};
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
     border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
     padding: 4px 8px;
     font-size: 16px;
     line-height: 23.5px;
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
     &:hover {
       border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
-      color: ${({ theme }) => theme.colors.primaryOrange};
     }
     &:active {
       border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
-      background-color: ${({ theme }) => theme.colors.primaryOrange};
-      color: ${({ theme }) => theme.colors.whiteText};
     }
   }
 
@@ -237,40 +239,42 @@ export const RegisterButton = styled.button`
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     font-size: 20px;
     line-height: 29.38px;
-
     &:hover {
       border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     }
     &:active {
       border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-      background-color: ${({ theme }) => theme.colors.primaryOrange};
-      color: ${({ theme }) => theme.colors.whiteText};
     }
   }
 `;
 
 export const LoginButton = styled.button`
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.whiteText};
+  &:hover {
+    border-radius: 4px;
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:active {
+    border-radius: 4px;
+    border: 1.5px solid transparent;
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.whiteText};
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 32px;
-    display: flex;
     border: 1.5px solid transparent;
-    background-color: transparent;
     padding: 4px 8px;
-    justify-content: center;
-    align-items: center;
     font-size: 16px;
     line-height: 23.5px;
-    color: ${({ theme }) => theme.colors.whiteText};
     &:hover {
-      border-radius: 4px;
       border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
-      color: ${({ theme }) => theme.colors.primaryOrange};
     }
     &:active {
-      border-radius: 4px;
       border: 1.5px solid transparent;
-      background-color: ${({ theme }) => theme.colors.primaryOrange};
-      color: ${({ theme }) => theme.colors.whiteText};
     }
   }
 

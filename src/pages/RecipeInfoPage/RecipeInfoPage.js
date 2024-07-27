@@ -12,7 +12,6 @@ export const RecipeInfoPage = () => {
   useEffect(() => {
     getRecipeInfo(recipeId)
       .then(data => {
-        console.log('Recipe data:', data);
         setRecipeInfo(data);
       })
       .catch(error => {
@@ -20,11 +19,8 @@ export const RecipeInfoPage = () => {
       });
   }, [recipeId]);
 
-  useEffect(() => {
-    console.log('Updated recipeInfo:', recipeInfo);
-  }, [recipeInfo]);
+  useEffect(() => {}, [recipeInfo]);
 
-  console.log(recipeInfo);
   return (
     <Container>
       {' '}
