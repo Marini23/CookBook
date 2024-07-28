@@ -158,7 +158,7 @@ export const NetworkBtnSubmit = styled.button`
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
   }
-  &:focus {
+  &:active {
     border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
   }
   @media screen and (min-width: 744px) {
@@ -194,6 +194,15 @@ export const Text = styled.p`
   font-weight: 17.63px;
   color: ${({ theme }) => theme.colors.primaryBlackText};
   margin-top: 16px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+    text-decoration: underline;
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+    text-decoration: underline;
+  }
+
   @media screen and (min-width: 744px) {
     margin-top: 4px;
   }

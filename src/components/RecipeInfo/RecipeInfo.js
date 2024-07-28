@@ -38,6 +38,7 @@ import {
   addFavoriteItem,
   deleteFavoriteItem,
 } from '../../redux/favoritesSlice/favoritesOperations';
+import { addRecipeItem } from '../../redux/shoppingSlice/shoppingOperations';
 
 export const RecipeInfo = ({ recipeInfo }) => {
   const dispatch = useDispatch();
@@ -50,7 +51,6 @@ export const RecipeInfo = ({ recipeInfo }) => {
   useEffect(() => {}, [favoritesRecipes]);
 
   const isFavorite = favoritesRecipes.some(favItem => {
-    console.log(recipeInfo);
     return favItem._links.self.href === recipeInfo._links.self.href;
   });
 
@@ -58,7 +58,6 @@ export const RecipeInfo = ({ recipeInfo }) => {
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipeInfo._links.self.href;
     });
-    // setSelectedRecipe(selectRecipe);
     if (isFavorite) {
       const recipeId = favoritesRecipes.find(item => {
         return item._links.self.href === recipeInfo._links.self.href;
@@ -71,8 +70,11 @@ export const RecipeInfo = ({ recipeInfo }) => {
       dispatch(addFavoriteItem({ userId, favoriteData: selectRecipe }));
     }
   };
-
   console.log(recipeInfo);
+  const handleIngredients = recipeInfo => {
+    console.log(recipeInfo);
+    dispatch(addRecipeItem({ userId, recipeInfo }));
+  };
 
   const diets = recipeInfo.recipe.dietLabels
     .map(label => label.toUpperCase())
@@ -103,7 +105,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
       <InfoContainer>
         <SaveBtnContainer>
           <SaveBtnText>Save Ingredients to Shopping List</SaveBtnText>
-          <SaveBtn type="button">
+          <SaveBtn type="button" onClick={() => handleIngredients(recipeInfo)}>
             {' '}
             <img src={plusIcon} alt=" plus icon" />
           </SaveBtn>

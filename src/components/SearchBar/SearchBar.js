@@ -25,7 +25,7 @@ export const SearchBar = () => {
         type="text"
         autoComplete="off"
         autoFocus
-        placeholder="I'am craving..."
+        placeholder="I'am searching..."
         name="query"
       />
       <Button type="submit">

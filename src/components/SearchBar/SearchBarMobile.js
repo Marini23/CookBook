@@ -47,7 +47,7 @@ export const SearchBarMobile = () => {
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="I'am craving..."
+            placeholder="I'am searching..."
             name="query"
           />
           <ButtonMobile type="button" onClick={openModalFilter}>

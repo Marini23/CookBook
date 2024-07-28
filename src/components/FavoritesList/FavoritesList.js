@@ -24,7 +24,7 @@ export const FavoritesList = () => {
         <LinkItem href="/CookBook/recipes">
           <ItemAddRecipe>
             <IconPlus src={diskoverPlus} alt="recipe search" />
-            DISKOVER RECIPES
+            ADD RECIPE
           </ItemAddRecipe>
         </LinkItem>
       </List>
