@@ -8,23 +8,17 @@ const addRecipeToShoppingList = (userId, recipeData) => {
     const newShoppingRef = push(shoppingRef);
 
     set(newShoppingRef, {
-      recipe: {
-        images: recipeData.recipe.images,
-        ingredients: recipeData.recipe.ingredients,
-      },
-      _links: {
-        self: { href: recipeData._links.self.href },
-      },
+      id: newShoppingRef.key,
+      images: recipeData.recipe.images,
+      ingredients: recipeData.recipe.ingredients,
+      idLink: recipeData._links.self.href,
     })
       .then(() => {
         resolve({
-          recipe: {
-            images: recipeData.recipe.images,
-            ingredients: recipeData.recipe.ingredients,
-          },
-          _links: {
-            self: { href: recipeData._links.self.href },
-          },
+          id: newShoppingRef.key,
+          images: recipeData.recipe.images,
+          ingredients: recipeData.recipe.ingredients,
+          idLink: recipeData._links.self.href,
         });
       })
       .catch(error => {

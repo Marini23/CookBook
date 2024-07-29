@@ -13,9 +13,7 @@ const handleRejected = (state, action) => {
 const shoppingSlice = createSlice({
   name: 'shoppingList',
   initialState: {
-    photoRecipes: [],
-    ingredients: [],
-    addedRecipes: [],
+    addedRecipestoShoppingList: [],
     isLoading: false,
     error: null,
   },
@@ -48,10 +46,10 @@ const shoppingSlice = createSlice({
       .addCase(addRecipeItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
-        state.photoRecipes = action.payload.recipe.images;
-        state.ingredients = action.payload.recipe.ingredients;
-        state.addedRecipes.push(action.payload._links.self.href);
+        // console.log(action.payload);
+        // state.photoRecipes = action.payload.recipe.images;
+        // state.ingredients = action.payload.recipe.ingredients;
+        state.addedRecipestoShoppingList.push(action.payload);
         // state.favoritesList.push(action.payload);
       }),
   // .addCase(deleteFavoriteItem.pending, handlePending)

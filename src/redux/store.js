@@ -29,7 +29,7 @@ export const store = configureStore({
     recipes: recipesReducer,
     filter: filterReducer,
     favorites: favoritesReducer,
-    shopping: shoppingReducer,
+    shoppingList: shoppingReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
