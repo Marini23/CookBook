@@ -9,6 +9,7 @@ const addRecipeToShoppingList = (userId, recipeData) => {
 
     set(newShoppingRef, {
       id: newShoppingRef.key,
+      label: recipeData.recipe.label,
       images: recipeData.recipe.images,
       ingredients: recipeData.recipe.ingredients,
       idLink: recipeData._links.self.href,
@@ -16,6 +17,7 @@ const addRecipeToShoppingList = (userId, recipeData) => {
       .then(() => {
         resolve({
           id: newShoppingRef.key,
+          label: recipeData.recipe.label,
           images: recipeData.recipe.images,
           ingredients: recipeData.recipe.ingredients,
           idLink: recipeData._links.self.href,
