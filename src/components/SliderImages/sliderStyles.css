@@ -1,0 +1,58 @@
+.picture-custom {
+  width: 111px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.picture-custom img {
+  max-width: 100%;
+  height: auto;
+}
+
+.slick-slide {
+  position: relative;
+  display: flex;
+  width: 123px;
+  padding: 0 6px;
+  height: 64px;
+}
+
+.slick-list {
+  height: 64px;
+  margin: 0 -6px;
+}
+
+.slick-track {
+  height: 64px;
+}
+
+.slick-slider {
+  display: flex;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 0;
+}
+
+.slick-prev,
+.slick-next {
+  width: 16px;
+  height: 24px;
+}
+.slick-prev {
+  left: -16px;
+}
+
+.slick-next {
+  right: -16px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

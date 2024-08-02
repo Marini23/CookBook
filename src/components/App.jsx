@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from '../redux/authSlice/authOperations';
 import { selectIsLoggedIn } from '../redux/selectors';
-import { ShoppingList } from 'pages/ShoppingListPage/ShoppingListPage';
+import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export const App = () => {
               <PrivateRoute redirectTo="/" component={<RecipeInfoPage />} />
             }
           />
-          <Route path="/shoppinglist" element={<ShoppingList />} />
+          <Route path="/shoppinglist" element={<ShoppingListPage />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

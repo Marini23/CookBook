@@ -15,11 +15,12 @@ import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 import { useEffect, useState } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { SearchBarMobile } from 'components/SearchBar/SearchBarMobile';
+import { useLocation } from 'react-router-dom';
 
 export const UserBar = () => {
   const name = useSelector(selectUserFirstName);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const location = useLocation();
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -31,6 +32,8 @@ export const UserBar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const isShoppingListPage = location.pathname === '/shoppinglist';
 
   return (
     <>
@@ -44,7 +47,7 @@ export const UserBar = () => {
             <BurgerMenu windowWidth={windowWidth} />
           </UserInfo>
         </WrapperInfo>
-        {windowWidth < 743 && <SearchBarMobile />}
+        {windowWidth < 743 && !isShoppingListPage && <SearchBarMobile />}
       </Header>
     </>
   );
