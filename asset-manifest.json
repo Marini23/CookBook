@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CookBook/static/css/main.e0108438.css",
-    "main.js": "/CookBook/static/js/main.e4b0cb46.js",
+    "main.css": "/CookBook/static/css/main.919d9dba.css",
+    "main.js": "/CookBook/static/js/main.597308d1.js",
     "static/media/bg_home_desktop_3x.jpg": "/CookBook/static/media/bg_home_desktop_3x.7ff46e8e5efb42b724b8.jpg",
     "static/media/bg_home_desktop_2x.jpg": "/CookBook/static/media/bg_home_desktop_2x.81fcb45665199cbeaa74.jpg",
     "static/media/footer_home_desktop_3x.jpg": "/CookBook/static/media/footer_home_desktop_3x.c74ba4ebc8af211ab328.jpg",
@@ -95,6 +95,7 @@
     "static/media/basket.svg": "/CookBook/static/media/basket.2615a1c80a4803aaf792a39c01f8646d.svg",
     "static/media/house.svg": "/CookBook/static/media/house.8711476f4f64a82169cda5d2c3acf2fb.svg",
     "static/media/dinner.svg": "/CookBook/static/media/dinner.5b72d0b915dbbf31c4a10038a47b1136.svg",
+    "static/media/delete-icon.svg": "/CookBook/static/media/delete-icon.8d3c8cd038442df1fb26acd89c3015f0.svg",
     "static/media/arrow_back.svg": "/CookBook/static/media/arrow_back.e3b5a955af1366ee4ab5b7d0be7f6b03.svg",
     "static/media/arrow_up_icon.svg": "/CookBook/static/media/arrow_up_icon.d1d493830a974aa1623ac02fec971e29.svg",
     "static/media/arrow_down-icon.svg": "/CookBook/static/media/arrow_down-icon.8d92f26114038aa219201f90bd8d8c64.svg",
@@ -103,11 +104,11 @@
     "static/media/icon_close.svg": "/CookBook/static/media/icon_close.2a45a7d56c6a43b729efa5058dee4834.svg",
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/close_icon.svg": "/CookBook/static/media/close_icon.d24ce83e3fa41b1bf2cb89a5d9e9abb2.svg",
-    "main.e0108438.css.map": "/CookBook/static/css/main.e0108438.css.map",
-    "main.e4b0cb46.js.map": "/CookBook/static/js/main.e4b0cb46.js.map"
+    "main.919d9dba.css.map": "/CookBook/static/css/main.919d9dba.css.map",
+    "main.597308d1.js.map": "/CookBook/static/js/main.597308d1.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0108438.css",
-    "static/js/main.e4b0cb46.js"
+    "static/css/main.919d9dba.css",
+    "static/js/main.597308d1.js"
   ]
 }
