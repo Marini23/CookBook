@@ -1,6 +1,44 @@
 import { db } from '../../firebase';
-import { push, ref, set } from 'firebase/database';
+import { onValue, push, ref, set } from 'firebase/database';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+const getRecipesInShoppingList = userId => {
+  return new Promise((resolve, reject) => {
+    const recipesRef = ref(db, `shopping/${userId}`);
+    onValue(
+      recipesRef,
+      snapshot => {
+        if (snapshot.exists()) {
+          const recipes = snapshot.val();
+          const recipesArray = Object.values(recipes);
+          resolve(recipesArray);
+        } else {
+          console.log('No data available');
+          resolve([]);
+        }
+      },
+      error => {
+        reject(error);
+      }
+    );
+  });
+};
+
+export const getShoppingList = createAsyncThunk(
+  'shopping/getShoppingList',
+  async (userId, thunkAPI) => {
+    try {
+      const recipesList = getRecipesInShoppingList(userId);
+      return recipesList;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
 
 const addRecipeToShoppingList = (userId, recipeData) => {
   return new Promise((resolve, reject) => {

@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 import { selectPhotoRecipes } from '../../redux/selectors';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-// import deleteIcon from '../../images/close_icon.svg';
+import deleteIcon from '../../images/delete-icon.svg';
+import diskoverPlus from '../../images/diskover_plus.svg';
 
 const NextArrow = props => {
   const { className, style, onClick } = props;
@@ -53,22 +54,19 @@ export const SliderImages = () => {
   return (
     <Slider {...settings}>
       {images.map((image, i) => (
-        // <picture className="picture-custom" key={i}>
-        //   <source srcSet={`${image.THUMBNAIL}`} media="(max-width: 743px)" />
-        //   <source
-        //     srcSet={`${image.REGULAR}`}
-        //     media="(min-width: 744px) and (max-width: 1439px)"
-        //   />
-        //   <source srcSet={`${image.LARGE}`} media="(min-width: 1440px)" />
-        //   <img
-        //     src={image.REGULAR}
-        //     alt={image.label}
-        //     style={{ width: '111px' }}
-        //   />
-        //   </picture>
-
-        <img key={image.id} src={image.image} alt={image.label} />
+        <div className="image-container" key={image.id}>
+          <img src={image.image} alt={image.label} className="slider-image" />
+          <div
+            className="delete-icon-wrapper"
+            // onClick={() => handleDelete(image.id)}
+          >
+            <img src={deleteIcon} alt="Delete" className="delete-icon" />
+          </div>
+        </div>
       ))}
+      <div className="default-image">
+        <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+      </div>
     </Slider>
   );
 };

@@ -1,4 +1,4 @@
-.picture-custom {
+/* .picture-custom {
   width: 111px;
   height: 64px;
   object-fit: contain;
@@ -7,11 +7,10 @@
 .picture-custom img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 .slick-slide {
   position: relative;
-  display: flex;
   width: 123px;
   padding: 0 6px;
   height: 64px;
@@ -48,11 +47,46 @@
   right: -16px;
 }
 
-.close-icon {
+.image-container {
+  position: relative;
+  height: 64px;
+}
+.slider-image {
+  display: block;
+  width: 111px;
+  height: 64px;
+  border-radius: 4px;
+}
+
+.delete-icon-wrapper {
   position: absolute;
   top: 8px;
   right: 8px;
   width: 16px;
   height: 16px;
   cursor: pointer;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.delete-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.default-image {
+  width: 111px;
+  height: 64px;
+  border-radius: 4px;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-icon {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

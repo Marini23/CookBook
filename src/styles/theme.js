@@ -14,5 +14,6 @@ export const theme = {
     bgFooterBlack: 'rgba(25, 25, 25, 1)',
     bgModal: '#FDFDFD',
     error: '#FF6767',
+    shoppingGrey: '#EDEDED',
   },
 };
