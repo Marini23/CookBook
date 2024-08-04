@@ -20,3 +20,10 @@ export const truncateString = (str, maxWidth, font) => {
 
   return str + '...';
 };
+
+export const getRecipeIdFromUrl = url => {
+  const urlObj = new URL(url);
+  const pathSegments = urlObj.pathname.split('/');
+  const recipeId = pathSegments[pathSegments.length - 1];
+  return recipeId;
+};

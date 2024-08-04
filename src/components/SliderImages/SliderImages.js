@@ -4,7 +4,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './sliderStyles.css';
 import { useSelector } from 'react-redux';
-import { selectPhotoRecipes } from '../../redux/selectors';
+import {
+  selectPhotoRecipes,
+  selectRecipesInShoppingList,
+} from '../../redux/selectors';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import deleteIcon from '../../images/delete-icon.svg';
@@ -38,7 +41,9 @@ const PrevArrow = props => {
 
 export const SliderImages = () => {
   const images = useSelector(selectPhotoRecipes);
+  const rec = useSelector(selectRecipesInShoppingList);
   console.log(images);
+  console.log(rec);
 
   const settings = {
     dots: false,
@@ -53,20 +58,38 @@ export const SliderImages = () => {
 
   return (
     <Slider {...settings}>
-      {images.map((image, i) => (
-        <div className="image-container" key={image.id}>
-          <img src={image.image} alt={image.label} className="slider-image" />
-          <div
-            className="delete-icon-wrapper"
-            // onClick={() => handleDelete(image.id)}
-          >
-            <img src={deleteIcon} alt="Delete" className="delete-icon" />
+      {images.map(image => (
+        <a href={image.idLink} key={image.id}>
+          <div className="image-container">
+            <img src={image.image} alt={image.label} className="slider-image" />
+            <div
+              className="delete-icon-wrapper"
+              // onClick={() => handleDelete(image.id)}
+            >
+              <img src={deleteIcon} alt="Delete" className="delete-icon" />
+            </div>
           </div>
-        </div>
+        </a>
       ))}
-      <div className="default-image">
-        <img src={diskoverPlus} alt="add recipe" className="add-icon" />
-      </div>
+      {images.length < 1 && (
+        <a href="/CookBook/recipes">
+          <div className="default-image">
+            <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+          </div>
+        </a>
+      )}
+      {images.length < 2 && (
+        <a href="/CookBook/recipes">
+          <div className="default-image">
+            <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+          </div>
+        </a>
+      )}
+      <a href="/CookBook/recipes">
+        <div className="default-image">
+          <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+        </div>
+      </a>
     </Slider>
   );
 };

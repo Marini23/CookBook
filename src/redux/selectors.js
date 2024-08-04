@@ -103,6 +103,7 @@ export const selectPhotoRecipes = createSelector(
     const images = recipes.flatMap(recipe => ({
       image: recipe.image,
       id: recipe.id,
+      idLink: recipe.idLink,
       THUMBNAIL: recipe.images.THUMBNAIL.url,
       SMALL: recipe.images.SMALL.url,
       REGULAR: recipe.images.REGULAR.url,
