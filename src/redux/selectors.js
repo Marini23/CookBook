@@ -99,7 +99,6 @@ export const selectMergedIndredients = createSelector(
 export const selectPhotoRecipes = createSelector(
   [selectRecipesInShoppingList],
   recipes => {
-    console.log(recipes);
     const images = recipes.flatMap(recipe => ({
       image: recipe.image,
       id: recipe.id,
@@ -110,7 +109,6 @@ export const selectPhotoRecipes = createSelector(
       LARGE: recipe.images.LARGE?.url || recipe.images.REGULAR.url,
       label: recipe.label,
     }));
-    console.log(images);
     return images;
   }
 );

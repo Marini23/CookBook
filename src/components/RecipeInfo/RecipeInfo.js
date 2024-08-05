@@ -32,6 +32,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFavoritesRecipes,
   selectFilteredRecipes,
+  selectRecipesInShoppingList,
   selectUserId,
 } from '../../redux/selectors';
 import {
@@ -46,6 +47,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
   const goBackLink = useRef(location.state?.from ?? `/`);
   const filteredRecipes = useSelector(selectFilteredRecipes);
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
+  const shoppingListRecipes = useSelector(selectRecipesInShoppingList);
   const userId = useSelector(selectUserId);
 
   useEffect(() => {}, [favoritesRecipes]);
@@ -70,9 +72,17 @@ export const RecipeInfo = ({ recipeInfo }) => {
       dispatch(addFavoriteItem({ userId, favoriteData: selectRecipe }));
     }
   };
-  console.log(recipeInfo);
+
   const handleIngredients = recipeInfo => {
-    console.log(recipeInfo);
+    console.log(shoppingListRecipes);
+    console.log('Shopping List Recipes:', shoppingListRecipes);
+    console.log('Recipe Info URL:', recipeInfo);
+
+    const selectRecipe = shoppingListRecipes.find(item => {
+      return item.idLink === recipeInfo._links.self.href;
+    });
+
+    console.log('Selected Recipe:', selectRecipe);
     dispatch(addRecipeItem({ userId, recipeInfo }));
   };
 
@@ -90,15 +100,9 @@ export const RecipeInfo = ({ recipeInfo }) => {
         </StyledLinkGoBack>
         <StyledHeart>
           {isFavorite ? (
-            <StyledHeartIconFavorite
-              onClick={toggleFavorite}
-              // onTouchStart={toggleFavorite}
-            />
+            <StyledHeartIconFavorite onClick={toggleFavorite} />
           ) : (
-            <StyledHeartIcon
-              onClick={toggleFavorite}
-              // onTouchStart={toggleFavorite}
-            />
+            <StyledHeartIcon onClick={toggleFavorite} />
           )}
         </StyledHeart>
       </ImageWrapper>

@@ -1,28 +1,41 @@
-/* .picture-custom {
-  width: 111px;
-  height: 64px;
-  object-fit: contain;
-}
-
-.picture-custom img {
-  max-width: 100%;
-  height: auto;
-} */
-
 .slick-slide {
   position: relative;
   width: 123px;
   padding: 0 6px;
   height: 64px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 229px;
+    padding: 0 12px;
+    height: 116px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 330px;
+    padding: 0 12px;
+    height: 169px;
+  }
 }
 
 .slick-list {
   height: 64px;
   margin: 0 -6px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    height: 116px;
+    margin: 0 -12px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 169px;
+    margin: 0 -12px;
+  }
 }
 
 .slick-track {
   height: 64px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    height: 116px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 169px;
+  }
 }
 
 .slick-slider {
@@ -36,26 +49,60 @@
 
 .slick-prev,
 .slick-next {
-  width: 16px;
-  height: 24px;
+  width: 8px;
+  height: 16px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 16px;
+    height: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 17px;
+    height: 36px;
+  }
 }
 .slick-prev {
-  left: -16px;
+  left: -12px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    left: -28px;
+  }
+  @media screen and (min-width: 1440px) {
+    left: -44px;
+  }
 }
 
 .slick-next {
-  right: -16px;
+  right: -12px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    right: -28px;
+  }
+  @media screen and (min-width: 1440px) {
+    right: -44px;
+  }
 }
 
 .image-container {
   position: relative;
   height: 64px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    height: 116px;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 169px;
+  }
 }
 .slider-image {
   display: block;
   width: 111px;
   height: 64px;
   border-radius: 4px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 205px;
+    height: 116px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 306px;
+    height: 169px;
+  }
 }
 
 .delete-icon-wrapper {
@@ -67,10 +114,32 @@
   cursor: pointer;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.7);
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+  }
 }
 .delete-icon {
   width: 16px;
   height: 16px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 20px;
+    height: 20px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .default-image {
@@ -81,6 +150,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 205px;
+    height: 116px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 306px;
+    height: 169px;
+  }
 }
 .add-icon {
   width: 32px;
@@ -89,4 +166,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.custom-next-arrow {
+  width: 8px;
+  height: 16px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 16px;
+    height: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 17px;
+    height: 34px;
+  }
 }

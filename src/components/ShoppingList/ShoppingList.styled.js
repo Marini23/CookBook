@@ -25,14 +25,12 @@ export const Title = styled.h3`
   color: #3e3e3e;
   margin-bottom: 12px;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
-    font-size: 36px;
     margin-bottom: 32px;
     margin-top: 40px;
   }
   @media screen and (min-width: 1440px) {
-    font-size: 64px;
-    line-height: 64px;
-    margin-bottom: 48px;
+    font-size: 36px;
+    margin-bottom: 40px;
     margin-top: 88px;
   }
 `;

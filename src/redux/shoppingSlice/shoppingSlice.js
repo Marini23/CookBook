@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addRecipeItem, getShoppingList } from './shoppingOperations';
+import {
+  addRecipeItem,
+  deleteRecipeItem,
+  getShoppingList,
+} from './shoppingOperations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -47,18 +51,21 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.addedRecipestoShoppingList.push(action.payload);
+      })
+      .addCase(deleteRecipeItem.pending, handlePending)
+      .addCase(deleteRecipeItem.rejected, handleRejected)
+      .addCase(deleteRecipeItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log(action.payload);
+        const index = state.addedRecipestoShoppingList.findIndex(item => {
+          console.log(item.id);
+          return item.id === action.payload;
+        });
+        console.log(state.addedRecipestoShoppingList);
+        console.log(index);
+        state.addedRecipestoShoppingList.splice(index, 1);
       }),
-  // .addCase(deleteFavoriteItem.pending, handlePending)
-  // .addCase(deleteFavoriteItem.rejected, handleRejected)
-  // .addCase(deleteFavoriteItem.fulfilled, (state, action) => {
-  //   state.isLoading = false;
-  //   state.error = null;
-  //   console.log(action.payload);
-  //   const index = state.favoritesList.findIndex(
-  //     item => item.id === action.payload
-  //   );
-  //   state.favoritesList.splice(index, 1);
-  // }),
 });
 // export const { addFavoriteRecipe, deleteFavorites } = shoppingSlice.actions;
 

@@ -1,5 +1,5 @@
 import { db } from '../../firebase';
-import { onValue, push, ref, set } from 'firebase/database';
+import { onValue, push, ref, remove, set } from 'firebase/database';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const getRecipesInShoppingList = userId => {
@@ -23,22 +23,6 @@ const getRecipesInShoppingList = userId => {
     );
   });
 };
-
-export const getShoppingList = createAsyncThunk(
-  'shopping/getShoppingList',
-  async (userId, thunkAPI) => {
-    try {
-      const recipesList = getRecipesInShoppingList(userId);
-      return recipesList;
-    } catch (error) {
-      const serializedError = {
-        code: error.code,
-        message: error.message,
-      };
-      return thunkAPI.rejectWithValue(serializedError);
-    }
-  }
-);
 
 const addRecipeToShoppingList = (userId, recipeData) => {
   return new Promise((resolve, reject) => {
@@ -70,6 +54,37 @@ const addRecipeToShoppingList = (userId, recipeData) => {
   });
 };
 
+const deleteRecipeFromShoppingList = (userId, recipeId) => {
+  return new Promise((resolve, reject) => {
+    const recipeRef = ref(db, `shopping/${userId}/${recipeId}`);
+    remove(recipeRef)
+      .then(() => {
+        console.log(`Recipe with href ${recipeId} deleted successfully`);
+        resolve(recipeId);
+      })
+      .catch(error => {
+        console.error('Error deleting recipe:', error);
+        reject(error);
+      });
+  });
+};
+
+export const getShoppingList = createAsyncThunk(
+  'shopping/getShoppingList',
+  async (userId, thunkAPI) => {
+    try {
+      const recipesList = getRecipesInShoppingList(userId);
+      return recipesList;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
 export const addRecipeItem = createAsyncThunk(
   'shopping/addRecipe',
   async ({ userId, recipeInfo }, thunkAPI) => {
@@ -78,6 +93,27 @@ export const addRecipeItem = createAsyncThunk(
       console.log(recipeInfo);
       const shoppingListItem = addRecipeToShoppingList(userId, recipeInfo);
       return shoppingListItem;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+export const deleteRecipeItem = createAsyncThunk(
+  'shopping/deleteRecipe',
+  async ({ userId, recipeId }, thunkAPI) => {
+    try {
+      console.log(recipeId);
+      const deletedRecipe = await deleteRecipeFromShoppingList(
+        userId,
+        recipeId
+      );
+      console.log(`Deleted recipe: ${deletedRecipe}`);
+      return deletedRecipe;
     } catch (error) {
       const serializedError = {
         code: error.code,
