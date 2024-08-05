@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CookBook/static/css/main.919d9dba.css",
-    "main.js": "/CookBook/static/js/main.f9e2ba48.js",
+    "main.css": "/CookBook/static/css/main.421bee7c.css",
+    "main.js": "/CookBook/static/js/main.47277f28.js",
     "static/media/bg_home_desktop_3x.jpg": "/CookBook/static/media/bg_home_desktop_3x.7ff46e8e5efb42b724b8.jpg",
     "static/media/bg_home_desktop_2x.jpg": "/CookBook/static/media/bg_home_desktop_2x.81fcb45665199cbeaa74.jpg",
     "static/media/footer_home_desktop_3x.jpg": "/CookBook/static/media/footer_home_desktop_3x.c74ba4ebc8af211ab328.jpg",
@@ -93,6 +93,8 @@
     "static/media/calories.svg": "/CookBook/static/media/calories.34b74ad21d718e1d23af19f9c5b0f95f.svg",
     "static/media/facebook.svg": "/CookBook/static/media/facebook.cdc132e8e84d655aaf812f991d08c3ab.svg",
     "static/media/basket.svg": "/CookBook/static/media/basket.2615a1c80a4803aaf792a39c01f8646d.svg",
+    "static/media/arrowLeft.svg": "/CookBook/static/media/arrowLeft.6eebc72ad8ea9c8932edc08b4e857c3c.svg",
+    "static/media/arrowRight.svg": "/CookBook/static/media/arrowRight.4cab52eb388ebee7a01bdeebad762aab.svg",
     "static/media/house.svg": "/CookBook/static/media/house.8711476f4f64a82169cda5d2c3acf2fb.svg",
     "static/media/dinner.svg": "/CookBook/static/media/dinner.5b72d0b915dbbf31c4a10038a47b1136.svg",
     "static/media/delete-icon.svg": "/CookBook/static/media/delete-icon.8d3c8cd038442df1fb26acd89c3015f0.svg",
@@ -104,11 +106,11 @@
     "static/media/icon_close.svg": "/CookBook/static/media/icon_close.2a45a7d56c6a43b729efa5058dee4834.svg",
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/close_icon.svg": "/CookBook/static/media/close_icon.d24ce83e3fa41b1bf2cb89a5d9e9abb2.svg",
-    "main.919d9dba.css.map": "/CookBook/static/css/main.919d9dba.css.map",
-    "main.f9e2ba48.js.map": "/CookBook/static/js/main.f9e2ba48.js.map"
+    "main.421bee7c.css.map": "/CookBook/static/css/main.421bee7c.css.map",
+    "main.47277f28.js.map": "/CookBook/static/js/main.47277f28.js.map"
   },
   "entrypoints": [
-    "static/css/main.919d9dba.css",
-    "static/js/main.f9e2ba48.js"
+    "static/css/main.421bee7c.css",
+    "static/js/main.47277f28.js"
   ]
 }
