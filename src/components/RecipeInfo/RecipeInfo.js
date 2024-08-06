@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import {
   DetailsContainer,
   ImageWrapper,
@@ -74,16 +75,15 @@ export const RecipeInfo = ({ recipeInfo }) => {
   };
 
   const handleIngredients = recipeInfo => {
-    console.log(shoppingListRecipes);
-    console.log('Shopping List Recipes:', shoppingListRecipes);
-    console.log('Recipe Info URL:', recipeInfo);
-
     const selectRecipe = shoppingListRecipes.find(item => {
       return item.idLink === recipeInfo._links.self.href;
     });
-
-    console.log('Selected Recipe:', selectRecipe);
-    dispatch(addRecipeItem({ userId, recipeInfo }));
+    console.log(selectRecipe);
+    if (selectRecipe) {
+      dispatch(addRecipeItem({ userId, recipeInfo }));
+    } else {
+      toast('Recipe is already added to shopping list');
+    }
   };
 
   const diets = recipeInfo.recipe.dietLabels

@@ -71,7 +71,6 @@ export const selectFilteredRecipes = createSelector(
 export const selectMergedIndredients = createSelector(
   [selectRecipesInShoppingList],
   recipes => {
-    console.log(recipes);
     const ingredients = recipes.flatMap(recipe =>
       recipe.ingredients.map(ingredient => ({
         food: ingredient.food,
@@ -84,7 +83,6 @@ export const selectMergedIndredients = createSelector(
       const existingIngredient = accumulatedIngredients.find(ingredient => {
         return ingredient.foodId === currentIngredient.foodId;
       });
-      console.log(existingIngredient);
       if (!existingIngredient) {
         accumulatedIngredients.push({ ...currentIngredient });
       } else {

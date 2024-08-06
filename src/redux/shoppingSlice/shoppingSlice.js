@@ -57,13 +57,10 @@ const shoppingSlice = createSlice({
       .addCase(deleteRecipeItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
         const index = state.addedRecipestoShoppingList.findIndex(item => {
           console.log(item.id);
           return item.id === action.payload;
         });
-        console.log(state.addedRecipestoShoppingList);
-        console.log(index);
         state.addedRecipestoShoppingList.splice(index, 1);
       }),
 });
