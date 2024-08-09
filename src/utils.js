@@ -21,6 +21,11 @@ export const truncateString = (str, maxWidth, font) => {
   return str + '...';
 };
 
+export const capitalizeFirstLetter = string => {
+  if (!string) return string; // Check if the string is empty or null
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 export const getRecipeIdFromUrl = url => {
   const urlObj = new URL(url);
   const pathSegments = urlObj.pathname.split('/');

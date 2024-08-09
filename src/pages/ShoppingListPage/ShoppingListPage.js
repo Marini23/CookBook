@@ -4,6 +4,7 @@ import { Container } from './ShoppingListPage.styled';
 import { ShoppingList } from 'components/ShoppingList/ShoppingList';
 import { useEffect } from 'react';
 import { getShoppingList } from '../../redux/shoppingSlice/shoppingOperations';
+import { FooterForUser } from 'components/Footer/FooterForUser';
 
 export const ShoppingListPage = () => {
   const userId = useSelector(selectUserId);
@@ -17,6 +18,7 @@ export const ShoppingListPage = () => {
   return (
     <Container>
       <ShoppingList />
+      <FooterForUser />
     </Container>
   );
 };
