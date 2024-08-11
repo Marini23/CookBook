@@ -44,6 +44,7 @@ export const CircleIcon = styled.div`
 export const IngredientInfo = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 549px;

@@ -75,11 +75,12 @@ export const RecipeInfo = ({ recipeInfo }) => {
   };
 
   const handleIngredients = recipeInfo => {
+    console.log(shoppingListRecipes);
     const selectRecipe = shoppingListRecipes.find(item => {
       return item.idLink === recipeInfo._links.self.href;
     });
     console.log(selectRecipe);
-    if (selectRecipe) {
+    if (!selectRecipe) {
       dispatch(addRecipeItem({ userId, recipeInfo }));
     } else {
       toast('Recipe is already added to shopping list');

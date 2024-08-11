@@ -44,6 +44,7 @@ export const SliderImages = () => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
   const images = useSelector(selectPhotoRecipes);
+  console.log(images);
 
   const settings = {
     dots: false,
@@ -111,6 +112,13 @@ export const SliderImages = () => {
         </NavLink>
       )}
       {images.length < 2 && (
+        <NavLink to={`/recipes`} state={{ from: location }}>
+          <div className="default-image">
+            <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+          </div>
+        </NavLink>
+      )}
+      {images.length < 3 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">
             <img src={diskoverPlus} alt="add recipe" className="add-icon" />

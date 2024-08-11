@@ -21,6 +21,7 @@ import shareIcon from '../../images/share-icon.svg';
 
 export const ShoppingList = () => {
   const ingredients = useSelector(selectMergedIndredients);
+  // console.log(ingredients);
   return (
     <Container>
       <TitleContainer>

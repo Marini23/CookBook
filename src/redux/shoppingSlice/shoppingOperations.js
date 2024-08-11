@@ -11,6 +11,7 @@ const getRecipesInShoppingList = userId => {
         if (snapshot.exists()) {
           const recipes = snapshot.val();
           const recipesArray = Object.values(recipes);
+          console.log(recipesArray);
           resolve(recipesArray);
         } else {
           console.log('No data available');

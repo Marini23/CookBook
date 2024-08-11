@@ -83,6 +83,7 @@
 .image-container {
   position: relative;
   height: 64px;
+  background-color: #ededed;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 116px;
   }
