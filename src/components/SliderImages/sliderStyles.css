@@ -106,6 +106,21 @@
   }
 }
 
+.image-size {
+  width: 111px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 205px;
+    height: 116px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 306px;
+    height: 169px;
+  }
+}
+
 .delete-icon-wrapper {
   position: absolute;
   top: 8px;

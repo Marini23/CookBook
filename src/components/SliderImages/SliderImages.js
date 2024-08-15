@@ -83,13 +83,20 @@ export const SliderImages = () => {
     <Slider {...settings}>
       {images.map(image => (
         <div className="image-container" key={image.id}>
-          <NavLink to={`/recipes/${getRecipeIdFromUrl(image.idLink)}`}>
-            <img
-              src={image.image}
-              alt={image.label}
-              state={{ from: location }}
-              className="slider-image"
-            />
+          <NavLink
+            to={`/recipes/${getRecipeIdFromUrl(image.idLink)}`}
+            state={{ from: location }}
+          >
+            <picture className="slider-image">
+              <source srcSet={image.THUMBNAIL} media="(max-width: 743px)" />
+              <source
+                srcSet={image.SMALL}
+                media="(min-width: 744px) and (max-width: 1439px)"
+              />
+              <source srcSet={image.LARGE} media="(min-width: 1440px)" />
+              <img src={image.image} alt={image.label} className="image-size" />
+            </picture>
+            {/* <img src={image.image} alt={image.label} className="slider-image" /> */}
           </NavLink>
           <div
             className="delete-icon-wrapper"
