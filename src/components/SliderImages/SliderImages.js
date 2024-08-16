@@ -44,7 +44,6 @@ export const SliderImages = () => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
   const images = useSelector(selectPhotoRecipes);
-  console.log(images);
 
   const settings = {
     dots: false,
@@ -78,46 +77,45 @@ export const SliderImages = () => {
   const handleDelete = ({ userId, recipeId }) => {
     dispatch(deleteRecipeItem({ userId, recipeId }));
   };
-
   return (
     <Slider {...settings}>
-      {images.map(image => (
-        <div className="image-container" key={image.id}>
-          <NavLink
-            to={`/recipes/${getRecipeIdFromUrl(image.idLink)}`}
-            state={{ from: location }}
-          >
-            <picture className="slider-image">
-              <source srcSet={image.THUMBNAIL} media="(max-width: 743px)" />
-              <source
-                srcSet={image.SMALL}
-                media="(min-width: 744px) and (max-width: 1439px)"
-              />
-              <source srcSet={image.LARGE} media="(min-width: 1440px)" />
-              <img src={image.image} alt={image.label} className="image-size" />
-            </picture>
-            {/* <img src={image.image} alt={image.label} className="slider-image" /> */}
-          </NavLink>
-          <div
-            className="delete-icon-wrapper"
-            onClick={() =>
-              handleDelete({
-                userId,
-                recipeId: image.id,
-              })
-            }
-          >
-            <img src={deleteIcon} alt="Delete" className="delete-icon" />
+      {images.map(image => {
+        // console.log(image);
+        const { id, idLink, defaultImage, label, THUMBNAIL, SMALL, LARGE } =
+          image;
+
+        return (
+          <div className="image-container" key={id}>
+            <NavLink
+              to={`/recipes/${getRecipeIdFromUrl(idLink)}`}
+              state={{ from: location }}
+            >
+              <picture className="slider-image">
+                <source srcSet={THUMBNAIL} media="(max-width: 743px)" />
+                <source
+                  srcSet={SMALL}
+                  media="(min-width: 744px) and (max-width: 1439px)"
+                />
+                <source srcSet={LARGE} media="(min-width: 1440px)" />
+                <img src={defaultImage} alt={label} className="image-size" />
+              </picture>
+            </NavLink>
+            <div
+              className="delete-icon-wrapper"
+              onClick={() => handleDelete({ userId, recipeId: id })}
+            >
+              <img src={deleteIcon} alt="Delete" className="delete-icon" />
+            </div>
           </div>
-        </div>
-      ))}
-      {images.length < 1 && (
+        );
+      })}
+      {/* {images.length < 1 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">
             <img src={diskoverPlus} alt="add recipe" className="add-icon" />
           </div>
         </NavLink>
-      )}
+      )} */}
       {images.length < 2 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">

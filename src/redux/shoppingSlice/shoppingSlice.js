@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addIngredients,
   addRecipeItem,
   deleteRecipeItem,
-  getShoppingList,
+  getShoppingListIngredients,
+  getShoppingListRecipes,
 } from './shoppingOperations';
 
 const handlePending = state => {
@@ -18,6 +20,7 @@ const shoppingSlice = createSlice({
   name: 'shoppingList',
   initialState: {
     addedRecipestoShoppingList: [],
+    ingredientsList: [],
     isLoading: false,
     error: null,
   },
@@ -38,12 +41,20 @@ const shoppingSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(getShoppingList.pending, handlePending)
-      .addCase(getShoppingList.rejected, handleRejected)
-      .addCase(getShoppingList.fulfilled, (state, action) => {
+      .addCase(getShoppingListRecipes.pending, handlePending)
+      .addCase(getShoppingListRecipes.rejected, handleRejected)
+      .addCase(getShoppingListRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.addedRecipestoShoppingList = action.payload;
+      })
+      .addCase(getShoppingListIngredients.pending, handlePending)
+      .addCase(getShoppingListIngredients.rejected, handleRejected)
+      .addCase(getShoppingListIngredients.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log(action.payload);
+        state.ingredientsList = action.payload;
       })
       .addCase(addRecipeItem.pending, handlePending)
       .addCase(addRecipeItem.rejected, handleRejected)
@@ -51,6 +62,14 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.addedRecipestoShoppingList.push(action.payload);
+      })
+      .addCase(addIngredients.pending, handlePending)
+      .addCase(addIngredients.rejected, handleRejected)
+      .addCase(addIngredients.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log(action.payload);
+        state.ingredientsList = action.payload;
       })
       .addCase(deleteRecipeItem.pending, handlePending)
       .addCase(deleteRecipeItem.rejected, handleRejected)
@@ -63,6 +82,18 @@ const shoppingSlice = createSlice({
         });
         state.addedRecipestoShoppingList.splice(index, 1);
       }),
+  // .addCase(deleteIngredientItem.pending, handlePending)
+  // .addCase(deleteIngredientItem.rejected, handleRejected)
+  // .addCase(deleteIngredientItem.fulfilled, (state, action) => {
+  //   state.isLoading = false;
+  //   console.log(action.payload);
+  //   state.error = null;
+  //   const index = state.addedRecipestoShoppingList.findIndex(item => {
+  //     console.log(item.id);
+  //     // return item.id === action.payload;
+  //   });
+  //   // state.addedRecipestoShoppingList.splice(index, 1);
+  // }),
 });
 // export const { addFavoriteRecipe, deleteFavorites } = shoppingSlice.actions;
 

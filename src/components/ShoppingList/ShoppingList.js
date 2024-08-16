@@ -12,7 +12,10 @@ import {
 } from './ShoppingList.styled';
 import { ShoppingListItem } from 'components/ShoppingListItem/ShoppingListItem';
 import { useSelector } from 'react-redux';
-import { selectMergedIndredients } from '../../redux/selectors';
+import {
+  selectIngredientsInShoppingList,
+  selectMergedIndredients,
+} from '../../redux/selectors';
 // import { useSelector } from 'react-redux';
 // import { selectPhotoRecipes } from '../../redux/selectors';
 import plusIcon from '../../images/plus-icon_grey.svg';
@@ -21,7 +24,10 @@ import shareIcon from '../../images/share-icon.svg';
 
 export const ShoppingList = () => {
   const ingredients = useSelector(selectMergedIndredients);
-  // console.log(ingredients);
+  console.log(ingredients);
+
+  const ingredientsList = useSelector(selectIngredientsInShoppingList);
+  console.log(ingredientsList);
   return (
     <Container>
       <TitleContainer>

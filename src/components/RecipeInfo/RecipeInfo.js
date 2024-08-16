@@ -40,7 +40,10 @@ import {
   addFavoriteItem,
   deleteFavoriteItem,
 } from '../../redux/favoritesSlice/favoritesOperations';
-import { addRecipeItem } from '../../redux/shoppingSlice/shoppingOperations';
+import {
+  addIngredients,
+  addRecipeItem,
+} from '../../redux/shoppingSlice/shoppingOperations';
 
 export const RecipeInfo = ({ recipeInfo }) => {
   const dispatch = useDispatch();
@@ -79,9 +82,10 @@ export const RecipeInfo = ({ recipeInfo }) => {
     const selectRecipe = shoppingListRecipes.find(item => {
       return item.idLink === recipeInfo._links.self.href;
     });
-    console.log(selectRecipe);
+    // console.log(selectRecipe);
     if (!selectRecipe) {
       dispatch(addRecipeItem({ userId, recipeInfo }));
+      dispatch(addIngredients({ userId, recipeInfo }));
     } else {
       toast('Recipe is already added to shopping list');
     }

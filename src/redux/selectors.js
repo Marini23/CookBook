@@ -28,6 +28,9 @@ export const selectFavoritesRecipes = state => state.favorites.favoritesList;
 export const selectRecipesInShoppingList = state =>
   state.shoppingList.addedRecipestoShoppingList;
 
+export const selectIngredientsInShoppingList = state =>
+  state.shoppingList.ingredientsList;
+
 export const selectUserFirstName = createSelector([selectUser], user =>
   getFirstName(user.name)
 );
@@ -78,7 +81,7 @@ export const selectMergedIndredients = createSelector(
         weight: ingredient.weight,
       }))
     );
-    console.log(ingredients);
+    // console.log(ingredients);
     return ingredients.reduce((accumulatedIngredients, currentIngredient) => {
       const existingIngredient = accumulatedIngredients.find(ingredient => {
         return ingredient.foodId === currentIngredient.foodId;
@@ -98,7 +101,7 @@ export const selectPhotoRecipes = createSelector(
   [selectRecipesInShoppingList],
   recipes => {
     const images = recipes.flatMap(recipe => ({
-      image: recipe.image,
+      image: recipe.defaultImage,
       id: recipe.id,
       idLink: recipe.idLink,
       THUMBNAIL: recipe.images.THUMBNAIL.url,
