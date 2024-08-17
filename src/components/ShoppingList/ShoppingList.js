@@ -40,7 +40,7 @@ export const ShoppingList = () => {
       <SliderImages />
       <TitleTwo>INGREDIENTS</TitleTwo>
       <List>
-        {ingredients.map(ingredient => {
+        {ingredientsList.map(ingredient => {
           // console.log(ingredient);
           return (
             <ShoppingListItem ingredient={ingredient} key={ingredient.foodId} />

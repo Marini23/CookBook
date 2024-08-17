@@ -4,14 +4,20 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './sliderStyles.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPhotoRecipes, selectUserId } from '../../redux/selectors';
+import {
+  selectRecipesInShoppingList,
+  selectUserId,
+} from '../../redux/selectors';
 import deleteIcon from '../../images/delete-icon.svg';
 import diskoverPlus from '../../images/diskover_plus.svg';
 import arrowRight from '../../images/arrowRight.svg';
 import arrowLeft from '../../images/arrowLeft.svg';
 import { getRecipeIdFromUrl } from '../../utils';
+import {
+  deleteRecipeItem,
+  updateIngredientsRecipeFromShoppingList,
+} from '../../redux/shoppingSlice/shoppingOperations';
 import { NavLink, useLocation } from 'react-router-dom';
-import { deleteRecipeItem } from '../../redux/shoppingSlice/shoppingOperations';
 
 const NextArrow = props => {
   const { className, style, onClick } = props;
@@ -43,8 +49,9 @@ export const SliderImages = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
-  const images = useSelector(selectPhotoRecipes);
-
+  // const images = useSelector(selectPhotoRecipes);
+  const recipes = useSelector(selectRecipesInShoppingList);
+  console.log(recipes);
   const settings = {
     dots: false,
     infinite: true,
@@ -74,16 +81,41 @@ export const SliderImages = () => {
     ],
   };
 
-  const handleDelete = ({ userId, recipeId }) => {
-    dispatch(deleteRecipeItem({ userId, recipeId }));
+  const handleDelete = ({ userId, recipeId, ingredients }) => {
+    dispatch(deleteRecipeItem({ userId, recipeId }))
+      .then(() => {
+        console.log(ingredients);
+        // Once the recipe is successfully deleted, update the ingredients list
+        dispatch(
+          updateIngredientsRecipeFromShoppingList({
+            userId,
+            ingredients,
+          })
+        );
+      })
+      .catch(error => {
+        console.error(
+          'Error during recipe deletion or ingredient update:',
+          error
+        );
+      });
   };
+
   return (
     <Slider {...settings}>
-      {images.map(image => {
-        // console.log(image);
-        const { id, idLink, defaultImage, label, THUMBNAIL, SMALL, LARGE } =
-          image;
-
+      {recipes.map(recipe => {
+        console.log(recipe);
+        const {
+          id,
+          idLink,
+          defaultImage,
+          label,
+          THUMBNAIL,
+          SMALL,
+          LARGE,
+          ingredients,
+        } = recipe;
+        console.log(ingredients);
         return (
           <div className="image-container" key={id}>
             <NavLink
@@ -102,28 +134,32 @@ export const SliderImages = () => {
             </NavLink>
             <div
               className="delete-icon-wrapper"
-              onClick={() => handleDelete({ userId, recipeId: id })}
+              onClick={() =>
+                handleDelete({ userId, recipeId: id, ingredients })
+              }
             >
-              <img src={deleteIcon} alt="Delete" className="delete-icon" />
+              <img
+                src={deleteIcon}
+                alt="Delete"
+                className="delete-icon"
+                onClick={() =>
+                  dispatch(
+                    deleteRecipeItem({ userId, recipeId: id, ingredients })
+                  )
+                }
+              />
             </div>
           </div>
         );
       })}
-      {/* {images.length < 1 && (
-        <NavLink to={`/recipes`} state={{ from: location }}>
-          <div className="default-image">
-            <img src={diskoverPlus} alt="add recipe" className="add-icon" />
-          </div>
-        </NavLink>
-      )} */}
-      {images.length < 2 && (
+      {recipes.length < 2 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">
             <img src={diskoverPlus} alt="add recipe" className="add-icon" />
           </div>
         </NavLink>
       )}
-      {images.length < 3 && (
+      {recipes.length < 3 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">
             <img src={diskoverPlus} alt="add recipe" className="add-icon" />

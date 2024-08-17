@@ -91,47 +91,6 @@ const addRecipeToShoppingList = (userId, recipeData) => {
 const addIngredientToShoppingList = (userId, recipeData) => {
   return new Promise((resolve, reject) => {
     const shoppingRef = ref(db, 'shoppingIngredients/' + userId);
-
-    // onValue(
-    //   shoppingRef,
-    //   snapshot => {
-    //     if (snapshot.exists()) {
-    //       const ingredients = snapshot.val();
-    //       const updatedIngredients = { ...ingredients };
-
-    //       // Process ingredients from recipeData
-    //       recipeData.recipe.ingredients.forEach(ingredient => {
-    //         const { foodId, food, weight } = ingredient;
-
-    //         if (updatedIngredients[foodId]) {
-    //           // Ingredient already exists, update the weight
-    //           updatedIngredients[foodId].weight += weight;
-    //         } else {
-    //           // Ingredient doesn't exist, add it to the list
-    //           updatedIngredients[foodId] = {
-    //             foodId,
-    //             food,
-    //             weight,
-    //             done: false,
-    //           };
-    //         }
-    //       });
-    //       // Save the updated ingredients list back to Firebase
-    //       set(shoppingRef, updatedIngredients)
-    //         .then(() => {
-    //           const ingredientsArray = Object.values(updatedIngredients);
-    //           resolve(ingredientsArray);
-    //         })
-    //         .catch(error => {
-    //           console.error('Error adding ingredients:', error);
-    //           reject(error);
-    //         });
-    //     }
-    //   },
-    //   {
-    //     onlyOnce: true, // Ensure the listener only fetches data once
-    //   }
-    // );
     onValue(
       shoppingRef,
       snapshot => {
@@ -176,6 +135,63 @@ const deleteRecipeFromShoppingList = (userId, recipeId) => {
       })
       .catch(error => {
         console.error('Error deleting recipe:', error);
+        reject(error);
+      });
+  });
+};
+
+const deleteRecipeIngredientsFromShoppingList = (userId, ingredients) => {
+  return new Promise((resolve, reject) => {
+    const shoppingRef = ref(db, `shoppingIngredients/${userId}`);
+    console.log(ingredients);
+    // Fetch the current ingredients
+    onValue(
+      shoppingRef,
+      snapshot => {
+        const existingIngredients = snapshot.val() || {};
+
+        // Loop through the ingredients to remove
+        ingredients.forEach(ingredientToRemove => {
+          const { foodId, weight: weightToRemove } = ingredientToRemove;
+
+          // Check if the ingredient exists in the list
+          if (existingIngredients[foodId]) {
+            // Reduce the weight of the ingredient
+            existingIngredients[foodId].weight -= weightToRemove;
+
+            // If the resulting weight is 0 or less, delete the ingredient
+            if (existingIngredients[foodId].weight <= 0) {
+              delete existingIngredients[foodId];
+            }
+          }
+        });
+
+        // Update the Firebase database with the modified ingredients list
+        set(shoppingRef, existingIngredients)
+          .then(() => {
+            // Convert the updated ingredients object to an array and resolve the promise
+            resolve(Object.values(existingIngredients));
+          })
+          .catch(error => {
+            console.error('Error updating ingredients:', error);
+            reject(error);
+          });
+      },
+      { onlyOnce: true } // Ensure we only fetch data once
+    );
+  });
+};
+
+const deleteIngredientFromShoppingList = (userId, foodId) => {
+  return new Promise((resolve, reject) => {
+    const recipeRef = ref(db, `shoppingIngredients/${userId}/${foodId}`);
+    remove(recipeRef)
+      .then(() => {
+        console.log(`Ingredient with href ${foodId} deleted successfully`);
+        resolve(foodId);
+      })
+      .catch(error => {
+        console.error('Error deleting ingredient:', error);
         reject(error);
       });
   });
@@ -273,27 +289,39 @@ export const deleteRecipeItem = createAsyncThunk(
   }
 );
 
-// export const deleteIngredientItem = createAsyncThunk(
-//   'shopping/deleteIngredient',
-//   async ({ userId, ingredientId }, thunkAPI) => {
-//     try {
-//       console.log(`Deleting ingredient: ${ingredientId}`);
-//       const deletedIngredient = await deleteIngredientFromShoppingList(
-//         userId,
-//         ingredientId
-//       );
-//       if (deletedIngredient) {
-//         console.log(`Deleted ingredient: ${deletedIngredient}`);
-//         return deletedIngredient;
-//       } else {
-//         return thunkAPI.rejectWithValue({ message: 'Ingredient not found' });
-//       }
-//     } catch (error) {
-//       const serializedError = {
-//         code: error.code,
-//         message: error.message,
-//       };
-//       return thunkAPI.rejectWithValue(serializedError);
-//     }
-//   }
-// );
+export const updateIngredientsRecipeFromShoppingList = createAsyncThunk(
+  'shoppingList/updateIngredients',
+  async ({ userId, ingredients }, { rejectWithValue }) => {
+    try {
+      // Call the function to update/delete ingredients
+      const updatedIngredients = await deleteRecipeIngredientsFromShoppingList(
+        userId,
+        ingredients
+      );
+      return updatedIngredients; // This will be the payload in the fulfilled case
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteIngredientItem = createAsyncThunk(
+  'shopping/deleteIngredient',
+  async ({ userId, foodId }, thunkAPI) => {
+    try {
+      console.log(foodId);
+      const deletedIngredient = await deleteIngredientFromShoppingList(
+        userId,
+        foodId
+      );
+      console.log(`Deleted ingredient: ${deletedIngredient}`);
+      return deletedIngredient;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);

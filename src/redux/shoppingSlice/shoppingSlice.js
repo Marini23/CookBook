@@ -2,9 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addIngredients,
   addRecipeItem,
+  deleteIngredientItem,
   deleteRecipeItem,
   getShoppingListIngredients,
   getShoppingListRecipes,
+  updateIngredientsRecipeFromShoppingList,
 } from './shoppingOperations';
 
 const handlePending = state => {
@@ -81,19 +83,26 @@ const shoppingSlice = createSlice({
           return item.id === action.payload;
         });
         state.addedRecipestoShoppingList.splice(index, 1);
+      })
+      .addCase(updateIngredientsRecipeFromShoppingList.pending, handlePending)
+      .addCase(updateIngredientsRecipeFromShoppingList.rejected, handleRejected)
+      .addCase(
+        updateIngredientsRecipeFromShoppingList.fulfilled,
+        (state, action) => {
+          state.ingredientsList = action.payload;
+        }
+      )
+      .addCase(deleteIngredientItem.pending, handlePending)
+      .addCase(deleteIngredientItem.rejected, handleRejected)
+      .addCase(deleteIngredientItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.ingredientsList.findIndex(item => {
+          console.log(item.id);
+          return item.id === action.payload;
+        });
+        state.ingredientsList.splice(index, 1);
       }),
-  // .addCase(deleteIngredientItem.pending, handlePending)
-  // .addCase(deleteIngredientItem.rejected, handleRejected)
-  // .addCase(deleteIngredientItem.fulfilled, (state, action) => {
-  //   state.isLoading = false;
-  //   console.log(action.payload);
-  //   state.error = null;
-  //   const index = state.addedRecipestoShoppingList.findIndex(item => {
-  //     console.log(item.id);
-  //     // return item.id === action.payload;
-  //   });
-  //   // state.addedRecipestoShoppingList.splice(index, 1);
-  // }),
 });
 // export const { addFavoriteRecipe, deleteFavorites } = shoppingSlice.actions;
 

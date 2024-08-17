@@ -16,9 +16,15 @@ import { capitalizeFirstLetter } from '../../utils'; // Ensure this path is corr
 import minusIcon from '../../images/minusIcon.svg';
 import plusIcon from '../../images/plusIcon.svg';
 import deleteIcon from '../../images/trash_icon.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteIngredientItem } from '../../redux/shoppingSlice/shoppingOperations';
+import { selectUserId } from '../../redux/selectors';
 
 export const ShoppingListItem = ({ ingredient }) => {
-  const capitalizedWord = capitalizeFirstLetter(ingredient.food);
+  const dispatch = useDispatch();
+  const userId = useSelector(selectUserId);
+  const { food, foodId, weight } = ingredient;
+  const capitalizedWord = capitalizeFirstLetter(food);
 
   return (
     <ListItem>
@@ -29,7 +35,7 @@ export const ShoppingListItem = ({ ingredient }) => {
           <Btn type="button">
             <MinusIcon src={minusIcon} alt="minus icon" />
           </Btn>
-          <NumberWeight>{Math.ceil(ingredient.weight)}</NumberWeight>
+          <NumberWeight>{Math.ceil(weight)}</NumberWeight>
           <Btn type="button">
             <PlusIcon src={plusIcon} alt="plus icon" />
           </Btn>
@@ -37,7 +43,11 @@ export const ShoppingListItem = ({ ingredient }) => {
         </BtnContainer>
       </IngredientInfo>
       <ContainerDeleteIcon>
-        <DeleteIcon src={deleteIcon} alt="delete icon" />
+        <DeleteIcon
+          src={deleteIcon}
+          alt="delete icon"
+          onClick={() => dispatch(deleteIngredientItem({ userId, foodId }))}
+        />
       </ContainerDeleteIcon>
     </ListItem>
   );
