@@ -33,7 +33,7 @@ const getIngredientsInShoppingList = userId => {
         if (snapshot.exists()) {
           const ingredients = snapshot.val();
           const ingredientsArray = Object.values(ingredients);
-          console.log(ingredientsArray);
+          // console.log(ingredientsArray);
           resolve(ingredientsArray);
         } else {
           console.log('No data available');
@@ -52,7 +52,7 @@ const addRecipeToShoppingList = (userId, recipeData) => {
     const shoppingRef = ref(db, 'shoppingRecipes/' + userId);
     const newShoppingRef = push(shoppingRef);
     const timeOfAdding = Date.now();
-    console.log(timeOfAdding);
+    // console.log(timeOfAdding);
 
     const extractedIngredients = recipeData.recipe.ingredients.map(
       ingredient => ({
@@ -197,6 +197,73 @@ const deleteIngredientFromShoppingList = (userId, foodId) => {
   });
 };
 
+const incrementWeightIngredient = (userId, foodId) => {
+  return new Promise((resolve, reject) => {
+    const ingredientRef = ref(db, `shoppingIngredients/${userId}/${foodId}`);
+    onValue(
+      ingredientRef,
+      snapshot => {
+        const incrementIngredient = snapshot.val();
+        incrementIngredient.weight += 100;
+
+        // Update the Firebase database with the modified ingredients list
+        set(ingredientRef, incrementIngredient)
+          .then(() => {
+            // Convert the updated ingredients object to an array and resolve the promise
+            resolve(incrementIngredient);
+          })
+          .catch(error => {
+            console.error('Error updating ingredient:', error);
+            reject(error);
+          });
+      },
+      { onlyOnce: true } // Ensure we only fetch data once
+    );
+  });
+};
+
+const decrementWeightIngredient = (userId, foodId) => {
+  return new Promise((resolve, reject) => {
+    const ingredientRef = ref(db, `shoppingIngredients/${userId}/${foodId}`);
+
+    onValue(
+      ingredientRef,
+      snapshot => {
+        const ingredient = snapshot.val();
+
+        if (!ingredient) {
+          reject(new Error('Ingredient not found'));
+          return;
+        }
+
+        // Decrement weight
+        ingredient.weight -= 100;
+
+        if (ingredient.weight <= 0) {
+          // Remove ingredient if weight is zero or less
+          remove(ingredientRef)
+            .then(() => resolve({ foodId })) // Return foodId
+            .catch(error => {
+              console.error('Error removing ingredient:', error);
+              reject(error);
+            });
+        } else {
+          // Update the ingredient weight in the database
+          set(ingredientRef, ingredient)
+            .then(() => resolve(ingredient))
+            .catch(error => {
+              console.error('Error updating ingredient:', error);
+              reject(error);
+            });
+        }
+      },
+      { onlyOnce: true }
+    );
+  });
+};
+
+// Redux store
+
 export const getShoppingListRecipes = createAsyncThunk(
   'shopping/getShoppingListRecipes',
   async (userId, thunkAPI) => {
@@ -272,7 +339,7 @@ export const deleteRecipeItem = createAsyncThunk(
   'shopping/deleteRecipe',
   async ({ userId, recipeId }, thunkAPI) => {
     try {
-      console.log(recipeId);
+      // console.log(recipeId);
       const deletedRecipe = await deleteRecipeFromShoppingList(
         userId,
         recipeId
@@ -316,6 +383,46 @@ export const deleteIngredientItem = createAsyncThunk(
       );
       console.log(`Deleted ingredient: ${deletedIngredient}`);
       return deletedIngredient;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+export const incrementIngredient = createAsyncThunk(
+  'shopping/incrementIngredientWeihgt',
+  async ({ userId, foodId }, thunkAPI) => {
+    try {
+      const incrementIngredient = await incrementWeightIngredient(
+        userId,
+        foodId
+      );
+      console.log(`Increment ingredient: ${incrementIngredient}`);
+      return incrementIngredient;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+export const decrementIngredient = createAsyncThunk(
+  'shopping/decrementIngredientWeihgt',
+  async ({ userId, foodId }, thunkAPI) => {
+    try {
+      const decrementIngredient = await decrementWeightIngredient(
+        userId,
+        foodId
+      );
+      console.log(`Decrement ingredient: ${decrementIngredient}`);
+      return decrementIngredient;
     } catch (error) {
       const serializedError = {
         code: error.code,

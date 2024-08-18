@@ -64,6 +64,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipeInfo._links.self.href;
     });
+    console.log(selectRecipe);
     if (isFavorite) {
       const recipeId = favoritesRecipes.find(item => {
         return item._links.self.href === recipeInfo._links.self.href;
@@ -82,7 +83,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
     const selectRecipe = shoppingListRecipes.find(item => {
       return item.idLink === recipeInfo._links.self.href;
     });
-    // console.log(selectRecipe);
+    console.log(selectRecipe);
     if (!selectRecipe) {
       dispatch(addRecipeItem({ userId, recipeInfo }));
       dispatch(addIngredients({ userId, recipeInfo }));

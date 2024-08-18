@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addIngredients,
   addRecipeItem,
+  decrementIngredient,
   deleteIngredientItem,
   deleteRecipeItem,
   getShoppingListIngredients,
   getShoppingListRecipes,
+  incrementIngredient,
   updateIngredientsRecipeFromShoppingList,
 } from './shoppingOperations';
 
@@ -48,14 +50,16 @@ const shoppingSlice = createSlice({
       .addCase(getShoppingListRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log(action.payload);
         state.addedRecipestoShoppingList = action.payload;
+        console.log(state.addedRecipestoShoppingList);
       })
       .addCase(getShoppingListIngredients.pending, handlePending)
       .addCase(getShoppingListIngredients.rejected, handleRejected)
       .addCase(getShoppingListIngredients.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
+        // console.log(action.payload);
         state.ingredientsList = action.payload;
       })
       .addCase(addRecipeItem.pending, handlePending)
@@ -63,6 +67,7 @@ const shoppingSlice = createSlice({
       .addCase(addRecipeItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log(action.payload);
         state.addedRecipestoShoppingList.push(action.payload);
       })
       .addCase(addIngredients.pending, handlePending)
@@ -70,7 +75,7 @@ const shoppingSlice = createSlice({
       .addCase(addIngredients.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
+        // console.log(action.payload);
         state.ingredientsList = action.payload;
       })
       .addCase(deleteRecipeItem.pending, handlePending)
@@ -79,10 +84,13 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.addedRecipestoShoppingList.findIndex(item => {
-          console.log(item.id);
           return item.id === action.payload;
         });
-        state.addedRecipestoShoppingList.splice(index, 1);
+
+        console.log(index);
+        if (index !== -1) {
+          state.addedRecipestoShoppingList.splice(index, 1);
+        }
       })
       .addCase(updateIngredientsRecipeFromShoppingList.pending, handlePending)
       .addCase(updateIngredientsRecipeFromShoppingList.rejected, handleRejected)
@@ -98,10 +106,40 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.ingredientsList.findIndex(item => {
-          console.log(item.id);
           return item.id === action.payload;
         });
         state.ingredientsList.splice(index, 1);
+      })
+      .addCase(incrementIngredient.pending, handlePending)
+      .addCase(incrementIngredient.rejected, handleRejected)
+      .addCase(incrementIngredient.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log(action.payload);
+        const index = state.ingredientsList.findIndex(item => {
+          return item.foodId === action.payload.foodId;
+        });
+        console.log(index);
+        state.ingredientsList[index] = action.payload;
+      })
+      .addCase(decrementIngredient.pending, handlePending)
+      .addCase(decrementIngredient.rejected, handleRejected)
+      .addCase(decrementIngredient.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        // Ensure payload contains either updated ingredient or an id to remove
+
+        const index = state.ingredientsList.findIndex(
+          item => item.foodId === action.payload.foodId
+        );
+        if (action.payload.weight > 100) {
+          // Update the ingredient if it's not deleted
+          state.ingredientsList[index] = action.payload;
+        } else {
+          // Remove the ingredient if its weight is 0 or less 100
+          state.ingredientsList.splice(index, 1);
+        }
       }),
 });
 // export const { addFavoriteRecipe, deleteFavorites } = shoppingSlice.actions;

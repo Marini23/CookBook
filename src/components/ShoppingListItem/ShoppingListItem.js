@@ -17,7 +17,11 @@ import minusIcon from '../../images/minusIcon.svg';
 import plusIcon from '../../images/plusIcon.svg';
 import deleteIcon from '../../images/trash_icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteIngredientItem } from '../../redux/shoppingSlice/shoppingOperations';
+import {
+  decrementIngredient,
+  deleteIngredientItem,
+  incrementIngredient,
+} from '../../redux/shoppingSlice/shoppingOperations';
 import { selectUserId } from '../../redux/selectors';
 
 export const ShoppingListItem = ({ ingredient }) => {
@@ -33,11 +37,19 @@ export const ShoppingListItem = ({ ingredient }) => {
         <LabelIngredient>{capitalizedWord}</LabelIngredient>
         <BtnContainer>
           <Btn type="button">
-            <MinusIcon src={minusIcon} alt="minus icon" />
+            <MinusIcon
+              src={minusIcon}
+              alt="minus icon"
+              onClick={() => dispatch(decrementIngredient({ userId, foodId }))}
+            />
           </Btn>
           <NumberWeight>{Math.ceil(weight)}</NumberWeight>
           <Btn type="button">
-            <PlusIcon src={plusIcon} alt="plus icon" />
+            <PlusIcon
+              src={plusIcon}
+              alt="plus icon"
+              onClick={() => dispatch(incrementIngredient({ userId, foodId }))}
+            />
           </Btn>
           <TextWeight>g</TextWeight>
         </BtnContainer>

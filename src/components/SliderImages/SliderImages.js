@@ -1,4 +1,3 @@
-import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -51,7 +50,9 @@ export const SliderImages = () => {
   const userId = useSelector(selectUserId);
   // const images = useSelector(selectPhotoRecipes);
   const recipes = useSelector(selectRecipesInShoppingList);
-  console.log(recipes);
+  // console.log(recipes);
+
+  // useEffect(() => {}, [recipes]);
   const settings = {
     dots: false,
     infinite: true,
@@ -104,7 +105,7 @@ export const SliderImages = () => {
   return (
     <Slider {...settings}>
       {recipes.map(recipe => {
-        console.log(recipe);
+        // console.log(recipe);
         const {
           id,
           idLink,
@@ -115,7 +116,7 @@ export const SliderImages = () => {
           LARGE,
           ingredients,
         } = recipe;
-        console.log(ingredients);
+        // console.log(ingredients);
         return (
           <div className="image-container" key={id}>
             <NavLink
@@ -138,16 +139,7 @@ export const SliderImages = () => {
                 handleDelete({ userId, recipeId: id, ingredients })
               }
             >
-              <img
-                src={deleteIcon}
-                alt="Delete"
-                className="delete-icon"
-                onClick={() =>
-                  dispatch(
-                    deleteRecipeItem({ userId, recipeId: id, ingredients })
-                  )
-                }
-              />
+              <img src={deleteIcon} alt="Delete" className="delete-icon" />
             </div>
           </div>
         );
