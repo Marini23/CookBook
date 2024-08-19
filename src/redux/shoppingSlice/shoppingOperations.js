@@ -101,13 +101,19 @@ const addIngredientToShoppingList = (userId, recipeData) => {
         // Process ingredients from recipeData
         recipeData.recipe.ingredients.forEach(ingredient => {
           const { foodId, food, weight } = ingredient;
-
-          if (updatedIngredients[foodId]) {
-            // Ingredient already exists, update the weight
-            updatedIngredients[foodId].weight += weight;
-          } else {
-            // Ingredient doesn't exist, add it to the list
-            updatedIngredients[foodId] = { foodId, food, weight, done: false };
+          if (weight > 0) {
+            if (updatedIngredients[foodId]) {
+              // Ingredient already exists, update the weight
+              updatedIngredients[foodId].weight += weight;
+            } else {
+              // Ingredient doesn't exist, add it to the list
+              updatedIngredients[foodId] = {
+                foodId,
+                food,
+                weight,
+                done: false,
+              };
+            }
           }
         });
         const ingredientsArray = Object.values(updatedIngredients);
@@ -125,6 +131,34 @@ const addIngredientToShoppingList = (userId, recipeData) => {
     );
   });
 };
+
+const addNewIngredientToShoppingList = (userId, newIngredient) => {
+  return new Promise((resolve, reject) => {
+    const shoppingRef = ref(db, 'shoppingIngredients/' + userId);
+    onValue(
+      shoppingRef,
+      snapshot => {
+        const existingIngredients = snapshot.val() || {};
+        const updatedIngredients = {
+          ...existingIngredients,
+          [newIngredient.foodId]: newIngredient,
+        };
+
+        // Save the updated ingredients list back to Firebase
+        set(shoppingRef, updatedIngredients)
+          .then(() => {
+            resolve(newIngredient);
+          })
+          .catch(error => {
+            console.error('Error adding ingredients:', error);
+            reject(error);
+          });
+      },
+      { onlyOnce: true } // Ensure we only fetch data once
+    );
+  });
+};
+
 const deleteRecipeFromShoppingList = (userId, recipeId) => {
   return new Promise((resolve, reject) => {
     const recipeRef = ref(db, `shoppingRecipes/${userId}/${recipeId}`);
@@ -423,6 +457,23 @@ export const decrementIngredient = createAsyncThunk(
       );
       console.log(`Decrement ingredient: ${decrementIngredient}`);
       return decrementIngredient;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+export const addNewIngredient = createAsyncThunk(
+  'shopping/addIngredient',
+  async ({ userId, newIngredient }, thunkAPI) => {
+    try {
+      console.log(newIngredient);
+      addNewIngredientToShoppingList(userId, newIngredient);
+      return newIngredient;
     } catch (error) {
       const serializedError = {
         code: error.code,

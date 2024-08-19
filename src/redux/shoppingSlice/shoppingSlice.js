@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addIngredients,
+  addNewIngredient,
   addRecipeItem,
   decrementIngredient,
   deleteIngredientItem,
@@ -77,6 +78,14 @@ const shoppingSlice = createSlice({
         state.error = null;
         // console.log(action.payload);
         state.ingredientsList = action.payload;
+      })
+      .addCase(addNewIngredient.pending, handlePending)
+      .addCase(addNewIngredient.rejected, handleRejected)
+      .addCase(addNewIngredient.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        // console.log(action.payload);
+        state.ingredientsList.push(action.payload);
       })
       .addCase(deleteRecipeItem.pending, handlePending)
       .addCase(deleteRecipeItem.rejected, handleRejected)
