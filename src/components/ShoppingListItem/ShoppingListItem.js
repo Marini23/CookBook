@@ -4,6 +4,9 @@ import {
   CircleIcon,
   ContainerDeleteIcon,
   DeleteIcon,
+  DoneCircleIcon,
+  DoneIcon,
+  DoneLabelIngredient,
   IngredientInfo,
   LabelIngredient,
   ListItem,
@@ -23,18 +26,32 @@ import {
   incrementIngredient,
 } from '../../redux/shoppingSlice/shoppingOperations';
 import { selectUserId } from '../../redux/selectors';
+import doneIcon from '../../images/done_icon.svg';
 
 export const ShoppingListItem = ({ ingredient }) => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
-  const { food, foodId, weight } = ingredient;
+  const { food, foodId, weight, done } = ingredient;
   const capitalizedWord = capitalizeFirstLetter(food);
 
   return (
     <ListItem>
-      <CircleIcon></CircleIcon>
+      {done ? (
+        <DoneCircleIcon>
+          <DoneIcon src={doneIcon} alt="done icon" />
+        </DoneCircleIcon>
+      ) : (
+        <CircleIcon></CircleIcon>
+      )}
       <IngredientInfo>
-        <LabelIngredient>{capitalizedWord}</LabelIngredient>
+        {done ? (
+          <h5>
+            <DoneLabelIngredient>{capitalizedWord}</DoneLabelIngredient>
+          </h5>
+        ) : (
+          <LabelIngredient>{capitalizedWord}</LabelIngredient>
+        )}
+
         <BtnContainer>
           <Btn type="button">
             <MinusIcon

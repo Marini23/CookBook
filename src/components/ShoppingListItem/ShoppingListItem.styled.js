@@ -41,6 +41,42 @@ export const CircleIcon = styled.div`
   }
 `;
 
+export const DoneCircleIcon = styled.div`
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.primaryOrange};
+  border: none;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
+    margin-right: 49px;
+  }
+`;
+
+export const DoneIcon = styled.img`
+  width: 12px;
+  height: 12px;
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 16px;
+    height: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
 export const IngredientInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,6 +98,22 @@ export const LabelIngredient = styled.h5`
   font-size: 12px;
   line-height: 17.63px;
   font-weight: 400;
+  color: ${({ theme }) => theme.colors.primaryBlackText};
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    font-size: 14px;
+    line-height: 20.56px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 16px;
+    line-height: 23.5px;
+  }
+`;
+
+export const DoneLabelIngredient = styled.s`
+  font-size: 12px;
+  line-height: 17.63px;
+  font-weight: 400;
+
   color: ${({ theme }) => theme.colors.primaryBlackText};
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 14px;
