@@ -1,6 +1,7 @@
 import { db } from '../../firebase';
-import { onValue, push, ref, remove, set } from 'firebase/database';
+import { onValue, push, ref, remove, set, update } from 'firebase/database';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const getRecipesInShoppingList = userId => {
   return new Promise((resolve, reject) => {
@@ -13,7 +14,6 @@ const getRecipesInShoppingList = userId => {
           const recipesArray = Object.values(recipes);
           resolve(recipesArray);
         } else {
-          console.log('No data available');
           resolve([]);
         }
       },
@@ -33,10 +33,8 @@ const getIngredientsInShoppingList = userId => {
         if (snapshot.exists()) {
           const ingredients = snapshot.val();
           const ingredientsArray = Object.values(ingredients);
-          // console.log(ingredientsArray);
           resolve(ingredientsArray);
         } else {
-          console.log('No data available');
           resolve([]);
         }
       },
@@ -132,30 +130,29 @@ const addIngredientToShoppingList = (userId, recipeData) => {
   });
 };
 
-const addNewIngredientToShoppingList = (userId, newIngredient) => {
+export const addNewIngredientToShoppingList = (userId, newIngredient) => {
   return new Promise((resolve, reject) => {
-    const shoppingRef = ref(db, 'shoppingIngredients/' + userId);
-    onValue(
-      shoppingRef,
-      snapshot => {
-        const existingIngredients = snapshot.val() || {};
-        const updatedIngredients = {
-          ...existingIngredients,
-          [newIngredient.foodId]: newIngredient,
-        };
+    const shoppingRef = ref(db, 'shoppingIngredients/' + userId); // Reference to user's shopping ingredients
 
-        // Save the updated ingredients list back to Firebase
-        set(shoppingRef, updatedIngredients)
-          .then(() => {
-            resolve(newIngredient);
-          })
-          .catch(error => {
-            console.error('Error adding ingredients:', error);
-            reject(error);
-          });
-      },
-      { onlyOnce: true } // Ensure we only fetch data once
-    );
+    // Generate a unique 'foodId' using nanoid
+    const newFoodId = 'food_z' + nanoid();
+
+    const updatedIngredient = {
+      ...newIngredient,
+      foodId: newFoodId,
+    };
+
+    const updates = {};
+    updates[newFoodId] = updatedIngredient;
+
+    update(shoppingRef, updates)
+      .then(() => {
+        resolve(updatedIngredient);
+      })
+      .catch(error => {
+        console.error('Error adding new ingredient:', error);
+        reject(error);
+      });
   });
 };
 
@@ -293,6 +290,46 @@ const decrementWeightIngredient = (userId, foodId) => {
       },
       { onlyOnce: true }
     );
+  });
+};
+
+export const toggleIngredientDone = (userId, foodId, currentDoneState) => {
+  return new Promise((resolve, reject) => {
+    const ingredientRef = ref(db, `shoppingIngredients/${userId}/${foodId}`);
+
+    // Toggle the done state
+    const updatedDoneState = !currentDoneState;
+
+    // Update the 'done' property in Firebase
+    update(ingredientRef, { done: updatedDoneState })
+      .then(() => {
+        resolve({ foodId, done: updatedDoneState }); // Return updated foodId and done state
+      })
+      .catch(error => {
+        console.error('Error updating ingredient:', error);
+        reject(error);
+      });
+  });
+};
+
+const clearShoppingListAndRecipes = userId => {
+  return new Promise((resolve, reject) => {
+    const shoppingIngredientsRef = ref(db, 'shoppingIngredients/' + userId);
+
+    const shoppingRecipesRef = ref(db, 'shoppingRecipes/' + userId);
+
+    const removeIngredients = remove(shoppingIngredientsRef);
+    const removeRecipes = remove(shoppingRecipesRef);
+
+    // Wait for both remove operations to complete
+    Promise.all([removeIngredients, removeRecipes])
+      .then(() => {
+        resolve();
+      })
+      .catch(error => {
+        console.error('Error clearing shopping list and recipes:', error);
+        reject(error);
+      });
   });
 };
 
@@ -480,6 +517,37 @@ export const addNewIngredient = createAsyncThunk(
         message: error.message,
       };
       return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+export const updateIngredientDone = createAsyncThunk(
+  'shopping/updateIngredientDone',
+  async ({ userId, foodId, currentDoneState }, thunkAPI) => {
+    try {
+      const result = await toggleIngredientDone(
+        userId,
+        foodId,
+        currentDoneState
+      );
+      return result;
+    } catch (error) {
+      const serializedError = {
+        code: error.code,
+        message: error.message,
+      };
+      return thunkAPI.rejectWithValue(serializedError);
+    }
+  }
+);
+
+export const clearAllShoppingData = createAsyncThunk(
+  'shopping/clearAllShoppingData',
+  async (userId, thunkAPI) => {
+    try {
+      await clearShoppingListAndRecipes(userId);
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ message: error.message }); // Handle errors
     }
   }
 );

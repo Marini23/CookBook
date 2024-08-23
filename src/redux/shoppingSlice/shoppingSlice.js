@@ -3,12 +3,14 @@ import {
   addIngredients,
   addNewIngredient,
   addRecipeItem,
+  clearAllShoppingData,
   decrementIngredient,
   deleteIngredientItem,
   deleteRecipeItem,
   getShoppingListIngredients,
   getShoppingListRecipes,
   incrementIngredient,
+  updateIngredientDone,
   updateIngredientsRecipeFromShoppingList,
 } from './shoppingOperations';
 
@@ -51,9 +53,7 @@ const shoppingSlice = createSlice({
       .addCase(getShoppingListRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
         state.addedRecipestoShoppingList = action.payload;
-        console.log(state.addedRecipestoShoppingList);
       })
       .addCase(getShoppingListIngredients.pending, handlePending)
       .addCase(getShoppingListIngredients.rejected, handleRejected)
@@ -149,6 +149,28 @@ const shoppingSlice = createSlice({
           // Remove the ingredient if its weight is 0 or less 100
           state.ingredientsList.splice(index, 1);
         }
+      })
+      .addCase(updateIngredientDone.pending, handlePending)
+      .addCase(updateIngredientDone.rejected, handlePending)
+      .addCase(updateIngredientDone.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        // Find the ingredient and update its 'done' property
+        const index = state.ingredientsList.findIndex(
+          ingredient => ingredient.foodId === action.payload.foodId
+        );
+        if (index !== -1) {
+          state.ingredientsList[index].done = action.payload.done;
+        }
+      })
+      .addCase(clearAllShoppingData.pending, handlePending)
+      .addCase(clearAllShoppingData.rejected, handlePending)
+      .addCase(clearAllShoppingData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.ingredientsList = [];
+        state.addedRecipestoShoppingList = [];
       }),
 });
 // export const { addFavoriteRecipe, deleteFavorites } = shoppingSlice.actions;

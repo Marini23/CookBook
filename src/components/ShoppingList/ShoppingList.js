@@ -26,7 +26,10 @@ import plusIcon from '../../images/plus-icon_grey.svg';
 import clearIcon from '../../images/trash_icon_yellow.svg';
 import shareIcon from '../../images/share-icon.svg';
 import { useState } from 'react';
-import { addNewIngredient } from '../../redux/shoppingSlice/shoppingOperations';
+import {
+  addNewIngredient,
+  clearAllShoppingData,
+} from '../../redux/shoppingSlice/shoppingOperations';
 
 export const ShoppingList = () => {
   const ingredientsList = useSelector(selectIngredientsInShoppingList);
@@ -38,6 +41,10 @@ export const ShoppingList = () => {
 
   const handleAddClick = () => {
     setShowInput(prevState => !prevState);
+  };
+
+  const handleClearAll = () => {
+    dispatch(clearAllShoppingData(userId));
   };
 
   const handleInputChange = e => {
@@ -54,7 +61,7 @@ export const ShoppingList = () => {
         foodId: newFoodId,
         weight: 100,
       };
-      dispatch(addNewIngredient({ userId, newIngredient })); // Dispatch the action to add the new ingredient
+      dispatch(addNewIngredient({ userId, newIngredient }));
     }
     setNewIngredientName('');
     setShowInput(false);
@@ -65,7 +72,7 @@ export const ShoppingList = () => {
       <TitleContainer>
         <Title>SHOPPING LIST</Title>
         <IconsContainer>
-          <Icon src={clearIcon} alt="clear icon" />
+          <Icon src={clearIcon} alt="clear icon" onClick={handleClearAll} />
           <Icon src={shareIcon} alt="share icon" />
         </IconsContainer>
       </TitleContainer>

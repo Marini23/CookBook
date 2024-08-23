@@ -24,6 +24,7 @@ import {
   decrementIngredient,
   deleteIngredientItem,
   incrementIngredient,
+  updateIngredientDone,
 } from '../../redux/shoppingSlice/shoppingOperations';
 import { selectUserId } from '../../redux/selectors';
 import doneIcon from '../../images/done_icon.svg';
@@ -34,15 +35,27 @@ export const ShoppingListItem = ({ ingredient }) => {
   const { food, foodId, weight, done } = ingredient;
   const capitalizedWord = capitalizeFirstLetter(food);
 
+  const handleDoneClick = () => {
+    dispatch(
+      updateIngredientDone({
+        userId,
+        foodId,
+        currentDoneState: done,
+      })
+    );
+  };
+
   return (
     <ListItem>
-      {done ? (
-        <DoneCircleIcon>
-          <DoneIcon src={doneIcon} alt="done icon" />
-        </DoneCircleIcon>
-      ) : (
-        <CircleIcon></CircleIcon>
-      )}
+      <div onClick={handleDoneClick}>
+        {done ? (
+          <DoneCircleIcon>
+            <DoneIcon src={doneIcon} alt="done icon" />
+          </DoneCircleIcon>
+        ) : (
+          <CircleIcon></CircleIcon>
+        )}
+      </div>
       <IngredientInfo>
         {done ? (
           <h5>
