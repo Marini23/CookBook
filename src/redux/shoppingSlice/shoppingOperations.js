@@ -1,7 +1,6 @@
 import { db } from '../../firebase';
 import { onValue, push, ref, remove, set, update } from 'firebase/database';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
 
 const getRecipesInShoppingList = userId => {
   return new Promise((resolve, reject) => {
@@ -50,7 +49,6 @@ const addRecipeToShoppingList = (userId, recipeData) => {
     const shoppingRef = ref(db, 'shoppingRecipes/' + userId);
     const newShoppingRef = push(shoppingRef);
     const timeOfAdding = Date.now();
-    // console.log(timeOfAdding);
 
     const extractedIngredients = recipeData.recipe.ingredients.map(
       ingredient => ({
@@ -134,16 +132,12 @@ export const addNewIngredientToShoppingList = (userId, newIngredient) => {
   return new Promise((resolve, reject) => {
     const shoppingRef = ref(db, 'shoppingIngredients/' + userId); // Reference to user's shopping ingredients
 
-    // Generate a unique 'foodId' using nanoid
-    const newFoodId = 'food_z' + nanoid();
-
     const updatedIngredient = {
       ...newIngredient,
-      foodId: newFoodId,
     };
 
     const updates = {};
-    updates[newFoodId] = updatedIngredient;
+    updates[newIngredient.foodId] = updatedIngredient;
 
     update(shoppingRef, updates)
       .then(() => {
@@ -161,7 +155,6 @@ const deleteRecipeFromShoppingList = (userId, recipeId) => {
     const recipeRef = ref(db, `shoppingRecipes/${userId}/${recipeId}`);
     remove(recipeRef)
       .then(() => {
-        console.log(`Recipe with href ${recipeId} deleted successfully`);
         resolve(recipeId);
       })
       .catch(error => {

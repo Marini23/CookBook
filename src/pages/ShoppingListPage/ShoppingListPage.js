@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserId } from '../../redux/selectors';
+import {
+  selectIngredientsInShoppingList,
+  selectUserId,
+} from '../../redux/selectors';
 import { Container } from './ShoppingListPage.styled';
 import { ShoppingList } from 'components/ShoppingList/ShoppingList';
 import { useEffect } from 'react';
@@ -8,10 +11,11 @@ import {
   getShoppingListRecipes,
 } from '../../redux/shoppingSlice/shoppingOperations';
 import { FooterForUser } from 'components/Footer/FooterForUser';
+import { EmptyShoppingList } from 'components/EmtyShoppingList/EmptyShoppingList';
 
 export const ShoppingListPage = () => {
   const userId = useSelector(selectUserId);
-  // const ingredientsList = useSelector(selectMergedIndredients);
+  const ingredientsList = useSelector(selectIngredientsInShoppingList);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +25,7 @@ export const ShoppingListPage = () => {
 
   return (
     <Container>
-      <ShoppingList />
+      {ingredientsList.length > 0 ? <ShoppingList /> : <EmptyShoppingList />}
       <FooterForUser />
     </Container>
   );
