@@ -364,8 +364,6 @@ export const addRecipeItem = createAsyncThunk(
   'shopping/addRecipe',
   async ({ userId, recipeInfo }, thunkAPI) => {
     try {
-      console.log('add');
-      console.log(recipeInfo);
       const shoppingListItem = addRecipeToShoppingList(userId, recipeInfo);
       return shoppingListItem;
     } catch (error) {

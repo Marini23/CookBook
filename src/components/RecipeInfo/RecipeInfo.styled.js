@@ -5,6 +5,7 @@ import { VscHeartFilled } from 'react-icons/vsc';
 
 export const ImageWrapper = styled.div`
   position: relative;
+  font-size: 0;
 `;
 
 export const Img = styled.img`
@@ -69,23 +70,26 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 4px;
-  padding: 21px 16px 57px 16px;
-  margin: 16px 15px 24px 17px;
+  padding: 24px 16px;
+  margin: 16px 16px 24px 16px;
   @media screen and (min-width: 1440px) {
     padding: 80px 110px;
     margin: 56px 72px 48px 72px;
   }
 `;
 
-export const SaveBtnContainer = styled.div`
+export const SaveBtn = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 326px;
-  height: 32px;
-  background-color: rgba(217, 217, 217, 0.35);
-  border-radius: 8px;
-  margin-bottom: 20px;
+  max-width: 358px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-bottom: 12px;
   @media screen and (min-width: 1440px) {
     max-width: 1076px;
     height: 56px;
@@ -96,25 +100,17 @@ export const SaveBtnContainer = styled.div`
 export const SaveBtnText = styled.p`
   font-size: 12px;
   line-height: 17.63px;
-  color: ${({ theme }) => theme.colors.grey};
-  margin-left: 16px;
+  color: #252525;
+  margin-left: 12px;
   @media screen and (min-width: 1440px) {
     font-size: 18px;
     line-height: 26.44px;
   }
 `;
 
-export const SaveBtn = styled.button`
-  width: 24px;
-  height: 24px;
-  border-radius: 8px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
-  margin-right: 8px;
-  margin-left: auto;
+export const ImgList = styled.img`
+  width: 16px;
+  height: 16px;
   @media screen and (min-width: 1440px) {
     width: 40px;
     height: 40px;
@@ -254,7 +250,7 @@ export const Link = styled.a`
   color: ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.primaryOrange};
   border-radius: 4px;
-  margin-bottom: 36px;
+  margin-bottom: 46px;
   &:link,
   &:visited {
     color: inherit;
@@ -281,14 +277,14 @@ export const Link = styled.a`
 
 export const StyledHeartIcon = styled(VscHeart)`
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.primaryOrange};
+  color: #252525;
   width: 24px;
   height: 24px;
 `;
 
 export const StyledHeartIconFavorite = styled(VscHeartFilled)`
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.primaryOrange};
+  color: #252525;
   width: 24px;
   height: 24px;
 `;

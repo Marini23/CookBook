@@ -1,3 +1,4 @@
+// import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import {
@@ -5,13 +6,13 @@ import {
   ImageWrapper,
   Img,
   ImgDetail,
+  ImgList,
   InfoContainer,
   Item,
   Line,
   Link,
   ListIngredients,
   SaveBtn,
-  SaveBtnContainer,
   SaveBtnText,
   StyledHeart,
   StyledHeartIcon,
@@ -25,7 +26,7 @@ import {
 } from './RecipeInfo.styled';
 import { useEffect, useRef } from 'react';
 import arrowBack from '../../images/arrow_back.svg';
-import plusIcon from '../../images/plus_icon.svg';
+import listIcon from '../../images//listIcon.svg';
 import timeIcon from '../../images/clock.svg';
 import caloriesIcon from '../../images/calories.svg';
 import servesIcon from '../../images/serves.svg';
@@ -53,7 +54,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const shoppingListRecipes = useSelector(selectRecipesInShoppingList);
   const userId = useSelector(selectUserId);
-
+  // const isTablet = useMediaQuery({ minWidth: 744 });
   useEffect(() => {}, [favoritesRecipes]);
 
   const isFavorite = favoritesRecipes.some(favItem => {
@@ -64,7 +65,6 @@ export const RecipeInfo = ({ recipeInfo }) => {
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipeInfo._links.self.href;
     });
-    console.log(selectRecipe);
     if (isFavorite) {
       const recipeId = favoritesRecipes.find(item => {
         return item._links.self.href === recipeInfo._links.self.href;
@@ -79,11 +79,9 @@ export const RecipeInfo = ({ recipeInfo }) => {
   };
 
   const handleIngredients = recipeInfo => {
-    console.log(shoppingListRecipes);
     const selectRecipe = shoppingListRecipes.find(item => {
       return item.idLink === recipeInfo._links.self.href;
     });
-    console.log(selectRecipe);
     if (!selectRecipe) {
       dispatch(addRecipeItem({ userId, recipeInfo }));
       dispatch(addIngredients({ userId, recipeInfo }));
@@ -100,7 +98,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
   return (
     <div>
       <ImageWrapper>
-        <Img src={recipeInfo.recipe.image} alt="recipe" />
+        <Img src={recipeInfo.recipe.images.REGULAR.url} alt="recipe" />
         <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
           <img src={arrowBack} alt="arrow back" />
         </StyledLinkGoBack>
@@ -113,13 +111,6 @@ export const RecipeInfo = ({ recipeInfo }) => {
         </StyledHeart>
       </ImageWrapper>
       <InfoContainer>
-        <SaveBtnContainer>
-          <SaveBtnText>Save Ingredients to Shopping List</SaveBtnText>
-          <SaveBtn type="button" onClick={() => handleIngredients(recipeInfo)}>
-            {' '}
-            <img src={plusIcon} alt=" plus icon" />
-          </SaveBtn>
-        </SaveBtnContainer>
         <Title>{recipeInfo.recipe.label}</Title>
         <DetailsContainer>
           <Item>
@@ -156,6 +147,10 @@ export const RecipeInfo = ({ recipeInfo }) => {
           ))}
         </ListIngredients>
       </InfoContainer>
+      <SaveBtn type="button" onClick={() => handleIngredients(recipeInfo)}>
+        <ImgList src={listIcon} alt=" plus icon" />
+        <SaveBtnText>Save Ingredients to Shopping List</SaveBtnText>
+      </SaveBtn>
       <Link href={link} target="_blank" rel="noopener noreferrer">
         Start Cooking
       </Link>
