@@ -22,10 +22,12 @@ export const RecipeInfoPage = () => {
   useEffect(() => {}, [recipeInfo]);
 
   return (
-    <Container>
-      {' '}
-      {recipeInfo && <RecipeInfo recipeInfo={recipeInfo} />}
+    <>
+      <Container>
+        {' '}
+        {recipeInfo && <RecipeInfo recipeInfo={recipeInfo} />}
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 };

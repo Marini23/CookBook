@@ -1,17 +1,23 @@
+import { useLocation } from 'react-router-dom';
+import arrowBack from '../../images/arrowBackGrey.svg';
 import {
+  Btn,
+  BtnContainer,
   DetailsContainer,
-  ImageWrapper,
   Img,
   ImgDetail,
   ImgList,
-  InfoContainer,
+  InfoDetailsWrapper,
+  InfoTitleContainer,
+  InfoTitleWrapper,
+  IngredientsContainer,
   Item,
   Line,
   Link,
   ListIngredients,
   SaveBtn,
   SaveBtnText,
-  StyledHeart,
+  ShareIcon,
   StyledHeartIcon,
   StyledHeartIconFavorite,
   StyledLinkGoBack,
@@ -20,15 +26,14 @@ import {
   TextIngredients,
   Title,
   TitleIngredients,
-} from './InfoMobile.styled';
-import arrowBack from '../../images/arrow_back.svg';
-import listIcon from '../../images//listIcon.svg';
+} from './InfoTabletDesktop.styled';
+import shareIcon from '../../images/shareIcon_recipe.svg';
 import timeIcon from '../../images/clock.svg';
 import caloriesIcon from '../../images/calories.svg';
 import servesIcon from '../../images/serves.svg';
-import { useLocation } from 'react-router-dom';
+import listIcon from '../../images//listIcon.svg';
 
-export const InfoMobile = ({
+export const InfoTabletDesktop = ({
   recipeInfo,
   goBackLink,
   isFavorite,
@@ -38,24 +43,37 @@ export const InfoMobile = ({
   link,
 }) => {
   const location = useLocation();
-  //   const goBackLink = useRef(location.state?.from ?? `/`);
+
   return (
     <>
-      <ImageWrapper>
+      <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
+        <img src={arrowBack} alt="arrow back" />
+        Back
+      </StyledLinkGoBack>
+      <InfoTitleContainer>
         <Img src={recipeInfo.recipe.images.REGULAR.url} alt="recipe" />
-        <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
-          <img src={arrowBack} alt="arrow back" />
-        </StyledLinkGoBack>
-        <StyledHeart>
-          {isFavorite ? (
-            <StyledHeartIconFavorite onClick={toggleFavorite} />
-          ) : (
-            <StyledHeartIcon onClick={toggleFavorite} />
-          )}
-        </StyledHeart>
-      </ImageWrapper>
-      <InfoContainer>
-        <Title>{recipeInfo.recipe.label}</Title>
+        <InfoTitleWrapper>
+          <Title>{recipeInfo.recipe.label.toUpperCase()}</Title>
+          <BtnContainer>
+            {isFavorite ? (
+              <Btn onClick={toggleFavorite}>
+                <StyledHeartIconFavorite />
+                Unsave
+              </Btn>
+            ) : (
+              <Btn onClick={toggleFavorite}>
+                <StyledHeartIcon /> Save
+              </Btn>
+            )}
+            <Btn>
+              <ShareIcon src={shareIcon} alt="share icon" />
+              Share
+            </Btn>
+          </BtnContainer>
+          <TextDiets>{diets}</TextDiets>
+        </InfoTitleWrapper>
+      </InfoTitleContainer>
+      <InfoDetailsWrapper>
         <DetailsContainer>
           <Item>
             <ImgDetail src={timeIcon} alt=" clock" />
@@ -81,16 +99,17 @@ export const InfoMobile = ({
             </TextDetail>
           </Item>
         </DetailsContainer>
-        <TextDiets>{diets}</TextDiets>
-        <TitleIngredients>
-          {recipeInfo.recipe.ingredientLines.length} INGREDIENTS:
-        </TitleIngredients>
-        <ListIngredients>
-          {recipeInfo.recipe.ingredientLines.map((ingredient, index) => (
-            <TextIngredients key={index}>{ingredient}</TextIngredients>
-          ))}
-        </ListIngredients>
-      </InfoContainer>
+        <IngredientsContainer>
+          <TitleIngredients>
+            {recipeInfo.recipe.ingredientLines.length} INGREDIENTS:
+          </TitleIngredients>
+          <ListIngredients>
+            {recipeInfo.recipe.ingredientLines.map((ingredient, index) => (
+              <TextIngredients key={index}>{ingredient}</TextIngredients>
+            ))}
+          </ListIngredients>
+        </IngredientsContainer>
+      </InfoDetailsWrapper>
       <SaveBtn type="button" onClick={() => handleIngredients(recipeInfo)}>
         <ImgList src={listIcon} alt=" list icon" />
         <SaveBtnText>Save Ingredients to Shopping List</SaveBtnText>

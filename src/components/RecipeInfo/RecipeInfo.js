@@ -1,35 +1,35 @@
-// import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import {
-  DetailsContainer,
-  ImageWrapper,
-  Img,
-  ImgDetail,
-  ImgList,
-  InfoContainer,
-  Item,
-  Line,
-  Link,
-  ListIngredients,
-  SaveBtn,
-  SaveBtnText,
-  StyledHeart,
-  StyledHeartIcon,
-  StyledHeartIconFavorite,
-  StyledLinkGoBack,
-  TextDetail,
-  TextDiets,
-  TextIngredients,
-  Title,
-  TitleIngredients,
-} from './RecipeInfo.styled';
+// import {
+//   DetailsContainer,
+//   ImageWrapper,
+//   Img,
+//   ImgDetail,
+//   ImgList,
+//   InfoContainer,
+//   Item,
+//   Line,
+//   Link,
+//   ListIngredients,
+//   SaveBtn,
+//   SaveBtnText,
+//   StyledHeart,
+//   StyledHeartIcon,
+//   StyledHeartIconFavorite,
+//   StyledLinkGoBack,
+//   TextDetail,
+//   TextDiets,
+//   TextIngredients,
+//   Title,
+//   TitleIngredients,
+// } from './RecipeInfo.styled';
 import { useEffect, useRef } from 'react';
-import arrowBack from '../../images/arrow_back.svg';
-import listIcon from '../../images//listIcon.svg';
-import timeIcon from '../../images/clock.svg';
-import caloriesIcon from '../../images/calories.svg';
-import servesIcon from '../../images/serves.svg';
+// import arrowBack from '../../images/arrow_back.svg';
+// import listIcon from '../../images//listIcon.svg';
+// import timeIcon from '../../images/clock.svg';
+// import caloriesIcon from '../../images/calories.svg';
+// import servesIcon from '../../images/serves.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFavoritesRecipes,
@@ -45,6 +45,8 @@ import {
   addIngredients,
   addRecipeItem,
 } from '../../redux/shoppingSlice/shoppingOperations';
+import { InfoTabletDesktop } from './InfoTabletDesktop';
+import { InfoMobile } from './InfoMobile';
 
 export const RecipeInfo = ({ recipeInfo }) => {
   const dispatch = useDispatch();
@@ -54,7 +56,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const shoppingListRecipes = useSelector(selectRecipesInShoppingList);
   const userId = useSelector(selectUserId);
-  // const isTablet = useMediaQuery({ minWidth: 744 });
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 744 });
   useEffect(() => {}, [favoritesRecipes]);
 
   const isFavorite = favoritesRecipes.some(favItem => {
@@ -95,9 +97,25 @@ export const RecipeInfo = ({ recipeInfo }) => {
     .join(', ');
 
   const link = recipeInfo.recipe.url;
+
+  const commonProps = {
+    recipeInfo,
+    goBackLink,
+    isFavorite,
+    toggleFavorite,
+    handleIngredients,
+    diets,
+    link,
+  };
+
   return (
-    <div>
-      <ImageWrapper>
+    <>
+      {isTabletOrDesktop ? (
+        <InfoTabletDesktop {...commonProps} />
+      ) : (
+        <InfoMobile {...commonProps} />
+      )}
+      {/* <ImageWrapper>
         <Img src={recipeInfo.recipe.images.REGULAR.url} alt="recipe" />
         <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
           <img src={arrowBack} alt="arrow back" />
@@ -153,7 +171,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
       </SaveBtn>
       <Link href={link} target="_blank" rel="noopener noreferrer">
         Start Cooking
-      </Link>
-    </div>
+      </Link> */}
+    </>
   );
 };
