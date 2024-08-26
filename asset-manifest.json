@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CookBook/static/css/main.068786f8.css",
-    "main.js": "/CookBook/static/js/main.cd4e00e7.js",
+    "main.js": "/CookBook/static/js/main.6d165644.js",
     "static/media/bg_home_desktop_3x.jpg": "/CookBook/static/media/bg_home_desktop_3x.7ff46e8e5efb42b724b8.jpg",
     "static/media/bg_home_desktop_2x.jpg": "/CookBook/static/media/bg_home_desktop_2x.81fcb45665199cbeaa74.jpg",
     "static/media/footer_home_desktop_3x.jpg": "/CookBook/static/media/footer_home_desktop_3x.c74ba4ebc8af211ab328.jpg",
@@ -76,6 +76,7 @@
     "static/media/logo_mob_footer.svg": "/CookBook/static/media/logo_mob_footer.8a65b3ab09eea05fba546818339502e0.svg",
     "static/media/avatar_icon.svg": "/CookBook/static/media/avatar_icon.66363c545a577557fa26f1f1571bb83c.svg",
     "static/media/mage_filter-square-fill.svg": "/CookBook/static/media/mage_filter-square-fill.6da27f0f3a3325924953a810f4206eed.svg",
+    "static/media/shareIcon_recipe.svg": "/CookBook/static/media/shareIcon_recipe.7a6198545dd3a32818f28a8e84c945ce.svg",
     "static/media/share-icon.svg": "/CookBook/static/media/share-icon.a889e59fe44105f3db1d6ad94bce352b.svg",
     "static/media/slick.svg": "/CookBook/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/CookBook/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -105,6 +106,7 @@
     "static/media/dinner.svg": "/CookBook/static/media/dinner.5b72d0b915dbbf31c4a10038a47b1136.svg",
     "static/media/delete-icon.svg": "/CookBook/static/media/delete-icon.8d3c8cd038442df1fb26acd89c3015f0.svg",
     "static/media/arrow_back.svg": "/CookBook/static/media/arrow_back.e3b5a955af1366ee4ab5b7d0be7f6b03.svg",
+    "static/media/arrowBackGrey.svg": "/CookBook/static/media/arrowBackGrey.3889328f2a0597d4990c8e76c284f982.svg",
     "static/media/arrow_up_icon.svg": "/CookBook/static/media/arrow_up_icon.d1d493830a974aa1623ac02fec971e29.svg",
     "static/media/arrow_down-icon.svg": "/CookBook/static/media/arrow_down-icon.8d92f26114038aa219201f90bd8d8c64.svg",
     "static/media/done_icon.svg": "/CookBook/static/media/done_icon.987cd1453ccc183fe9dd769945de278a.svg",
@@ -115,10 +117,10 @@
     "static/media/close_icon.svg": "/CookBook/static/media/close_icon.d24ce83e3fa41b1bf2cb89a5d9e9abb2.svg",
     "static/media/minusIcon.svg": "/CookBook/static/media/minusIcon.57970249f514dd5ef6df958180869071.svg",
     "main.068786f8.css.map": "/CookBook/static/css/main.068786f8.css.map",
-    "main.cd4e00e7.js.map": "/CookBook/static/js/main.cd4e00e7.js.map"
+    "main.6d165644.js.map": "/CookBook/static/js/main.6d165644.js.map"
   },
   "entrypoints": [
     "static/css/main.068786f8.css",
-    "static/js/main.cd4e00e7.js"
+    "static/js/main.6d165644.js"
   ]
 }
