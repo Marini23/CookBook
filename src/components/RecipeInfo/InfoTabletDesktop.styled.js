@@ -15,6 +15,8 @@ export const StyledLinkGoBack = styled(NavLink)`
     color: #ff8c00;
   } */
   @media screen and (min-width: 1440px) {
+    font-size: 18px;
+    line-height: 26.44px;
   }
 `;
 
@@ -22,6 +24,10 @@ export const InfoTitleContainer = styled.section`
   display: flex;
   gap: 20px;
   margin-top: 16px;
+  @media screen and (min-width: 1440px) {
+    gap: 24px;
+    margin-top: 32px;
+  }
 `;
 
 export const Img = styled.img`
@@ -29,6 +35,10 @@ export const Img = styled.img`
   height: 184px;
   object-fit: cover;
   border-radius: 4px;
+  @media screen and (min-width: 1440px) {
+    width: 526px;
+    height: 346px;
+  }
 `;
 
 export const InfoTitleWrapper = styled.div`
@@ -45,12 +55,21 @@ export const Title = styled.h3`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  @media screen and (min-width: 1440px) {
+    width: 746px;
+    font-size: 64px;
+    line-height: 64px;
+  }
 `;
 
 export const BtnContainer = styled.div`
   display: flex;
   gap: 28px;
   margin-top: 16px;
+  @media screen and (min-width: 1440px) {
+    gap: 24px;
+    margin-top: 28px;
+  }
 `;
 
 export const Btn = styled.button`
@@ -66,6 +85,12 @@ export const Btn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (min-width: 1440px) {
+    width: 121px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 23.5px;
+  }
 `;
 
 export const StyledHeartIcon = styled(VscHeart)`
@@ -73,6 +98,11 @@ export const StyledHeartIcon = styled(VscHeart)`
   width: 20px;
   height: 20px;
   margin-right: 8px;
+  @media screen and (min-width: 1440px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+  }
 `;
 
 export const StyledHeartIconFavorite = styled(VscHeartFilled)`
@@ -80,11 +110,21 @@ export const StyledHeartIconFavorite = styled(VscHeartFilled)`
   width: 20px;
   height: 20px;
   margin-right: 8px;
+  @media screen and (min-width: 1440px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+  }
 `;
 export const ShareIcon = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 8px;
+  @media screen and (min-width: 1440px) {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+  }
 `;
 
 export const TextDiets = styled.p`
@@ -96,7 +136,7 @@ export const TextDiets = styled.p`
   @media screen and (min-width: 1440px) {
     font-size: 24px;
     line-height: 35.25px;
-    margin-bottom: 40px;
+    margin-top: 28px;
   }
 `;
 
@@ -109,6 +149,12 @@ export const InfoDetailsWrapper = styled.section`
   box-shadow: inset 0 -1px 0 0 rgba(144, 144, 144, 0.25);
   padding: 42px 16px 70px 16px;
   margin-bottom: 32px;
+  @media screen and (min-width: 1440px) {
+    box-shadow: inset 0 -1px 0 0 rgba(144, 144, 144, 0.25);
+    padding: 80px 110px;
+    margin-top: 40px;
+    margin-bottom: 57px;
+  }
 `;
 
 export const DetailsContainer = styled.div`
@@ -121,6 +167,8 @@ export const DetailsContainer = styled.div`
   padding: 21px;
   gap: 24px;
   @media screen and (min-width: 1440px) {
+    width: 1076px;
+    height: 171px;
     margin-bottom: 40px;
     padding: 40px;
     gap: 40px;
@@ -133,11 +181,10 @@ export const Item = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   @media screen and (min-width: 1440px) {
-    max-width: 278.67px;
+    width: 278.67px;
     height: 91px;
-    gap: 16px;
+    gap: 0;
   }
 `;
 
@@ -148,6 +195,7 @@ export const Line = styled.div`
   margin-top: 20px;
   @media screen and (min-width: 1440px) {
     height: 91px;
+    margin-top: 0;
   }
 `;
 
@@ -174,8 +222,10 @@ export const ImgDetail = styled.img`
 export const IngredientsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* padding: 0 16px; */
   margin-top: 42px;
+  @media screen and (min-width: 1440px) {
+    margin-top: 40px;
+  }
 `;
 
 export const TitleIngredients = styled.h4`
@@ -243,10 +293,10 @@ export const Link = styled.a`
   }
 
   @media screen and (min-width: 1440px) {
-    margin-bottom: 88px;
-    font-size: 18px;
-    font-weight: 26.44px;
-    max-width: 520px;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 29.384px;
+    width: 520px;
     height: 48px;
   }
 `;
@@ -264,9 +314,10 @@ export const SaveBtn = styled.button`
   margin: 0 auto;
   margin-bottom: 16px;
   @media screen and (min-width: 1440px) {
-    max-width: 1076px;
-    height: 56px;
-    margin-bottom: 40px;
+    width: 520px;
+    height: 48px;
+    margin-bottom: 24px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
   }
 `;
 
@@ -276,16 +327,12 @@ export const SaveBtnText = styled.p`
   color: #252525;
   margin-left: 12px;
   @media screen and (min-width: 1440px) {
-    font-size: 18px;
-    line-height: 26.44px;
+    font-size: 20px;
+    line-height: 29.38px;
   }
 `;
 
 export const ImgList = styled.img`
   width: 24px;
   height: 24px;
-  @media screen and (min-width: 1440px) {
-    width: 40px;
-    height: 40px;
-  }
 `;
