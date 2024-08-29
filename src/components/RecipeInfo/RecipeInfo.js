@@ -1,35 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
-// import {
-//   DetailsContainer,
-//   ImageWrapper,
-//   Img,
-//   ImgDetail,
-//   ImgList,
-//   InfoContainer,
-//   Item,
-//   Line,
-//   Link,
-//   ListIngredients,
-//   SaveBtn,
-//   SaveBtnText,
-//   StyledHeart,
-//   StyledHeartIcon,
-//   StyledHeartIconFavorite,
-//   StyledLinkGoBack,
-//   TextDetail,
-//   TextDiets,
-//   TextIngredients,
-//   Title,
-//   TitleIngredients,
-// } from './RecipeInfo.styled';
 import { useEffect, useRef } from 'react';
-// import arrowBack from '../../images/arrow_back.svg';
-// import listIcon from '../../images//listIcon.svg';
-// import timeIcon from '../../images/clock.svg';
-// import caloriesIcon from '../../images/calories.svg';
-// import servesIcon from '../../images/serves.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFavoritesRecipes,

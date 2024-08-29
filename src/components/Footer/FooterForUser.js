@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
-import logo from '../../images/logo_mob_footer.svg';
+// import logo from '../../images/logo_mob_footer.svg';
+import logo from '../../images/new-logo.svg';
+import logo2x from '../../images/logo_2x.png';
 import {
   Button,
   Container,
@@ -16,7 +18,7 @@ export const FooterForUser = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Img src={logo} srcSet={`${logo} 1x`} alt="logo" />
+      <Img src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
       <List>
         <li>
           <LinkItem href="/CookBook/recipes">RECIPES</LinkItem>

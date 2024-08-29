@@ -50,7 +50,6 @@ const favoritesSlice = createSlice({
       .addCase(addFavoriteItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
         state.favoritesList.push(action.payload);
       })
       .addCase(deleteFavoriteItem.pending, handlePending)
@@ -58,10 +57,10 @@ const favoritesSlice = createSlice({
       .addCase(deleteFavoriteItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
-        const index = state.favoritesList.findIndex(
-          item => item.id === action.payload
-        );
+        const index = state.favoritesList.findIndex(item => {
+          return item.recipe.id === action.payload;
+        });
+        console.log(index);
         state.favoritesList.splice(index, 1);
       }),
 });

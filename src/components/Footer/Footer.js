@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
-import logo from '../../images/logo_footer.svg';
+// import logo from '../../images/logo_footer.svg';
 // import logo2x from '../../images/logo_footer_2x.png';
+import logo from '../../images/new-logo.svg';
+import logo2x from '../../images/logo_2x.png';
 import {
   Container,
   FooterText,
@@ -16,7 +18,7 @@ export const Footer = () => {
     <FooterForUser />
   ) : (
     <Container>
-      <Img src={logo} srcSet={`${logo} 1x`} alt="logo" />
+      <Img src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
       <TextContainer>
         <FooterText>
           Copyright © 2024 Created by

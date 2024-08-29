@@ -99,6 +99,10 @@ export const LabelIngredient = styled.h5`
   line-height: 17.63px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.primaryBlackText};
+  margin-right: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 14px;
     line-height: 20.56px;
@@ -113,7 +117,10 @@ export const DoneLabelIngredient = styled.s`
   font-size: 12px;
   line-height: 17.63px;
   font-weight: 400;
-
+  margin-right: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
   color: ${({ theme }) => theme.colors.primaryBlackText};
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 14px;

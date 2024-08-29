@@ -58,9 +58,9 @@ export const ShoppingListItem = ({ ingredient }) => {
       </div>
       <IngredientInfo>
         {done ? (
-          <h5>
+          <LabelIngredient>
             <DoneLabelIngredient>{capitalizedWord}</DoneLabelIngredient>
-          </h5>
+          </LabelIngredient>
         ) : (
           <LabelIngredient>{capitalizedWord}</LabelIngredient>
         )}

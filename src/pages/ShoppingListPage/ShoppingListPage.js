@@ -24,9 +24,11 @@ export const ShoppingListPage = () => {
   }, [dispatch, userId]);
 
   return (
-    <Container>
-      {ingredientsList.length > 0 ? <ShoppingList /> : <EmptyShoppingList />}
+    <>
+      <Container>
+        {ingredientsList.length > 0 ? <ShoppingList /> : <EmptyShoppingList />}
+      </Container>
       <FooterForUser />
-    </Container>
+    </>
   );
 };
