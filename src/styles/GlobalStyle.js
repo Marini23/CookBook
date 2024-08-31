@@ -54,7 +54,7 @@ body {
 width: 100%;
 min-width: 320px;
 max-width: 1440px;
-height: 100vh;
+min-height: 100vh;
 margin: 0 auto;
 font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 
     sans-serif;

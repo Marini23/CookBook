@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from '../redux/authSlice/authOperations';
 import { selectIsLoggedIn, selectIsRefreshing } from '../redux/selectors';
 import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
-import { Loader } from './Loader';
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();

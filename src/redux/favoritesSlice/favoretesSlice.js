@@ -22,9 +22,6 @@ const favoritesSlice = createSlice({
     error: null,
   },
   reducers: {
-    // addFavoriteRecipe(state, action) {
-    //   state.favoritesList.push(action.payload);
-    // },
     deleteFavorites(state, action) {
       const index = state.favoritesList.findIndex(
         item => item.id === action.payload.id

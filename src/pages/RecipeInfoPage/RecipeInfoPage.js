@@ -3,31 +3,37 @@ import { Container } from './RecipeInfoPage.styled';
 import { useEffect, useState } from 'react';
 import { getRecipeInfo } from '../../redux/recipesSlice/recipesOperations';
 import { RecipeInfo } from 'components/RecipeInfo/RecipeInfo';
-import { Footer } from 'components/Footer/Footer';
+import { Loader } from 'components/Loader/Loader';
 
 export const RecipeInfoPage = () => {
   const { recipeId } = useParams();
-  const [recipeInfo, setRecipeInfo] = useState(``);
+  const [recipeInfo, setRecipeInfo] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getRecipeInfo(recipeId)
-      .then(data => {
+    const fetchRecipeInfo = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const data = await getRecipeInfo(recipeId);
         setRecipeInfo(data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+      } catch (error) {
+        console.error('Error fetching recipe info:', error);
+        setError('Failed to load recipe information');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRecipeInfo();
   }, [recipeId]);
 
-  useEffect(() => {}, [recipeInfo]);
-
   return (
-    <>
-      <Container>
-        {' '}
-        {recipeInfo && <RecipeInfo recipeInfo={recipeInfo} />}
-      </Container>
-      <Footer />
-    </>
+    <Container>
+      {isLoading && <Loader />}
+      {error && <p>{error}</p>}
+      {recipeInfo && <RecipeInfo recipeInfo={recipeInfo} />}
+    </Container>
   );
 };

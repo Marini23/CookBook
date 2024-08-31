@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavoritesList } from '../../redux/favoritesSlice/favoritesOperations';
-import { selectUserId } from '../../redux/selectors';
+import { selectIsLoadingFavorites, selectUserId } from '../../redux/selectors';
 import { Container } from './FavoritesPage.styled';
 import { FavoritesList } from 'components/FavoritesList/FavoritesList';
-import { Footer } from 'components/Footer/Footer';
+import { Loader } from 'components/Loader/Loader';
 export const FavoritesPage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
+  const isLoading = useSelector(selectIsLoadingFavorites);
 
   useEffect(() => {
     dispatch(getFavoritesList(userId));
@@ -28,9 +29,9 @@ export const FavoritesPage = () => {
   return (
     <>
       <Container>
+        {isLoading && <Loader />}
         <FavoritesList windowWidth={windowWidth} />
       </Container>
-      <Footer />
     </>
   );
 };

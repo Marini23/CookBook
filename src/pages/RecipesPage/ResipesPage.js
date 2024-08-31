@@ -13,6 +13,7 @@ import { getRecipesListByQuery } from '../../redux/recipesSlice/recipesOperation
 import { RecipesList } from 'components/RecipesList/RecipesList';
 import { LoadMoreBtn } from 'components/LoadMoreButton/LoadMoreButton';
 import {
+  selectIsLoadingRecipes,
   selectQuery,
   selectResipes,
   selectTotalHits,
@@ -27,7 +28,7 @@ import arrowUp from '../../images/arrow_up_icon.svg';
 import arrowDown from '../../images/arrow_down-icon.svg';
 import { Filter } from 'components/Filter/FilterTabletDesktop';
 import { getFavoritesList } from '../../redux/favoritesSlice/favoritesOperations';
-import { FooterForUser } from 'components/Footer/FooterForUser';
+import { Loader } from 'components/Loader/Loader';
 
 export const RecipesPage = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export const RecipesPage = () => {
   const recipes = useSelector(selectResipes);
   const query = useSelector(selectQuery);
   const userId = useSelector(selectUserId);
+  const isLoading = useSelector(selectIsLoadingRecipes);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
 
   useEffect(() => {
@@ -52,21 +54,21 @@ export const RecipesPage = () => {
   };
 
   return (
-    <Container>
-      <FilterDesktop>
-        {query !== 'popular' && (
-          <ButtonFilter type="button" onClick={toggleFilterVisibility}>
-            <ArrowIcon
-              src={isFilterVisible ? arrowUp : arrowDown}
-              alt="Toggle Filters Icon"
-            />
-            <TextButtonFilter>
-              {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
-            </TextButtonFilter>
-          </ButtonFilter>
-        )}
-        {query === 'popular' && (
-          <>
+    <>
+      <Container>
+        <FilterDesktop>
+          {query !== 'popular' && (
+            <ButtonFilter type="button" onClick={toggleFilterVisibility}>
+              <ArrowIcon
+                src={isFilterVisible ? arrowUp : arrowDown}
+                alt="Toggle Filters Icon"
+              />
+              <TextButtonFilter>
+                {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
+              </TextButtonFilter>
+            </ButtonFilter>
+          )}
+          {query === 'popular' && (
             <Banner>
               <source
                 srcSet={`${bannerTablet}, ${bannerTablet_2x} 2x, ${bannerTablet_3x} 3x`}
@@ -78,15 +80,15 @@ export const RecipesPage = () => {
               />
               <img src={bannerDesktop} alt="banner" />
             </Banner>
-          </>
-        )}
-        <FilterContainer $isvisible={isFilterVisible}>
-          <Filter />
-        </FilterContainer>
-      </FilterDesktop>
-      <RecipesList />
-      {isLoadMore ? <LoadMoreBtn /> : null}
-      <FooterForUser />
-    </Container>
+          )}
+          <FilterContainer $isvisible={isFilterVisible}>
+            <Filter />
+          </FilterContainer>
+        </FilterDesktop>
+        {isLoading && <Loader />}
+        <RecipesList />
+        {isLoadMore ? <LoadMoreBtn /> : null}
+      </Container>
+    </>
   );
 };

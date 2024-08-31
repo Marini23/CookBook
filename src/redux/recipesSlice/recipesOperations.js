@@ -52,22 +52,6 @@ export const loadMoreRecipes = createAsyncThunk(
   }
 );
 
-// export const getRecipeInfo = createAsyncThunk(
-//   'recipes/getRecipeInfo',
-//   async (recipeId, thunkAPI) => {
-//     try {
-//       const { data } = await instance.get(
-//         `/recipes/v2/${recipeId}?type=public&app_id=895983dd&app_key=
-// 19385ac259149cf92f727b8a356d63ae`
-//       );
-//       return data;
-//     } catch (error) {
-//       console.error('Error fetching recipe:', error);
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const getRecipeInfo = async recipeId => {
   try {
     const { data } = await instance.get(

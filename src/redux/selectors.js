@@ -15,6 +15,17 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const selectResipes = state => state.recipes.recipesList;
 
+export const selectIsLoadingRecipes = state => state.recipes.isLoading;
+
+export const selectIsLoadingFavorites = state => state.favorites.isLoading;
+
+export const selectIsLoadingShoppingList = state =>
+  state.shoppingList.isLoading;
+
+export const selectErrorRecipes = state => state.recipes.error;
+
+export const selectErrorShoppingList = state => state.shoppingList.error;
+
 export const selectNextPageLink = state => state.recipes.nextPageLink;
 
 export const selectTotalHits = state => state.recipes.totalHits;
@@ -70,46 +81,3 @@ export const selectFilteredRecipes = createSelector(
       });
   }
 );
-
-// export const selectMergedIndredients = createSelector(
-//   [selectRecipesInShoppingList],
-//   recipes => {
-//     const ingredients = recipes.flatMap(recipe =>
-//       recipe.ingredients.map(ingredient => ({
-//         food: ingredient.food,
-//         foodId: ingredient.foodId,
-//         weight: ingredient.weight,
-//       }))
-//     );
-//     // console.log(ingredients);
-//     return ingredients.reduce((accumulatedIngredients, currentIngredient) => {
-//       const existingIngredient = accumulatedIngredients.find(ingredient => {
-//         return ingredient.foodId === currentIngredient.foodId;
-//       });
-//       if (!existingIngredient) {
-//         accumulatedIngredients.push({ ...currentIngredient });
-//       } else {
-//         existingIngredient.weight =
-//           existingIngredient.weight + currentIngredient.weight;
-//       }
-//       return accumulatedIngredients;
-//     }, []);
-//   }
-// );
-
-// export const selectPhotoRecipes = createSelector(
-//   [selectRecipesInShoppingList],
-//   recipes => {
-//     const images = recipes.flatMap(recipe => ({
-//       image: recipe.defaultImage,
-//       id: recipe.id,
-//       idLink: recipe.idLink,
-//       THUMBNAIL: recipe.images.THUMBNAIL.url,
-//       SMALL: recipe.images.SMALL.url,
-//       REGULAR: recipe.images.REGULAR.url,
-//       LARGE: recipe.images.LARGE?.url || recipe.images.REGULAR.url,
-//       label: recipe.label,
-//     }));
-//     return images;
-//   }
-// );

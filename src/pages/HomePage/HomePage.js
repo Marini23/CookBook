@@ -12,7 +12,6 @@ import {
   Text,
   WrapContent,
 } from './HomePage.styled';
-import { Footer } from 'components/Footer/Footer';
 import logo from '../../images/new-logo.svg';
 import logo2x from '../../images/logo_2x.png';
 import { useEffect, useState } from 'react';
@@ -101,7 +100,6 @@ export const HomePage = () => {
         </MainInfo>
         <DescriptionInfo windowWidth={windowWidth} />
       </Container>
-      <Footer windowWidth={windowWidth} />
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
         <RegisterForm
           isClose={closeModalRegister}
