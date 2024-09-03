@@ -32,6 +32,7 @@ export const RecipeCard = recipe => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const userId = useSelector(selectUserId);
   const labelRef = useRef();
+  console.log(recipe);
 
   useEffect(() => {}, [favoritesRecipes]);
 
@@ -87,10 +88,29 @@ export const RecipeCard = recipe => {
     <>
       <ListItem>
         <StyledLinkList to={`/recipes/${recipeId}`} state={{ from: location }}>
+          {/* <Img>
+            <source
+              srcSet={recipe.recipe.recipe.images.THUMBNAIL}
+              media="(max-width: 743px)"
+            />
+            <source
+              srcSet={recipe.recipe.recipe.images.SMALL}
+              media="(min-width: 744px) and (max-width: 1439px)"
+            />
+            <source
+              srcSet={recipe.recipe.recipe.images.LARGE}
+              media="(min-width: 1440px)"
+            />
+            <img
+              src={recipe.recipe.recipe.image}
+              alt={recipe.recipe.recipe.label}
+            />
+          </Img> */}
           <Img
             src={recipe.recipe.recipe.image}
             alt={recipe.recipe.recipe.label}
           />
+
           <Label ref={labelRef}>{truncatedLabel}</Label>
         </StyledLinkList>
         <HeartIcon>

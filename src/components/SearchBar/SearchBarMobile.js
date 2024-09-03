@@ -13,6 +13,7 @@ import {
 import { ModalFilterMobile } from 'components/ModalFilterMobile/ModalFilterMobile';
 import { FilterMobileForm } from 'components/Filter/FilterMobile';
 import { changeQuery } from '../../redux/recipesSlice/recipesSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const SearchBarMobile = () => {
   const [modalIsOpenFilter, setModalIsOpenFilter] = useState(false);
@@ -24,9 +25,11 @@ export const SearchBarMobile = () => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = data => {
     dispatch(changeQuery(data.query));
+    navigate('/recipes');
     reset();
   };
 

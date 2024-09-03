@@ -17,12 +17,12 @@ const handleRejected = (state, action) => {
 const recipesSlice = createSlice({
   name: 'recipes',
   initialState: {
+    query: 'popular',
     recipesList: [],
     nextPageLink: null,
     totalHits: null,
     isLoading: false,
     error: null,
-    query: 'popular',
   },
   reducers: {
     changeQuery(state, action) {

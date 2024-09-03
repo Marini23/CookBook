@@ -46,6 +46,11 @@ export const selectUserFirstName = createSelector([selectUser], user =>
   getFirstName(user.name)
 );
 
+export const selectUserPhoto = createSelector([selectUser], user => {
+  // Access `providerData` safely and get `photoURL` from the first element
+  return user.providerData?.[0]?.photoURL || null; // Fallback to `null` if not found
+});
+
 export const selectFilteredRecipes = createSelector(
   [selectResipes, selectFilters],
   (recipes, filters) => {

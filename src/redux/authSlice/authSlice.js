@@ -22,7 +22,6 @@ const authSlice = createSlice({
       name: null,
       email: null,
       providerData: null,
-      photo: null,
       id: null,
     },
     token: null,
@@ -75,6 +74,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(registerWithGoogle.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.id = action.payload.id;
