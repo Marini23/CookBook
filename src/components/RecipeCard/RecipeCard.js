@@ -32,7 +32,6 @@ export const RecipeCard = recipe => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const userId = useSelector(selectUserId);
   const labelRef = useRef();
-  console.log(recipe);
 
   useEffect(() => {}, [favoritesRecipes]);
 

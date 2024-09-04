@@ -7,14 +7,10 @@ export const FormFilter = styled.form`
 `;
 
 export const Container = styled.div`
-  /* display: flex;
-  align-items: start;
-  column-gap: 72px; */
-  /* justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 72px; /* Set the gap between columns */
-  row-gap: 16px; /* Set the gap between rows */
+  column-gap: 72px;
+  row-gap: 16px;
 `;
 
 export const WrapFilter = styled.div`
@@ -34,7 +30,6 @@ export const WrapItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 13px; */
 `;
 
 export const Span = styled.span`
@@ -63,8 +58,8 @@ export const ContainerCheckbox = styled.div`
 export const WrapCheckbox = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 72px; /* Set the gap between columns */
-  row-gap: 16px; /* Set the gap between rows */
+  column-gap: 72px;
+  row-gap: 16px;
 `;
 
 export const LabelCheckbox = styled.label`
@@ -117,7 +112,6 @@ export const ClearIcon = styled.img`
 export const ClearButton = styled.button`
   cursor: pointer;
   width: 120px;
-  /* padding: 8px 44px; */
   height: 18px;
   border: none;
   background-color: transparent;

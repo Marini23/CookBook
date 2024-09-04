@@ -34,6 +34,8 @@ export const UserBar = () => {
     };
   }, []);
 
+  console.log(photo);
+
   const isShoppingListPage = location.pathname === '/shoppinglist';
 
   return (
@@ -43,7 +45,16 @@ export const UserBar = () => {
           <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
           {windowWidth > 743 && <SearchBar />}
           <UserInfo>
-            <Img src={photo || avatar} alt="avatar" width={24} height={24} />
+            <Img
+              src={photo || avatar}
+              alt="avatar"
+              width={24}
+              height={24}
+              onError={e => {
+                e.target.onerror = null; // Prevents infinite loop if avatar also fails to load
+                e.target.src = avatar;
+              }}
+            />
             {windowWidth > 1439 && <Name>{name}</Name>}
             <BurgerMenu windowWidth={windowWidth} />
           </UserInfo>

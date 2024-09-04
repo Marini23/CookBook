@@ -30,7 +30,6 @@ export const Container = styled.div`
 export const WrapFilter = styled.div`
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
 `;
 
 export const LabelFirst = styled.h6`

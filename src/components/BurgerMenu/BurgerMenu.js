@@ -219,6 +219,7 @@ export const BurgerMenu = ({ windowWidth }) => {
       top: 0,
       right: 0,
       overflow: 'hidden',
+      zIndex: 2000,
     },
     bmMenu: {
       display: 'flex',
