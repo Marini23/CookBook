@@ -278,14 +278,14 @@ export const Link = styled.a`
 
 export const StyledHeartIcon = styled(VscHeart)`
   cursor: pointer;
-  color: #252525;
+  color: #f4c343;
   width: 24px;
   height: 24px;
 `;
 
 export const StyledHeartIconFavorite = styled(VscHeartFilled)`
   cursor: pointer;
-  color: #252525;
+  color: #f4c343;
   width: 24px;
   height: 24px;
 `;

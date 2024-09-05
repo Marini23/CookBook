@@ -52,7 +52,12 @@ export const Title = styled.h3`
   font-weight: 400;
   line-height: 36px;
   color: ${({ theme }) => theme.colors.black};
-  white-space: nowrap;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit the text to two lines */
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   @media screen and (min-width: 1440px) {
@@ -313,6 +318,15 @@ export const SaveBtn = styled.button`
   border-radius: 4px;
   margin: 0 auto;
   margin-bottom: 16px;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+    border: none;
+  }
+  &:active {
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+    border: none;
+  }
+
   @media screen and (min-width: 1440px) {
     width: 520px;
     height: 48px;

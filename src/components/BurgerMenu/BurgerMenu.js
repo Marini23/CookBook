@@ -8,7 +8,9 @@ import house from '../../images/house.svg';
 import basket from '../../images/basket.svg';
 import heart from '../../images/heart.svg';
 import dinner from '../../images/dinner.svg';
-import exit from '../../images/exit-to-app.svg';
+import logout from '../../images/logout_icon.svg';
+import login from '../../images/login_icon.svg';
+import register from '../../images/register_icon.svg';
 import {
   Button,
   Home,
@@ -267,11 +269,13 @@ export const BurgerMenu = ({ windowWidth }) => {
               </Home>
             </ListItem>
             <ListItem>
+              <Img src={register} alt="register icon" />
               <Button type="button" onClick={handleRegisterMenu}>
                 REGISTER
               </Button>
             </ListItem>
             <ListItem>
+              <Img src={login} alt="login icon" />
               <Button type="button" onClick={handleLoginMenu}>
                 LOG IN
               </Button>
@@ -311,7 +315,7 @@ export const BurgerMenu = ({ windowWidth }) => {
               </Link>
             </ListItem>
             <ListItem>
-              <Img src={exit} alt="exit icon" />
+              <Img src={logout} alt="logout icon" />
               <LogOutBtn />
             </ListItem>
           </List>

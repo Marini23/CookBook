@@ -55,9 +55,14 @@ export const ButtonMobile = styled.button`
   height: 27px;
   border: none;
   background-color: transparent;
-
   margin-left: auto;
   &:hover {
+    background-color: rgba(244, 195, 67, 0.8);
+  }
+  &:active {
+    outline: none;
+    background-color: #a2a8bc;
+    border: 0.5px solid #b1b0b2;
   }
 `;
 

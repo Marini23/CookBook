@@ -51,12 +51,11 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.primaryOrange};
     border-radius: 4px;
     &:hover {
-      background-color: #b1b0b2;
+      background-color: rgba(244, 195, 67, 0.8);
     }
-    &:focus {
+    &:active {
       outline: none;
-      background-color: ${({ theme }) => theme.colors.primaryOrange};
-      border: 1px solid ${({ theme }) => theme.colors.whiteText};
+      background-color: #a2a8bc;
     }
   }
   @media screen and (min-width: 1440px) {

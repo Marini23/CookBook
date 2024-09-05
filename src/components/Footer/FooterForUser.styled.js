@@ -71,7 +71,7 @@ export const Container = styled.footer`
   }
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
-    height: 435px;
+    height: 360px;
     background-image: linear-gradient(
         rgba(25, 25, 25, 0.5),
         rgba(25, 25, 25, 0.5)
@@ -92,7 +92,7 @@ export const Container = styled.footer`
         url(${bg_desktop_3x});
     }
     gap: 0;
-    padding: 83px 0 64px 0;
+    padding: 64px 0;
   }
 `;
 
@@ -108,6 +108,8 @@ export const TextContainer = styled.div`
 export const Img = styled.img`
   width: 48px;
   height: 32px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
   @media screen and (min-width: 744px) {
     width: 56px;
     height: 37px;
@@ -133,7 +135,7 @@ export const FooterText = styled.p`
   @media screen and (min-width: 1440px) {
     font-size: 16px;
     line-height: 23.5px;
-    margin-top: 56px;
+    /* margin-top: 32px; */
   }
 `;
 
@@ -173,8 +175,9 @@ export const List = styled.ul`
   }
   @media screen and (min-width: 1440px) {
     display: flex;
-    margin-top: 64px;
-    gap: 64px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    gap: 32px;
   }
 `;
 

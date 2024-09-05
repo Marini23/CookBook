@@ -69,52 +69,57 @@ export const Label = styled.p`
 `;
 
 export const HeartIcon = styled.div`
+  cursor: pointer;
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  background-color: #ededed;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     top: 8px;
     right: 8px;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
   @media screen and (min-width: 1440px) {
     top: 12px;
     right: 12px;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
 export const StyledHeartIcon = styled(FaRegHeart)`
-  cursor: pointer;
   color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   @media screen and (min-width: 744px) {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
   @media screen and (min-width: 1440px) {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 `;
 
 export const StyledHeartIconFavorite = styled(FaHeart)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
   @media screen and (min-width: 1440px) {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 `;
 
