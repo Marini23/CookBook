@@ -22,7 +22,9 @@ export const Button = styled.button`
   }
 
   &:active {
-    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
   @media screen and (min-width: 744px) {
     max-width: 434px;

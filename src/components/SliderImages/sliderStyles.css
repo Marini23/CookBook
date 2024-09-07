@@ -51,6 +51,13 @@
 .slick-next {
   width: 8px;
   height: 16px;
+  stroke-width: 0.5;
+  &:hover {
+    stroke-width: 1;
+  }
+  &:active {
+    stroke-width: 0.5;
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 16px;
     height: 24px;
@@ -130,6 +137,14 @@
   cursor: pointer;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.7);
+  color: #252525;
+  &:hover {
+    stroke-width: 1.5px;
+  }
+  &:active {
+    stroke-width: 1px;
+    color: #a2a8bc;
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     position: absolute;
     top: 8px;
@@ -166,6 +181,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #a2a8bc;
+  &:hover {
+    border: 0.4px solid #a2a8bc;
+  }
+  &:active {
+    background-color: #a2a8bc;
+    color: #fdfdfd;
+  }
+
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 205px;
     height: 116px;
@@ -182,6 +206,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 48px;
+    height: 48px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .custom-next-arrow {

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as TrashIcon } from '../../images/trash_icon.svg';
 
 export const ListItem = styled.li`
   width: 100%;
@@ -27,6 +28,12 @@ export const CircleIcon = styled.div`
   background-color: #fdfdfd;
   border: 0.5px solid #b1b0b2;
   margin-right: 12px;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1);
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 24px;
     height: 24px;
@@ -52,6 +59,12 @@ export const DoneCircleIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1);
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 24px;
     height: 24px;
@@ -154,6 +167,12 @@ export const Btn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    border: 0.5px solid ${({ theme }) => theme.colors.grey};
+  }
+  &:active {
+    border: 0.5px solid ${({ theme }) => theme.colors.primaryOrange};
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 56px;
   }
@@ -224,9 +243,18 @@ export const TextWeight = styled.p`
 export const ContainerDeleteIcon = styled.div`
   cursor: pointer;
   margin-left: auto;
+  color: #252525;
+  &:active {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
 `;
 
-export const DeleteIcon = styled.img`
+export const DeleteIcon = styled(TrashIcon)`
   width: 20px;
   height: 20px;
+  fill: none;
+  stroke-width: 0.1;
+  &:hover {
+    stroke-width: 0.25;
+  }
 `;

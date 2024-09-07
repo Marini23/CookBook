@@ -11,9 +11,18 @@ export const StyledLinkGoBack = styled(NavLink)`
   font-size: 16px;
   line-height: 23.5px;
   text-decoration: none;
-  /* &.active {
-    color: #ff8c00;
-  } */
+  transition: color 0.3s ease;
+  &:hover {
+    color: #252525;
+  }
+  &:active {
+    color: #252525;
+  }
+  &:focus {
+    color: #252525;
+    outline: none;
+  }
+
   @media screen and (min-width: 1440px) {
     font-size: 18px;
     line-height: 26.44px;
@@ -62,8 +71,8 @@ export const Title = styled.h3`
   text-overflow: ellipsis;
   @media screen and (min-width: 1440px) {
     width: 746px;
-    font-size: 64px;
-    line-height: 64px;
+    font-size: 36px;
+    line-height: 36px;
   }
 `;
 
@@ -90,12 +99,24 @@ export const Btn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(1);
+  }
   @media screen and (min-width: 1440px) {
-    width: 121px;
+    width: 132px;
     height: 40px;
     font-size: 16px;
     line-height: 23.5px;
   }
+`;
+
+export const TextBtn = styled.p`
+  width: 60px;
+  display: flex;
+  justify-content: start;
 `;
 
 export const StyledHeartIcon = styled(VscHeart)`
@@ -319,7 +340,7 @@ export const SaveBtn = styled.button`
   margin: 0 auto;
   margin-bottom: 16px;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
     border: none;
   }
   &:active {

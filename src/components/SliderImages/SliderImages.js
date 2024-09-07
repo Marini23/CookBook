@@ -7,10 +7,10 @@ import {
   selectRecipesInShoppingList,
   selectUserId,
 } from '../../redux/selectors';
-import deleteIcon from '../../images/delete-icon.svg';
-import diskoverPlus from '../../images/diskover_plus.svg';
-import arrowRight from '../../images/arrowRight.svg';
-import arrowLeft from '../../images/arrowLeft.svg';
+import { ReactComponent as DeleteIcon } from '../../images/delete-icon.svg';
+import { ReactComponent as PlusIcon } from '../../images/diskover_plus.svg';
+import { ReactComponent as ArrowRight } from '../../images/arrowRight.svg';
+import { ReactComponent as ArrowLeft } from '../../images/arrowLeft.svg';
 import { getRecipeIdFromUrl } from '../../utils';
 import {
   deleteRecipeItem,
@@ -26,7 +26,7 @@ const NextArrow = props => {
       style={{ ...style, display: 'block', color: '#252525' }}
       onClick={onClick}
     >
-      <img src={arrowRight} alt="arrow next" className="custom-next-arrow" />
+      <ArrowRight className="custom-next-arrow" />
     </div>
   );
 };
@@ -39,7 +39,7 @@ const PrevArrow = props => {
       style={{ ...style, display: 'block', color: '#252525' }}
       onClick={onClick}
     >
-      <img src={arrowLeft} alt="arrow prev" className="custom-next-arrow" />
+      <ArrowLeft className="custom-next-arrow" />
     </div>
   );
 };
@@ -139,7 +139,7 @@ export const SliderImages = () => {
                 handleDelete({ userId, recipeId: id, ingredients })
               }
             >
-              <img src={deleteIcon} alt="Delete" className="delete-icon" />
+              <DeleteIcon className="delete-icon" />
             </div>
           </div>
         );
@@ -147,20 +147,20 @@ export const SliderImages = () => {
       {recipes.length < 2 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">
-            <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+            <PlusIcon className="add-icon" />
           </div>
         </NavLink>
       )}
       {recipes.length < 3 && (
         <NavLink to={`/recipes`} state={{ from: location }}>
           <div className="default-image">
-            <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+            <PlusIcon className="add-icon" />
           </div>
         </NavLink>
       )}
       <NavLink to={`/recipes`} state={{ from: location }}>
         <div className="default-image">
-          <img src={diskoverPlus} alt="add recipe" className="add-icon" />
+          <PlusIcon className="add-icon" />
         </div>
       </NavLink>
     </Slider>

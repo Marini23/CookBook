@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import arrowBack from '../../images/arrowBackGrey.svg';
+import { ReactComponent as ArrowIcon } from '../../images/arrowBackGrey.svg';
 import {
   Btn,
   BtnContainer,
@@ -21,6 +21,7 @@ import {
   StyledHeartIcon,
   StyledHeartIconFavorite,
   StyledLinkGoBack,
+  TextBtn,
   TextDetail,
   TextDiets,
   TextIngredients,
@@ -47,7 +48,7 @@ export const InfoTabletDesktop = ({
   return (
     <>
       <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
-        <img src={arrowBack} alt="arrow back" />
+        <ArrowIcon />
         Back
       </StyledLinkGoBack>
       <InfoTitleContainer>
@@ -58,11 +59,12 @@ export const InfoTabletDesktop = ({
             {isFavorite ? (
               <Btn onClick={toggleFavorite}>
                 <StyledHeartIconFavorite />
-                Unsave
+                <TextBtn> Unsave</TextBtn>
               </Btn>
             ) : (
               <Btn onClick={toggleFavorite}>
-                <StyledHeartIcon /> Save
+                <StyledHeartIcon />
+                <TextBtn>Save</TextBtn>
               </Btn>
             )}
             <Btn>

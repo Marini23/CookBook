@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ContainerNewIngredient = styled.div`
+  cursor: pointer;
   width: 100%;
   height: 40px;
   padding: 12px 8px;
@@ -10,6 +11,12 @@ export const ContainerNewIngredient = styled.div`
   border-radius: 4px;
   background-color: rgba(217, 217, 217, 0.35);
   margin-bottom: 16px;
+  &:hover {
+    border: 0.5px solid ${({ theme }) => theme.colors.grey};
+  }
+  &:active {
+    border: 1px solid ${({ theme }) => theme.colors.primaryOrange};
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     height: 40px;
     padding: 8px 16px;
@@ -51,6 +58,12 @@ export const BtnNewIngredient = styled.button`
   background-color: transparent;
   font-size: 12px;
   line-height: 17.63px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     font-size: 14px;
     line-height: 20.56px;

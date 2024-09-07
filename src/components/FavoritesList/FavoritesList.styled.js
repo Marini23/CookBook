@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as DiscoverIcon } from '../../images/diskover_plus.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -61,7 +62,9 @@ export const List = styled.ul`
   }
 `;
 
-export const ItemAddRecipe = styled.li`
+export const ItemAddRecipe = styled.a`
+  cursor: pointer;
+  text-decoration: none;
   width: 366px;
   height: 261px;
   border-radius: 4px;
@@ -77,6 +80,13 @@ export const ItemAddRecipe = styled.li`
   padding-top: 87px;
   padding-bottom: 34px;
   color: ${({ theme }) => theme.colors.grey};
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.grey};
+  }
+  &:active {
+    background-color: ${({ theme }) => theme.colors.grey};
+    color: #fdfdfd;
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 205px;
     height: 144px;
@@ -93,7 +103,7 @@ export const ItemAddRecipe = styled.li`
   }
 `;
 
-export const IconPlus = styled.img`
+export const IconPlus = styled(DiscoverIcon)`
   width: 88px;
   height: 88px;
   margin-bottom: 16px;
@@ -107,9 +117,4 @@ export const IconPlus = styled.img`
     height: 120px;
     margin-bottom: 16px;
   }
-`;
-
-export const LinkItem = styled.a`
-  text-decoration: none;
-  cursor: pointer;
 `;

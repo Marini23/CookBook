@@ -16,7 +16,6 @@ import {
   selectIngredientsInShoppingList,
   selectUserId,
 } from '../../redux/selectors';
-import plusIcon from '../../images/plus-icon_grey.svg';
 import clearIcon from '../../images/trash_icon_yellow.svg';
 import shareIcon from '../../images/share-icon.svg';
 import { clearAllShoppingData } from '../../redux/shoppingSlice/shoppingOperations';
@@ -67,7 +66,7 @@ export const ShoppingList = () => {
       )}
       <AddBtn type="button" onClick={toggleInput}>
         {' '}
-        <PlusIcon src={plusIcon} alt="plus icon" />
+        <PlusIcon />
         ADD INGREDIENT
       </AddBtn>
     </Container>

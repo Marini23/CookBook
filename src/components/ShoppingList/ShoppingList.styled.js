@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { ReactComponent as Plus } from '../../images/plus.svg';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -106,15 +106,13 @@ export const AddBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* &:hover {
-    border: none;
-    background-color: ${({ theme }) => theme.colors.secondaryOrange};
+  &:hover {
+    border: 0.4px solid ${({ theme }) => theme.colors.grey};
   }
-  &:focus {
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
-  } */
+  &:active {
+    background-color: ${({ theme }) => theme.colors.grey};
+    color: #fdfdfd;
+  }
   @media screen and (min-width: 744px) {
     height: 40px;
     font-size: 14px;
@@ -127,7 +125,7 @@ export const AddBtn = styled.button`
   }
 `;
 
-export const PlusIcon = styled.img`
+export const PlusIcon = styled(Plus)`
   width: 20px;
   height: 20px;
   margin-right: 16px;

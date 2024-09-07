@@ -198,9 +198,7 @@ export const SubmitButton = styled.button`
   font-weight: 400;
   line-height: 29.38px;
   &:hover {
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
+    background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
   &:active {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
