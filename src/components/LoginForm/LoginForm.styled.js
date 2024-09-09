@@ -194,9 +194,9 @@ export const Text = styled.p`
   font-weight: 17.63px;
   color: ${({ theme }) => theme.colors.primaryBlackText};
   margin-top: 16px;
+  text-decoration: underline;
   &:hover {
     color: ${({ theme }) => theme.colors.primaryOrange};
-    text-decoration: underline;
   }
   &:active {
     color: ${({ theme }) => theme.colors.primaryOrange};

@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { useSelector } from 'react-redux';
@@ -31,7 +32,7 @@ import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPassword
 import './BurgerMenu.css';
 import { useNavigate } from 'react-router-dom';
 
-export const BurgerMenu = ({ windowWidth }) => {
+export const BurgerMenu = () => {
   const navigate = useNavigate();
   const [supportsDynamicViewportHeight, setSupportsDynamicViewportHeight] =
     useState(false);
@@ -53,9 +54,19 @@ export const BurgerMenu = ({ windowWidth }) => {
   const [bgImage, setBgImage] = useState(
     `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
   );
+
+  const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
+  const isTabletScreen = useMediaQuery({
+    query: '(min-width: 744px) and (max-width: 1439px)',
+  });
+
+  const isDesktopScreen = useMediaQuery({
+    query: '(min-width: 1440px)',
+  });
+
   useEffect(() => {
     const handleButtonSize = () => {
-      if (windowWidth <= 743) {
+      if (isMobileScreen) {
         setBurgerButtonSize({
           width: `24px`,
           height: `24px`,
@@ -71,7 +82,7 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_mobile})`
         );
-      } else if (windowWidth > 743 && windowWidth < 1439) {
+      } else if (isTabletScreen) {
         setBurgerButtonSize({
           width: `32px`,
           height: `32px`,
@@ -87,7 +98,7 @@ export const BurgerMenu = ({ windowWidth }) => {
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_tablet})`
         );
-      } else if (windowWidth > 1439) {
+      } else if (isDesktopScreen) {
         setBurgerButtonSize({
           width: `40px`,
           height: `40px`,
@@ -122,7 +133,7 @@ export const BurgerMenu = ({ windowWidth }) => {
       }
     };
     handleButtonSize();
-  }, [windowWidth]);
+  }, [isMobileScreen, isTabletScreen, isDesktopScreen]);
 
   useEffect(() => {
     const body = document.body;

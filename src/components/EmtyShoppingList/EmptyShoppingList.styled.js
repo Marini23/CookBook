@@ -108,17 +108,12 @@ export const BtnLink = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* margin-bottom: 14px; */
-  /* &:hover {
-    border: none;
+  &:hover {
     background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
-  &:focus {
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
-  } */
+  &:active {
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+  }
   @media screen and (min-width: 744px) {
     max-width: 435px;
     height: 40px;
@@ -144,15 +139,12 @@ export const Btn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* &:hover {
-    border: none;
+  &:hover {
     background-color: ${({ theme }) => theme.colors.secondaryOrange};
   }
-  &:focus {
-    border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryOrange};
-  } */
+  &:active {
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+  }
   @media screen and (min-width: 744px) {
     max-width: 435px;
     height: 40px;

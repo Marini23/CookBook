@@ -1,8 +1,9 @@
 import { SliderImages } from 'components/SliderImages/SliderImages';
 import {
   AddBtn,
+  ClearIcon,
+  ShareIcon,
   Container,
-  Icon,
   IconsContainer,
   List,
   PlusIcon,
@@ -16,8 +17,7 @@ import {
   selectIngredientsInShoppingList,
   selectUserId,
 } from '../../redux/selectors';
-import clearIcon from '../../images/trash_icon_yellow.svg';
-import shareIcon from '../../images/share-icon.svg';
+
 import { clearAllShoppingData } from '../../redux/shoppingSlice/shoppingOperations';
 import { NewIngredientForm } from 'components/NewIngredientForm/NewIngredientForm';
 import { useAddIngredient } from 'customHooks';
@@ -44,8 +44,8 @@ export const ShoppingList = () => {
       <TitleContainer>
         <Title>SHOPPING LIST</Title>
         <IconsContainer>
-          <Icon src={clearIcon} alt="clear icon" onClick={handleClearAll} />
-          <Icon src={shareIcon} alt="share icon" />
+          <ClearIcon onClick={handleClearAll} />
+          <ShareIcon />
         </IconsContainer>
       </TitleContainer>
       <SliderImages />

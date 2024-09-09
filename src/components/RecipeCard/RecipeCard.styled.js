@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaRegHeart } from 'react-icons/fa6';
 import { FaHeart } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
+import { BiHeartCircle } from 'react-icons/bi';
 
 export const ListItem = styled.li`
   position: relative;
@@ -75,11 +76,18 @@ export const HeartIcon = styled.div`
   right: 12px;
   width: 24px;
   height: 24px;
-  background-color: #ededed;
+  /* background-color: #ededed; */
+  /* background-color: rgba(55, 55, 55, 0.8); */
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1);
+  }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     top: 8px;
     right: 8px;
@@ -95,7 +103,25 @@ export const HeartIcon = styled.div`
 `;
 
 export const StyledHeartIcon = styled(FaRegHeart)`
-  color: ${({ theme }) => theme.colors.primaryOrange};
+  /* color: ${({ theme }) => theme.colors.primaryOrange}; */
+
+  width: 16px;
+  height: 16px;
+  color: black; /* This sets the fill color */
+  stroke: white; /* This sets the stroke (outline) color */
+  stroke-width: 2px; /* Define the stroke thickness */
+  fill: white;
+  @media screen and (min-width: 744px) {
+    width: 14px;
+    height: 14px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+export const NewHeartIcon = styled(BiHeartCircle)`
   width: 16px;
   height: 16px;
   @media screen and (min-width: 744px) {
@@ -113,6 +139,8 @@ export const StyledHeartIconFavorite = styled(FaHeart)`
   color: ${({ theme }) => theme.colors.primaryOrange};
   width: 16px;
   height: 16px;
+  stroke: red;
+  stroke-width: 2px;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 14px;
     height: 14px;

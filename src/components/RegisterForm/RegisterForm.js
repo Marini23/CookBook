@@ -20,11 +20,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   register,
-  signInWithFacebook,
   signInWithGoogle,
 } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
-import facebook_icon from '../../images/facebook.svg';
+// import facebook_icon from '../../images/facebook.svg';
 import { useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
 
@@ -125,18 +124,18 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
     }
   };
 
-  const handleRegisterWithFacebook = () => {
-    try {
-      dispatch(signInWithFacebook())
-        .unwrap()
-        .then(() => {
-          navigate('/recipes');
-          isClose();
-        });
-    } catch (error) {
-      console.error('Failed to sign in with Google:', error);
-    }
-  };
+  // const handleRegisterWithFacebook = () => {
+  //   try {
+  //     dispatch(signInWithFacebook())
+  //       .unwrap()
+  //       .then(() => {
+  //         navigate('/recipes');
+  //         isClose();
+  //       });
+  //   } catch (error) {
+  //     console.error('Failed to sign in with Google:', error);
+  //   }
+  // };
 
   return (
     <>
@@ -273,11 +272,11 @@ export const RegisterForm = ({ isClose, isOpenLogin }) => {
           <img src={google_icon} alt="Google icon" />
           Sing up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button" onClick={handleRegisterWithFacebook}>
+        {/* <NetworkBtnSubmit type="button" onClick={handleRegisterWithFacebook}>
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sing up with Facebook
-        </NetworkBtnSubmit>
+        </NetworkBtnSubmit> */}
         <LinkText>
           Already have an account ? <Link onClick={toggleModal}>Log in </Link>
         </LinkText>

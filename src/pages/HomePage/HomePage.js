@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { DescriptionInfo } from 'components/DescriptionInfo/DescriptionInfo';
 import {
   ButtonContainer,
@@ -14,7 +15,7 @@ import {
 } from './HomePage.styled';
 import logo from '../../images/new-logo.svg';
 import logo2x from '../../images/logo_2x.png';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { LoginForm } from 'components/LoginForm/LoginForm';
@@ -24,22 +25,26 @@ import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
   const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWindowWidth(window.innerWidth);
+  //   };
 
-    window.addEventListener('resize', handleResize);
+  //   window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
+
+  const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
+  const isTabletOrDesktopScreen = useMediaQuery({
+    query: '(min-width: 744px)',
+  });
 
   const openModalRegister = () => {
     setModalIsOpenRegister(true);
@@ -72,8 +77,8 @@ export const HomePage = () => {
       <Container>
         <MainInfo>
           <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
-          {windowWidth < 744 && <BurgerMenu windowWidth={windowWidth} />}
-          {windowWidth > 743 && (
+          {isMobileScreen && <BurgerMenu />}
+          {isTabletOrDesktopScreen && (
             <NavMenu>
               <ButtonContainer>
                 <LoginButton type="button" onClick={openModalLogin}>
@@ -87,7 +92,7 @@ export const HomePage = () => {
           )}
           <WrapContent>
             <Text>COOKING WITH US IS EASY AND DELICIOUS!</Text>
-            {windowWidth > 743 && (
+            {isTabletOrDesktopScreen && (
               <SecondaryText>
                 Choose recipes to your taste - get a convenient shopping list,
                 detailed cooking instructions and a good mood!
@@ -98,7 +103,7 @@ export const HomePage = () => {
             </ButtonLink>
           </WrapContent>
         </MainInfo>
-        <DescriptionInfo windowWidth={windowWidth} />
+        <DescriptionInfo />
       </Container>
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
         <RegisterForm

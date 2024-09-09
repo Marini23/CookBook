@@ -18,14 +18,9 @@ import {
 import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  logIn,
-  signInWithFacebook,
-  signInWithGoogle,
-} from '../../redux/authSlice/authOperations';
+import { logIn, signInWithGoogle } from '../../redux/authSlice/authOperations';
 import google_icon from '../../images/google.svg';
-import facebook_icon from '../../images/facebook.svg';
-// import apple_icon from '../../images/apple.svg';
+// import facebook_icon from '../../images/facebook.svg';
 import { selectErrorAuth } from '../../redux/selectors.js';
 import { useNavigate } from 'react-router-dom';
 import errorIcon from '../../images/error_icon.svg';
@@ -108,17 +103,17 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
     }
   };
 
-  const handleSignInWithFacebook = async () => {
-    try {
-      await dispatch(signInWithFacebook()).unwrap();
-      console.log('Facebook sign-in successful, navigating to /recipes');
-      navigate('/recipes');
-      isClose();
-    } catch (error) {
-      console.error('Facebook sign-in failed:', error);
-      toast.error(errorMessage);
-    }
-  };
+  // const handleSignInWithFacebook = async () => {
+  //   try {
+  //     await dispatch(signInWithFacebook()).unwrap();
+  //     console.log('Facebook sign-in successful, navigating to /recipes');
+  //     navigate('/recipes');
+  //     isClose();
+  //   } catch (error) {
+  //     console.error('Facebook sign-in failed:', error);
+  //     toast.error(errorMessage);
+  //   }
+  // };
 
   return (
     <>
@@ -192,11 +187,11 @@ export const LoginForm = ({ isClose, isOpenRegister, isOpenResetPassword }) => {
           <img src={google_icon} alt="Google icon" />
           Sign up with Google
         </NetworkBtnSubmit>
-        <NetworkBtnSubmit type="button" onClick={handleSignInWithFacebook}>
+        {/* <NetworkBtnSubmit type="button" onClick={handleSignInWithFacebook}>
           {' '}
           <img src={facebook_icon} alt="Facebook icon" />
           Sign up with Facebook
-        </NetworkBtnSubmit>
+        </NetworkBtnSubmit> */}
         <LinkText>
           New user? <Link onClick={toggleModal}>Create an account</Link>
         </LinkText>

@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import img1_mobile from '../../images/img1_home_mobile.jpg';
 import img1_mobile_2x from '../../images/img1_mobile_2x.jpg';
 import img1_mobile_3x from '../../images/img1_mobile_3x.jpg';
@@ -40,15 +41,44 @@ import {
 import { useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
-export const DescriptionInfo = ({ windowWidth }) => {
+import { useNavigate } from 'react-router-dom';
+import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
+import { LoginForm } from 'components/LoginForm/LoginForm';
+export const DescriptionInfo = () => {
+  const navigate = useNavigate();
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
+  const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
+  const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
+
+  const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
+  const isTabletOrDesktopScreen = useMediaQuery({
+    query: '(min-width: 744px)',
+  });
 
   const openModalRegister = () => {
     setModalIsOpenRegister(true);
+    navigate('/register');
   };
 
   const closeModalRegister = () => {
     setModalIsOpenRegister(false);
+  };
+
+  const openModalLogin = () => {
+    setModalIsOpenLogin(true);
+    navigate('/login');
+  };
+
+  const closeModalLogin = () => {
+    setModalIsOpenLogin(false);
+  };
+
+  const openModalResetPassword = () => {
+    setModalIsResetPassword(true);
+  };
+
+  const closeModalResetPassword = () => {
+    setModalIsResetPassword(false);
   };
 
   return (
@@ -82,7 +112,7 @@ export const DescriptionInfo = ({ windowWidth }) => {
             updating of the recipe database allows you to please even the most
             gourmets. Get access to all recipes after registration.
           </TextBlock>
-          {windowWidth > 743 && (
+          {isTabletOrDesktopScreen && (
             <Link type="button" onClick={openModalRegister}>
               Get Started
             </Link>
@@ -97,7 +127,7 @@ export const DescriptionInfo = ({ windowWidth }) => {
             create a personalized shopping list. Adjust the list yourself:
             adjusting the quantity, availability, etc.
           </TextBlock>
-          {windowWidth > 743 && (
+          {isTabletOrDesktopScreen && (
             <Link type="button" onClick={openModalRegister}>
               Get Started
             </Link>
@@ -142,20 +172,36 @@ export const DescriptionInfo = ({ windowWidth }) => {
             Each recipe includes photos, ingredient lists, and step-by-step
             instructions, making cooking a breeze.
           </TextBlock>
-          {windowWidth > 743 && (
+          {isTabletOrDesktopScreen && (
             <Link type="button" onClick={openModalRegister}>
               Get Started
             </Link>
           )}
         </InfoContainer>
       </InfoBlock>
-      {windowWidth < 744 && (
+      {isMobileScreen && (
         <MobileLink type="button" onClick={openModalRegister}>
           Get Started
         </MobileLink>
       )}
       <ModalWindow isClose={closeModalRegister} isOpen={modalIsOpenRegister}>
-        <RegisterForm isClose={closeModalRegister} />
+        <RegisterForm
+          isClose={closeModalRegister}
+          isOpenLogin={openModalLogin}
+        />
+      </ModalWindow>
+      <ModalWindow isClose={closeModalLogin} isOpen={modalIsOpenLogin}>
+        <LoginForm
+          isClose={closeModalLogin}
+          isOpenRegister={openModalRegister}
+          isOpenResetPassword={openModalResetPassword}
+        />
+      </ModalWindow>
+      <ModalWindow
+        isClose={closeModalResetPassword}
+        isOpen={modalIsResetPassword}
+      >
+        <ForgotPasswordForm isClose={closeModalResetPassword} />
       </ModalWindow>
     </SectionContainer>
   );

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as Plus } from '../../images/plus.svg';
+import { ReactComponent as Clear } from '../../images/trash_icon_yellow.svg';
+import { ReactComponent as Share } from '../../images/share-icon.svg';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,6 +51,8 @@ export const Title = styled.h3`
 export const IconsContainer = styled.div`
   display: flex;
   gap: 12px;
+  color: ${({ theme }) => theme.colors.primaryOrange};
+
   @media screen and (min-width: 1440px) {
     gap: 32px;
   }
@@ -135,9 +139,30 @@ export const PlusIcon = styled(Plus)`
   }
 `;
 
-export const Icon = styled.img`
+export const ClearIcon = styled(Clear)`
   width: 20px;
   height: 20px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.grey};
+  }
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+export const ShareIcon = styled(Share)`
+  width: 20px;
+  height: 20px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.grey};
+  }
   @media screen and (min-width: 1440px) {
     width: 32px;
     height: 32px;
