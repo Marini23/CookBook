@@ -19,7 +19,8 @@ import {
 } from '../../redux/favoritesSlice/favoritesOperations';
 import { useLocation } from 'react-router-dom';
 import { truncateString } from 'utils';
-import { HeartIconCustom } from 'components/HeartIcon';
+import heart from '../../images/flagHeart.svg';
+import heartFavorite from '../../images/flagHeartFavorite.svg';
 
 export const RecipeCard = recipe => {
   const [truncatedLabel, setTruncatedLabel] = useState(
@@ -112,12 +113,15 @@ export const RecipeCard = recipe => {
           <Label ref={labelRef}>{truncatedLabel}</Label>
         </StyledLinkList>
         <HeartIcon onClick={toggleFavorite}>
-          <HeartIconCustom
-            fill={isFavorite ? '#F4C343' : 'rgba(55, 55, 55, 0.7)'}
-            stroke={isFavorite ? 'none' : '#F4C343'}
-            // size={32}
-            // strokeWidth={2}
-          />
+          {isFavorite ? (
+            <img
+              src={heartFavorite}
+              alt="heart icon favorite"
+              onClick={toggleFavorite}
+            />
+          ) : (
+            <img src={heart} alt="heart icon" onClick={toggleFavorite} />
+          )}
           {/* {isFavorite ? (
             <StyledHeartIconFavorite onClick={toggleFavorite} />
           ) : (

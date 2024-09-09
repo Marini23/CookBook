@@ -72,13 +72,10 @@ export const Label = styled.p`
 export const HeartIcon = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 12px;
+  top: 0px;
   right: 12px;
-  width: 24px;
-  height: 24px;
-  /* background-color: #ededed; */
-  /* background-color: rgba(55, 55, 55, 0.8); */
-  border-radius: 4px;
+  width: 32px;
+  height: 49px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,16 +86,16 @@ export const HeartIcon = styled.div`
     transform: scale(1);
   }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
-    top: 8px;
-    right: 8px;
-    width: 18px;
-    height: 18px;
+    top: 0px;
+    right: 12px;
+    width: 32px;
+    height: 49px;
   }
   @media screen and (min-width: 1440px) {
-    top: 12px;
-    right: 12px;
-    width: 24px;
-    height: 24px;
+    top: 0px;
+    right: 20px;
+    width: 32px;
+    height: 49px;
   }
 `;
 
