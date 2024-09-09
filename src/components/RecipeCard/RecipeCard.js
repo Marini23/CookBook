@@ -113,9 +113,9 @@ export const RecipeCard = recipe => {
         </StyledLinkList>
         <HeartIcon onClick={toggleFavorite}>
           <HeartIconCustom
-            fill={isFavorite ? '#F4C343' : 'black'}
+            fill={isFavorite ? '#F4C343' : 'rgba(55, 55, 55, 0.7)'}
             stroke={isFavorite ? 'none' : '#F4C343'}
-            // size={48}
+            // size={32}
             // strokeWidth={2}
           />
           {/* {isFavorite ? (
