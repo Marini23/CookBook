@@ -21,11 +21,13 @@ import { useLocation } from 'react-router-dom';
 import { truncateString } from 'utils';
 import heart from '../../images/flagHeart.svg';
 import heartFavorite from '../../images/flagHeartFavorite.svg';
+import { DefaultImageFavorite } from 'components/DefaultImageFavorite/DefaultImageFavorite';
 
 export const RecipeCardFavorite = recipe => {
   const [truncatedLabel, setTruncatedLabel] = useState(
     recipe.recipe.recipe.label.toUpperCase()
   );
+  const [imageError, setImageError] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const filteredRecipes = useSelector(selectFilteredRecipes);
@@ -83,14 +85,23 @@ export const RecipeCardFavorite = recipe => {
     }
   };
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <>
       <ListItem>
         <StyledLinkList to={`/recipes/${recipeId}`} state={{ from: location }}>
-          <Img
-            src={recipe.recipe.recipe.image}
-            alt={recipe.recipe.recipe.label}
-          />
+          {imageError ? (
+            <DefaultImageFavorite />
+          ) : (
+            <Img
+              src={recipe.recipe.recipe.image}
+              alt={recipe.recipe.recipe.label}
+              onError={handleImageError}
+            />
+          )}
           <Label ref={labelRef}>{truncatedLabel}</Label>
         </StyledLinkList>
         <HeartIcon>

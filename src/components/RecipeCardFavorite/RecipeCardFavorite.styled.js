@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { FaHeart } from 'react-icons/fa';
+
 import { FaRegHeart } from 'react-icons/fa6';
 import { FaHeart } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';

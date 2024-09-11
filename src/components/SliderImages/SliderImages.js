@@ -17,6 +17,8 @@ import {
   updateIngredientsRecipeFromShoppingList,
 } from '../../redux/shoppingSlice/shoppingOperations';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { DefaultImageShoppingList } from 'components/DefaultImageShoppingList/DefaultImageShoppingList';
 
 const NextArrow = props => {
   const { className, style, onClick } = props;
@@ -45,6 +47,7 @@ const PrevArrow = props => {
 };
 
 export const SliderImages = () => {
+  const [imageError, setImageError] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
@@ -102,6 +105,10 @@ export const SliderImages = () => {
       });
   };
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <Slider {...settings}>
       {recipes.map(recipe => {
@@ -123,7 +130,21 @@ export const SliderImages = () => {
               to={`/recipes/${getRecipeIdFromUrl(idLink)}`}
               state={{ from: location }}
             >
-              <picture className="slider-image">
+              {imageError ? (
+                <DefaultImageShoppingList />
+              ) : (
+                <picture className="slider-image">
+                  <source srcSet={THUMBNAIL} media="(max-width: 743px)" />
+                  <source
+                    srcSet={SMALL}
+                    media="(min-width: 744px) and (max-width: 1439px)"
+                  />
+                  <source srcSet={LARGE} media="(min-width: 1440px)" />
+                  <img src={defaultImage} alt={label} className="image-size" />
+                  onError={handleImageError}
+                </picture>
+              )}
+              {/* <picture className="slider-image">
                 <source srcSet={THUMBNAIL} media="(max-width: 743px)" />
                 <source
                   srcSet={SMALL}
@@ -131,7 +152,7 @@ export const SliderImages = () => {
                 />
                 <source srcSet={LARGE} media="(min-width: 1440px)" />
                 <img src={defaultImage} alt={label} className="image-size" />
-              </picture>
+              </picture> */}
             </NavLink>
             <div
               className="delete-icon-wrapper"
