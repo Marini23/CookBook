@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { VscHeart } from 'react-icons/vsc';
-import { VscHeartFilled } from 'react-icons/vsc';
+import { ReactComponent as Heart } from '../../images/flagHeart.svg';
+import { ReactComponent as HeartFavorite } from '../../images/flagHeartFavorite.svg';
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -30,38 +30,11 @@ export const StyledLinkGoBack = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* &.active {
-    color: #ff8c00;
-  } */
   @media screen and (min-width: 1440px) {
     width: 56px;
     height: 56px;
     top: 56px;
     left: 72px;
-  }
-`;
-
-export const StyledHeart = styled.div`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* &.active {
-    color: #ff8c00;
-  } */
-  @media screen and (min-width: 1440px) {
-    width: 56px;
-    height: 56px;
-    top: 56px;
-    right: 72px;
   }
 `;
 
@@ -276,16 +249,37 @@ export const Link = styled.a`
   }
 `;
 
-export const StyledHeartIcon = styled(VscHeart)`
+export const HeartIcon = styled.div`
   cursor: pointer;
-  color: #f4c343;
-  width: 24px;
-  height: 24px;
+  position: absolute;
+  top: 12px;
+  right: 32px;
+  width: 32px;
+  height: 49px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const StyledHeartIconFavorite = styled(VscHeartFilled)`
-  cursor: pointer;
-  color: #f4c343;
-  width: 24px;
-  height: 24px;
+export const HeartImage = styled(Heart)`
+  width: 32px;
+  height: 49px;
+  color: ${({ theme }) => theme.colors.primaryOrange};
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+`;
+export const HeartImageFavorite = styled(HeartFavorite)`
+  width: 32px;
+  height: 49px;
+  color: #fdfdfd;
+  &:hover {
+    color: #ededed;
+  }
+  &:active {
+    color: #fdfdfd;
+  }
 `;

@@ -34,8 +34,6 @@ export const UserBar = () => {
     };
   }, []);
 
-  console.log(photo);
-
   const isShoppingListPage = location.pathname === '/shoppinglist';
 
   return (

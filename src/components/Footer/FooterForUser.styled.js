@@ -16,6 +16,7 @@ export const Container = styled.footer`
   max-width: 390px;
   height: 79px;
   margin: 0 auto;
+  margin-top: auto;
   background-image: linear-gradient(
       rgba(25, 25, 25, 0.5),
       rgba(25, 25, 25, 0.5)

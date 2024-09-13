@@ -1,7 +1,7 @@
-<svg width="32" height="49" viewBox="0 0 32 49" xmlns="http://www.w3.org/2000/svg">
+<svg  viewBox="0 0 32 49" xmlns="http://www.w3.org/2000/svg">
   <path 
     d="M0,0 H32 V45 Q32,49 28,49 H4 Q0,49 0,45 Z"
-    fill="#FDFDFD"   
+    fill="currentColor"   
     stroke="#F4C343"   
     stroke-width="0.3"  
   

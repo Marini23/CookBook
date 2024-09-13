@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   HeartIcon,
+  HeartImageFavorite,
   Img,
   Label,
   ListItem,
@@ -22,6 +23,7 @@ import { truncateString } from 'utils';
 import heart from '../../images/flagHeart.svg';
 import heartFavorite from '../../images/flagHeartFavorite.svg';
 import { DefaultImageFavorite } from 'components/DefaultImageFavorite/DefaultImageFavorite';
+import { HeartImage } from 'components/RecipeCard/RecipeCard.styled';
 
 export const RecipeCardFavorite = recipe => {
   const [truncatedLabel, setTruncatedLabel] = useState(
@@ -106,13 +108,13 @@ export const RecipeCardFavorite = recipe => {
         </StyledLinkList>
         <HeartIcon>
           {isFavorite ? (
-            <img
+            <HeartImageFavorite
               src={heartFavorite}
               alt="heart icon favorite"
               onClick={toggleFavorite}
             />
           ) : (
-            <img src={heart} alt="heart icon" onClick={toggleFavorite} />
+            <HeartImage src={heart} alt="heart icon" onClick={toggleFavorite} />
           )}
 
           {/* {isFavorite ? (

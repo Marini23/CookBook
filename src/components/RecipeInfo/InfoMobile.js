@@ -1,5 +1,8 @@
 import {
   DetailsContainer,
+  HeartIcon,
+  HeartImage,
+  HeartImageFavorite,
   ImageWrapper,
   Img,
   ImgDetail,
@@ -11,9 +14,6 @@ import {
   ListIngredients,
   SaveBtn,
   SaveBtnText,
-  StyledHeart,
-  StyledHeartIcon,
-  StyledHeartIconFavorite,
   StyledLinkGoBack,
   TextDetail,
   TextDiets,
@@ -38,7 +38,6 @@ export const InfoMobile = ({
   link,
 }) => {
   const location = useLocation();
-  //   const goBackLink = useRef(location.state?.from ?? `/`);
   return (
     <>
       <ImageWrapper>
@@ -46,13 +45,13 @@ export const InfoMobile = ({
         <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
           <img src={arrowBack} alt="arrow back" />
         </StyledLinkGoBack>
-        <StyledHeart>
+        <HeartIcon>
           {isFavorite ? (
-            <StyledHeartIconFavorite onClick={toggleFavorite} />
+            <HeartImageFavorite onClick={toggleFavorite} />
           ) : (
-            <StyledHeartIcon onClick={toggleFavorite} />
+            <HeartImage onClick={toggleFavorite} />
           )}
-        </StyledHeart>
+        </HeartIcon>
       </ImageWrapper>
       <InfoContainer>
         <Title>{recipeInfo.recipe.label}</Title>

@@ -47,15 +47,12 @@ const PrevArrow = props => {
 };
 
 export const SliderImages = () => {
-  const [imageError, setImageError] = useState(false);
+  const [imageError, setImageError] = useState({});
   const location = useLocation();
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
-  // const images = useSelector(selectPhotoRecipes);
   const recipes = useSelector(selectRecipesInShoppingList);
-  // console.log(recipes);
 
-  // useEffect(() => {}, [recipes]);
   const settings = {
     dots: false,
     infinite: true,
@@ -88,7 +85,6 @@ export const SliderImages = () => {
   const handleDelete = ({ userId, recipeId, ingredients }) => {
     dispatch(deleteRecipeItem({ userId, recipeId }))
       .then(() => {
-        console.log(ingredients);
         // Once the recipe is successfully deleted, update the ingredients list
         dispatch(
           updateIngredientsRecipeFromShoppingList({
@@ -105,14 +101,16 @@ export const SliderImages = () => {
       });
   };
 
-  const handleImageError = () => {
-    setImageError(true);
+  const handleImageError = recipeId => {
+    setImageError(prevState => ({
+      ...prevState,
+      [recipeId]: true,
+    }));
   };
 
   return (
     <Slider {...settings}>
       {recipes.map(recipe => {
-        // console.log(recipe);
         const {
           id,
           idLink,
@@ -123,15 +121,14 @@ export const SliderImages = () => {
           LARGE,
           ingredients,
         } = recipe;
-        // console.log(ingredients);
         return (
           <div className="image-container" key={id}>
             <NavLink
               to={`/recipes/${getRecipeIdFromUrl(idLink)}`}
               state={{ from: location }}
             >
-              {imageError ? (
-                <DefaultImageShoppingList />
+              {imageError[id] ? (
+                <DefaultImageShoppingList label={label} />
               ) : (
                 <picture className="slider-image">
                   <source srcSet={THUMBNAIL} media="(max-width: 743px)" />
@@ -140,19 +137,14 @@ export const SliderImages = () => {
                     media="(min-width: 744px) and (max-width: 1439px)"
                   />
                   <source srcSet={LARGE} media="(min-width: 1440px)" />
-                  <img src={defaultImage} alt={label} className="image-size" />
-                  onError={handleImageError}
+                  <img
+                    src={defaultImage}
+                    alt={label}
+                    className="image-size"
+                    onError={() => handleImageError(id)}
+                  />
                 </picture>
               )}
-              {/* <picture className="slider-image">
-                <source srcSet={THUMBNAIL} media="(max-width: 743px)" />
-                <source
-                  srcSet={SMALL}
-                  media="(min-width: 744px) and (max-width: 1439px)"
-                />
-                <source srcSet={LARGE} media="(min-width: 1440px)" />
-                <img src={defaultImage} alt={label} className="image-size" />
-              </picture> */}
             </NavLink>
             <div
               className="delete-icon-wrapper"

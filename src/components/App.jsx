@@ -33,33 +33,23 @@ export const App = () => {
           <Route index element={isLoggedIn ? <RecipesPage /> : <HomePage />} />
           <Route
             path="/recipes"
-            element={
-              <PrivateRoute redirectTo="/" component={<RecipesPage />} />
-            }
+            element={<PrivateRoute component={<RecipesPage />} />}
           />
           <Route
             path="/favorites"
-            element={
-              <PrivateRoute redirectTo="/" component={<FavoritesPage />} />
-            }
+            element={<PrivateRoute component={<FavoritesPage />} />}
           />
           <Route
             path="/recipes/:recipeId"
-            element={
-              <PrivateRoute redirectTo="/" component={<RecipeInfoPage />} />
-            }
+            element={<PrivateRoute component={<RecipeInfoPage />} />}
           />
           <Route
             path="/shoppinglist"
-            element={
-              <PrivateRoute redirectTo="/" component={<ShoppingListPage />} />
-            }
+            element={<PrivateRoute component={<ShoppingListPage />} />}
           />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
-
-      {/* Condensed Modal Routes */}
       {background && (
         <Routes>
           <Route path="/login" element={<ModalWindow />} />

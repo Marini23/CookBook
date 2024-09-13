@@ -26,7 +26,7 @@ export const ShoppingList = () => {
   const ingredientsList = useSelector(selectIngredientsInShoppingList);
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch();
-
+  console.log(ingredientsList);
   const {
     showInput,
     newIngredientName,

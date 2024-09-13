@@ -91,9 +91,7 @@ const addIngredientToShoppingList = (userId, recipeData) => {
       shoppingRef,
       snapshot => {
         const existingIngredients = snapshot.val() || {};
-        console.log(existingIngredients);
         const updatedIngredients = { ...existingIngredients };
-        console.log(updatedIngredients);
         // Process ingredients from recipeData
         recipeData.recipe.ingredients.forEach(ingredient => {
           const { foodId, food, weight } = ingredient;
@@ -380,8 +378,6 @@ export const addIngredients = createAsyncThunk(
   'shopping/addIngredients',
   async ({ userId, recipeInfo }, thunkAPI) => {
     try {
-      console.log('addIngredient');
-      console.log(recipeInfo);
       const shoppingListIngredients = addIngredientToShoppingList(
         userId,
         recipeInfo

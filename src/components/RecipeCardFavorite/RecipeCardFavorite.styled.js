@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-
-import { FaRegHeart } from 'react-icons/fa6';
-import { FaHeart } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
+import { ReactComponent as Heart } from '../../images/flagHeart.svg';
+import { ReactComponent as HeartFavorite } from '../../images/flagHeartFavorite.svg';
 
 export const ListItem = styled.li`
   position: relative;
@@ -46,7 +45,7 @@ export const Label = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ededed;
+  background-color: #c9c9c9;
   border-radius: 4px;
   font-size: 14px;
   line-height: 20.56px;
@@ -74,55 +73,23 @@ export const HeartIcon = styled.div`
   cursor: pointer;
   position: absolute;
   top: 0px;
-  right: 12px;
-  width: 32px;
-  height: 49px;
+  right: 24px;
+  width: 28px;
+  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     top: 0px;
-    right: 12px;
-    width: 32px;
-    height: 49px;
+    right: 24px;
+    width: 20px;
+    height: 32px;
   }
   @media screen and (min-width: 1440px) {
     top: 0px;
-    right: 20px;
-    width: 32px;
-    height: 49px;
-    background-color: #f4c443;
-    border-radius: 0.3px;
-  }
-`;
-
-export const StyledHeartIcon = styled(FaRegHeart)`
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 16px;
-  height: 16px;
-  @media screen and (min-width: 744px) {
-    width: 14px;
-    height: 14px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 16px;
-    height: 16px;
-  }
-`;
-
-export const StyledHeartIconFavorite = styled(FaHeart)`
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 16px;
-  height: 16px;
-  @media screen and (min-width: 744px) and (max-width: 1439px) {
-    width: 14px;
-    height: 14px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 16px;
-    height: 16px;
+    right: 24px;
+    width: 28px;
+    height: 43px;
   }
 `;
 
@@ -133,5 +100,44 @@ export const StyledLinkList = styled(NavLink)`
 
   &.active {
     color: #ff8c00;
+  }
+`;
+
+export const HeartImage = styled(Heart)`
+  width: 28px;
+  height: 44px;
+  color: ${({ theme }) => theme.colors.primaryOrange};
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondaryOrange};
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  @media screen and (min-width: 744px) {
+    width: 20px;
+    height: 33px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 28px;
+    height: 44px;
+  }
+`;
+export const HeartImageFavorite = styled(HeartFavorite)`
+  width: 28px;
+  height: 44px;
+  color: #fdfdfd;
+  &:hover {
+    color: #ededed;
+  }
+  &:active {
+    color: #fdfdfd;
+  }
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    width: 20px;
+    height: 33px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 28px;
+    height: 44px;
   }
 `;

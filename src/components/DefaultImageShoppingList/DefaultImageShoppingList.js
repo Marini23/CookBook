@@ -4,11 +4,15 @@ import default_tablet from '../../images/defaultImageShopping_tablet.jpg';
 import default_tablet_2x from '../../images/defaultImageShopping_tablet_2x.jpg';
 import default__desktop from '../../images/defaultImageShopping_desktop.jpg';
 import default__desktop_2x from '../../images/defaultImageShopping_desktop-2x.jpg';
-import { Picture } from './DefaultImageShoppingList.styled';
+import {
+  Label,
+  Picture,
+  PictureContainer,
+} from './DefaultImageShoppingList.styled';
 
-export const DefaultImageShoppingList = () => {
+export const DefaultImageShoppingList = ({ label }) => {
   return (
-    <div>
+    <PictureContainer>
       <Picture>
         <source
           srcSet={`${default_mobile}, ${default_mobile_2x} 2x`}
@@ -24,6 +28,7 @@ export const DefaultImageShoppingList = () => {
         />
         <img src={default__desktop} alt="illustration" />
       </Picture>
-    </div>
+      <Label>{label}</Label>
+    </PictureContainer>
   );
 };

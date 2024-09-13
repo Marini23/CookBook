@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   HeartIcon,
+  HeartImage,
+  HeartImageFavorite,
   Img,
   Label,
   ListItem,
@@ -112,28 +114,16 @@ export const RecipeCard = recipe => {
 
           <Label ref={labelRef}>{truncatedLabel}</Label>
         </StyledLinkList>
-        <HeartIcon onClick={toggleFavorite}>
+        <HeartIcon>
           {isFavorite ? (
-            <img
+            <HeartImageFavorite
               src={heartFavorite}
               alt="heart icon favorite"
               onClick={toggleFavorite}
             />
           ) : (
-            <img src={heart} alt="heart icon" onClick={toggleFavorite} />
+            <HeartImage src={heart} alt="heart icon" onClick={toggleFavorite} />
           )}
-          {/* {isFavorite ? (
-            <StyledHeartIconFavorite onClick={toggleFavorite} />
-          ) : (
-            // <NewHeartIcon />
-            <HeartIconCustom
-              fill={isFavorite ? 'red' : 'none'}
-              stroke={isFavorite ? 'red' : 'black'}
-              // size={48}
-              // strokeWidth={2}
-            />
-            // <StyledHeartIcon onClick={toggleFavorite} />
-          )} */}
         </HeartIcon>
       </ListItem>
     </>

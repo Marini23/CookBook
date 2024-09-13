@@ -65,7 +65,8 @@ export const List = styled.ul`
 export const ItemAddRecipe = styled.a`
   cursor: pointer;
   text-decoration: none;
-  width: 366px;
+  width: 100%;
+  max-width: 366px;
   height: 261px;
   border-radius: 4px;
   margin: 0 auto;

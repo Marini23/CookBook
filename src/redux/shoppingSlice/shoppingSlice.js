@@ -115,7 +115,7 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.ingredientsList.findIndex(item => {
-          return item.id === action.payload;
+          return item.foodId === action.payload;
         });
         state.ingredientsList.splice(index, 1);
       })
@@ -124,7 +124,6 @@ const shoppingSlice = createSlice({
       .addCase(incrementIngredient.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
         const index = state.ingredientsList.findIndex(item => {
           return item.foodId === action.payload.foodId;
         });
