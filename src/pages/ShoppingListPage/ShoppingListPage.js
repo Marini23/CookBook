@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectIngredientsInShoppingList,
+  selectIsLoadingShoppingList,
   selectUserId,
 } from '../../redux/selectors';
 import { Container } from './ShoppingListPage.styled';
@@ -11,12 +12,12 @@ import {
   getShoppingListRecipes,
 } from '../../redux/shoppingSlice/shoppingOperations';
 import { EmptyShoppingList } from 'components/EmtyShoppingList/EmptyShoppingList';
-// import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 export const ShoppingListPage = () => {
   const userId = useSelector(selectUserId);
   const ingredientsList = useSelector(selectIngredientsInShoppingList);
-  // const isLoading = useSelector(selectIsLoadingShoppingList);
+  const isLoading = useSelector(selectIsLoadingShoppingList);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,11 +26,14 @@ export const ShoppingListPage = () => {
   }, [dispatch, userId]);
 
   return (
-    <>
-      <Container>
-        {/* {isLoading && <Loader />} */}
-        {ingredientsList.length > 0 ? <ShoppingList /> : <EmptyShoppingList />}
-      </Container>
-    </>
+    <Container>
+      {isLoading ? (
+        <Loader />
+      ) : ingredientsList.length > 0 ? (
+        <ShoppingList />
+      ) : (
+        <EmptyShoppingList />
+      )}
+    </Container>
   );
 };

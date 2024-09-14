@@ -4,16 +4,16 @@ import { LoaderContainer } from './Loader.styled';
 export const Loader = () => {
   return (
     <LoaderContainer>
-      <p>Loading your data, please wait...</p>
       <Circles
         height="80"
         width="80"
-        color="#F4C343"
+        color="#C9c9c9"
         ariaLabel="circles-loading"
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
       />
+      <p>Loading...</p>
     </LoaderContainer>
   );
 };
