@@ -32,7 +32,9 @@ export const selectTotalHits = state => state.recipes.totalHits;
 
 export const selectQuery = state => state.recipes.query;
 
-export const selectFilters = state => state.filter;
+export const selectRecipesFilters = state => state.filter.recipes;
+
+export const selectFavoritesFilters = state => state.filter.favorites;
 
 export const selectFavoritesRecipes = state => state.favorites.favoritesList;
 
@@ -51,38 +53,147 @@ export const selectUserPhoto = createSelector([selectUser], user => {
   return user.providerData?.[0]?.photoURL || null; // Fallback to `null` if not found
 });
 
+//
 export const selectFilteredRecipes = createSelector(
-  [selectResipes, selectFilters],
+  [selectResipes, selectRecipesFilters],
   (recipes, filters) => {
-    return recipes
-      .filter(recipe =>
-        filters.caloriesFrom
-          ? recipe.recipe.calories > filters.caloriesFrom
-          : true
-      )
-      .filter(recipe =>
-        filters.caloriesTo ? recipe.recipe.calories < filters.caloriesTo : true
-      )
-      .filter(recipe =>
-        filters.ingredientsTo
-          ? recipe.recipe.ingredients.length >= filters.ingredientsTo
-          : true
-      )
-      .filter(recipe => {
-        if (filters.diet && filters.diet.length > 0) {
-          return filters.diet.every(item =>
-            recipe.recipe.dietLabels.includes(item)
-          );
-        }
-        return true;
-      })
-      .filter(recipe => {
-        if (filters.allergies && filters.allergies.length > 0) {
-          return filters.allergies.every(item =>
-            recipe.recipe.healthLabels.includes(item)
-          );
-        }
-        return true;
-      });
+    if (!recipes) return []; // Early return if no recipes
+
+    return recipes.filter(recipe => {
+      const { caloriesFrom, caloriesTo, ingredientsTo, diet, allergies } =
+        filters;
+
+      // Filter by calories range
+      const withinCaloriesFrom = caloriesFrom
+        ? recipe.recipe.calories >= caloriesFrom
+        : true;
+      const withinCaloriesTo = caloriesTo
+        ? recipe.recipe.calories <= caloriesTo
+        : true;
+
+      // Filter by ingredients count
+      const hasRequiredIngredients = ingredientsTo
+        ? recipe.recipe.ingredients.length >= ingredientsTo
+        : true;
+
+      // Filter by diet labels
+      const matchesDiet =
+        diet && diet.length > 0
+          ? diet.every(dietItem => recipe.recipe.dietLabels.includes(dietItem))
+          : true;
+
+      // Filter by allergies (health labels)
+      const matchesAllergies =
+        allergies && allergies.length > 0
+          ? allergies.every(allergyItem =>
+              recipe.recipe.healthLabels.includes(allergyItem)
+            )
+          : true;
+
+      // Return true if all filter conditions are met
+      return (
+        withinCaloriesFrom &&
+        withinCaloriesTo &&
+        hasRequiredIngredients &&
+        matchesDiet &&
+        matchesAllergies
+      );
+    });
+  }
+);
+
+// export const selectFilteredFavorites = createSelector(
+//   [selectFavoritesRecipes, selectFavoritesFilters],
+//   (recipes, filters) => {
+//     console.log(recipes);
+//     console.log(filters);
+//     if (!recipes || !filters) return []; // Early return if no recipes or filters
+
+//     const { caloriesFrom, caloriesTo, ingredientsTo, diet, allergies } =
+//       filters;
+
+//     return recipes.filter(recipe => {
+//       const { calories, ingredients, dietLabels, healthLabels } = recipe.recipe;
+
+//       // Filter by calories range
+//       const withinCaloriesFrom = caloriesFrom ? calories >= caloriesFrom : true;
+//       const withinCaloriesTo = caloriesTo ? calories <= caloriesTo : true;
+
+//       // Filter by ingredients count
+//       const hasRequiredIngredients = ingredientsTo
+//         ? ingredients.length >= ingredientsTo
+//         : true;
+
+//       // Filter by diet labels
+//       const matchesDiet =
+//         diet && diet.length > 0
+//           ? diet.every(dietItem => dietLabels.includes(dietItem))
+//           : true;
+
+//       // Filter by allergies (health labels)
+//       const matchesAllergies =
+//         allergies && allergies.length > 0
+//           ? allergies.every(allergyItem => healthLabels.includes(allergyItem))
+//           : true;
+
+//       // Return true if all filter conditions are met
+//       return (
+//         withinCaloriesFrom &&
+//         withinCaloriesTo &&
+//         hasRequiredIngredients &&
+//         matchesDiet &&
+//         matchesAllergies
+//       );
+//     });
+//   }
+// );
+
+export const selectFilteredFavorites = createSelector(
+  [selectFavoritesRecipes, selectFavoritesFilters],
+  (recipes, filters) => {
+    if (!recipes) return []; // Early return if no recipes
+
+    return recipes.filter(recipe => {
+      const { caloriesFrom, caloriesTo, ingredientsTo, diet, allergies } =
+        filters;
+
+      // Filter by calories range
+      const withinCaloriesFrom = caloriesFrom
+        ? recipe.recipe.calories >= caloriesFrom
+        : true;
+      const withinCaloriesTo = caloriesTo
+        ? recipe.recipe.calories <= caloriesTo
+        : true;
+
+      // Filter by ingredients count
+      const hasRequiredIngredients = ingredientsTo
+        ? recipe.recipe.ingredients.length >= ingredientsTo
+        : true;
+
+      // Filter by diet labels
+      const matchesDiet =
+        diet && diet.length > 0
+          ? diet.every(dietItem => recipe.recipe.dietLabels.includes(dietItem))
+          : true;
+
+      // Filter by allergies (health labels)
+      const matchesAllergies =
+        allergies && allergies.length > 0
+          ? allergies.every(allergyItem => {
+              console.log(allergyItem);
+              console.log(recipe);
+              return recipe.recipe.healthLabels.includes(allergyItem);
+            })
+          : true;
+
+      // Return true if all filter conditions are met
+      return (
+        withinCaloriesFrom &&
+        withinCaloriesTo &&
+        hasRequiredIngredients &&
+        matchesDiet &&
+        matchesAllergies
+      );
+    });
   }
 );

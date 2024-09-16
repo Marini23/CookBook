@@ -107,6 +107,7 @@ export const TextContainer = styled.div`
 `;
 
 export const Img = styled.img`
+  cursor: pointer;
   width: 48px;
   height: 32px;
   image-rendering: -webkit-optimize-contrast;
@@ -140,7 +141,7 @@ export const FooterText = styled.p`
   }
 `;
 
-export const Link = styled.a`
+export const LinkCustom = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;

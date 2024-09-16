@@ -41,11 +41,6 @@ export const FilterDesktop = styled.div`
     flex-direction: column;
     position: relative;
   }
-  /* @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  } */
 `;
 
 export const ButtonFilter = styled.button`

@@ -28,8 +28,6 @@ export const RecipeInfo = ({ recipeInfo }) => {
   const favoritesRecipes = useSelector(selectFavoritesRecipes);
   const shoppingListRecipes = useSelector(selectRecipesInShoppingList);
   const userId = useSelector(selectUserId);
-  // const recipeInfo = useSelector(selectRecipeInfo);
-  // console.log(recipeInfo);
   const isTabletOrDesktop = useMediaQuery({ minWidth: 744 });
 
   useEffect(() => {}, [favoritesRecipes]);
@@ -62,6 +60,7 @@ export const RecipeInfo = ({ recipeInfo }) => {
     if (!selectRecipe) {
       dispatch(addRecipeItem({ userId, recipeInfo }));
       dispatch(addIngredients({ userId, recipeInfo }));
+      toast.success('Recipe is successfully added to shopping list');
     } else {
       toast('Recipe is already added to shopping list');
     }

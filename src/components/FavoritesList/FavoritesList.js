@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectFavoritesRecipes } from '../../redux/selectors';
+import { selectFilteredFavorites } from '../../redux/selectors';
 import {
   Container,
   IconPlus,
@@ -11,7 +11,8 @@ import {
 import { RecipeCardFavorite } from 'components/RecipeCardFavorite/RecipeCardFavorite';
 
 export const FavoritesList = () => {
-  const favoritesRecipes = useSelector(selectFavoritesRecipes);
+  const favoritesRecipes = useSelector(selectFilteredFavorites);
+
   return (
     <Container>
       <Title>FAVORITES RECIPES</Title>

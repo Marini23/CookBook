@@ -7,18 +7,21 @@ import {
   Container,
   FooterText,
   Img,
-  Link,
+  LinkCustom,
   LinkItem,
   List,
   TextContainer,
 } from './FooterForUser.styled';
 import { logOut } from '../../redux/authSlice/authOperations';
+import { Link } from 'react-router-dom';
 
 export const FooterForUser = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Img src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
+      <Link to="/recipes">
+        <Img src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
+      </Link>
       <List>
         <li>
           <LinkItem href="/CookBook/recipes">RECIPES</LinkItem>
@@ -38,13 +41,13 @@ export const FooterForUser = () => {
       <TextContainer>
         <FooterText>
           Copyright © 2024 Created by
-          <Link href="https://www.linkedin.com/in/olena-prymak-b63b2a275?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
+          <LinkCustom href="https://www.linkedin.com/in/olena-prymak-b63b2a275?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
             Olena Prymak
-          </Link>{' '}
+          </LinkCustom>{' '}
           &{' '}
-          <Link href="https://www.linkedin.com/in/maryna-udovychenko">
+          <LinkCustom href="https://www.linkedin.com/in/maryna-udovychenko">
             Maryna Udovychenko.
-          </Link>
+          </LinkCustom>
         </FooterText>
         <FooterText>All rights reserved.</FooterText>
       </TextContainer>

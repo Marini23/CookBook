@@ -18,3 +18,15 @@ export const Container = styled.main`
     padding-top: 159px;
   }
 `;
+
+export const FilterContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+  max-height: ${({ $isvisible }) => ($isvisible ? '443px' : '0')};
+  transition: max-height 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 1440px) {
+    max-height: ${({ $isvisible }) => ($isvisible ? '493px' : '0')};
+  }
+`;

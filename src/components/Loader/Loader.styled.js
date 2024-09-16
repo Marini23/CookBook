@@ -4,19 +4,27 @@ import styled from 'styled-components';
 export const LoaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  margin: 0; /* Remove margin */
+  margin: 0;
   gap: 10px;
-  /* display: flex;
-  flex-direction: column;
-  margin-left: 30px;
-  margin-top: 30px;
-  gap: 10px; */
 `;
 
 // export const SlowCircles = styled(Circles)`
 //   svg {
 //     animation-duration: 1s;
+// `;
+
+// export const LoaderContainer = styled.div`
+//   position: fixed; /* Ensures it's always positioned relative to the viewport */
+//   top: 50%; /* Centers vertically */
+//   left: 50%; /* Centers horizontally */
+//   transform: translate(-50%, -50%); /* Shifts it back to the true center */
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100vw;
+//   min-height: 100vh;
 // `;

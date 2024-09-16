@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/selectors';
-// import { ReactComponent as CloseIcon } from '../../images/close_icon.svg';
-// import { ReactComponent as BurgerIcon } from '../../images/burger_normal.svg';
 import house from '../../images/house.svg';
 import basket from '../../images/basket.svg';
 import heart from '../../images/heart.svg';
@@ -41,16 +39,6 @@ export const BurgerMenu = () => {
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
   const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const [burgerButtonSize, setBurgerButtonSize] = useState({
-  //   width: '40px',
-  //   height: '40px',
-  // });
-  // const [closeButtonSize, setCloseButtonSize] = useState({
-  //   width: '40px',
-  //   height: '40px',
-  //   top: '70px',
-  //   right: '54px',
-  // });
   const [bgImage, setBgImage] = useState(
     `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
   );
@@ -67,66 +55,19 @@ export const BurgerMenu = () => {
   useEffect(() => {
     const handleButtonSize = () => {
       if (isMobileScreen) {
-        // setBurgerButtonSize({
-        //   width: `24px`,
-        //   height: `24px`,
-        //   top: '40px',
-        //   right: '16px',
-        // });
-        // setCloseButtonSize({
-        //   width: `24px`,
-        //   height: `24px`,
-        //   top: '48px',
-        //   right: '16px',
-        // });
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_mobile})`
         );
       } else if (isTabletScreen) {
-        // setBurgerButtonSize({
-        //   width: `32px`,
-        //   height: `32px`,
-        //   top: '17px',
-        //   right: '40px',
-        // });
-        // setCloseButtonSize({
-        //   width: `40px`,
-        //   height: `40px`,
-        //   top: '37px',
-        //   right: '54px',
-        // });
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_tablet})`
         );
       } else if (isDesktopScreen) {
-        // setBurgerButtonSize({
-        //   width: `40px`,
-        //   height: `40px`,
-        //   top: '71px',
-        //   right: '72px',
-        // });
-        // setCloseButtonSize({
-        //   width: `36px`,
-        //   height: `36px`,
-        //   top: '70px',
-        //   right: '54px',
-        // });
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
         );
       } else {
-        // setBurgerButtonSize({
-        //   width: '40px',
-        //   height: '40px',
-        //   top: '71px',
-        //   right: '72px',
-        // });
-        // setCloseButtonSize({
-        //   width: `40px`,
-        //   height: `40px`,
-        //   top: '70px',
-        //   right: '54px',
-        // });
+
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
         );
@@ -156,9 +97,7 @@ export const BurgerMenu = () => {
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
-  // const handleStateChange = state => {
-  //   setIsMenuOpen(state.isOpen);
-  // };
+
 
   const handleMenu = () => {
     setIsMenuOpen(prevState => !prevState);
@@ -202,12 +141,6 @@ export const BurgerMenu = () => {
 
   const styles = {
     bmBurgerButton: {
-      // position: 'absolute',
-      // cursor: 'pointer',
-      // top: burgerButtonSize.top,
-      // right: burgerButtonSize.right,
-      // width: burgerButtonSize.width,
-      // height: burgerButtonSize.height,
       display: 'none',
     },
     bmBurgerBars: {
@@ -223,12 +156,6 @@ export const BurgerMenu = () => {
       fill: '#F4C343',
       background: '#ffffff',
     },
-    // bmCrossButton: {
-    //   height: closeButtonSize.height,
-    //   width: closeButtonSize.width,
-    //   top: closeButtonSize.top,
-    //   right: closeButtonSize.right,
-    // },
 
     bmMenuWrap: {
       position: 'fixed',
@@ -276,14 +203,9 @@ export const BurgerMenu = () => {
         styles={styles}
         right
         isOpen={isMenuOpen}
-        // onStateChange={handleMenu}
-        // onClose={handleCloseMenu}
         onClose={handleCloseMenu}
-        // customBurgerIcon={<BurgerIcon />}
-        // customBurgerIcon={<BurgerIcon className="bm-icon" />}
-        // customCrossIcon={<CloseIcon />}
-        customBurgerIcon={false} // Don't use the default burger icon
-        customCrossIcon={false} // Don't use the default close icon
+        customBurgerIcon={false} 
+        customCrossIcon={false} 
         noOverlay
       >
         <Title>MENU</Title>

@@ -17,31 +17,37 @@ import {
   WrapItem,
 } from './FilterMobile.styled';
 import clearIcon from '../../images/clear_filter_icon.svg';
-import { connect, useDispatch } from 'react-redux';
-import { changeFilter, resetFilter } from '../../redux/filterSlice';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import {
+  changeRecipesFilter,
+  resetRecipesFilter,
+} from '../../redux/filterSlice';
+import { selectRecipesFilters } from '../../redux/selectors';
 
 export const FilterMobileForm = ({ isClose }) => {
+  const filters = useSelector(selectRecipesFilters);
+  console.log(filters);
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
-      caloriesFrom: '',
-      caloriesTo: '',
-      ingredientsTo: '',
-      diet: [],
-      allergies: [],
+      caloriesFrom: filters.caloriesFrom || '',
+      caloriesTo: filters.caloriesTo || '',
+      ingredientsTo: filters.ingredientsTo || '',
+      diet: filters.diet || [],
+      allergies: filters.allergies || [],
     },
   });
 
   const dispatch = useDispatch();
 
   const onSubmit = data => {
-    dispatch(changeFilter(data));
+    dispatch(changeRecipesFilter(data));
     isClose();
   };
 
   const clearFilters = () => {
     reset();
     dispatch(
-      resetFilter({
+      resetRecipesFilter({
         caloriesFrom: '',
         caloriesTo: '',
         ingredientsTo: '',
@@ -246,5 +252,5 @@ export default connect(
     diet,
     allergies,
   }),
-  changeFilter
+  changeRecipesFilter
 )(FilterMobileForm);

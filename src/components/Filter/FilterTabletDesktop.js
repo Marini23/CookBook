@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { changeFilter, resetFilter } from '../../redux/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  changeFavoritesFilter,
+  changeRecipesFilter,
+  resetFavoritesFilter,
+  resetRecipesFilter,
+} from '../../redux/filterSlice';
 
 import clearIcon from '../../images/clear_filter_icon.svg';
 import {
@@ -23,15 +28,22 @@ import {
   WrapFilter,
   WrapItem,
 } from './FilterTabletDesktop.styled';
+import {
+  selectFavoritesFilters,
+  selectRecipesFilters,
+} from '../../redux/selectors';
 
-export const Filter = () => {
+export const Filter = ({ filterType }) => {
+  const filters = useSelector(
+    filterType === 'recipes' ? selectRecipesFilters : selectFavoritesFilters
+  );
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
-      caloriesFrom: '',
-      caloriesTo: '',
-      ingredientsTo: '',
-      diet: [],
-      allergies: [],
+      caloriesFrom: filters.caloriesFrom || '',
+      caloriesTo: filters.caloriesTo || '',
+      ingredientsTo: filters.ingredientsTo || '',
+      diet: filters.diet || [],
+      allergies: filters.allergies || [],
     },
   });
 
@@ -39,8 +51,10 @@ export const Filter = () => {
 
   const clearFilters = () => {
     reset();
+    const resetAction =
+      filterType === 'recipes' ? resetRecipesFilter : resetFavoritesFilter;
     dispatch(
-      resetFilter({
+      resetAction({
         caloriesFrom: '',
         caloriesTo: '',
         ingredientsTo: '',
@@ -51,7 +65,10 @@ export const Filter = () => {
   };
 
   const onSubmit = data => {
-    dispatch(changeFilter(data));
+    const changeAction =
+      filterType === 'recipes' ? changeRecipesFilter : changeFavoritesFilter;
+    dispatch(changeAction(data));
+    // dispatch(changeRecipesFilter(data));
   };
 
   return (

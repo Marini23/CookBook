@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import {
   selectFilteredRecipes,
   selectQuery,
+  selectRecipesFilters,
   selectTotalHits,
 } from '../../redux/selectors';
 import { RecipeCard } from 'components/RecipeCard/RecipeCard';
@@ -11,6 +12,8 @@ export const RecipesList = () => {
   const totalHits = useSelector(selectTotalHits);
   const query = useSelector(selectQuery);
   const filteredRecipes = useSelector(selectFilteredRecipes);
+  const filters = useSelector(selectRecipesFilters);
+  console.log(filters);
 
   const isPopular = query === `popular`;
 

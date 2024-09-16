@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import {
   Header,
   Img,
@@ -15,13 +16,23 @@ import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 import { useEffect, useState } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { SearchBarMobile } from 'components/SearchBar/SearchBarMobile';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const UserBar = () => {
   const name = useSelector(selectUserFirstName);
   const photo = useSelector(selectUserPhoto);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
+
+  const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
+  const isTabletDesktopScreen = useMediaQuery({
+    query: '(min-width: 744px)',
+  });
+
+  const isDesktopScreen = useMediaQuery({
+    query: '(min-width: 1440px)',
+  });
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -40,8 +51,10 @@ export const UserBar = () => {
     <>
       <Header>
         <WrapperInfo>
-          <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
-          {windowWidth > 743 && <SearchBar />}
+          <Link to="/recipes">
+            <Logo src={logo} srcSet={`${logo} 1x, ${logo2x} 2x`} alt="logo" />
+          </Link>
+          {isTabletDesktopScreen && <SearchBar />}
           <UserInfo>
             <Img
               src={photo || avatar}
@@ -53,11 +66,11 @@ export const UserBar = () => {
                 e.target.src = avatar;
               }}
             />
-            {windowWidth > 1439 && <Name>{name}</Name>}
+            {isDesktopScreen && <Name>{name}</Name>}
             <BurgerMenu windowWidth={windowWidth} />
           </UserInfo>
         </WrapperInfo>
-        {windowWidth < 743 && !isShoppingListPage && <SearchBarMobile />}
+        {isMobileScreen && !isShoppingListPage && <SearchBarMobile />}
       </Header>
     </>
   );

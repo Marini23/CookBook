@@ -7,7 +7,7 @@ const addFavorite = (userId, favoriteData) => {
   return new Promise((resolve, reject) => {
     const favoritesRef = ref(db, 'favorites/' + userId);
     const newFavoriteRef = push(favoritesRef);
-
+    console.log(favoriteData);
     set(newFavoriteRef, {
       recipe: {
         id: newFavoriteRef.key,
@@ -19,6 +19,8 @@ const addFavorite = (userId, favoriteData) => {
         totalTime: favoriteData.recipe.totalTime,
         url: favoriteData.recipe.url,
         yield: favoriteData.recipe.yield,
+        healthLabels: favoriteData.recipe.healthLabels,
+        dietLabels: favoriteData.recipe.dietLabels,
       },
       _links: {
         self: { href: favoriteData._links.self.href },

@@ -347,7 +347,6 @@ export const SaveBtn = styled.button`
     background-color: ${({ theme }) => theme.colors.secondaryOrange};
     border: none;
   }
-
   @media screen and (min-width: 1440px) {
     width: 520px;
     height: 48px;
