@@ -13,11 +13,12 @@ export const FormFilter = styled.form`
 
 export const FormWrapper = styled.div`
   background-color: #d9d9d9;
-  padding: 73px 36px 44px 36px;
+  padding: 4px 4px 44px 36px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  height: 200px;
+  /* height: 200px; */
+  max-height: calc(100% - 80px);
   /* flex-grow: 1;  */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
@@ -46,13 +47,11 @@ export const FormWrapper = styled.div`
 `;
 
 export const CloseIconContainer = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 12px;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 7px;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
 `;
 
@@ -71,8 +70,9 @@ export const CloseIcon = styled.img`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 72px;
+  column-gap: 64px;
   row-gap: 16px;
+  padding-right: 32px;
 `;
 
 export const WrapFilter = styled.div`
@@ -115,12 +115,13 @@ export const ContainerCheckbox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-right: 32px;
 `;
 
 export const WrapCheckbox = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 72px;
+  column-gap: 64px;
   row-gap: 16px;
 `;
 
@@ -183,9 +184,9 @@ export const ClearButton = styled.button`
   justify-content: center;
   font-size: 12px;
   line-height: 17.36px;
-  &:hover {
+  /* &:hover {
     color: ${({ theme }) => theme.colors.primaryOrange};
-  }
+  } */
   &:active {
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
@@ -194,6 +195,7 @@ export const ClearButton = styled.button`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding-right: 32px;
 `;
 
 export const SubmitButton = styled.button`
@@ -215,7 +217,7 @@ export const SubmitButton = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};
   }
-  &:focus {
+  &:active {
     border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primaryOrange};

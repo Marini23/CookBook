@@ -67,6 +67,7 @@ export const FilterMobileForm = ({ isClose }) => {
           <CloseText>FILTER</CloseText>
           <CloseIcon src={closeIcon} alt="Close icon" onClick={isClose} />
         </CloseIconContainer>
+
         <Container>
           <WrapFilter>
             <Label>Calories</Label>
