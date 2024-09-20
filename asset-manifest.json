@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CookBook/static/css/main.64a167cf.css",
-    "main.js": "/CookBook/static/js/main.83f3b7d6.js",
+    "main.css": "/CookBook/static/css/main.4cc872bc.css",
+    "main.js": "/CookBook/static/js/main.7ce73fc4.js",
     "static/media/bg_home_desktop_3x.jpg": "/CookBook/static/media/bg_home_desktop_3x.7ff46e8e5efb42b724b8.jpg",
     "static/media/bg_home_desktop_2x.jpg": "/CookBook/static/media/bg_home_desktop_2x.81fcb45665199cbeaa74.jpg",
     "static/media/footer_home_desktop_3x.jpg": "/CookBook/static/media/footer_home_desktop_3x.c74ba4ebc8af211ab328.jpg",
@@ -128,11 +128,11 @@
     "static/media/icon_close.svg": "/CookBook/static/media/icon_close.2a45a7d56c6a43b729efa5058dee4834.svg",
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/minusIcon.svg": "/CookBook/static/media/minusIcon.57970249f514dd5ef6df958180869071.svg",
-    "main.64a167cf.css.map": "/CookBook/static/css/main.64a167cf.css.map",
-    "main.83f3b7d6.js.map": "/CookBook/static/js/main.83f3b7d6.js.map"
+    "main.4cc872bc.css.map": "/CookBook/static/css/main.4cc872bc.css.map",
+    "main.7ce73fc4.js.map": "/CookBook/static/js/main.7ce73fc4.js.map"
   },
   "entrypoints": [
-    "static/css/main.64a167cf.css",
-    "static/js/main.83f3b7d6.js"
+    "static/css/main.4cc872bc.css",
+    "static/js/main.7ce73fc4.js"
   ]
 }
