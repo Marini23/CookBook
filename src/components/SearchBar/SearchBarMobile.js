@@ -19,17 +19,17 @@ export const SearchBarMobile = () => {
   // const [modalIsOpenFilter, setModalIsOpenFilter] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
-  useEffect(() => {
-    if (showFilters) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
+  // useEffect(() => {
+  //   if (showFilters) {
+  //     document.body.classList.add('no-scroll');
+  //   } else {
+  //     document.body.classList.remove('no-scroll');
+  //   }
 
-    return () => {
-      document.body.classList.remove('no-scroll');
-    };
-  }, [showFilters]);
+  //   return () => {
+  //     document.body.classList.remove('no-scroll');
+  //   };
+  // }, [showFilters]);
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
