@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const FormFilter = styled.form`
   position: relative;
+  top: -48px;
   height: 100vh; /* Full viewport height */
   padding: 8px 12px;
   display: flex;
@@ -16,8 +17,9 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  flex-grow: 1; /* Allows the wrapper to expand */
-  overflow-y: auto; /* Scrollable */
+  height: 200px;
+  /* flex-grow: 1;  */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
   /* &::-webkit-scrollbar {
     width: 7px;
