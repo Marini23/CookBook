@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect, useDispatch } from 'react-redux';
 import searchIcon from '../../images/icon_search_mobile.svg';
@@ -10,26 +10,13 @@ import {
   Label,
   SearchFormMobile,
 } from './SearchBarMobile.styled';
-// import { ModalFilterMobile } from 'components/ModalFilterMobile/ModalFilterMobile';
+import { ModalFilterMobile } from 'components/ModalFilterMobile/ModalFilterMobile';
 import { FilterMobileForm } from 'components/Filter/FilterMobile';
 import { changeQuery } from '../../redux/recipesSlice/recipesSlice';
 import { useNavigate } from 'react-router-dom';
 
 export const SearchBarMobile = () => {
-  // const [modalIsOpenFilter, setModalIsOpenFilter] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
-
-  useEffect(() => {
-    if (showFilters) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-
-    return () => {
-      document.body.classList.remove('no-scroll');
-    };
-  }, [showFilters]);
+  const [modalIsOpenFilter, setModalIsOpenFilter] = useState(false);
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -46,18 +33,13 @@ export const SearchBarMobile = () => {
     reset();
   };
 
-  // const openModalFilter = () => {
-  //   setModalIsOpenFilter(true);
-  // };
-
-  // const closeModalFilter = () => {
-  //   setModalIsOpenFilter(false);
-  // };
-
-  const toggleFilters = () => {
-    setShowFilters(prevState => !prevState);
+  const openModalFilter = () => {
+    setModalIsOpenFilter(true);
   };
 
+  const closeModalFilter = () => {
+    setModalIsOpenFilter(false);
+  };
   return (
     <>
       <SearchFormMobile onSubmit={handleSubmit(onSubmit)}>
@@ -71,17 +53,16 @@ export const SearchBarMobile = () => {
             placeholder="I'am searching..."
             name="query"
           />
-          <ButtonMobile type="button" onClick={toggleFilters}>
+          <ButtonMobile type="button" onClick={openModalFilter}>
             <span>
               <FilterIcon src={filterIcon} alt="filter icon" />
             </span>
           </ButtonMobile>
         </Label>
       </SearchFormMobile>
-      {showFilters && <FilterMobileForm isClose={toggleFilters} />}
-      {/* <ModalFilterMobile isClose={closeModalFilter} isOpen={modalIsOpenFilter}>
+      <ModalFilterMobile isClose={closeModalFilter} isOpen={modalIsOpenFilter}>
         <FilterMobileForm isClose={closeModalFilter} />
-      </ModalFilterMobile> */}
+      </ModalFilterMobile>
     </>
   );
 };

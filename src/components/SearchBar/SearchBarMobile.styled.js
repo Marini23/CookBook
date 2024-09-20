@@ -72,3 +72,5 @@ export const FilterIcon = styled.img`
   &:hover {
   }
 `;
+
+export const FilterContainer = styled.div``;

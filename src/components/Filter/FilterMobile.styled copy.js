@@ -1,49 +1,9 @@
 import styled from 'styled-components';
 
 export const FormFilter = styled.form`
-  position: relative;
-  top: -48px;
-  height: 100vh;
-  padding: 8px 12px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background-color: #ffffff;
-  overflow-y: auto;
-`;
-
-export const FormWrapper = styled.div`
-  background-color: #d9d9d9;
-  padding: 73px 36px 44px 36px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  flex-grow: 1;
-  overflow-y: auto;
-`;
-
-export const CloseIconContainer = styled.div`
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  display: flex;
-  flex-direction: row;
-  gap: 7px;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const CloseText = styled.p`
-  font-size: 20px;
-  line-height: 29.38px;
-  color: #ffffff;
-`;
-
-export const CloseIcon = styled.img`
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
 `;
 
 export const Container = styled.div`

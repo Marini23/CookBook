@@ -13,7 +13,6 @@ import avatar from '../../images/avatar_icon.svg';
 import { selectUserFirstName, selectUserPhoto } from '../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
-import { useEffect, useState } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { SearchBarMobile } from 'components/SearchBar/SearchBarMobile';
 import { Link, useLocation } from 'react-router-dom';
@@ -21,7 +20,7 @@ import { Link, useLocation } from 'react-router-dom';
 export const UserBar = () => {
   const name = useSelector(selectUserFirstName);
   const photo = useSelector(selectUserPhoto);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const location = useLocation();
 
   const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
@@ -32,18 +31,6 @@ export const UserBar = () => {
   const isDesktopScreen = useMediaQuery({
     query: '(min-width: 1440px)',
   });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const isShoppingListPage = location.pathname === '/shoppinglist';
 
@@ -67,7 +54,7 @@ export const UserBar = () => {
               }}
             />
             {isDesktopScreen && <Name>{name}</Name>}
-            <BurgerMenu windowWidth={windowWidth} />
+            <BurgerMenu />
           </UserInfo>
         </WrapperInfo>
         {isMobileScreen && !isShoppingListPage && <SearchBarMobile />}

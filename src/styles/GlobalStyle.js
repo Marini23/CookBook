@@ -75,6 +75,10 @@ button {
     cursor: pointer;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 
 
 `;
