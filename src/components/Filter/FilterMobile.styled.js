@@ -2,33 +2,51 @@ import styled from 'styled-components';
 
 export const FormFilter = styled.form`
   position: relative;
-  top: -48px;
+  height: 100vh; /* Full viewport height */
   padding: 8px 12px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
   background-color: #ffffff;
-  /* max-height: calc(100% - 160px); */
-  height: 100vh;
-  overflow-y: auto;
+  overflow: hidden; /* Prevent overflow on this element */
 `;
 
 export const FormWrapper = styled.div`
   background-color: #d9d9d9;
   padding: 73px 36px 44px 36px;
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  /* max-height: calc(100% - 160px); */
-  /* flex-grow: 1;
-  overflow-y: auto; */
+  flex-grow: 1; /* Allows the wrapper to expand */
+  overflow-y: auto; /* Scrollable */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  /* &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track-piece:end {
+    margin-bottom: 40px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track-piece:start {
+    margin-top: 40px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #dbd8e3;
+    opacity: 0.6;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  } */
 `;
 
 export const CloseIconContainer = styled.div`
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 8px;
+  right: 12px;
   display: flex;
   flex-direction: row;
   gap: 7px;
