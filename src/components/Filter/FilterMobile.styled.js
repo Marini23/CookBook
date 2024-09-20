@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const FormFilter = styled.form`
   position: relative;
   top: -48px;
-  height: 100vh;
   padding: 8px 12px;
   display: flex;
   flex-direction: column;
   gap: 32px;
   background-color: #ffffff;
+  /* max-height: calc(100% - 160px); */
+  height: 100vh;
   overflow-y: auto;
 `;
 
@@ -19,8 +20,9 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  flex-grow: 1;
-  overflow-y: auto;
+  /* max-height: calc(100% - 160px); */
+  /* flex-grow: 1;
+  overflow-y: auto; */
 `;
 
 export const CloseIconContainer = styled.div`
