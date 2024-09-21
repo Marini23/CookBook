@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const FormFilter = styled.form`
   position: relative;
   top: -48px;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   padding: 8px 12px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  overflow: hidden; /* Prevent overflow on this element */
+  overflow: hidden;
 `;
 
 export const FormWrapper = styled.div`
@@ -17,33 +17,9 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  /* height: 200px; */
   max-height: calc(100% - 80px);
-  /* flex-grow: 1;  */
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-  /* &::-webkit-scrollbar {
-    width: 7px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-track-piece:end {
-    margin-bottom: 40px;
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-track-piece:start {
-    margin-top: 40px;
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #dbd8e3;
-    opacity: 0.6;
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  } */
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const CloseIconContainer = styled.div`

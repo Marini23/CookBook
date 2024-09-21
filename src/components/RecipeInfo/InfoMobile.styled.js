@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as Heart } from '../../images/flagHeart.svg';
-import { ReactComponent as HeartFavorite } from '../../images/flagHeartFavorite.svg';
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -96,7 +94,7 @@ export const Title = styled.h3`
   font-weight: 400;
   line-height: 26.44px;
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -246,40 +244,5 @@ export const Link = styled.a`
     font-weight: 26.44px;
     max-width: 520px;
     height: 48px;
-  }
-`;
-
-export const HeartIcon = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 32px;
-  width: 32px;
-  height: 49px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const HeartImage = styled(Heart)`
-  width: 32px;
-  height: 49px;
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  &:hover {
-    color: ${({ theme }) => theme.colors.secondaryOrange};
-  }
-  &:active {
-    color: ${({ theme }) => theme.colors.primaryOrange};
-  }
-`;
-export const HeartImageFavorite = styled(HeartFavorite)`
-  width: 32px;
-  height: 49px;
-  color: #fdfdfd;
-  &:hover {
-    color: #ededed;
-  }
-  &:active {
-    color: #fdfdfd;
   }
 `;

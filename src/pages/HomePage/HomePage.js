@@ -29,18 +29,6 @@ export const HomePage = () => {
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
   const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //   };
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
-
   const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
   const isTabletOrDesktopScreen = useMediaQuery({
     query: '(min-width: 744px)',

@@ -91,19 +91,20 @@ export const WrapContent = styled.div`
   position: absolute;
   top: 128px;
   left: 16px;
-  width: 358px;
+  min-width: 260px;
+  max-width: 358px;
   height: 126px;
   background-color: rgba(107, 107, 107, 0.5);
   padding: 16px;
   @media screen and (min-width: 744px) and (max-width: 1439px) {
-    width: 664px;
+    max-width: 664px;
     height: 300px;
     top: 155px;
     left: 40px;
     padding: 40px;
   }
   @media screen and (min-width: 1440px) {
-    width: 942px;
+    max-width: 942px;
     height: 399px;
     top: 259px;
     left: 72px;

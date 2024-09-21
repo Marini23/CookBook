@@ -1,8 +1,5 @@
 import {
   DetailsContainer,
-  HeartIcon,
-  HeartImage,
-  HeartImageFavorite,
   ImageWrapper,
   Img,
   ImgDetail,
@@ -27,6 +24,7 @@ import timeIcon from '../../images/clock.svg';
 import caloriesIcon from '../../images/calories.svg';
 import servesIcon from '../../images/serves.svg';
 import { useLocation } from 'react-router-dom';
+import { BtnFavorite } from 'components/BtnFavorite/BtnFavorite';
 
 export const InfoMobile = ({
   recipeInfo,
@@ -45,16 +43,10 @@ export const InfoMobile = ({
         <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
           <img src={arrowBack} alt="arrow back" />
         </StyledLinkGoBack>
-        <HeartIcon>
-          {isFavorite ? (
-            <HeartImageFavorite onClick={toggleFavorite} />
-          ) : (
-            <HeartImage onClick={toggleFavorite} />
-          )}
-        </HeartIcon>
       </ImageWrapper>
       <InfoContainer>
         <Title>{recipeInfo.recipe.label}</Title>
+        <BtnFavorite isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
         <DetailsContainer>
           <Item>
             <ImgDetail src={timeIcon} alt=" clock" />

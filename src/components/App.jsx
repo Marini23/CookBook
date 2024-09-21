@@ -12,6 +12,7 @@ import { fetchCurrentUser } from '../redux/authSlice/authOperations';
 import { selectIsLoggedIn, selectIsRefreshing } from '../redux/selectors';
 import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
 import { Loader } from './Loader/Loader';
+import { ScrollToTop } from 'utils';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export const App = () => {
     <Loader />
   ) : (
     <div>
+      <ScrollToTop />
       <Routes location={background || location}>
         <Route path="/" element={<Layuot />}>
           <Route index element={isLoggedIn ? <RecipesPage /> : <HomePage />} />

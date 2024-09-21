@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { VscHeart } from 'react-icons/vsc';
-import { VscHeartFilled } from 'react-icons/vsc';
 
 export const StyledLinkGoBack = styled(NavLink)`
   display: flex;
@@ -61,9 +59,6 @@ export const Title = styled.h3`
   font-weight: 400;
   line-height: 36px;
   color: ${({ theme }) => theme.colors.black};
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Limit the text to two lines */
   -webkit-box-orient: vertical;
@@ -86,62 +81,6 @@ export const BtnContainer = styled.div`
   }
 `;
 
-export const Btn = styled.button`
-  cursor: pointer;
-  width: 90px;
-  height: 36px;
-  border-radius: 4px;
-  border: none;
-  background-color: #ededed;
-  font-size: 14px;
-  line-height: 20.56px;
-  color: #252525;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    transform: scale(1.05);
-  }
-  &:active {
-    transform: scale(1);
-  }
-  @media screen and (min-width: 1440px) {
-    width: 132px;
-    height: 40px;
-    font-size: 16px;
-    line-height: 23.5px;
-  }
-`;
-
-export const TextBtn = styled.p`
-  width: 60px;
-  display: flex;
-  justify-content: start;
-`;
-
-export const StyledHeartIcon = styled(VscHeart)`
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  @media screen and (min-width: 1440px) {
-    width: 24px;
-    height: 24px;
-    margin-right: 16px;
-  }
-`;
-
-export const StyledHeartIconFavorite = styled(VscHeartFilled)`
-  color: ${({ theme }) => theme.colors.primaryOrange};
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  @media screen and (min-width: 1440px) {
-    width: 24px;
-    height: 24px;
-    margin-right: 16px;
-  }
-`;
 export const ShareIcon = styled.img`
   width: 20px;
   height: 20px;

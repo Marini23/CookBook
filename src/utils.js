@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 export const getFirstName = fullName => {
   if (!fullName) return '';
   return fullName.split(' ')[0];
@@ -31,4 +34,14 @@ export const getRecipeIdFromUrl = url => {
   const pathSegments = urlObj.pathname.split('/');
   const recipeId = pathSegments[pathSegments.length - 1];
   return recipeId;
+};
+
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 };

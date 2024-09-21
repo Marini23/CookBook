@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as Heart } from '../../images/flagHeart.svg';
-import { ReactComponent as HeartFavorite } from '../../images/flagHeartFavorite.svg';
+import { ReactComponent as Heart } from '../../images/heart_flag_icon.svg';
+import { ReactComponent as HeartFavorite } from '../../images/heart_flag_favorite_icon.svg';
 
 export const ListItem = styled.li`
   position: relative;
@@ -67,30 +67,6 @@ export const Label = styled.p`
   }
 `;
 
-export const HeartIcon = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 0px;
-  right: 24px;
-  width: 28px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media screen and (min-width: 744px) and (max-width: 1439px) {
-    top: 0px;
-    right: 24px;
-    width: 20px;
-    height: 32px;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 0px;
-    right: 24px;
-    width: 28px;
-    height: 43px;
-  }
-`;
-
 export const StyledLinkList = styled(NavLink)`
   cursor: pointer;
   color: black;
@@ -101,6 +77,14 @@ export const StyledLinkList = styled(NavLink)`
 `;
 
 export const HeartImage = styled(Heart)`
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  width: 28px;
+  height: 44px;
+  display: flex;
+  align-items: start;
   width: 28px;
   height: 44px;
   color: ${({ theme }) => theme.colors.primaryOrange};
@@ -112,7 +96,7 @@ export const HeartImage = styled(Heart)`
   }
   @media screen and (min-width: 744px) {
     width: 20px;
-    height: 33px;
+    height: 31px;
   }
   @media screen and (min-width: 1440px) {
     width: 28px;
@@ -120,6 +104,14 @@ export const HeartImage = styled(Heart)`
   }
 `;
 export const HeartImageFavorite = styled(HeartFavorite)`
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  width: 28px;
+  height: 44px;
+  display: flex;
+  align-items: start;
   width: 28px;
   height: 44px;
   color: #fdfdfd;
@@ -131,7 +123,7 @@ export const HeartImageFavorite = styled(HeartFavorite)`
   }
   @media screen and (min-width: 744px) and (max-width: 1439px) {
     width: 20px;
-    height: 33px;
+    height: 31px;
   }
   @media screen and (min-width: 1440px) {
     width: 28px;

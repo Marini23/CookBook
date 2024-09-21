@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as ArrowIcon } from '../../images/arrowBackGrey.svg';
 import {
-  Btn,
   BtnContainer,
   DetailsContainer,
   Img,
@@ -17,22 +16,19 @@ import {
   ListIngredients,
   SaveBtn,
   SaveBtnText,
-  ShareIcon,
-  StyledHeartIcon,
-  StyledHeartIconFavorite,
   StyledLinkGoBack,
-  TextBtn,
   TextDetail,
   TextDiets,
   TextIngredients,
   Title,
   TitleIngredients,
 } from './InfoTabletDesktop.styled';
-import shareIcon from '../../images/shareIcon_recipe.svg';
+// import shareIcon from '../../images/shareIcon_recipe.svg';
 import timeIcon from '../../images/clock.svg';
 import caloriesIcon from '../../images/calories.svg';
 import servesIcon from '../../images/serves.svg';
 import listIcon from '../../images//listIcon.svg';
+import { BtnFavorite } from 'components/BtnFavorite/BtnFavorite';
 
 export const InfoTabletDesktop = ({
   recipeInfo,
@@ -56,21 +52,14 @@ export const InfoTabletDesktop = ({
         <InfoTitleWrapper>
           <Title>{recipeInfo.recipe.label.toUpperCase()}</Title>
           <BtnContainer>
-            {isFavorite ? (
-              <Btn onClick={toggleFavorite}>
-                <StyledHeartIconFavorite />
-                <TextBtn> Unsave</TextBtn>
-              </Btn>
-            ) : (
-              <Btn onClick={toggleFavorite}>
-                <StyledHeartIcon />
-                <TextBtn>Save</TextBtn>
-              </Btn>
-            )}
-            <Btn>
+            <BtnFavorite
+              isFavorite={isFavorite}
+              toggleFavorite={toggleFavorite}
+            />
+            {/* <Btn>
               <ShareIcon src={shareIcon} alt="share icon" />
               Share
-            </Btn>
+            </Btn> */}
           </BtnContainer>
           <TextDiets>{diets}</TextDiets>
         </InfoTitleWrapper>

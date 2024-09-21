@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  HeartIcon,
   HeartImage,
   HeartImageFavorite,
   Img,
@@ -21,8 +20,6 @@ import {
 } from '../../redux/favoritesSlice/favoritesOperations';
 import { useLocation } from 'react-router-dom';
 import { truncateString } from 'utils';
-import heart from '../../images/flagHeart.svg';
-import heartFavorite from '../../images/flagHeartFavorite.svg';
 
 export const RecipeCard = recipe => {
   const [truncatedLabel, setTruncatedLabel] = useState(
@@ -89,24 +86,6 @@ export const RecipeCard = recipe => {
     <>
       <ListItem>
         <StyledLinkList to={`/recipes/${recipeId}`} state={{ from: location }}>
-          {/* <Img>
-            <source
-              srcSet={recipe.recipe.recipe.images.THUMBNAIL}
-              media="(max-width: 743px)"
-            />
-            <source
-              srcSet={recipe.recipe.recipe.images.SMALL}
-              media="(min-width: 744px) and (max-width: 1439px)"
-            />
-            <source
-              srcSet={recipe.recipe.recipe.images.LARGE}
-              media="(min-width: 1440px)"
-            />
-            <img
-              src={recipe.recipe.recipe.image}
-              alt={recipe.recipe.recipe.label}
-            />
-          </Img> */}
           <Img
             src={recipe.recipe.recipe.image}
             alt={recipe.recipe.recipe.label}
@@ -114,17 +93,20 @@ export const RecipeCard = recipe => {
 
           <Label ref={labelRef}>{truncatedLabel}</Label>
         </StyledLinkList>
-        <HeartIcon>
-          {isFavorite ? (
-            <HeartImageFavorite
-              src={heartFavorite}
-              alt="heart icon favorite"
-              onClick={toggleFavorite}
-            />
-          ) : (
-            <HeartImage src={heart} alt="heart icon" onClick={toggleFavorite} />
-          )}
-        </HeartIcon>
+
+        {isFavorite ? (
+          <HeartImageFavorite
+            // src={heartFavorite}
+            alt="heart icon favorite"
+            onClick={toggleFavorite}
+          />
+        ) : (
+          <HeartImage
+            // src={heart}
+            alt="heart icon"
+            onClick={toggleFavorite}
+          />
+        )}
       </ListItem>
     </>
   );
