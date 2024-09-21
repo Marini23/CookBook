@@ -2,7 +2,6 @@ import { SliderImages } from 'components/SliderImages/SliderImages';
 import {
   AddBtn,
   ClearIcon,
-  ShareIcon,
   Container,
   IconsContainer,
   List,
@@ -44,7 +43,7 @@ export const ShoppingList = () => {
         <Title>SHOPPING LIST</Title>
         <IconsContainer>
           <ClearIcon onClick={handleClearAll} />
-          <ShareIcon />
+          {/* <ShareIcon /> */}
         </IconsContainer>
       </TitleContainer>
       <SliderImages />
