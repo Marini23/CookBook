@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavoritesList } from '../../redux/favoritesSlice/favoritesOperations';
@@ -11,6 +12,10 @@ export const FavoritesPage = () => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
   const isLoading = useSelector(selectIsLoadingFavorites);
+
+  const isTabletOrDesktopScreen = useMediaQuery({
+    query: '(min-width: 744px)',
+  });
 
   useEffect(() => {
     dispatch(getFavoritesList(userId));
@@ -29,13 +34,18 @@ export const FavoritesPage = () => {
           <Loader />
         ) : (
           <>
-            <ButtonFilter
-              isFilterVisible={isFilterVisible}
-              toggleFilterVisibility={toggleFilterVisibility}
-            />
-            <FilterContainer $isvisible={isFilterVisible}>
-              <Filter filterType="favorites" />
-            </FilterContainer>
+            {isTabletOrDesktopScreen ? (
+              <>
+                {' '}
+                <ButtonFilter
+                  isFilterVisible={isFilterVisible}
+                  toggleFilterVisibility={toggleFilterVisibility}
+                />
+                <FilterContainer $isvisible={isFilterVisible}>
+                  <Filter filterType="favorites" />
+                </FilterContainer>{' '}
+              </>
+            ) : null}
             <FavoritesList />
           </>
         )}

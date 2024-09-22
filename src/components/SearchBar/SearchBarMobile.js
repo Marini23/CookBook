@@ -16,7 +16,6 @@ import { changeQuery } from '../../redux/recipesSlice/recipesSlice';
 import { useNavigate } from 'react-router-dom';
 
 export const SearchBarMobile = () => {
-  // const [modalIsOpenFilter, setModalIsOpenFilter] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
@@ -45,14 +44,6 @@ export const SearchBarMobile = () => {
     navigate('/recipes');
     reset();
   };
-
-  // const openModalFilter = () => {
-  //   setModalIsOpenFilter(true);
-  // };
-
-  // const closeModalFilter = () => {
-  //   setModalIsOpenFilter(false);
-  // };
 
   const toggleFilters = () => {
     setShowFilters(prevState => !prevState);
