@@ -19,7 +19,7 @@ import img2_desktop_2x from '../../images/img2_desktop_2x.jpg';
 import img2_desktop_3x from '../../images/img2_desktop_3x.jpg';
 import img3_mobile from '../../images/img3_home_mobile.jpg';
 import img3_mobile_2x from '../../images/img3_mobile_2x.jpg';
-import img3_mobile_3x from '../../images/img2_mobile_3x.jpg';
+import img3_mobile_3x from '../../images/img3_mobile_3x.jpg';
 import img3_tablet from '../../images/img3_tablet.jpg';
 import img3_tablet_2x from '../../images/img3_tablet_2x.jpg';
 import img3_tablet_3x from '../../images/img3_tablet_3x.jpg';
