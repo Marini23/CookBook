@@ -73,7 +73,6 @@ export const logIn = createAsyncThunk(
 
           const user = userCredential.user;
           await updateUser(user);
-          console.log(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
@@ -91,7 +90,6 @@ export const logIn = createAsyncThunk(
           const user = userCredential.user;
 
           await updateUser(user);
-          console.log(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
@@ -107,15 +105,11 @@ export const logIn = createAsyncThunk(
           password
         );
         const user = userCredential.user;
-        console.log(user);
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
-          console.log('exist');
           await updateUser(user);
         } else {
-          console.log(user);
-          console.log('no exist');
           writeUserData(user);
         }
 
@@ -157,7 +151,6 @@ export const fetchCurrentUser = createAsyncThunk(
         onAuthStateChanged(auth, user => {
           if (user === null) {
             reject('Unable to fetch user');
-            console.log('Unable to fetch user');
           } else {
             const serializedUser = {
               name: user.displayName,
@@ -188,7 +181,6 @@ export const registerWithGoogle = createAsyncThunk(
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      console.log(user);
       // Write user data
       writeUserData(user);
 
@@ -269,7 +261,6 @@ export const signInWithGoogle = createAsyncThunk(
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
           await updateUser(user);
-          console.log(user);
           const serializedUser = {
             name: user.displayName,
             email: user.email,
@@ -281,13 +272,9 @@ export const signInWithGoogle = createAsyncThunk(
         } else {
           // Link the user with Google
           const result = await linkWithPopup(auth.currentUser, googleProvider);
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          console.log(credential);
           const user = result.user;
-          console.log(user);
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
-          console.log(user);
           await updateUser(user);
           const serializedUser = {
             name: user.displayName,
@@ -303,15 +290,11 @@ export const signInWithGoogle = createAsyncThunk(
         let result = await signInWithPopup(auth, googleProvider);
 
         const user = result.user;
-        console.log(user);
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
-          console.log('exist');
           await updateUser(user);
         } else {
-          console.log('no exist');
-          console.log(user);
           writeUserData(user);
         }
 
@@ -347,13 +330,11 @@ export const signInWithFacebook = createAsyncThunk(
       const currentUser = auth.currentUser;
       if (currentUser) {
         const providerIndex = checkIfLinked(currentUser, 'facebook.com');
-        console.log(providerIndex);
         if (providerIndex !== -1) {
           const result = await signInWithPopup(auth, facebookProvider);
           const user = result.user;
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
-          console.log(user.displayName);
           await updateUser(user);
           const serializedUser = {
             name: user.displayName,
@@ -369,12 +350,9 @@ export const signInWithFacebook = createAsyncThunk(
             auth.currentUser,
             facebookProvider
           );
-          const credential = FacebookAuthProvider.credentialFromResult(result);
-          console.log(credential);
           const user = result.user;
           await updateProfile(user, { displayName: user.displayName });
           // Update user data
-          console.log(user.displayName);
           await updateUser(user);
           const serializedUser = {
             name: user.displayName,
@@ -392,10 +370,8 @@ export const signInWithFacebook = createAsyncThunk(
         // Get user data
         const userIsExist = getUserData(user);
         if (userIsExist) {
-          console.log('exist');
           await updateUser(user);
         } else {
-          console.log('no exist');
           writeUserData(user);
         }
 
