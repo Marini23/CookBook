@@ -8,6 +8,7 @@ import { FavoritesList } from 'components/FavoritesList/FavoritesList';
 import { Loader } from 'components/Loader/Loader';
 import { ButtonFilter } from 'components/ButtonFilter/ButtonFilter';
 import { Filter } from 'components/Filter/FilterTabletDesktop';
+
 export const FavoritesPage = () => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);

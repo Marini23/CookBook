@@ -67,7 +67,6 @@ export const BurgerMenu = () => {
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
         );
       } else {
-
         setBgImage(
           `linear-gradient(rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)), url(${bg_menu_desktop})`
         );
@@ -97,7 +96,6 @@ export const BurgerMenu = () => {
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
-
 
   const handleMenu = () => {
     setIsMenuOpen(prevState => !prevState);
@@ -204,8 +202,8 @@ export const BurgerMenu = () => {
         right
         isOpen={isMenuOpen}
         onClose={handleCloseMenu}
-        customBurgerIcon={false} 
-        customCrossIcon={false} 
+        customBurgerIcon={false}
+        customCrossIcon={false}
         noOverlay
       >
         <Title>MENU</Title>

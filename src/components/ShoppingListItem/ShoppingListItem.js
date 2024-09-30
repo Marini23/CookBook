@@ -66,20 +66,18 @@ export const ShoppingListItem = ({ ingredient }) => {
         )}
 
         <BtnContainer>
-          <Btn type="button">
-            <MinusIcon
-              src={minusIcon}
-              alt="minus icon"
-              onClick={() => dispatch(decrementIngredient({ userId, foodId }))}
-            />
+          <Btn
+            type="button"
+            onClick={() => dispatch(decrementIngredient({ userId, foodId }))}
+          >
+            <MinusIcon src={minusIcon} alt="minus icon" />
           </Btn>
           <NumberWeight>{Math.ceil(weight)}</NumberWeight>
-          <Btn type="button">
-            <PlusIcon
-              src={plusIcon}
-              alt="plus icon"
-              onClick={() => dispatch(incrementIngredient({ userId, foodId }))}
-            />
+          <Btn
+            type="button"
+            onClick={() => dispatch(incrementIngredient({ userId, foodId }))}
+          >
+            <PlusIcon src={plusIcon} alt="plus icon" />
           </Btn>
           <TextWeight>g</TextWeight>
         </BtnContainer>

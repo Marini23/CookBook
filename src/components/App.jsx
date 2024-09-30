@@ -29,7 +29,7 @@ export const App = () => {
     <Loader />
   ) : (
     <div>
-      <ScrollToTop />
+      <ScrollToTop excludeModalRoutes={['/login', '/register']} />
       <Routes location={background || location}>
         <Route path="/" element={<Layuot />}>
           <Route index element={isLoggedIn ? <RecipesPage /> : <HomePage />} />

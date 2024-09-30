@@ -43,8 +43,7 @@ export const Label = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #c9c9c9;
-  border-radius: 4px;
+  background-color: #d9d9d9;
   font-size: 14px;
   line-height: 20.56px;
   color: ${({ theme }) => theme.colors.black};
@@ -55,14 +54,12 @@ export const Label = styled.p`
     max-width: 205px;
     height: 24px;
     font-size: 12px;
-    font-weight: 500;
     line-height: 17.63px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 416px;
     height: 40px;
     font-size: 16px;
-    font-weight: 500;
     line-height: 23.5px;
   }
 `;

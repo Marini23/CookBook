@@ -209,7 +209,6 @@ const deleteIngredientFromShoppingList = (userId, foodId) => {
     const recipeRef = ref(db, `shoppingIngredients/${userId}/${foodId}`);
     remove(recipeRef)
       .then(() => {
-        console.log(`Ingredient with href ${foodId} deleted successfully`);
         resolve(foodId);
       })
       .catch(error => {

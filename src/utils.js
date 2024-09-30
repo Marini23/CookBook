@@ -36,12 +36,18 @@ export const getRecipeIdFromUrl = url => {
   return recipeId;
 };
 
-export const ScrollToTop = () => {
-  const { pathname } = useLocation();
+export const ScrollToTop = ({ excludeModalRoutes = [] }) => {
+  const { pathname, state } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // Check if the current route is a modal route
+    const isModalRoute =
+      excludeModalRoutes.includes(pathname) || state?.background;
+
+    if (!isModalRoute) {
+      window.scrollTo(0, 0); // Scroll to top only if not a modal
+    }
+  }, [pathname, state, excludeModalRoutes]);
 
   return null;
 };
