@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CookBook/static/css/main.4cc872bc.css",
-    "main.js": "/CookBook/static/js/main.3a4e728d.js",
+    "main.js": "/CookBook/static/js/main.49b930bb.js",
     "static/media/bg_home_desktop_3x.jpg": "/CookBook/static/media/bg_home_desktop_3x.7ff46e8e5efb42b724b8.jpg",
     "static/media/bg_home_desktop_2x.jpg": "/CookBook/static/media/bg_home_desktop_2x.81fcb45665199cbeaa74.jpg",
     "static/media/footer_home_desktop_3x.jpg": "/CookBook/static/media/footer_home_desktop_3x.c74ba4ebc8af211ab328.jpg",
@@ -97,8 +97,8 @@
     "static/media/heart.svg": "/CookBook/static/media/heart.df00a857ab0853745d166bd1c51ecbec.svg",
     "static/media/slick.woff": "/CookBook/static/media/slick.295183786cd8a1389865.woff",
     "static/media/icon_search_mobile.svg": "/CookBook/static/media/icon_search_mobile.ae94fa09c8997c19301d3a9173ad6d63.svg",
-    "static/media/search_icon.svg": "/CookBook/static/media/search_icon.e08d1ed2a5593fa456d5bc63c9f5774d.svg",
     "index.html": "/CookBook/index.html",
+    "static/media/search_icon.svg": "/CookBook/static/media/search_icon.e08d1ed2a5593fa456d5bc63c9f5774d.svg",
     "static/media/error_icon.svg": "/CookBook/static/media/error_icon.971c24b34ffb027c9cfa913ac2354ee6.svg",
     "static/media/google.svg": "/CookBook/static/media/google.584dbc2b3beb5fbac40562c29a400960.svg",
     "static/media/register_icon.svg": "/CookBook/static/media/register_icon.6ba21f302a50fbff68d2c248c7cd9a6f.svg",
@@ -131,10 +131,10 @@
     "static/media/close_filter_mobile.svg": "/CookBook/static/media/close_filter_mobile.4a3d488f519c6b7638ab33031d7def7e.svg",
     "static/media/minusIcon.svg": "/CookBook/static/media/minusIcon.57970249f514dd5ef6df958180869071.svg",
     "main.4cc872bc.css.map": "/CookBook/static/css/main.4cc872bc.css.map",
-    "main.3a4e728d.js.map": "/CookBook/static/js/main.3a4e728d.js.map"
+    "main.49b930bb.js.map": "/CookBook/static/js/main.49b930bb.js.map"
   },
   "entrypoints": [
     "static/css/main.4cc872bc.css",
-    "static/js/main.3a4e728d.js"
+    "static/js/main.49b930bb.js"
   ]
 }
