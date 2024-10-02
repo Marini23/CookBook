@@ -48,8 +48,6 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
-        console.log(action.payload);
-        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.id = action.payload.id;
@@ -74,7 +72,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(registerWithGoogle.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.id = action.payload.id;
@@ -93,7 +90,6 @@ const authSlice = createSlice({
       })
       .addCase(registerWithFacebook.rejected, handleRejected)
       .addCase(signInWithGoogle.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.user.id = action.payload.id;

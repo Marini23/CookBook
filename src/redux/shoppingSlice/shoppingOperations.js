@@ -396,12 +396,10 @@ export const deleteRecipeItem = createAsyncThunk(
   'shopping/deleteRecipe',
   async ({ userId, recipeId }, thunkAPI) => {
     try {
-      // console.log(recipeId);
       const deletedRecipe = await deleteRecipeFromShoppingList(
         userId,
         recipeId
       );
-      console.log(`Deleted recipe: ${deletedRecipe}`);
       return deletedRecipe;
     } catch (error) {
       const serializedError = {
@@ -433,7 +431,6 @@ export const deleteIngredientItem = createAsyncThunk(
   'shopping/deleteIngredient',
   async ({ userId, foodId }, thunkAPI) => {
     try {
-      console.log(foodId);
       const deletedIngredient = await deleteIngredientFromShoppingList(
         userId,
         foodId
@@ -458,7 +455,6 @@ export const incrementIngredient = createAsyncThunk(
         userId,
         foodId
       );
-      console.log(`Increment ingredient: ${incrementIngredient}`);
       return incrementIngredient;
     } catch (error) {
       const serializedError = {
@@ -478,7 +474,6 @@ export const decrementIngredient = createAsyncThunk(
         userId,
         foodId
       );
-      console.log(`Decrement ingredient: ${decrementIngredient}`);
       return decrementIngredient;
     } catch (error) {
       const serializedError = {
@@ -494,7 +489,6 @@ export const addNewIngredient = createAsyncThunk(
   'shopping/addIngredient',
   async ({ userId, newIngredient }, thunkAPI) => {
     try {
-      console.log(newIngredient);
       addNewIngredientToShoppingList(userId, newIngredient);
       return newIngredient;
     } catch (error) {

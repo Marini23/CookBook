@@ -31,20 +31,7 @@ const shoppingSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {
-    // addFavoriteRecipe(state, action) {
-    //   state.favoritesList.push(action.payload);
-    // },
-    // deleteFavorites(state, action) {
-    //   const index = state.favoritesList.findIndex(
-    //     item => item.id === action.payload.id
-    //   );
-    //   state.favoritesList.splice(index, 1);
-    // },
-    // clearFavorites(state, action) {
-    //   state.favoritesList = [];
-    // },
-  },
+  reducers: {},
 
   extraReducers: builder =>
     builder
@@ -60,7 +47,6 @@ const shoppingSlice = createSlice({
       .addCase(getShoppingListIngredients.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // console.log(action.payload);
         state.ingredientsList = action.payload;
       })
       .addCase(addRecipeItem.pending, handlePending)
@@ -68,7 +54,6 @@ const shoppingSlice = createSlice({
       .addCase(addRecipeItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
         state.addedRecipestoShoppingList.push(action.payload);
       })
       .addCase(addIngredients.pending, handlePending)
@@ -76,7 +61,6 @@ const shoppingSlice = createSlice({
       .addCase(addIngredients.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // console.log(action.payload);
         state.ingredientsList = action.payload;
       })
       .addCase(addNewIngredient.pending, handlePending)
@@ -84,7 +68,6 @@ const shoppingSlice = createSlice({
       .addCase(addNewIngredient.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // console.log(action.payload);
         state.ingredientsList.push(action.payload);
       })
       .addCase(deleteRecipeItem.pending, handlePending)
@@ -96,7 +79,6 @@ const shoppingSlice = createSlice({
           return item.id === action.payload;
         });
 
-        console.log(index);
         if (index !== -1) {
           state.addedRecipestoShoppingList.splice(index, 1);
         }
@@ -127,7 +109,6 @@ const shoppingSlice = createSlice({
         const index = state.ingredientsList.findIndex(item => {
           return item.foodId === action.payload.foodId;
         });
-        console.log(index);
         state.ingredientsList[index] = action.payload;
       })
       .addCase(decrementIngredient.pending, handlePending)

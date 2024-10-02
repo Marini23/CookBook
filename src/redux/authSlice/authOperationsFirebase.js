@@ -12,9 +12,7 @@ export const writeUserData = user => {
     userId: user.uid,
     providerData: user.providerData,
   })
-    .then(() => {
-      console.log('Data written successfully.');
-    })
+    .then(() => {})
     .catch(error => {
       console.error('Error writing data:', error);
     });
@@ -28,7 +26,6 @@ export const getUserData = user => {
       if (snapshot.exists()) {
         return snapshot.val();
       } else {
-        console.log('No data available');
       }
     })
     .catch(error => {
