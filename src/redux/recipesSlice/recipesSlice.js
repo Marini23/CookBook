@@ -17,7 +17,7 @@ const handleRejected = (state, action) => {
 const recipesSlice = createSlice({
   name: 'recipes',
   initialState: {
-    query: 'popular',
+    query: 'tacos',
     recipesList: [],
     nextPageLink: null,
     totalHits: null,

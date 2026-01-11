@@ -4,30 +4,37 @@ import {
   ButtonContainer,
   ButtonLink,
   Container,
-  LoginButton,
   Logo,
   MainInfo,
+  MenuLink,
   NavMenu,
-  RegisterButton,
   SecondaryText,
   Text,
   WrapContent,
 } from './HomePage.styled';
 import logo from '../../images/new-logo.svg';
 import logo2x from '../../images/logo_2x.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ModalWindow } from 'components/Modal/Modal';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { ForgotPasswordForm } from 'components/ForgotPasswordForm/ForgotPasswordForm';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const [modalIsOpenRegister, setModalIsOpenRegister] = useState(false);
   const [modalIsOpenLogin, setModalIsOpenLogin] = useState(false);
   const [modalIsResetPassword, setModalIsResetPassword] = useState(false);
+  const [activeMenu, setActiveMenu] = useState('recipes');
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/recipes')) {
+      setActiveMenu('recipes');
+    }
+  }, [location.pathname]);
 
   const isMobileScreen = useMediaQuery({ query: '(max-width: 743px)' });
   const isTabletOrDesktopScreen = useMediaQuery({
@@ -69,12 +76,36 @@ export const HomePage = () => {
           {isTabletOrDesktopScreen && (
             <NavMenu>
               <ButtonContainer>
-                <LoginButton type="button" onClick={openModalLogin}>
+                <MenuLink
+                  $active={activeMenu === 'recipes'}
+                  onMouseEnter={() => setActiveMenu('recipes')}
+                  onClick={() => navigate('/recipes')}
+                >
+                  Recipes
+                </MenuLink>
+
+                <MenuLink
+                  $active={activeMenu === 'login'}
+                  onMouseEnter={() => setActiveMenu('login')}
+                  onClick={openModalLogin}
+                >
+                  Log in
+                </MenuLink>
+
+                <MenuLink
+                  $active={activeMenu === 'register'}
+                  onMouseEnter={() => setActiveMenu('register')}
+                  onClick={openModalRegister}
+                >
+                  Register
+                </MenuLink>
+                {/* <LoginButton type="button" onClick={openModalLogin}>
                   Log in
                 </LoginButton>
                 <RegisterButton type="button" onClick={openModalRegister}>
                   Register
                 </RegisterButton>
+                <Link to="/recipes">RECIPES</Link> */}
               </ButtonContainer>
             </NavMenu>
           )}

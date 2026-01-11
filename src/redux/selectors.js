@@ -102,52 +102,6 @@ export const selectFilteredRecipes = createSelector(
   }
 );
 
-// export const selectFilteredFavorites = createSelector(
-//   [selectFavoritesRecipes, selectFavoritesFilters],
-//   (recipes, filters) => {
-//     console.log(recipes);
-//     console.log(filters);
-//     if (!recipes || !filters) return []; // Early return if no recipes or filters
-
-//     const { caloriesFrom, caloriesTo, ingredientsTo, diet, allergies } =
-//       filters;
-
-//     return recipes.filter(recipe => {
-//       const { calories, ingredients, dietLabels, healthLabels } = recipe.recipe;
-
-//       // Filter by calories range
-//       const withinCaloriesFrom = caloriesFrom ? calories >= caloriesFrom : true;
-//       const withinCaloriesTo = caloriesTo ? calories <= caloriesTo : true;
-
-//       // Filter by ingredients count
-//       const hasRequiredIngredients = ingredientsTo
-//         ? ingredients.length >= ingredientsTo
-//         : true;
-
-//       // Filter by diet labels
-//       const matchesDiet =
-//         diet && diet.length > 0
-//           ? diet.every(dietItem => dietLabels.includes(dietItem))
-//           : true;
-
-//       // Filter by allergies (health labels)
-//       const matchesAllergies =
-//         allergies && allergies.length > 0
-//           ? allergies.every(allergyItem => healthLabels.includes(allergyItem))
-//           : true;
-
-//       // Return true if all filter conditions are met
-//       return (
-//         withinCaloriesFrom &&
-//         withinCaloriesTo &&
-//         hasRequiredIngredients &&
-//         matchesDiet &&
-//         matchesAllergies
-//       );
-//     });
-//   }
-// );
-
 export const selectFilteredFavorites = createSelector(
   [selectFavoritesRecipes, selectFavoritesFilters],
   (recipes, filters) => {

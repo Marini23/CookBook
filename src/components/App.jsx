@@ -33,18 +33,12 @@ export const App = () => {
       <Routes location={background || location}>
         <Route path="/" element={<Layuot />}>
           <Route index element={isLoggedIn ? <RecipesPage /> : <HomePage />} />
-          <Route
-            path="/recipes"
-            element={<PrivateRoute component={<RecipesPage />} />}
-          />
+          <Route path="/recipes" element={<RecipesPage />} />
           <Route
             path="/favorites"
             element={<PrivateRoute component={<FavoritesPage />} />}
           />
-          <Route
-            path="/recipes/:recipeId"
-            element={<PrivateRoute component={<RecipeInfoPage />} />}
-          />
+          <Route path="/recipes/:recipeId" element={<RecipeInfoPage />} />
           <Route
             path="/shoppinglist"
             element={<PrivateRoute component={<ShoppingListPage />} />}

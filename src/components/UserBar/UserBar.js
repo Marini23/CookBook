@@ -10,7 +10,11 @@ import {
 import logo from '../../images/new-logo.svg';
 import logo2x from '../../images/logo_2x.png';
 import avatar from '../../images/avatar_icon.svg';
-import { selectUserFirstName, selectUserPhoto } from '../../redux/selectors';
+import {
+  selectIsLoggedIn,
+  selectUserFirstName,
+  selectUserPhoto,
+} from '../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 import { SearchBar } from 'components/SearchBar/SearchBar';
@@ -18,6 +22,7 @@ import { SearchBarMobile } from 'components/SearchBar/SearchBarMobile';
 import { Link, useLocation } from 'react-router-dom';
 
 export const UserBar = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const name = useSelector(selectUserFirstName);
   const photo = useSelector(selectUserPhoto);
 
@@ -43,17 +48,19 @@ export const UserBar = () => {
           </Link>
           {isTabletDesktopScreen && <SearchBar />}
           <UserInfo>
-            <Img
-              src={photo || avatar}
-              alt="avatar"
-              width={24}
-              height={24}
-              onError={e => {
-                e.target.onerror = null; // Prevents infinite loop if avatar also fails to load
-                e.target.src = avatar;
-              }}
-            />
-            {isDesktopScreen && <Name>{name}</Name>}
+            {isLoggedIn && (
+              <Img
+                src={photo || avatar}
+                alt="avatar"
+                width={24}
+                height={24}
+                onError={e => {
+                  e.target.onerror = null; // Prevents infinite loop if avatar also fails to load
+                  e.target.src = avatar;
+                }}
+              />
+            )}
+            {isDesktopScreen && isLoggedIn && <Name>{name}</Name>}
             <BurgerMenu />
           </UserInfo>
         </WrapperInfo>

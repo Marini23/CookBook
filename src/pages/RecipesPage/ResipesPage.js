@@ -40,7 +40,7 @@ export const RecipesPage = () => {
   useEffect(() => {
     dispatch(getRecipesListByQuery(query));
     dispatch(getFavoritesList(userId));
-    if (query !== 'popular') {
+    if (query !== 'tacos') {
       setIsFilterVisible(true);
     }
   }, [dispatch, query, userId]);
@@ -55,13 +55,13 @@ export const RecipesPage = () => {
     <>
       <Container>
         <FilterDesktop>
-          {query !== 'popular' && (
+          {query !== 'tacos' && (
             <ButtonFilter
               isFilterVisible={isFilterVisible}
               toggleFilterVisibility={toggleFilterVisibility}
             />
           )}
-          {query === 'popular' && (
+          {query === 'populartacos' && (
             <Banner>
               <source
                 srcSet={`${bannerTablet}, ${bannerTablet_2x} 2x, ${bannerTablet_3x} 3x`}

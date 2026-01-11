@@ -8,6 +8,7 @@ import bg_tablet_3x from '../../images/bg_home_tablet_3x.jpg';
 import bg_decktop from '../../images/bg_home_desktop.jpg';
 import bg_decktop_2x from '../../images/bg_home_desktop_2x.jpg';
 import bg_decktop_3x from '../../images/bg_home_desktop_3x.jpg';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.main`
   width: 100%;
@@ -295,18 +296,129 @@ export const LoginButton = styled.button`
   }
 `;
 
+export const Link = styled(NavLink)`
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.whiteText};
+  &:hover {
+    border-radius: 4px;
+    color: ${({ theme }) => theme.colors.primaryOrange};
+  }
+  &:active {
+    border-radius: 4px;
+    border: 1.5px solid transparent;
+    background-color: ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.whiteText};
+  }
+  @media screen and (min-width: 744px) and (max-width: 1439px) {
+    height: 32px;
+    border: 1.5px solid transparent;
+    padding: 4px 8px;
+    font-size: 16px;
+    line-height: 23.5px;
+    &:hover {
+      border: 1.5px solid ${({ theme }) => theme.colors.primaryOrange};
+    }
+    &:active {
+      border: 1.5px solid transparent;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 45px;
+    border: 2px solid transparent;
+    padding: 8px 24px;
+    font-size: 20px;
+    line-height: 29.38px;
+
+    &:hover {
+      border: 2px solid ${({ theme }) => theme.colors.primaryOrange};
+    }
+    &:active {
+      border: 2px solid transparent;
+    }
+  }
+`;
+
+// export const MenuLink = styled(NavLink)`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   height: 45px;
+//   padding: 8px 24px;
+
+//   background-color: transparent;
+//   color: ${({ theme }) => theme.colors.whiteText};
+
+//   border: 2px solid transparent;
+//   border-radius: 4px;
+
+//   font-size: 20px;
+//   line-height: 29.38px;
+//   text-decoration: none;
+
+//   transition: border-color 0.2s ease, color 0.2s ease,
+//     background-color 0.2s ease;
+
+//   &:hover {
+//     border-color: ${({ theme }) => theme.colors.primaryOrange};
+//     color: ${({ theme }) => theme.colors.primaryOrange};
+//   }
+
+//   &:active {
+//     background-color: ${({ theme }) => theme.colors.primaryOrange};
+//     color: ${({ theme }) => theme.colors.whiteText};
+//     border-color: transparent;
+//   }
+
+//   &.active {
+//     border-color: ${({ theme }) => theme.colors.primaryOrange};
+//     color: ${({ theme }) => theme.colors.primaryOrange};
+//   }
+
+//   @media screen and (max-width: 743px) {
+//     height: 32px;
+//     padding: 4px 12px;
+//     font-size: 16px;
+//     line-height: 23.5px;
+//   }
+// `;
+
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 16px;
   position: relative;
+`;
 
-  ${RegisterButton}:hover ~ ${LoginButton} {
-    border: 2px solid transparent;
-    color: ${({ theme }) => theme.colors.whiteText};
-  }
+export const MenuLink = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  ${LoginButton}:hover ~ ${RegisterButton} {
-    border: 2px solid transparent;
-    color: ${({ theme }) => theme.colors.whiteText};
+  height: 45px;
+  padding: 8px 24px;
+
+  background-color: transparent;
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.primaryOrange : theme.colors.whiteText};
+
+  border: 2px solid
+    ${({ theme, $active }) =>
+      $active ? theme.colors.primaryOrange : 'transparent'};
+
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primaryOrange};
+    color: ${({ theme }) => theme.colors.primaryOrange};
   }
 `;
