@@ -15,6 +15,7 @@ import {
   Home,
   Img,
   Link,
+  LinkRecipes,
   List,
   ListItem,
   Title,
@@ -51,6 +52,8 @@ export const BurgerMenu = () => {
   const isDesktopScreen = useMediaQuery({
     query: '(min-width: 1440px)',
   });
+  const isAnyModalOpen =
+    modalIsOpenRegister || modalIsOpenLogin || modalIsResetPassword;
 
   useEffect(() => {
     const handleButtonSize = () => {
@@ -103,7 +106,6 @@ export const BurgerMenu = () => {
 
   const openModalRegister = () => {
     setModalIsOpenRegister(true);
-    navigate('/register');
   };
 
   const closeModalRegister = () => {
@@ -112,7 +114,6 @@ export const BurgerMenu = () => {
 
   const openModalLogin = () => {
     setModalIsOpenLogin(true);
-    navigate('/login');
   };
 
   const closeModalLogin = () => {
@@ -189,14 +190,16 @@ export const BurgerMenu = () => {
   };
   return (
     <>
-      <div
-        className={`burger-icon ${isMenuOpen ? 'burger-open' : ''}`}
-        onClick={handleMenu}
-      >
-        <span className="burger-line"></span>
-        <span className="burger-line"></span>
-        <span className="burger-line"></span>
-      </div>
+      {!isAnyModalOpen && (
+        <div
+          className={`burger-icon ${isMenuOpen ? 'burger-open' : ''}`}
+          onClick={handleMenu}
+        >
+          <span className="burger-line"></span>
+          <span className="burger-line"></span>
+          <span className="burger-line"></span>
+        </div>
+      )}
       <Menu
         styles={styles}
         right
@@ -211,9 +214,25 @@ export const BurgerMenu = () => {
           <List>
             <ListItem>
               <Img src={house} alt="house icon" />
-              <Home onClick={() => handleCloseMenu()} className="menu-item">
+              <Home
+                onClick={() => {
+                  handleCloseMenu();
+                  navigate('/');
+                }}
+                className="menu-item"
+              >
                 HOME
               </Home>
+            </ListItem>
+            <ListItem>
+              <Img src={dinner} alt="plate icon" />
+              <LinkRecipes
+                onClick={() => handleCloseMenu()}
+                className="menu-item"
+                to="/recipes"
+              >
+                RECIPES
+              </LinkRecipes>
             </ListItem>
             <ListItem>
               <Img src={register} alt="register icon" />

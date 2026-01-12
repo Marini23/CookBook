@@ -35,7 +35,7 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-  z-index: 11001;
+  z-index: 3999;
   @media (min-width: 768px) {
     top: 17px;
     right: 40px;

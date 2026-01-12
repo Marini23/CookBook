@@ -99,13 +99,6 @@ export const HomePage = () => {
                 >
                   Register
                 </MenuLink>
-                {/* <LoginButton type="button" onClick={openModalLogin}>
-                  Log in
-                </LoginButton>
-                <RegisterButton type="button" onClick={openModalRegister}>
-                  Register
-                </RegisterButton>
-                <Link to="/recipes">RECIPES</Link> */}
               </ButtonContainer>
             </NavMenu>
           )}
@@ -117,7 +110,7 @@ export const HomePage = () => {
                 detailed cooking instructions and a good mood!
               </SecondaryText>
             )}
-            <ButtonLink type="button" onClick={openModalRegister}>
+            <ButtonLink type="button" onClick={() => navigate('/recipes')}>
               Get Started
             </ButtonLink>
           </WrapContent>
