@@ -37,6 +37,16 @@ export const RecipeInfo = ({ recipeInfo }) => {
   });
 
   const toggleFavorite = () => {
+    if (!userId) {
+      toast('Please sign in to add recipes to favorites', {
+        style: {
+          borderRadius: '10px',
+          background: '#F4C343',
+          color: '#252525',
+        },
+      });
+      return;
+    }
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipeInfo._links.self.href;
     });
@@ -54,6 +64,16 @@ export const RecipeInfo = ({ recipeInfo }) => {
   };
 
   const handleIngredients = recipeInfo => {
+    if (!userId) {
+      toast('Please sign in to add ingredients to shopping list', {
+        style: {
+          borderRadius: '10px',
+          background: '#F4C343',
+          color: '#252525',
+        },
+      });
+      return;
+    }
     const selectRecipe = shoppingListRecipes.find(item => {
       return item.idLink === recipeInfo._links.self.href;
     });

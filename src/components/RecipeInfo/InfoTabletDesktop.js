@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as ArrowIcon } from '../../images/arrowBackGrey.svg';
+import recipePlaceholder from '../../images/mock_image_recipe.png';
 import {
   BtnContainer,
   DetailsContainer,
@@ -23,7 +24,6 @@ import {
   Title,
   TitleIngredients,
 } from './InfoTabletDesktop.styled';
-// import shareIcon from '../../images/shareIcon_recipe.svg';
 import timeIcon from '../../images/clock.svg';
 import caloriesIcon from '../../images/calories.svg';
 import servesIcon from '../../images/serves.svg';
@@ -48,7 +48,13 @@ export const InfoTabletDesktop = ({
         Back
       </StyledLinkGoBack>
       <InfoTitleContainer>
-        <Img src={recipeInfo.recipe.images.REGULAR.url} alt="recipe" />
+        <Img
+          src={recipeInfo.recipe.images?.REGULAR?.url || recipePlaceholder}
+          alt="recipe"
+          onError={e => {
+            e.currentTarget.src = recipePlaceholder;
+          }}
+        />
         <InfoTitleWrapper>
           <Title>{recipeInfo.recipe.label.toUpperCase()}</Title>
           <BtnContainer>
@@ -56,10 +62,6 @@ export const InfoTabletDesktop = ({
               isFavorite={isFavorite}
               toggleFavorite={toggleFavorite}
             />
-            {/* <Btn>
-              <ShareIcon src={shareIcon} alt="share icon" />
-              Share
-            </Btn> */}
           </BtnContainer>
           <TextDiets>{diets}</TextDiets>
         </InfoTitleWrapper>

@@ -1,6 +1,5 @@
 import { db } from '../../firebase';
 import { onValue, push, ref, remove, set } from 'firebase/database';
-// import toast from 'react-hot-toast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const addFavorite = (userId, favoriteData) => {

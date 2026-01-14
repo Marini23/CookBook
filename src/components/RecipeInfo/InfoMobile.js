@@ -18,6 +18,7 @@ import {
   Title,
   TitleIngredients,
 } from './InfoMobile.styled';
+import recipePlaceholder from '../../images/mock_image_recipe.png';
 import arrowBack from '../../images/arrow_back.svg';
 import listIcon from '../../images//listIcon.svg';
 import timeIcon from '../../images/clock.svg';
@@ -39,7 +40,13 @@ export const InfoMobile = ({
   return (
     <>
       <ImageWrapper>
-        <Img src={recipeInfo.recipe.images.REGULAR.url} alt="recipe" />
+        <Img
+          src={recipeInfo.recipe.images?.REGULAR?.url || recipePlaceholder}
+          alt="recipe"
+          onError={e => {
+            e.currentTarget.src = recipePlaceholder;
+          }}
+        />
         <StyledLinkGoBack to={goBackLink.current} state={{ from: location }}>
           <img src={arrowBack} alt="arrow back" />
         </StyledLinkGoBack>

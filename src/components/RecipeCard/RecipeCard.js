@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import recipePlaceholder from '../../images/mock_image_recipe.png';
 import {
   HeartImage,
   HeartImageFavorite,
@@ -66,6 +68,16 @@ export const RecipeCard = recipe => {
   const recipeId = getRecipeIdFromUrl(url);
 
   const toggleFavorite = () => {
+    if (!userId) {
+      toast('Please sign in to add recipes to favorites', {
+        style: {
+          borderRadius: '10px',
+          background: '#F4C343',
+          color: '#252525',
+        },
+      });
+      return;
+    }
     const selectRecipe = filteredRecipes.find(item => {
       return item._links.self.href === recipe.recipe._links.self.href;
     });
@@ -87,8 +99,11 @@ export const RecipeCard = recipe => {
       <ListItem>
         <StyledLinkList to={`/recipes/${recipeId}`} state={{ from: location }}>
           <Img
-            src={recipe.recipe.recipe.image}
-            alt={recipe.recipe.recipe.label}
+            src={recipe?.recipe?.recipe?.image || recipePlaceholder}
+            alt={recipe?.recipe?.recipe?.label || 'recipe'}
+            onError={e => {
+              e.currentTarget.src = recipePlaceholder;
+            }}
           />
 
           <Label ref={labelRef}>{truncatedLabel}</Label>
